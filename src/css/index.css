@@ -1516,6 +1516,15 @@ body.is-menu-open {
   }
 }
 
+.trust-heading {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 10px;
+  color: rgba(78, 86, 78, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
 .trust-logos {
   width: 100%;
   overflow: hidden;

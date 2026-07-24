@@ -209,6 +209,14 @@ function doginvoice_acf_trust_fields() {
 			'title'       => 'Front Page — Pasek zaufania (logo klientów)',
 			'fields'      => array(
 				array(
+					'key'           => 'field_doginvoice_trust_heading',
+					'label'         => 'Mały nagłówek nad logotypami',
+					'name'          => 'trust_heading',
+					'type'          => 'text',
+					'instructions'  => 'Opcjonalne. Zostaw puste, by nie pokazywać nagłówka.',
+					'default_value' => 'Integracja z bankami',
+				),
+				array(
 					'key'          => 'field_doginvoice_trust_logos',
 					'label'        => 'Logotypy klientów',
 					'name'         => 'trust_logos',

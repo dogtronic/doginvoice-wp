@@ -4,9 +4,15 @@
  *
  * @package doginvoice
  */
+$trust_heading = get_field( 'trust_heading' );
 ?>
     <!-- ===== PASEK ZAUFANIA / LOGO KLIENTÓW ===== -->
     <section class="trust" aria-label="Zaufali nam">
+      <?php if ( $trust_heading ) : ?>
+        <p class="trust-heading typography--body-sm" data-aos="fade-up">
+          <?php echo esc_html( $trust_heading ); ?>
+        </p>
+      <?php endif; ?>
       <div class="trust-logos swiper">
         <div class="swiper-wrapper">
           <?php while ( have_rows( 'trust_logos' ) ) : the_row(); ?>
