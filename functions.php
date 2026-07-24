@@ -12,6 +12,11 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+if ( ! defined( 'DOGINVOICE_CSS_VERSION' ) ) {
+	// Bump this whenever src/css/index.css changes to bust the browser cache.
+	define( 'DOGINVOICE_CSS_VERSION', '1.0.0' );
+}
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -140,6 +145,8 @@ add_action( 'widgets_init', 'doginvoice_widgets_init' );
 function doginvoice_scripts() {
 	wp_enqueue_style( 'doginvoice-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'doginvoice-style', 'rtl', 'replace' );
+
+	wp_enqueue_style( 'doginvoice-index', get_template_directory_uri() . '/src/css/index.css', array(), DOGINVOICE_CSS_VERSION );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
