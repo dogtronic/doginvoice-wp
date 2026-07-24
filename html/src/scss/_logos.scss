@@ -1,0 +1,41 @@
+@use "variables" as *;
+
+.trust {
+  animation: fadeIn 0.5s 0.3s ease-out forwards;
+  opacity: 0;
+  width: 100%;
+  overflow: hidden;
+  padding: $spacing-md 0 $spacing-lg;
+
+  @media #{$min-xl} {
+    padding: $spacing-lg 0 $spacing-xl;
+  }
+}
+
+.trust-logos {
+  width: 100%;
+  overflow: hidden;
+
+  .swiper-wrapper {
+    transition-timing-function: linear;
+    align-items: center;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 48px;
+
+    &-image {
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: 140px;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(0) contrast(0);
+      opacity: 0.6;
+    }
+  }
+}

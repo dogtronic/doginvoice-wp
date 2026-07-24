@@ -1,0 +1,216 @@
+@use "variables" as *;
+@use "sass:color";
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  min-width: fit-content;
+  height: fit-content;
+
+  font-family: $ff-body;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+
+  clip-path: polygon(
+    $corner 0%,
+    100% 0,
+    100% calc(100% - #{$corner}),
+    calc(100% - #{$corner}) 100%,
+    0 100%,
+    0% $corner
+  );
+  transition: clip-path 0.3s ease-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+  }
+
+  &:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &[just-icon="true"] {
+    padding: 9px !important;
+
+    .btn-icon {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      min-height: 16px;
+    }
+  }
+
+  &[disabled] {
+    background: $color-grey !important;
+    color: rgba(38, 39, 44, 0.3) !important;
+    pointer-events: none !important;
+
+    path {
+      fill: $color-white !important;
+    }
+  }
+
+  .btn-title {
+    position: relative;
+    z-index: 2;
+    display: block;
+    color: inherit;
+    transition: $btn-transition;
+    pointer-events: none;
+    will-change: color;
+  }
+
+  .btn-icon {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  path {
+    transition: $btn-transition;
+    will-change: stroke;
+  }
+}
+
+// Big
+[size="bg"] {
+  height: 55px;
+  padding: 16px 28px;
+  font-size: var(--fs-body-lg);
+  font-weight: $fw-medium;
+
+  @media #{$max-md} {
+    height: 48px;
+    font-size: var(--fs-body-md);
+
+    .btn-icon {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+    }
+  }
+}
+
+// Small
+[size="sm"] {
+  height: 42px;
+  padding: 10px 16px;
+  font-size: var(--fs-body-md);
+  font-weight: $fw-medium;
+}
+
+// Green
+[color="green"] {
+  background-color: $color-green;
+  color: $color-white;
+
+  &::before {
+    background-color: color.adjust($color-green, $lightness: -4%);
+  }
+
+  path {
+    fill: $color-white;
+  }
+}
+
+// White
+[color="white"] {
+  background: $color-white;
+  color: $color-dark;
+
+  &::before {
+    background-color: color.adjust($color-white, $lightness: -4%);
+  }
+
+  path {
+    fill: $color-dark;
+  }
+}
+
+// Trasparent
+[color="transparent"] {
+  background: transparent;
+  color: $color-dark;
+
+  &:hover {
+    color: $color-dark-green;
+  }
+}
+
+[color="border"] {
+  background: transparent !important;
+  clip-path: none !important;
+  color: $color-dark;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
+
+  &::before {
+    display: none !important;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-white;
+    clip-path: polygon(
+      $corner 0%,
+      100% 0,
+      100% calc(100% - #{$corner}),
+      calc(100% - #{$corner}) 100%,
+      0 100%,
+      0% $corner
+    );
+    transition: clip-path 0.3s ease-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+      will-change: transform;
+      background-color: color.adjust($color-white, $lightness: -4%);
+    }
+  }
+  &:hover {
+    .background {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

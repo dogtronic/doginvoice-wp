@@ -1,0 +1,162 @@
+<?php
+/**
+ * The header for this theme
+ *
+ * Contains the opening <html>/<head>, third-party CSS/JS from the
+ * front-page design, and the site header/nav (desktop + mobile).
+ * Shared by every template via get_header().
+ *
+ * @package doginvoice
+ */
+?>
+<!doctype html>
+<html <?php language_attributes(); ?>>
+
+<head>
+  <meta charset="<?php bloginfo('charset'); ?>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/src/assets/images/favicon.svg" />
+  <?php if ( is_front_page() ) : ?>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+  <?php endif; ?>
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/src/css/index.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+  <?php wp_body_open(); ?>
+  <!-- ===== HEADER / NAV ===== -->
+
+  <header class="site-header">
+    <nav class="site-header-nav" aria-label="Główna nawigacja">
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-header-nav-logo no-hover-effect">
+        <svg
+          width="186"
+          height="31"
+          viewBox="0 0 186 31"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M87.9201 15.09V21.03V29.93H82.3401V27.82C81.7101 28.26 80.7101 28.79 79.3901 29.27C78.2401 29.69 76.0401 29.93 74.1101 29.93C71.3001 29.93 68.8101 29.31 66.6701 28.07C64.5501 26.81 62.8801 25.05 61.6601 22.81C60.4701 20.57 59.8701 17.98 59.8701 15.05C59.8701 12.12 60.4901 9.42001 61.7301 7.18001C62.9701 4.94001 64.7101 3.20001 66.9501 1.96001C69.1901 0.720006 71.8001 0.100006 74.7901 0.100006C77.2001 0.100006 79.3201 0.520006 81.1601 1.35001C83.0001 2.16001 84.5001 3.33001 85.6701 4.86001C86.8601 6.39001 87.6101 8.21001 87.9201 10.33H81.5901C81.3301 8.78001 80.6001 7.59001 79.4101 6.75001C78.2201 5.89001 76.6801 5.46001 74.7901 5.46001C72.9001 5.46001 71.4401 5.85001 70.1001 6.64001C68.7901 7.40001 67.7601 8.51001 67.0201 9.97001C66.3001 11.43 65.9501 13.13 65.9501 15.09C65.9501 17.09 66.3201 18.83 67.0601 20.31C67.8001 21.77 68.8401 22.9 70.1701 23.71C71.5101 24.5 73.0801 24.89 74.8901 24.89C76.2301 24.89 77.4301 24.68 78.5001 24.25C79.5701 23.82 80.4201 23.22 81.0401 22.46C81.6601 21.7 81.9701 20.84 81.9701 19.88V19.51V19.47L75.5301 15.1H81.9701H87.9101"
+            fill="#171717" />
+          <path
+            d="M51.1002 1.91C48.9102 0.689996 46.3102 0.0899963 43.3002 0.0899963C40.2902 0.0899963 37.7202 0.699996 35.5002 1.91C33.3102 3.13 31.5902 4.86 30.3502 7.1C29.1102 9.32 28.4902 11.95 28.4902 15.01C28.4902 18.07 29.1102 20.68 30.3502 22.92C31.5902 25.14 33.3102 26.87 35.5002 28.11C37.7202 29.33 40.3202 29.93 43.3002 29.93C46.2802 29.93 48.8702 29.32 51.0602 28.11C53.2802 26.89 55.0102 25.16 56.2502 22.92C57.4902 20.68 58.1102 18.04 58.1102 15.01C58.1102 11.98 57.4902 9.29 56.2502 7.07C55.0302 4.83 53.3202 3.11 51.1002 1.92V1.91ZM49.7402 22.02C48.2102 23.76 46.0702 24.63 43.3002 24.63C40.5302 24.63 38.3902 23.76 36.8602 22.02C35.3302 20.28 34.5702 17.94 34.5702 15.01C34.5702 12.08 35.3302 9.71 36.8602 8C38.3902 6.26 40.5302 5.39 43.3002 5.39C46.0702 5.39 48.2402 6.26 49.7402 8C51.2702 9.72 52.0302 12.06 52.0302 15.01C52.0302 17.96 51.2702 20.28 49.7402 22.02Z"
+            fill="#171717" />
+          <path
+            d="M19.57 2.23001C17.28 1.06001 14.56 0.480011 11.41 0.480011H0V5.63001H11.41C14.42 5.63001 16.69 6.48001 18.24 8.17001C19.81 9.86001 20.6 12.13 20.6 14.97C20.6 17.81 19.81 20.05 18.24 21.77C16.69 23.46 14.41 24.31 11.41 24.31H6.04V9.98001L0 5.62001V29.45H11.41C14.53 29.45 17.24 28.87 19.53 27.7C21.82 26.51 23.59 24.83 24.83 22.66C26.09 20.49 26.73 17.93 26.73 14.97C26.73 12.01 26.11 9.41001 24.87 7.24001C23.63 5.07001 21.86 3.40001 19.57 2.23001Z"
+            fill="#171717" />
+          <path
+            d="M185.32 0V25.53L180.93 29.92H93.9502V4.39L98.3302 0H185.31H185.32Z"
+            fill="#4FD15F" />
+          <path
+            d="M175.321 21.47H165.931V8.42001H175.321V10.55H168.391V13.67H174.831V15.73H168.391V19.34H175.321V21.47Z"
+            fill="#DEFAE1" />
+          <path
+            d="M159.271 21.7C157.951 21.7 156.791 21.43 155.791 20.88C154.801 20.32 154.031 19.54 153.491 18.53C152.951 17.52 152.681 16.33 152.681 14.97C152.681 13.61 152.951 12.42 153.491 11.41C154.041 10.4 154.811 9.62001 155.791 9.07001C156.791 8.51001 157.951 8.23001 159.271 8.23001C160.331 8.23001 161.271 8.41001 162.071 8.76001C162.891 9.11001 163.561 9.63001 164.081 10.31C164.611 10.98 164.941 11.78 165.101 12.71H162.571C162.421 11.98 162.061 11.41 161.471 11C160.901 10.59 160.171 10.39 159.261 10.39C157.971 10.39 156.961 10.8 156.221 11.61C155.481 12.42 155.111 13.53 155.111 14.96C155.111 16.39 155.481 17.51 156.221 18.33C156.961 19.14 157.981 19.54 159.261 19.54C160.161 19.54 160.901 19.34 161.471 18.94C162.051 18.53 162.421 17.96 162.571 17.22H165.101C164.951 18.15 164.611 18.96 164.081 19.64C163.551 20.31 162.881 20.82 162.071 21.17C161.261 21.52 160.331 21.7 159.271 21.7Z"
+            fill="#DEFAE1" />
+          <path
+            d="M148.811 21.47V8.42001H151.261V21.47H148.811Z"
+            fill="#DEFAE1" />
+          <path
+            d="M140.77 21.66C139.44 21.66 138.27 21.39 137.27 20.84C136.28 20.28 135.51 19.5 134.97 18.5C134.42 17.49 134.15 16.3 134.15 14.94C134.15 13.58 134.42 12.38 134.97 11.38C135.52 10.37 136.29 9.59 137.27 9.04C138.27 8.49 139.43 8.22 140.77 8.22C142.11 8.22 143.28 8.49 144.27 9.04C145.27 9.59 146.04 10.37 146.57 11.38C147.12 12.38 147.39 13.57 147.39 14.94C147.39 16.31 147.12 17.49 146.57 18.5C146.02 19.51 145.25 20.29 144.25 20.84C143.26 21.39 142.1 21.66 140.77 21.66ZM140.77 19.52C142.08 19.52 143.1 19.11 143.83 18.3C144.56 17.47 144.93 16.36 144.93 14.95C144.93 13.54 144.56 12.42 143.83 11.6C143.11 10.78 142.09 10.38 140.77 10.38C139.45 10.38 138.44 10.79 137.71 11.6C136.98 12.42 136.61 13.53 136.61 14.95C136.61 16.37 136.98 17.47 137.71 18.3C138.44 19.12 139.46 19.52 140.77 19.52Z"
+            fill="#DEFAE1" />
+          <path
+            d="M126.71 21.47L121.44 8.42001H124.13L128.16 18.75H128.24L132.23 8.42001H134.86L129.59 21.47H126.71Z"
+            fill="#DEFAE1" />
+          <path
+            d="M120.69 21.47H118.03L110.88 11.92H110.82V21.47H108.48V8.42001H111.07L118.29 18.12H118.35V8.42001H120.69V21.47Z"
+            fill="#DEFAE1" />
+          <path
+            d="M103.94 21.47V8.42001H106.39V21.47H103.94Z"
+            fill="#DEFAE1" />
+        </svg>
+      </a>
+
+      <?php
+      wp_nav_menu(
+        array(
+          'theme_location' => 'menu-1',
+          'container'      => false,
+          'menu_id'        => 'site-header-nav-menu',
+          'menu_class'     => 'site-header-nav-menu',
+          'walker'         => new DogInvoice_Nav_Walker(),
+          'fallback_cb'    => false,
+          'depth'          => 1,
+        )
+      );
+      ?>
+
+      <div class="site-header-nav-actions">
+        <a
+          class="site-header-nav-actions-login btn"
+          size="sm"
+          color="transparent"
+          href="https://app.doginvoice.com/login"
+          target="_blank">
+          <span class="btn-title">Zaloguj się</span>
+        </a>
+        <a
+          class="site-header-nav-actions-register btn"
+          size="sm"
+          color="green"
+          href="https://app.doginvoice.com/register"
+          target="_blank">
+          <span class="btn-title">Załóż konto</span>
+        </a>
+      </div>
+
+      <button
+        class="site-header-nav-hamburger"
+        type="button"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+        aria-controls="site-header-mobile">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+      </button>
+    </nav>
+
+    <div
+      class="site-header-mobile"
+      id="site-header-mobile"
+      aria-hidden="true">
+      <?php
+      wp_nav_menu(
+        array(
+          'theme_location' => 'menu-1',
+          'container'      => false,
+          'menu_id'        => 'site-header-mobile-menu',
+          'menu_class'     => 'site-header-mobile-menu',
+          'walker'         => new DogInvoice_Nav_Walker('site-header-mobile-menu-item', 'site-header-mobile-menu-item-link'),
+          'fallback_cb'    => false,
+          'depth'          => 1,
+        )
+      );
+      ?>
+      <div class="site-header-mobile-actions">
+        <a
+          class="site-header-mobile-actions-login btn"
+          size="sm"
+          color="white"
+          href="https://app.doginvoice.com/login"
+          target="_blank">
+          <span class="btn-title">Zaloguj się</span>
+        </a>
+        <a
+          class="site-header-mobile-actions-register btn"
+          size="sm"
+          color="green"
+          href="https://app.doginvoice.com/register"
+          target="_blank">
+          <span class="btn-title">Załóż konto</span>
+        </a>
+      </div>
+    </div>
+  </header>

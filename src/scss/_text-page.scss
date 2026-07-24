@@ -1,0 +1,153 @@
+@use "variables" as *;
+
+.page-text {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .footer {
+    background: transparent;
+
+    @media #{$max-md} {
+      padding-top: $spacing-lg;
+    }
+  }
+
+  .footer__background {
+    background: transparent;
+  }
+}
+
+.text-page {
+  animation: fadeIn 0.5s 0.3s ease-out forwards;
+  opacity: 0;
+  width: fit-content;
+  padding: 0 $spacing-sm;
+  margin: 150px auto 0;
+
+  @media #{$min-lg} {
+    padding: 0 $spacing-lg;
+  }
+
+  @media #{$min-xl} {
+    margin-top: 200px;
+  }
+
+  a {
+    color: $color-green;
+    text-decoration: none;
+    text-underline-offset: 0.15em;
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+    gap: $spacing-md;
+
+  }
+
+  &-title {
+    max-width: 14em;
+    text-align: center;
+    margin-bottom: $spacing-sm;
+  }
+
+  &-lead {
+    max-width: 70em;
+    text-align: center;
+    color: $color-grey;
+    line-height: 1.6;
+  }
+
+  &-content {
+    max-width: 74em;
+    margin: 0 auto;
+    color: $color-grey;
+    font-size: var(--fs-body-md);
+    line-height: 1.6;
+
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin: $spacing-sm 0 $spacing-xs;
+      color: $color-dark;
+      font-family: $ff-heading;
+      font-weight: $fw-medium;
+      font-size: var(--fs-body-xl);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    p {
+      margin-bottom: $spacing-xs;
+      color: $color-grey;
+      font-size: var(--fs-body-md);
+      line-height: 1.6;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    li > ol,
+    li > ul {
+      margin-top: $spacing-xs;
+    }
+
+    ol {
+      list-style: none;
+      counter-reset: ol-item;
+      margin: 0;
+      padding: 0;
+      padding: 0 $spacing-xs;
+
+      > li {
+        position: relative;
+        counter-increment: ol-item;
+        padding-left: 0.25em;
+        margin-bottom: $spacing-sm;
+        color: $color-dark;
+        font-size: var(--fs-body-xl);
+        font-weight: $fw-medium;
+        line-height: 1.6;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &::marker {
+          content: counter(ol-item) ".";
+          font-weight: $fw-medium;
+        }
+      }
+
+      ol {
+        counter-reset: ol-subitem;
+        margin-top: $spacing-xs;
+        padding-left: 1.7em;
+
+        > li {
+          counter-increment: ol-subitem;
+          margin-bottom: 10px;
+          color: $color-grey;
+          font-size: var(--fs-body-md);
+
+          &::marker {
+            content: counter(ol-item) "." counter(ol-subitem) ".";
+            font-weight: $fw-regular;
+          }
+        }
+      }
+    }
+
+    strong {
+      color: $color-dark;
+      font-weight: $fw-medium;
+    }
+  }
+}

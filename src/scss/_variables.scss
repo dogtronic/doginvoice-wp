@@ -1,0 +1,116 @@
+@use "sass:map";
+
+// Colors
+$color-dark: rgba(23, 23, 23, 1);
+$color-grey: rgba(78, 86, 78, 0.8);
+$color-white: rgba(255, 255, 255, 1);
+$color-beige-light: rgba(248, 247, 241, 1);
+
+$color-green: rgba(79, 209, 95, 1);
+$color-dark-green: rgba(47, 174, 99, 1);
+$color-light-green: rgba(201, 244, 90, 0);
+$color-water-green: rgba(201, 245, 222, 0);
+
+$color-stars: rgba(255, 204, 0, 1);
+
+$gradient-dark-center: radial-gradient(
+  36.56% 50% at 49.17% 50%,
+  #082b0e 0%,
+  #0a0a0a 100%
+);
+$gradient-dark-top: radial-gradient(
+  100% 192.38% at 100% 0%,
+  #082b0e 0%,
+  #0a0a0a 37.5%
+);
+
+// Transitions
+$button-transition: 0.5s ease;
+$hamburger-transition: 0.3s ease;
+$hamburger-line-transition: 0.3s ease;
+$nav-transition: 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+$nav-blur-transition:
+  opacity 0.55s cubic-bezier(0.165, 0.84, 0.44, 1),
+  transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// Spacings
+$spacing-xs: 16px;
+$spacing-sm: 24px;
+$spacing-md: 32px;
+$spacing-lg: 64px;
+$spacing-xl: 96px;
+$spacing-xxl: 130px;
+
+// Other
+$header-height: 150px;
+$max-width: 1600px;
+$corner: 10px;
+$btn-transition: 0.3s ease;
+
+// Font Family
+$ff-heading: "Inter", sans-serif;
+$ff-body: "Inter", sans-serif;
+$ff-special: "JetBrains Mono", monospace;
+$ff-funnel: "Funnel", sans-serif;
+
+// Font Weights
+$fw-bold: 700;
+$fw-semibold: 600;
+$fw-medium: 500;
+$fw-regular: 400;
+$fw-light: 300;
+
+// Font Sizes
+$font-sizes: (
+  "h1": (
+    mobile: 42px,
+    desktop: 72px,
+  ),
+  "h2": (
+    mobile: 34px,
+    desktop: 52px,
+  ),
+  "h3": (
+    mobile: 28px,
+    desktop: 34px,
+  ),
+  "h4": (
+    mobile: 20px,
+    desktop: 26px,
+  ),
+  "body-xl": (
+    mobile: 18px,
+    desktop: 20px,
+  ),
+  "body-lg": (
+    mobile: 16px,
+    desktop: 18px,
+  ),
+  "body-md": (
+    mobile: 15px,
+    desktop: 16px,
+  ),
+  "body-sm": (
+    mobile: 13px,
+    desktop: 15px,
+  ),
+  "body-xs": (
+    mobile: 11px,
+    desktop: 13px,
+  ),
+);
+
+// Media Queries
+$min-xxl: "(min-width: 1440px)";
+$min-xl: "(min-width: 1280px)";
+$min-lg: "(min-width: 1024px)";
+$min-md: "(min-width: 768px)";
+$min-sm: "(min-width: 640px)";
+$min-xs: "(min-width: 480px)";
+
+$max-xxl: "(max-width: 1439px)";
+$max-xl: "(max-width: 1279px)";
+$max-lg: "(max-width: 1023px)";
+$max-md: "(max-width: 767px)";
+$max-sm: "(max-width: 639px)";
+$max-xs: "(max-width: 479px)";

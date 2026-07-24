@@ -1,0 +1,201 @@
+@use "variables" as *;
+
+.features {
+  position: relative;
+  width: 100%;
+  padding: $spacing-lg 0;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: $color-white;
+
+  @media #{$min-lg} {
+    padding: $spacing-xl 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 0;
+    width: min(120vw, 1100px);
+    height: min(70vw, 640px);
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(8, 43, 14, 0.95) 0%,
+      rgba(10, 10, 10, 0) 65%
+    );
+    pointer-events: none;
+  }
+
+  &-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    padding: 0 $spacing-xs;
+    text-align: center;
+
+    @media #{$min-md} {
+      padding: 0 $spacing-md;
+    }
+
+    @media #{$min-lg} {
+      padding: 0 $spacing-lg;
+    }
+
+    &-badge {
+      .badge-text {
+        background: #09210d;
+      }
+    }
+
+    &-title {
+      max-width: 12em;
+      color: $color-white;
+      font-weight: $fw-regular;
+
+      @media #{$min-sm} {
+        max-width: 16em;
+      }
+    }
+  }
+}
+
+.features-swiper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: visible;
+  padding: 0 $spacing-xs;
+
+  @media #{$min-md} {
+    padding: 0 $spacing-md;
+  }
+
+  @media #{$min-lg} {
+    padding: 0 $spacing-lg;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
+    transition-timing-function: linear !important;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    width: min(320px, 82vw);
+    min-height: 300px;
+    height: auto;
+    padding: $spacing-sm;
+    background: $color-dark;
+    clip-path: polygon(10px 0%, 100% 0, 100% 100%, 0 100%, 0% 10px);
+    filter: grayscale(0) blur(0);
+    opacity: 1;
+    transition:
+      filter 0.45s ease,
+      opacity 0.45s ease;
+
+    @media (min-width: 1400px) {
+      &.is-edge {
+        filter: grayscale(100%) blur(3px);
+        opacity: 0.55;
+      }
+    }
+
+    &:nth-child(even) {
+      margin-top: $spacing-sm;
+    }
+
+    &:nth-child(odd) {
+      margin-bottom: $spacing-sm;
+    }
+
+    @media #{$min-md} {
+      width: 360px;
+      clip-path: polygon(20px 0%, 100% 0, 100% 100%, 0 100%, 0% 20px);
+
+      &:nth-child(even) {
+        margin-top: $spacing-md;
+      }
+
+      &:nth-child(odd) {
+        margin-bottom: $spacing-md;
+      }
+    }
+
+    @media #{$min-lg} {
+      width: 420px;
+
+      &:nth-child(even) {
+        margin-top: $spacing-lg;
+      }
+
+      &:nth-child(odd) {
+        margin-bottom: $spacing-lg;
+      }
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: $color-green;
+      clip-path: polygon(
+        5px 0%,
+        100% 0,
+        100% calc(100% - 5px),
+        calc(100% - 5px) 100%,
+        0 100%,
+        0% 5px
+      );
+
+      @media #{$min-md} {
+        clip-path: polygon(
+          10px 0%,
+          100% 0,
+          100% calc(100% - 10px),
+          calc(100% - 10px) 100%,
+          0 100%,
+          0% 10px
+        );
+      }
+
+      img {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      @media #{$min-md} {
+        width: 72px;
+        height: 72px;
+
+        img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+
+    &-title {
+      margin-bottom: -10px;
+      color: $color-white;
+      font-weight: $fw-regular;
+    }
+
+    &-description {
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: $fw-light;
+    }
+  }
+}

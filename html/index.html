@@ -1,0 +1,3484 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DogInvoice</title>
+
+    <link rel="icon" href="src/assets/images/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <link rel="stylesheet" href="src/css/index.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <!-- ===== HEADER / NAV ===== -->
+
+    <header class="site-header">
+      <nav class="site-header-nav" aria-label="Główna nawigacja">
+        <a href="#" class="site-header-nav-logo no-hover-effect">
+          <svg
+            width="186"
+            height="31"
+            viewBox="0 0 186 31"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M87.9201 15.09V21.03V29.93H82.3401V27.82C81.7101 28.26 80.7101 28.79 79.3901 29.27C78.2401 29.69 76.0401 29.93 74.1101 29.93C71.3001 29.93 68.8101 29.31 66.6701 28.07C64.5501 26.81 62.8801 25.05 61.6601 22.81C60.4701 20.57 59.8701 17.98 59.8701 15.05C59.8701 12.12 60.4901 9.42001 61.7301 7.18001C62.9701 4.94001 64.7101 3.20001 66.9501 1.96001C69.1901 0.720006 71.8001 0.100006 74.7901 0.100006C77.2001 0.100006 79.3201 0.520006 81.1601 1.35001C83.0001 2.16001 84.5001 3.33001 85.6701 4.86001C86.8601 6.39001 87.6101 8.21001 87.9201 10.33H81.5901C81.3301 8.78001 80.6001 7.59001 79.4101 6.75001C78.2201 5.89001 76.6801 5.46001 74.7901 5.46001C72.9001 5.46001 71.4401 5.85001 70.1001 6.64001C68.7901 7.40001 67.7601 8.51001 67.0201 9.97001C66.3001 11.43 65.9501 13.13 65.9501 15.09C65.9501 17.09 66.3201 18.83 67.0601 20.31C67.8001 21.77 68.8401 22.9 70.1701 23.71C71.5101 24.5 73.0801 24.89 74.8901 24.89C76.2301 24.89 77.4301 24.68 78.5001 24.25C79.5701 23.82 80.4201 23.22 81.0401 22.46C81.6601 21.7 81.9701 20.84 81.9701 19.88V19.51V19.47L75.5301 15.1H81.9701H87.9101"
+              fill="#171717"
+            />
+            <path
+              d="M51.1002 1.91C48.9102 0.689996 46.3102 0.0899963 43.3002 0.0899963C40.2902 0.0899963 37.7202 0.699996 35.5002 1.91C33.3102 3.13 31.5902 4.86 30.3502 7.1C29.1102 9.32 28.4902 11.95 28.4902 15.01C28.4902 18.07 29.1102 20.68 30.3502 22.92C31.5902 25.14 33.3102 26.87 35.5002 28.11C37.7202 29.33 40.3202 29.93 43.3002 29.93C46.2802 29.93 48.8702 29.32 51.0602 28.11C53.2802 26.89 55.0102 25.16 56.2502 22.92C57.4902 20.68 58.1102 18.04 58.1102 15.01C58.1102 11.98 57.4902 9.29 56.2502 7.07C55.0302 4.83 53.3202 3.11 51.1002 1.92V1.91ZM49.7402 22.02C48.2102 23.76 46.0702 24.63 43.3002 24.63C40.5302 24.63 38.3902 23.76 36.8602 22.02C35.3302 20.28 34.5702 17.94 34.5702 15.01C34.5702 12.08 35.3302 9.71 36.8602 8C38.3902 6.26 40.5302 5.39 43.3002 5.39C46.0702 5.39 48.2402 6.26 49.7402 8C51.2702 9.72 52.0302 12.06 52.0302 15.01C52.0302 17.96 51.2702 20.28 49.7402 22.02Z"
+              fill="#171717"
+            />
+            <path
+              d="M19.57 2.23001C17.28 1.06001 14.56 0.480011 11.41 0.480011H0V5.63001H11.41C14.42 5.63001 16.69 6.48001 18.24 8.17001C19.81 9.86001 20.6 12.13 20.6 14.97C20.6 17.81 19.81 20.05 18.24 21.77C16.69 23.46 14.41 24.31 11.41 24.31H6.04V9.98001L0 5.62001V29.45H11.41C14.53 29.45 17.24 28.87 19.53 27.7C21.82 26.51 23.59 24.83 24.83 22.66C26.09 20.49 26.73 17.93 26.73 14.97C26.73 12.01 26.11 9.41001 24.87 7.24001C23.63 5.07001 21.86 3.40001 19.57 2.23001Z"
+              fill="#171717"
+            />
+            <path
+              d="M185.32 0V25.53L180.93 29.92H93.9502V4.39L98.3302 0H185.31H185.32Z"
+              fill="#4FD15F"
+            />
+            <path
+              d="M175.321 21.47H165.931V8.42001H175.321V10.55H168.391V13.67H174.831V15.73H168.391V19.34H175.321V21.47Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M159.271 21.7C157.951 21.7 156.791 21.43 155.791 20.88C154.801 20.32 154.031 19.54 153.491 18.53C152.951 17.52 152.681 16.33 152.681 14.97C152.681 13.61 152.951 12.42 153.491 11.41C154.041 10.4 154.811 9.62001 155.791 9.07001C156.791 8.51001 157.951 8.23001 159.271 8.23001C160.331 8.23001 161.271 8.41001 162.071 8.76001C162.891 9.11001 163.561 9.63001 164.081 10.31C164.611 10.98 164.941 11.78 165.101 12.71H162.571C162.421 11.98 162.061 11.41 161.471 11C160.901 10.59 160.171 10.39 159.261 10.39C157.971 10.39 156.961 10.8 156.221 11.61C155.481 12.42 155.111 13.53 155.111 14.96C155.111 16.39 155.481 17.51 156.221 18.33C156.961 19.14 157.981 19.54 159.261 19.54C160.161 19.54 160.901 19.34 161.471 18.94C162.051 18.53 162.421 17.96 162.571 17.22H165.101C164.951 18.15 164.611 18.96 164.081 19.64C163.551 20.31 162.881 20.82 162.071 21.17C161.261 21.52 160.331 21.7 159.271 21.7Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M148.811 21.47V8.42001H151.261V21.47H148.811Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M140.77 21.66C139.44 21.66 138.27 21.39 137.27 20.84C136.28 20.28 135.51 19.5 134.97 18.5C134.42 17.49 134.15 16.3 134.15 14.94C134.15 13.58 134.42 12.38 134.97 11.38C135.52 10.37 136.29 9.59 137.27 9.04C138.27 8.49 139.43 8.22 140.77 8.22C142.11 8.22 143.28 8.49 144.27 9.04C145.27 9.59 146.04 10.37 146.57 11.38C147.12 12.38 147.39 13.57 147.39 14.94C147.39 16.31 147.12 17.49 146.57 18.5C146.02 19.51 145.25 20.29 144.25 20.84C143.26 21.39 142.1 21.66 140.77 21.66ZM140.77 19.52C142.08 19.52 143.1 19.11 143.83 18.3C144.56 17.47 144.93 16.36 144.93 14.95C144.93 13.54 144.56 12.42 143.83 11.6C143.11 10.78 142.09 10.38 140.77 10.38C139.45 10.38 138.44 10.79 137.71 11.6C136.98 12.42 136.61 13.53 136.61 14.95C136.61 16.37 136.98 17.47 137.71 18.3C138.44 19.12 139.46 19.52 140.77 19.52Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M126.71 21.47L121.44 8.42001H124.13L128.16 18.75H128.24L132.23 8.42001H134.86L129.59 21.47H126.71Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M120.69 21.47H118.03L110.88 11.92H110.82V21.47H108.48V8.42001H111.07L118.29 18.12H118.35V8.42001H120.69V21.47Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M103.94 21.47V8.42001H106.39V21.47H103.94Z"
+              fill="#DEFAE1"
+            />
+          </svg>
+        </a>
+
+        <ul class="site-header-nav-menu">
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="#features"
+              >Funkcje</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="#payments"
+              >Płatności</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="#price">Cennik</a>
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="#integrations"
+              >Integracje</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="#testimonials"
+              >Opinie</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="#faq">FAQ</a>
+          </li>
+        </ul>
+
+        <div class="site-header-nav-actions">
+          <a
+            class="site-header-nav-actions-login btn"
+            size="sm"
+            color="transparent"
+            href="https://app.doginvoice.com/login"
+            target="_blank"
+          >
+            <span class="btn-title">Zaloguj się</span>
+          </a>
+          <a
+            class="site-header-nav-actions-register btn"
+            size="sm"
+            color="green"
+            href="https://app.doginvoice.com/register"
+            target="_blank"
+          >
+            <span class="btn-title">Załóż konto</span>
+          </a>
+        </div>
+
+        <button
+          class="site-header-nav-hamburger"
+          type="button"
+          aria-label="Otwórz menu"
+          aria-expanded="false"
+          aria-controls="site-header-mobile"
+        >
+          <div class="bars" id="bar1"></div>
+          <div class="bars" id="bar2"></div>
+          <div class="bars" id="bar3"></div>
+        </button>
+      </nav>
+
+      <div
+        class="site-header-mobile"
+        id="site-header-mobile"
+        aria-hidden="true"
+      >
+        <ul class="site-header-mobile-menu">
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="#features"
+              >Funkcje</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="#payments"
+              >Płatności</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="#price"
+              >Cennik</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="#integrations"
+              >Integracje</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="#testimonials"
+              >Opinie</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="#faq">FAQ</a>
+          </li>
+        </ul>
+        <div class="site-header-mobile-actions">
+          <a
+            class="site-header-mobile-actions-login btn"
+            size="sm"
+            color="white"
+            href="https://app.doginvoice.com/login"
+            target="_blank"
+          >
+            <span class="btn-title">Zaloguj się</span>
+          </a>
+          <a
+            class="site-header-mobile-actions-register btn"
+            size="sm"
+            color="green"
+            href="https://app.doginvoice.com/register"
+            target="_blank"
+          >
+            <span class="btn-title">Załóż konto</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== HERO ===== -->
+      <section class="hero max-width" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1
+            class="hero-content-title typography--h1"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-anchor=".hero"
+          >
+            Panuj nad finansami firmy
+          </h1>
+          <p
+            class="hero-content-subtitle typography--body-xl"
+            data-remove-orphans
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-anchor=".hero"
+          >
+            <strong>DogInvoice</strong> pobiera faktury z KSeF, maila i zdjęć,
+            sam je czyta i kategoryzuje.<br />
+            Ty masz koszty, płatności i bilans w jednym widoku.
+          </p>
+          <div class="hero-content-cta">
+            <a
+              href="https://app.doginvoice.com/register"
+              target="_blank"
+              class="hero-content-cta-button btn"
+              size="bg"
+              color="green"
+            >
+              <span class="btn-title">Załóż konto za darmo</span>
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=pqiEXPHGjHw"
+              class="hero-content-cta-button btn"
+              size="bg"
+              color="white"
+              data-demo-modal-open
+            >
+              <span class="btn-title">Zobacz demo</span>
+              <span class="btn-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.0303 12L19.498 12.5863L20.233 12L19.498 11.4137L19.0303 12ZM7.74805 21H6.99805V22.5577L8.21575 21.5863L7.74805 21ZM7.74805 14.9639L7.21772 14.4335L6.99805 14.6532V14.9639H7.74805ZM10.3809 12.3311L10.9112 12.8614L12.1915 11.5811H10.3809V12.3311ZM7.74805 12.3311H6.99805V13.0811H7.74805V12.3311ZM7.74805 12.3301H8.49805V11.5801H7.74805V12.3301ZM5.16992 12.3301L4.63959 11.7997L3.35926 13.0801H5.16992V12.3301ZM7.74805 9.75195L8.27838 10.2823L8.49805 10.0626V9.75195H7.74805ZM7.74805 3L8.21575 2.4137L6.99805 1.44231V3H7.74805ZM19.0303 12L18.5626 11.4137L7.28034 20.4137L7.74805 21L8.21575 21.5863L19.498 12.5863L19.0303 12ZM7.74805 21H8.49805V14.9639H7.74805H6.99805V21H7.74805ZM7.74805 14.9639L8.27838 15.4942L10.9112 12.8614L10.3809 12.3311L9.85053 11.8007L7.21772 14.4335L7.74805 14.9639ZM10.3809 12.3311V11.5811H7.74805V12.3311V13.0811H10.3809V12.3311ZM7.74805 12.3311H8.49805V12.3301H7.74805H6.99805V12.3311H7.74805ZM7.74805 12.3301V11.5801H5.16992V12.3301V13.0801H7.74805V12.3301ZM5.16992 12.3301L5.70025 12.8604L8.27838 10.2823L7.74805 9.75195L7.21772 9.22162L4.63959 11.7997L5.16992 12.3301ZM7.74805 9.75195H8.49805V3H7.74805H6.99805V9.75195H7.74805ZM7.74805 3L7.28034 3.5863L18.5626 12.5863L19.0303 12L19.498 11.4137L8.21575 2.4137L7.74805 3Z"
+                    fill="#171717"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-middle" data-aos="fade-zoom-in" data-aos-delay="400">
+          <p class="hero-middle-text typography--h3 ff-special">3 min</p>
+          <span class="hero-middle-caption typography--body-md"
+            >Tyle zajmie Ci start</span
+          >
+        </div>
+        <div class="hero-media">
+          <img
+            class="hero-media-mobile"
+            src="src/assets/images/mobile-app.png"
+            alt="DogInvoice — widok aplikacji"
+          />
+
+          <div class="hero-media-desktop">
+            <div class="hero-media-main">
+              <img
+                src="src/assets/images/screen-main.png"
+                alt="DogInvoice — widok główny aplikacji"
+              />
+            </div>
+
+            <div class="hero-media-screen hero-media-screen--1">
+              <img
+                src="src/assets/images/screen-1.png"
+                alt=""
+                aria-hidden="true"
+                data-aos="fade-zoom-in"
+                data-aos-delay="400"
+                data-aos-anchor=".hero"
+              />
+            </div>
+
+            <div class="hero-media-screen hero-media-screen--2">
+              <img
+                src="src/assets/images/screen-2.png"
+                alt=""
+                aria-hidden="true"
+                data-aos="fade-zoom-in"
+                data-aos-delay="400"
+                data-aos-anchor=".hero"
+              />
+            </div>
+
+            <div class="hero-media-screen hero-media-screen--3">
+              <img
+                src="src/assets/images/screen-3.png"
+                alt=""
+                aria-hidden="true"
+                aria-hidden="true"
+                data-aos="fade-zoom-in"
+                data-aos-delay="400"
+                data-aos-anchor=".hero"
+              />
+            </div>
+
+            <div class="hero-media-screen hero-media-screen--4">
+              <img
+                src="src/assets/images/screen-4.png"
+                alt=""
+                aria-hidden="true"
+                data-aos="fade-zoom-in"
+                data-aos-delay="400"
+                data-aos-anchor=".hero"
+              />
+            </div>
+
+            <div class="hero-media-screen hero-media-screen--5">
+              <img
+                src="src/assets/images/screen-5.png"
+                alt=""
+                aria-hidden="true"
+                data-aos="fade-zoom-in"
+                data-aos-delay="400"
+                data-aos-anchor=".hero"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PASEK ZAUFANIA / LOGO KLIENTÓW ===== -->
+      <section class="trust" aria-label="Zaufali nam">
+        <div class="trust-logos swiper">
+          <div class="swiper-wrapper">
+            <div class="trust-logos-item swiper-slide">
+              <img
+                class="trust-logos-item-image"
+                src="src/assets/images/logos/1.svg"
+                alt="Logo 1"
+              />
+            </div>
+            <div class="trust-logos-item swiper-slide">
+              <img
+                class="trust-logos-item-image"
+                src="src/assets/images/logos/2.svg"
+                alt="Logo 2"
+              />
+            </div>
+            <div class="trust-logos-item swiper-slide">
+              <img
+                class="trust-logos-item-image"
+                src="src/assets/images/logos/3.svg"
+                alt="Logo 3"
+              />
+            </div>
+            <div class="trust-logos-item swiper-slide">
+              <img
+                class="trust-logos-item-image"
+                src="src/assets/images/logos/4.svg"
+                alt="Logo 4"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== OFERTA (GRID) ===== -->
+      <section id="offer" class="offer max-width" aria-labelledby="offer-title">
+        <header class="offer-head">
+          <div class="offer-head-badge badge badge--light" data-aos="fade-up">
+            <span class="badge-text">CO OFERUJEMY</span>
+          </div>
+          <h2
+            id="offer-head-title"
+            class="offer-head-title typography--h2"
+            data-aos="fade-up"
+          >
+            Nowoczesne zarządzanie fakturami. Twoja firma pod kontrolą.
+          </h2>
+          <p
+            class="offer-head-description typography--body-lg"
+            data-aos="fade-up"
+            data-remove-orphans
+          >
+            Cztery filary automatyzacji, które zmieniają sposób, w jaki panujesz
+            nad finansami firmy.
+          </p>
+        </header>
+
+        <ul class="offer-grid">
+          <li class="offer-grid-item" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="offer-grid-item-lottie"
+              data-lottie="src/assets/images/grid/illustration.json"
+            ></div>
+            <h3 class="offer-grid-item-title typography--h4">
+              Integracja z KSeF
+            </h3>
+            <p class="offer-grid-item-description typography--body-md">
+              Automatyczne pobieranie faktur kosztowych i przychodowych z KSeF.
+              Konwersja XML na czytelny PDF. Gotowość na obowiązkowy KSeF.
+            </p>
+          </li>
+
+          <li class="offer-grid-item" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="offer-grid-item-lottie"
+              data-lottie="src/assets/images/grid/illustration-1.json"
+            ></div>
+            <h3 class="offer-grid-item-title typography--h4">
+              OCR & Analiza AI
+            </h3>
+            <p class="offer-grid-item-description typography--body-md">
+              Radzi sobie nawet z niewyraźnymi zdjęciami. Jedno zdjęcie i dane
+              trafiają we właściwe miejsce. Im więcej faktur dodajesz, tym
+              lepiej AI przypisuje koszty.
+            </p>
+          </li>
+
+          <li class="offer-grid-item" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="offer-grid-item-lottie"
+              data-lottie="src/assets/images/grid/illustration-2.json"
+            ></div>
+            <h3 class="offer-grid-item-title typography--h4">
+              Automatyzacja procesów finansowych
+            </h3>
+            <p class="offer-grid-item-description typography--body-md">
+              Doginvoice pilnuje Twoich płatności. Sprawdza, czy masz opłacone
+              faktury. Wysyła powiadomienia do kontrahentów z przypomnieniem o
+              płatności.
+            </p>
+          </li>
+
+          <li class="offer-grid-item" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="offer-grid-item-lottie"
+              data-lottie="src/assets/images/grid/illustration-3.json"
+            ></div>
+            <h3 class="offer-grid-item-title typography--h4">
+              Analityka finansowa
+            </h3>
+            <p class="offer-grid-item-description typography--body-md">
+              Pulpit aktualizowany na żywo. Wiesz, na co wydajesz i ile
+              zarabiasz. Rozumiesz finanse swojej firmy.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ===== WSZYSTKIE FUNKCJE ===== -->
+      <section
+        id="features"
+        class="features"
+        aria-labelledby="features-head-title"
+      >
+        <header class="features-head">
+          <div class="features-head-badge badge badge--dark" data-aos="fade-up">
+            <span class="badge-text">WSZYSTKIE FUNKCJE</span>
+          </div>
+          <h2
+            id="features-head-title"
+            class="features-head-title typography--h2"
+            data-remove-orphans
+            data-aos="fade-up"
+          >
+            Wszystko, czego potrzebujesz w jednym miejscu
+          </h2>
+        </header>
+
+        <div class="features-swiper swiper">
+          <div class="swiper-wrapper">
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/doc-download.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Pobieranie z KSeF
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Automatyczne pobieranie faktur z KSeF z konwersją XML na
+                czytelny PDF.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/doc-scan.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Skanowanie faktur (OCR)
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Zrób zdjęcie telefonem, prześlij PDF albo wyślij mailem. AI
+                rozpozna dane w sekundach.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/mail-import.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Automatyczny import e-mail
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Dedykowany adres @doginvoice. Faktury z Twojej skrzynki trafiają
+                do systemu automatycznie.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/docment-bank.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Wyciągi bankowe + dopasowanie
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Wgraj MT940 lub .csv. System sam dopasuje wpłaty do faktur i
+                pokaże, co opłacone, a co czeka.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/basket.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Koszyk przelewów
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Generuj paczkę przelewów (.pli) prosto do banku: ING, mBank,
+                Nest, Bank Spółdzielczy, split payment.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/projects-stats.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Projekty i rentowność
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Przypisuj koszty i przychody do projektu. Sprawdź, ile realnie
+                zarabiasz na danym kontrakcie.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/dashboard.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Statystyki finansowe
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Marża, VAT, bilans, rankingi kontrahentów i kategorii. Pełny
+                obraz miesiąca i roku.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/folder.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Archiwum Google Drive
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Uporządkowana struktura folderów według roku i miesiąca.
+                Bezpieczne przechowywanie w chmurze.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/public-api.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Publiczne API
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                Generuj klucze API, łącz własne systemy i automatyzacje.
+                Dokumentacja w aplikacji.
+              </p>
+            </div>
+
+            <div class="features-swiper-item swiper-slide">
+              <span class="features-swiper-item-icon">
+                <img
+                  src="src/assets/images/swiper/integration.svg"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+              </span>
+              <h3 class="features-swiper-item-title typography--h4">
+                Integracje
+              </h3>
+              <p class="features-swiper-item-description typography--body-md">
+                KSeF, inFakt, Fakturownia, Apilo, BaseLinker, wFirma, Gmail.
+                Łączysz to, czego już używasz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SEKCJE PŁATNOŚCI (obraz + tekst) ===== -->
+      <section
+        id="payments"
+        class="payments max-width"
+        aria-labelledby="payments-title"
+      >
+        <header class="payments-header">
+          <div
+            class="payments-header-badge badge badge--light"
+            data-aos="fade-up"
+          >
+            <span class="badge-text">PŁATNOŚCI I WYCIĄGI</span>
+          </div>
+          <h2
+            id="payments-title"
+            class="payments-header-title typography--h2"
+            data-aos="fade-up"
+          >
+            Miej pełną kontrolę nad swoimi płatnościami
+          </h2>
+          <p
+            class="payments-header-description typography--body-lg"
+            data-aos="fade-up"
+            data-remove-orphans
+          >
+            Wyciągi bankowe, przypomnienia i przelewy - wszystko w jednym
+            miejscu. Zero przełączania między aplikacjami.
+          </p>
+        </header>
+
+        <div class="payments-card-list">
+          <div class="payments-card" data-aos="fade-up">
+            <div class="payments-card-content">
+              <div class="payments-card-content-top">
+                <span class="payments-card-content-top-icon">
+                  <img
+                    src="src/assets/images/docment-bank.svg"
+                    alt=""
+                    width="48"
+                    height="48"
+                  />
+                </span>
+                <div class="payments-main-content-top-badge badge badge--green">
+                  <span class="badge-text">WYCIĄGI BANKOWE</span>
+                </div>
+              </div>
+
+              <h3
+                class="payments-main-content-title typography--h3"
+                data-remove-orphans
+              >
+                Importuj wyciąg bankowy i dopasuj płatności do faktur
+              </h3>
+
+              <p
+                class="payments-main-content-description typography--body-md"
+                data-remove-orphans
+              >
+                Wgraj plik MT940 ze swojego banku - DogInvoice automatycznie
+                dopasuje transakcje do faktur i pokaże, które są opłacone, a
+                które jeszcze czekają.
+              </p>
+
+              <ul class="payments-main-content-list standard-list">
+                <li class="payments-main-content-list-item">
+                  Obsługa plików MT940 ze wszystkich banków
+                </li>
+                <li class="payments-main-content-list-item">
+                  Automatyczne dopasowanie transakcji do faktur
+                </li>
+                <li class="payments-main-content-list-item">
+                  Pełny obraz finansów - przychody i koszty w jednym widoku
+                </li>
+                <li class="payments-main-content-list-item">
+                  Oznaczanie faktur jako opłacone jednym kliknięciem
+                </li>
+                <li class="payments-main-content-list-item">
+                  Generuj paczkę przelewów (.pli) prosto do banku: ING, mBank,
+                  Nest, BS, split payment
+                </li>
+              </ul>
+            </div>
+
+            <div class="payments-card-media">
+              <img
+                src="src/assets/images/payments-media.png"
+                alt="Podgląd wyciągów bankowych w DogInvoice"
+                width="768"
+                height="790"
+              />
+            </div>
+          </div>
+
+          <div class="payments-card" data-aos="fade-up">
+            <div class="payments-card-content">
+              <div class="payments-card-content-top">
+                <span class="payments-card-content-top-icon">
+                  <img
+                    src="src/assets/images/docment-bank.svg"
+                    alt=""
+                    width="48"
+                    height="48"
+                  />
+                </span>
+                <div class="payments-main-content-top-badge badge badge--green">
+                  <span class="badge-text">WYCIĄGI BANKOWE</span>
+                </div>
+              </div>
+
+              <h3
+                class="payments-main-content-title typography--h3"
+                data-remove-orphans
+              >
+                Importuj wyciąg bankowy i dopasuj płatności do faktur
+              </h3>
+
+              <p
+                class="payments-main-content-description typography--body-md"
+                data-remove-orphans
+              >
+                Wgraj plik MT940 ze swojego banku - DogInvoice automatycznie
+                dopasuje transakcje do faktur i pokaże, które są opłacone, a
+                które jeszcze czekają.
+              </p>
+
+              <ul class="payments-main-content-list standard-list">
+                <li class="payments-main-content-list-item">
+                  Obsługa plików MT940 ze wszystkich banków
+                </li>
+                <li class="payments-main-content-list-item">
+                  Automatyczne dopasowanie transakcji do faktur
+                </li>
+                <li class="payments-main-content-list-item">
+                  Pełny obraz finansów - przychody i koszty w jednym widoku
+                </li>
+                <li class="payments-main-content-list-item">
+                  Oznaczanie faktur jako opłacone jednym kliknięciem
+                </li>
+                <li class="payments-main-content-list-item">
+                  Generuj paczkę przelewów (.pli) prosto do banku: ING, mBank,
+                  Nest, BS, split payment
+                </li>
+              </ul>
+            </div>
+
+            <div class="payments-card-media">
+              <img
+                src="src/assets/images/payments-media.png"
+                alt="Podgląd wyciągów bankowych w DogInvoice"
+                width="768"
+                height="790"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CENNIK ===== -->
+      <section id="price" class="pricing" aria-labelledby="pricing-title">
+        <header class="pricing-header">
+          <div
+            class="pricing-header-badge badge badge--white"
+            data-aos="fade-up"
+          >
+            <span class="badge-text">CENNIK</span>
+          </div>
+          <h2
+            id="pricing-title"
+            class="pricing-header-title typography--h2"
+            data-aos="fade-up"
+          >
+            Wybierz plan dla siebie
+          </h2>
+          <p
+            class="pricing-header-description typography--body-lg"
+            data-aos="fade-up"
+          >
+            Zacznij za darmo i skaluj wraz z rozwojem firmy.
+          </p>
+        </header>
+
+        <div class="pricing-switcher" data-aos="fade-up">
+          <button
+            type="button"
+            class="pricing-switcher-option typography--body-md"
+            data-period="monthly"
+            aria-pressed="true"
+          >
+            Miesięcznie
+          </button>
+          <button
+            type="button"
+            class="pricing-switcher-button"
+            aria-pressed="false"
+            aria-label="Przełącz okres rozliczeniowy"
+          >
+            <span class="pricing-switcher-button-slider"></span>
+          </button>
+          <button
+            type="button"
+            class="pricing-switcher-option typography--body-md"
+            data-period="yearly"
+            aria-pressed="false"
+          >
+            Rocznie
+            <span class="pricing-switcher-option-badge typography--body-sm">
+              -50%
+            </span>
+          </button>
+        </div>
+
+        <div class="pricing-main">
+          <article class="pricing-main-plan" data-aos="fade-up">
+            <div class="pricing-main-plan-header">
+              <h3 class="pricing-main-plan-header-title typography--h4">
+                Starter
+              </h3>
+              <div class="pricing-main-plan-header-price">
+                <span
+                  class="pricing-main-plan-header-price-value ff-special typography--h3"
+                  data-price-monthly="0"
+                  data-price-yearly="0"
+                  >0</span
+                >
+                <span
+                  class="pricing-main-plan-header-price-unit typography--body-md"
+                >
+                  PLN/miesiąc (netto)
+                </span>
+              </div>
+              <span class="pricing-main-plan-header-note typography--body-md">
+                na zawsze darmowy
+              </span>
+            </div>
+
+            <ul
+              data-remove-orphans
+              class="pricing-main-plan-features standard-list"
+            >
+              <li>10 faktur OCR / mies.</li>
+              <li>100 faktur KSeF / mies.</li>
+              <li>Integracja z KSeF</li>
+              <li>OCR z AI</li>
+              <li>Automatyczny import e-mail</li>
+              <li>Pulpit finansowy</li>
+              <li>Faktury przychodowe i kosztowe</li>
+              <li>Panel kontrahentów</li>
+              <li>Kategorie</li>
+              <li>Projekty i rentowność</li>
+              <li>Statystyki roczne</li>
+            </ul>
+
+            <a
+              href="#"
+              class="pricing-main-plan-more typography--body-md no-hover-effect"
+            >
+              <span class="pricing-main-plan-more-plus" aria-hidden="true">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 1.5V10.5M1.5 6H10.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="square"
+                  />
+                </svg>
+              </span>
+              Zobacz więcej
+            </a>
+
+            <a
+              href="#"
+              class="pricing-main-plan-button btn"
+              size="bg"
+              color="border"
+            >
+              <span class="background"></span>
+              <span class="btn-title">Wybierz plan</span>
+              <span class="btn-icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.0303 12L19.498 12.5863L20.233 12L19.498 11.4137L19.0303 12ZM7.74805 21H6.99805V22.5577L8.21575 21.5863L7.74805 21ZM7.74805 14.9639L7.21772 14.4335L6.99805 14.6532V14.9639H7.74805ZM10.3809 12.3311L10.9112 12.8614L12.1915 11.5811H10.3809V12.3311ZM7.74805 12.3311H6.99805V13.0811H7.74805V12.3311ZM7.74805 12.3301H8.49805V11.5801H7.74805V12.3301ZM5.16992 12.3301L4.63959 11.7997L3.35926 13.0801H5.16992V12.3301ZM7.74805 9.75195L8.27838 10.2823L8.49805 10.0626V9.75195H7.74805ZM7.74805 3L8.21575 2.4137L6.99805 1.44231V3H7.74805ZM19.0303 12L18.5626 11.4137L7.28034 20.4137L7.74805 21L8.21575 21.5863L19.498 12.5863L19.0303 12ZM7.74805 21H8.49805V14.9639H7.74805H6.99805V21H7.74805ZM7.74805 14.9639L8.27838 15.4942L10.9112 12.8614L10.3809 12.3311L9.85053 11.8007L7.21772 14.4335L7.74805 14.9639ZM10.3809 12.3311V11.5811H7.74805V12.3311V13.0811H10.3809V12.3311ZM7.74805 12.3311H8.49805V12.3301H7.74805H6.99805V12.3311H7.74805ZM7.74805 12.3301V11.5801H5.16992V12.3301V13.0801H7.74805V12.3301ZM5.16992 12.3301L5.70025 12.8604L8.27838 10.2823L7.74805 9.75195L7.21772 9.22162L4.63959 11.7997L5.16992 12.3301ZM7.74805 9.75195H8.49805V3H7.74805H6.99805V9.75195H7.74805ZM7.74805 3L7.28034 3.5863L18.5626 12.5863L19.0303 12L19.498 11.4137L8.21575 2.4137L7.74805 3Z"
+                    fill="#171717"
+                  />
+                </svg>
+              </span>
+            </a>
+          </article>
+
+          <article
+            class="pricing-main-plan pricing-main-plan--featured"
+            data-aos="fade-up"
+          >
+            <span class="pricing-main-plan-popular typography--body-sm"
+              >Popularny</span
+            >
+            <div class="pricing-main-plan-header">
+              <h3 class="pricing-main-plan-header-title typography--h4">
+                Professional
+              </h3>
+              <div class="pricing-main-plan-header-price">
+                <span
+                  class="pricing-main-plan-header-price-value ff-special typography--h3"
+                  data-price-monthly="149"
+                  data-price-yearly="75"
+                  >149</span
+                >
+                <span
+                  class="pricing-main-plan-header-price-unit typography--body-md"
+                  >PLN/miesiąc (netto)</span
+                >
+              </div>
+            </div>
+
+            <ul
+              data-remove-orphans
+              class="pricing-main-plan-features standard-list"
+            >
+              <li>150 faktur OCR / mies.</li>
+              <li>500 faktur KSeF / mies.</li>
+              <li>
+                Integracja z KSeF
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Integracja z KSeF"
+                  data-tippy-content="Automatyczna wymiana faktur z Krajowym Systemem e-Faktur."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                OCR z AI
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: OCR z AI"
+                  data-tippy-content="Rozpoznawanie danych z faktur papierowych i PDF dzięki AI."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Automatyczny import e-mail
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Automatyczny import e-mail"
+                  data-tippy-content="Faktury z skrzynki e-mail trafiają do systemu automatycznie."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Pulpit finansowy
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Pulpit finansowy"
+                  data-tippy-content="Podgląd przychodów, kosztów i cashflow w jednym miejscu."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Faktury przychodowe i kosztowe<button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Faktury przychodowe i kosztowe"
+                  data-tippy-content="Pełna obsługa faktur sprzedażowych i zakupowych."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Panel kontrahentów
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Panel kontrahentów"
+                  data-tippy-content="Baza kontrahentów z historią dokumentów i płatności."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Kategorie
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Kategorie"
+                  data-tippy-content="Porządkuj koszty i przychody według własnych kategorii."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Projekty i rentowność
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Projekty i rentowność"
+                  data-tippy-content="Grupowanie faktur w projekt lub kontrakt i kontrola wyniku każdego osobno."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Statystyki roczne
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Statystyki roczne"
+                  data-tippy-content="Zestawienia i trendy finansowe w ujęciu rocznym."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+            </ul>
+
+            <a
+              href="#"
+              class="pricing-main-plan-more typography--body-md no-hover-effect"
+            >
+              <span class="pricing-main-plan-more-plus" aria-hidden="true">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 1.5V10.5M1.5 6H10.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="square"
+                  />
+                </svg>
+              </span>
+              Zobacz więcej
+            </a>
+
+            <a
+              href="#"
+              class="pricing-main-plan-button btn"
+              size="bg"
+              color="green"
+            >
+              <span class="btn-title">Wybierz plan</span>
+              <span class="btn-icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.0303 12L19.498 12.5863L20.233 12L19.498 11.4137L19.0303 12ZM7.74805 21H6.99805V22.5577L8.21575 21.5863L7.74805 21ZM7.74805 14.9639L7.21772 14.4335L6.99805 14.6532V14.9639H7.74805ZM10.3809 12.3311L10.9112 12.8614L12.1915 11.5811H10.3809V12.3311ZM7.74805 12.3311H6.99805V13.0811H7.74805V12.3311ZM7.74805 12.3301H8.49805V11.5801H7.74805V12.3301ZM5.16992 12.3301L4.63959 11.7997L3.35926 13.0801H5.16992V12.3301ZM7.74805 9.75195L8.27838 10.2823L8.49805 10.0626V9.75195H7.74805ZM7.74805 3L8.21575 2.4137L6.99805 1.44231V3H7.74805ZM19.0303 12L18.5626 11.4137L7.28034 20.4137L7.74805 21L8.21575 21.5863L19.498 12.5863L19.0303 12ZM7.74805 21H8.49805V14.9639H7.74805H6.99805V21H7.74805ZM7.74805 14.9639L8.27838 15.4942L10.9112 12.8614L10.3809 12.3311L9.85053 11.8007L7.21772 14.4335L7.74805 14.9639ZM10.3809 12.3311V11.5811H7.74805V12.3311V13.0811H10.3809V12.3311ZM7.74805 12.3311H8.49805V12.3301H7.74805H6.99805V12.3311H7.74805ZM7.74805 12.3301V11.5801H5.16992V12.3301V13.0801H7.74805V12.3301ZM5.16992 12.3301L5.70025 12.8604L8.27838 10.2823L7.74805 9.75195L7.21772 9.22162L4.63959 11.7997L5.16992 12.3301ZM7.74805 9.75195H8.49805V3H7.74805H6.99805V9.75195H7.74805ZM7.74805 3L7.28034 3.5863L18.5626 12.5863L19.0303 12L19.498 11.4137L8.21575 2.4137L7.74805 3Z"
+                    fill="#171717"
+                  />
+                </svg>
+              </span>
+            </a>
+          </article>
+
+          <article class="pricing-main-plan" data-aos="fade-up">
+            <div class="pricing-main-plan-header">
+              <h3 class="pricing-main-plan-header-title typography--h4">
+                Business
+              </h3>
+              <div class="pricing-main-plan-header-price">
+                <span
+                  class="pricing-main-plan-header-price-value ff-special typography--h3"
+                  data-price-monthly="299"
+                  data-price-yearly="150"
+                  >299</span
+                >
+                <span
+                  class="pricing-main-plan-header-price-unit typography--body-md"
+                  >PLN/miesiąc (netto)</span
+                >
+              </div>
+            </div>
+
+            <ul
+              data-remove-orphans
+              class="pricing-main-plan-features standard-list"
+            >
+              <li>500 faktur OCR / mies.</li>
+              <li>1 000 faktur KSeF / mies.</li>
+              <li>Integracja z KSeF</li>
+              <li>OCR z AI</li>
+              <li>Automatyczny import e-mail</li>
+              <li>Pulpit finansowy</li>
+              <li>Faktury przychodowe i kosztowe</li>
+              <li>Panel kontrahentów</li>
+              <li>Kategorie</li>
+              <li>Projekty i rentowność</li>
+              <li>Statystyki roczne</li>
+            </ul>
+
+            <a
+              href="#"
+              class="pricing-main-plan-more typography--body-md no-hover-effect"
+            >
+              <span class="pricing-main-plan-more-plus" aria-hidden="true">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 1.5V10.5M1.5 6H10.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="square"
+                  />
+                </svg>
+              </span>
+              Zobacz więcej
+            </a>
+
+            <a
+              href="#"
+              class="pricing-main-plan-button btn"
+              size="bg"
+              color="border"
+            >
+              <span class="background"></span>
+              <span class="btn-title">Wybierz plan</span>
+              <span class="btn-icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.0303 12L19.498 12.5863L20.233 12L19.498 11.4137L19.0303 12ZM7.74805 21H6.99805V22.5577L8.21575 21.5863L7.74805 21ZM7.74805 14.9639L7.21772 14.4335L6.99805 14.6532V14.9639H7.74805ZM10.3809 12.3311L10.9112 12.8614L12.1915 11.5811H10.3809V12.3311ZM7.74805 12.3311H6.99805V13.0811H7.74805V12.3311ZM7.74805 12.3301H8.49805V11.5801H7.74805V12.3301ZM5.16992 12.3301L4.63959 11.7997L3.35926 13.0801H5.16992V12.3301ZM7.74805 9.75195L8.27838 10.2823L8.49805 10.0626V9.75195H7.74805ZM7.74805 3L8.21575 2.4137L6.99805 1.44231V3H7.74805ZM19.0303 12L18.5626 11.4137L7.28034 20.4137L7.74805 21L8.21575 21.5863L19.498 12.5863L19.0303 12ZM7.74805 21H8.49805V14.9639H7.74805H6.99805V21H7.74805ZM7.74805 14.9639L8.27838 15.4942L10.9112 12.8614L10.3809 12.3311L9.85053 11.8007L7.21772 14.4335L7.74805 14.9639ZM10.3809 12.3311V11.5811H7.74805V12.3311V13.0811H10.3809V12.3311ZM7.74805 12.3311H8.49805V12.3301H7.74805H6.99805V12.3311H7.74805ZM7.74805 12.3301V11.5801H5.16992V12.3301V13.0801H7.74805V12.3301ZM5.16992 12.3301L5.70025 12.8604L8.27838 10.2823L7.74805 9.75195L7.21772 9.22162L4.63959 11.7997L5.16992 12.3301ZM7.74805 9.75195H8.49805V3H7.74805H6.99805V9.75195H7.74805ZM7.74805 3L7.28034 3.5863L18.5626 12.5863L19.0303 12L19.498 11.4137L8.21575 2.4137L7.74805 3Z"
+                    fill="#171717"
+                  />
+                </svg>
+              </span>
+            </a>
+          </article>
+
+          <article class="pricing-main-plan" data-aos="fade-up">
+            <div class="pricing-main-plan-header">
+              <h3 class="pricing-main-plan-header-title typography--h4">
+                Enterprise
+              </h3>
+              <div class="pricing-main-plan-header-price">
+                <span
+                  class="pricing-main-plan-header-price-value ff-special typography--h3"
+                  >Indywidualnie</span
+                >
+              </div>
+              <span class="pricing-main-plan-header-note typography--body-md"
+                >dostosowane do potrzeb</span
+              >
+            </div>
+
+            <ul
+              data-remove-orphans
+              class="pricing-main-plan-features standard-list"
+            >
+              <li>Bez limitu faktur</li>
+              <li>
+                Dedykowany opiekun
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Dedykowany opiekun"
+                  data-tippy-content="Stały opiekun konta dostępny w godzinach pracy."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                SLA &amp; on-premise
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: SLA i on-premise"
+                  data-tippy-content="Gwarantowane SLA oraz możliwość wdrożenia on-premise."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                ERP · Nabywca
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: ERP Nabywca"
+                  data-tippy-content="Integracja z systemami ERP po stronie nabywcy."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+              <li>
+                Odbiorca B2G
+                <button
+                  type="button"
+                  class="pricing-info"
+                  aria-label="Informacja: Odbiorca B2G"
+                  data-tippy-content="Obsługa fakturowania w relacjach B2G."
+                >
+                  <img
+                    src="src/assets/images/icon-information.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </button>
+              </li>
+            </ul>
+
+            <a
+              href="#"
+              class="pricing-main-plan-button btn"
+              size="bg"
+              color="border"
+            >
+              <span class="background"></span>
+              <span class="btn-title">Porozmawiajmy</span>
+              <span class="btn-icon" aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.0303 12L19.498 12.5863L20.233 12L19.498 11.4137L19.0303 12ZM7.74805 21H6.99805V22.5577L8.21575 21.5863L7.74805 21ZM7.74805 14.9639L7.21772 14.4335L6.99805 14.6532V14.9639H7.74805ZM10.3809 12.3311L10.9112 12.8614L12.1915 11.5811H10.3809V12.3311ZM7.74805 12.3311H6.99805V13.0811H7.74805V12.3311ZM7.74805 12.3301H8.49805V11.5801H7.74805V12.3301ZM5.16992 12.3301L4.63959 11.7997L3.35926 13.0801H5.16992V12.3301ZM7.74805 9.75195L8.27838 10.2823L8.49805 10.0626V9.75195H7.74805ZM7.74805 3L8.21575 2.4137L6.99805 1.44231V3H7.74805ZM19.0303 12L18.5626 11.4137L7.28034 20.4137L7.74805 21L8.21575 21.5863L19.498 12.5863L19.0303 12ZM7.74805 21H8.49805V14.9639H7.74805H6.99805V21H7.74805ZM7.74805 14.9639L8.27838 15.4942L10.9112 12.8614L10.3809 12.3311L9.85053 11.8007L7.21772 14.4335L7.74805 14.9639ZM10.3809 12.3311V11.5811H7.74805V12.3311V13.0811H10.3809V12.3311ZM7.74805 12.3311H8.49805V12.3301H7.74805H6.99805V12.3311H7.74805ZM7.74805 12.3301V11.5801H5.16992V12.3301V13.0801H7.74805V12.3301ZM5.16992 12.3301L5.70025 12.8604L8.27838 10.2823L7.74805 9.75195L7.21772 9.22162L4.63959 11.7997L5.16992 12.3301ZM7.74805 9.75195H8.49805V3H7.74805H6.99805V9.75195H7.74805ZM7.74805 3L7.28034 3.5863L18.5626 12.5863L19.0303 12L19.498 11.4137L8.21575 2.4137L7.74805 3Z"
+                    fill="#171717"
+                  />
+                </svg>
+              </span>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== CENNIK MODAL ===== -->
+      <div class="pricing-modal" aria-hidden="true">
+        <div
+          class="pricing-modal-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Szczegóły planu"
+        >
+          <button
+            class="pricing-modal-close"
+            type="button"
+            aria-label="Zamknij"
+          ></button>
+
+          <div class="pricing-modal-swiper swiper">
+            <div class="swiper-wrapper"></div>
+          </div>
+
+          <div class="pricing-modal-footer">
+            <button
+              type="button"
+              class="pricing-modal-nav pricing-modal-nav--prev"
+              aria-label="Poprzedni plan"
+            >
+              <span class="pricing-modal-nav-arrow" aria-hidden="true">
+                <img
+                  src="src/assets/images/alternative-arrow.svg"
+                  alt=""
+                  width="14"
+                  height="15"
+                />
+              </span>
+              <span class="pricing-modal-nav-copy">
+                <span class="pricing-modal-nav-label typography--body-sm"
+                  >Poprzedni plan</span
+                >
+                <span
+                  class="pricing-modal-nav-name typography--body-lg"
+                  data-pricing-modal-prev-name
+                ></span>
+              </span>
+            </button>
+
+            <a
+              href="#"
+              class="pricing-modal-cta btn"
+              size="bg"
+              color="green"
+              data-pricing-modal-cta
+            >
+              <span class="btn-title">Wybierz plan</span>
+            </a>
+
+            <button
+              type="button"
+              class="pricing-modal-nav pricing-modal-nav--next"
+              aria-label="Następny plan"
+            >
+              <span class="pricing-modal-nav-copy">
+                <span class="pricing-modal-nav-label typography--body-sm"
+                  >Następny plan</span
+                >
+                <span
+                  class="pricing-modal-nav-name typography--body-lg"
+                  data-pricing-modal-next-name
+                ></span>
+              </span>
+              <span class="pricing-modal-nav-arrow" aria-hidden="true">
+                <img
+                  src="src/assets/images/alternative-arrow.svg"
+                  alt=""
+                  width="14"
+                  height="15"
+                />
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-modal-backdrop" data-close="true"></div>
+
+      <!-- ===== DEMO VIDEO MODAL ===== -->
+      <div class="demo-modal" aria-hidden="true">
+        <div
+          class="demo-modal-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Demo DogInvoice"
+        >
+          <button
+            class="demo-modal-close"
+            type="button"
+            aria-label="Zamknij"
+            data-demo-modal-close
+          ></button>
+          <div class="demo-modal-frame">
+            <iframe
+              class="demo-modal-iframe"
+              data-demo-modal-iframe
+              data-src="https://www.youtube-nocookie.com/embed/pqiEXPHGjHw?autoplay=1&rel=0&modestbranding=1"
+              title="Demo DogInvoice"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="demo-modal-backdrop" data-demo-modal-close></div>
+
+      <!-- ===== INTEGRACJE ===== -->
+      <section
+        id="integrations"
+        class="integrations"
+        aria-labelledby="integrations-header-title"
+      >
+        <header class="integrations-header">
+          <div
+            class="integrations-header-badge badge badge--dark"
+            data-aos="fade-up"
+          >
+            <span class="badge-text">INTEGRACJE</span>
+          </div>
+          <h2
+            id="integrations-header-title"
+            class="integrations-header-title typography--h2"
+            data-remove-orphans
+            data-aos="fade-up"
+          >
+            Łączy się z tym, czego używasz już teraz
+          </h2>
+        </header>
+
+        <div class="integrations-stage">
+          <div class="integrations-background" aria-hidden="true">
+            <svg
+              width="1440"
+              height="319"
+              viewBox="0 0 1440 319"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g opacity="0.5">
+                <circle
+                  cx="720"
+                  cy="159.361"
+                  r="125"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M217.824 0.375L459.824 0.374989L518.899 59.4493L644.749 59.4493"
+                  stroke="url(#paint0_linear_506_16630)"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M624.492 55.1113L522.207 55.1113L503.829 36.7335L496.443 36.7335"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M0 148.891L560.791 148.891L569.866 157.965L595.717 157.965"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M410.051 170.078L560.794 170.078L569.868 161.004L595.719 161.004"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M1440 148.891L879.926 148.891L870.851 157.965L845.001 157.965"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M1083.39 170.078L879.926 170.078L870.852 161.004L845.001 161.004"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M1221.96 0.375L979.957 0.374989L950.42 29.9122L920.883 59.4493L795.032 59.4493"
+                  stroke="url(#paint1_linear_506_16630)"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M815.289 55.1113L917.575 55.1113L935.953 36.7335L943.338 36.7335"
+                  stroke="url(#paint2_linear_506_16630)"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M1221.96 318.445L979.957 318.445L920.883 259.371L795.032 259.371"
+                  stroke="url(#paint3_linear_506_16630)"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M815.289 263.709L917.575 263.709L935.953 282.087L943.338 282.087"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M217.824 318.445L459.824 318.445L518.899 259.371L644.749 259.371"
+                  stroke="url(#paint4_linear_506_16630)"
+                  stroke-width="0.75"
+                />
+                <path
+                  d="M624.492 263.709L522.207 263.709L503.829 282.087L496.443 282.087"
+                  stroke="white"
+                  stroke-width="0.75"
+                />
+              </g>
+              <defs>
+                <linearGradient
+                  id="paint0_linear_506_16630"
+                  x1="460.714"
+                  y1="0.375"
+                  x2="216.041"
+                  y2="0.375"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient
+                  id="paint1_linear_506_16630"
+                  x1="979.646"
+                  y1="0.375"
+                  x2="1221.96"
+                  y2="0.375"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient
+                  id="paint2_linear_506_16630"
+                  x1="879.314"
+                  y1="55.1113"
+                  x2="879.314"
+                  y2="36.7334"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" />
+                </linearGradient>
+                <linearGradient
+                  id="paint3_linear_506_16630"
+                  x1="984.768"
+                  y1="308.541"
+                  x2="1221.96"
+                  y2="308.541"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient
+                  id="paint4_linear_506_16630"
+                  x1="461.401"
+                  y1="299.263"
+                  x2="217.824"
+                  y2="299.263"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="integrations-swiper swiper">
+            <div class="swiper-wrapper">
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img src="src/assets/images/integracje/ksef.png" alt="KSeF" />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >KSeF</span
+                >
+              </div>
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img
+                    src="src/assets/images/integracje/infakt.png"
+                    alt="InFakt"
+                  />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >InFakt</span
+                >
+              </div>
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img
+                    src="src/assets/images/integracje/fakturownia.png"
+                    alt="Fakturownia"
+                  />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >Fakturownia</span
+                >
+              </div>
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img
+                    src="src/assets/images/integracje/gmail.png"
+                    alt="Gmail"
+                  />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >Gmail</span
+                >
+              </div>
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img
+                    src="src/assets/images/integracje/google-drive.png"
+                    alt="Google Drive"
+                  />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >Google Drive</span
+                >
+              </div>
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img
+                    src="src/assets/images/integracje/clickup.png"
+                    alt="ClickUp"
+                  />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >ClickUp</span
+                >
+              </div>
+              <div class="integrations-swiper-item swiper-slide">
+                <span class="integrations-swiper-item-icon">
+                  <img
+                    src="src/assets/images/integracje/baselinker.png"
+                    alt="BaseLinker"
+                  />
+                </span>
+                <span class="integrations-swiper-item-title typography--body-sm"
+                  >BaseLinker</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="integrations-circle">
+            <img
+              src="src/assets/images/logo-light.svg"
+              alt="DogInvoice"
+              width="140"
+              height="24"
+            />
+
+            <svg
+              width="352"
+              height="352"
+              viewBox="0 0 352 352"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- <foreignObject x="50" y="50" width="250" height="250">
+                <div
+                  xmlns="http://www.w3.org/1999/xhtml"
+                  style="
+                    backdrop-filter: blur(10.05px);
+                    -webkit-backdrop-filter: blur(10.05px);
+                    border-radius: 50%;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 100%;
+                  "
+                ></div>
+              </foreignObject> -->
+              <!-- Ellipse_287: ciemna tarcza w tle (blur szkła) -->
+              <g transform="translate(51, 51)">
+                <!-- <foreignObject x="-20.1" y="-20.1" width="290.2" height="290.2"
+                  ><div
+                    xmlns="http://www.w3.org/1999/xhtml"
+                    style="
+                      backdrop-filter: blur(10.05px);
+                      clip-path: url(#bgblur_0_506_16663_clip_path);
+                      height: 100%;
+                      width: 100%;
+                    "
+                  ></div
+                ></foreignObject> -->
+                <g
+                  filter="url(#filter0_i_506_16663)"
+                  data-figma-bg-blur-radius="20.1"
+                >
+                  <circle
+                    cx="125"
+                    cy="125"
+                    r="125"
+                    fill="#0A140B"
+                    fill-opacity="0.8"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_i_506_16663"
+                    x="-20.1"
+                    y="-20.1"
+                    width="290.2"
+                    height="290.2"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="2" />
+                    <feGaussianBlur stdDeviation="3.25" />
+                    <feComposite
+                      in2="hardAlpha"
+                      operator="arithmetic"
+                      k2="-1"
+                      k3="1"
+                    />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0.305882 0 0 0 0 0.811765 0 0 0 0 0.368627 0 0 0 0.5 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="shape"
+                      result="effect1_innerShadow_506_16663"
+                    />
+                  </filter>
+                  <clipPath
+                    id="bgblur_0_506_16663_clip_path"
+                    transform="translate(20.1 20.1)"
+                  >
+                    <circle cx="125" cy="125" r="125" />
+                  </clipPath>
+                </defs>
+              </g>
+
+              <!-- Ellipse_284: najszersza, najbardziej rozmyta poświata (blur 25) -->
+              <g transform="translate(0.25, 14.5)">
+                <g opacity="0.5" filter="url(#filter0_f_506_16661)">
+                  <circle
+                    cx="175.75"
+                    cy="161.5"
+                    r="125"
+                    stroke="url(#paint0_radial_506_16661)"
+                    stroke-width="1.5"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_506_16661"
+                    x="0"
+                    y="-14.2495"
+                    width="351.5"
+                    height="351.5"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="25"
+                      result="effect1_foregroundBlur_506_16661"
+                    />
+                  </filter>
+                  <radialGradient
+                    id="paint0_radial_506_16661"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(175.75 36.5005) rotate(90) scale(119.806)"
+                  >
+                    <stop stop-color="#4FD15F" />
+                    <stop offset="0.528846" stop-color="#C0F2C5" />
+                    <stop offset="1" stop-color="#C0F2C5" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+              </g>
+
+              <!-- Ellipse_283: poświata blur 12.5 -->
+              <g transform="translate(25.25, 25.25)">
+                <g opacity="0.5" filter="url(#filter0_f_506_16660)">
+                  <circle
+                    cx="150.75"
+                    cy="150.75"
+                    r="125"
+                    stroke="url(#paint0_radial_506_16660)"
+                    stroke-width="1.5"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_506_16660"
+                    x="0"
+                    y="0"
+                    width="301.5"
+                    height="301.5"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="12.5"
+                      result="effect1_foregroundBlur_506_16660"
+                    />
+                  </filter>
+                  <radialGradient
+                    id="paint0_radial_506_16660"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(150.75 25.75) rotate(90) scale(119.806)"
+                  >
+                    <stop stop-color="#4FD15F" />
+                    <stop offset="0.528846" stop-color="#C0F2C5" />
+                    <stop offset="1" stop-color="#C0F2C5" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+              </g>
+
+              <!-- Ellipse_285: poświata blur 7.5 -->
+              <g transform="translate(35.25, 35.25)">
+                <g opacity="0.5" filter="url(#filter0_f_506_16659)">
+                  <circle
+                    cx="140.75"
+                    cy="140.75"
+                    r="125"
+                    stroke="url(#paint0_radial_506_16659)"
+                    stroke-width="1.5"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_506_16659"
+                    x="0"
+                    y="0"
+                    width="281.5"
+                    height="281.5"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="7.5"
+                      result="effect1_foregroundBlur_506_16659"
+                    />
+                  </filter>
+                  <radialGradient
+                    id="paint0_radial_506_16659"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(140.75 15.75) rotate(90) scale(119.806)"
+                  >
+                    <stop stop-color="#4FD15F" />
+                    <stop offset="0.528846" stop-color="#C0F2C5" />
+                    <stop offset="1" stop-color="#C0F2C5" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+              </g>
+
+              <!-- Ellipse_282: poświata blur 2.5 -->
+              <g transform="translate(45.25, 45.25)">
+                <g opacity="0.5" filter="url(#filter0_f_506_16658)">
+                  <circle
+                    cx="130.75"
+                    cy="130.75"
+                    r="125"
+                    stroke="url(#paint0_radial_506_16658)"
+                    stroke-width="1.5"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_506_16658"
+                    x="0"
+                    y="0"
+                    width="261.5"
+                    height="261.5"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="2.5"
+                      result="effect1_foregroundBlur_506_16658"
+                    />
+                  </filter>
+                  <radialGradient
+                    id="paint0_radial_506_16658"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(130.75 5.75) rotate(90) scale(119.806)"
+                  >
+                    <stop stop-color="#4FD15F" />
+                    <stop offset="0.528846" stop-color="#C0F2C5" />
+                    <stop offset="1" stop-color="#C0F2C5" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+              </g>
+
+              <!-- Ellipse_286: delikatny blur 1.35 -->
+              <g transform="translate(48.3, 48.3)">
+                <g filter="url(#filter0_f_506_16662)">
+                  <circle
+                    cx="127.7"
+                    cy="127.7"
+                    r="124"
+                    stroke="url(#paint0_radial_506_16662)"
+                    stroke-width="2"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_506_16662"
+                    x="0.000195265"
+                    y="0.000195265"
+                    width="255.4"
+                    height="255.4"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="1.35"
+                      result="effect1_foregroundBlur_506_16662"
+                    />
+                  </filter>
+                  <radialGradient
+                    id="paint0_radial_506_16662"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(127.7 2.7002) rotate(90) scale(119.806)"
+                  >
+                    <stop stop-color="#4FD15F" />
+                    <stop offset="0.528846" stop-color="#C0F2C5" />
+                    <stop offset="1" stop-color="#C0F2C5" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+              </g>
+
+              <!-- Ellipse_281: najostrzejszy pierścień na wierzchu (bez blur) -->
+              <g transform="translate(50.625, 50.625)">
+                <circle
+                  cx="125.375"
+                  cy="125.375"
+                  r="125"
+                  stroke="url(#paint0_radial_506_16657)"
+                  stroke-width="0.75"
+                />
+                <defs>
+                  <radialGradient
+                    id="paint0_radial_506_16657"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(125.375 0.375) rotate(90) scale(119.806)"
+                  >
+                    <stop stop-color="#4FD15F" />
+                    <stop offset="0.528846" stop-color="#C0F2C5" />
+                    <stop offset="1" stop-color="#C0F2C5" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== OPINIE ===== -->
+      <section
+        id="testimonials"
+        class="testimonials"
+        aria-labelledby="testimonials-header-title"
+      >
+        <header class="testimonials-header">
+          <div
+            class="testimonials-header-badge badge badge--light"
+            data-aos="fade-up"
+          >
+            <span class="badge-text">OPINIE KLIENTÓW</span>
+          </div>
+          <h2
+            id="testimonials-header-title"
+            class="testimonials-header-title typography--h2"
+            data-remove-orphans
+            data-aos="fade-up"
+          >
+            Zaufali nam
+          </h2>
+        </header>
+
+        <div class="testimonials-swiper swiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <article class="testimonials-card swiper-slide">
+              <img
+                class="testimonials-card-quote"
+                src="src/assets/images/quote.svg"
+                alt=""
+                width="61"
+                height="46"
+                aria-hidden="true"
+              />
+              <header class="testimonials-card-header">
+                <span
+                  class="testimonials-card-avatar testimonials-card-avatar--lime"
+                  aria-hidden="true"
+                  >RS</span
+                >
+                <div class="testimonials-card-meta">
+                  <h3 class="testimonials-card-name typography--body-lg">
+                    Robert Siepracki
+                  </h3>
+                  <p class="testimonials-card-company typography--body-sm">
+                    Grupa Nowe Mury Sp. z o.o.
+                  </p>
+                </div>
+              </header>
+              <div class="testimonials-card-body typography--body-md">
+                <p>
+                  Odkryłem DogInvoice przypadkiem i natychmiast zrozumiałem, że
+                  to narzędzie rozwiąże wiele moich problemów.
+                </p>
+                <p>
+                  Wprowadzanie danych do Excela, kategoryzowanie ich i
+                  pilnowanie poprawności było dla mnie męczarnią. Teraz kiedy
+                  dzieje się to automatycznie, odzyskałem dużo czasu i z
+                  optymizmem patrzę na firmowe obowiązki związane z fakturami.
+                </p>
+                <p>
+                  Wdrażamy system już w dwóch spółkach, wkrótce dołączą kolejne
+                  :)
+                </p>
+              </div>
+              <div class="testimonials-card-stars" aria-label="Ocena: 5 na 5">
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+              </div>
+            </article>
+
+            <article class="testimonials-card swiper-slide">
+              <img
+                class="testimonials-card-quote"
+                src="src/assets/images/quote.svg"
+                alt=""
+                width="61"
+                height="46"
+                aria-hidden="true"
+              />
+              <header class="testimonials-card-header">
+                <span
+                  class="testimonials-card-avatar testimonials-card-avatar--lime"
+                  aria-hidden="true"
+                  >RS</span
+                >
+                <div class="testimonials-card-meta">
+                  <h3 class="testimonials-card-name typography--body-lg">
+                    Robert Siepracki
+                  </h3>
+                  <p class="testimonials-card-company typography--body-sm">
+                    Grupa Nowe Mury Sp. z o.o.
+                  </p>
+                </div>
+              </header>
+              <div class="testimonials-card-body typography--body-md">
+                <p>
+                  Odkryłem DogInvoice przypadkiem i natychmiast zrozumiałem, że
+                  to narzędzie rozwiąże wiele moich problemów.
+                </p>
+                <p>
+                  Wprowadzanie danych do Excela, kategoryzowanie ich i
+                  pilnowanie poprawności było dla mnie męczarnią. Teraz kiedy
+                  dzieje się to automatycznie, odzyskałem dużo czasu i z
+                  optymizmem patrzę na firmowe obowiązki związane z fakturami.
+                </p>
+                <p>
+                  Wdrażamy system już w dwóch spółkach, wkrótce dołączą kolejne
+                  :)
+                </p>
+              </div>
+              <div class="testimonials-card-stars" aria-label="Ocena: 5 na 5">
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+              </div>
+            </article>
+
+            <article class="testimonials-card swiper-slide">
+              <img
+                class="testimonials-card-quote"
+                src="src/assets/images/quote.svg"
+                alt=""
+                width="61"
+                height="46"
+                aria-hidden="true"
+              />
+              <header class="testimonials-card-header">
+                <span
+                  class="testimonials-card-avatar testimonials-card-avatar--green"
+                  aria-hidden="true"
+                  >OS</span
+                >
+                <div class="testimonials-card-meta">
+                  <h3 class="testimonials-card-name typography--body-lg">
+                    Oskar Sylwestrzak
+                  </h3>
+                  <p class="testimonials-card-company typography--body-sm">
+                    Moto46 Sp. z o. o.
+                  </p>
+                </div>
+              </header>
+              <div class="testimonials-card-body typography--body-md">
+                <p>
+                  Korzystamy z DogInvoice jako bramki integracyjnej z naszymi
+                  pozostałymi systemami. Łatwa integracja przez API pozwala nam
+                  pobierać faktury z KSeF oraz automatycznie przetwarzać je
+                  dalej w systemach magazynowych i księgowych.
+                </p>
+                <p>
+                  Widać, że aplikacja jest stale rozwijana, a support jest
+                  bardzo pomocny.
+                </p>
+                <p>Zdecydowanie polecam!</p>
+              </div>
+              <div class="testimonials-card-stars" aria-label="Ocena: 5 na 5">
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+              </div>
+            </article>
+
+            <article class="testimonials-card swiper-slide">
+              <img
+                class="testimonials-card-quote"
+                src="src/assets/images/quote.svg"
+                alt=""
+                width="61"
+                height="46"
+                aria-hidden="true"
+              />
+              <header class="testimonials-card-header">
+                <span
+                  class="testimonials-card-avatar testimonials-card-avatar--teal"
+                  aria-hidden="true"
+                  >ŁR</span
+                >
+                <div class="testimonials-card-meta">
+                  <h3 class="testimonials-card-name typography--body-lg">
+                    Łukasz Rak
+                  </h3>
+                  <p class="testimonials-card-company typography--body-sm">
+                    NTDC SP. z o. o.
+                  </p>
+                </div>
+              </header>
+              <div class="testimonials-card-body typography--body-md">
+                <p>
+                  Korzystam z DogInvoice od samego początku powstania aplikacji.
+                  Jest to jedno z najlepszych narzędzi jakie wdrożyłem w swoich
+                  firmach.
+                </p>
+                <p>
+                  Całkowita automatyzacja zarządzania fakturami, przypomnienia o
+                  zbliżających się terminach płatności, generowanie koszyka
+                  przelewów — to co zajmowało kiedyś godziny ręcznej pracy,
+                  teraz dzieje się praktycznie samo.
+                </p>
+              </div>
+              <div class="testimonials-card-stars" aria-label="Ocena: 5 na 5">
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+              </div>
+            </article>
+
+            <article class="testimonials-card swiper-slide">
+              <img
+                class="testimonials-card-quote"
+                src="src/assets/images/quote.svg"
+                alt=""
+                width="61"
+                height="46"
+                aria-hidden="true"
+              />
+              <header class="testimonials-card-header">
+                <span
+                  class="testimonials-card-avatar testimonials-card-avatar--mint"
+                  aria-hidden="true"
+                  >MB</span
+                >
+                <div class="testimonials-card-meta">
+                  <h3 class="testimonials-card-name typography--body-lg">
+                    Michał Broś
+                  </h3>
+                  <p class="testimonials-card-company typography--body-sm">
+                    PSM Group Sp. z o.o.
+                  </p>
+                </div>
+              </header>
+              <div class="testimonials-card-body typography--body-md">
+                <p>
+                  Testowałem wiele narzędzi do zarządzania fakturami i
+                  kategoryzacji kosztów, ale DogInvoice to mój top.
+                </p>
+                <p>
+                  OCR działa bardzo dokładnie, a support dynamicznie wprowadzana
+                  zmiany co jest dla mnie dużym plusem.
+                </p>
+                <p>Zdecydowanie polecam!</p>
+              </div>
+              <div class="testimonials-card-stars" aria-label="Ocena: 5 na 5">
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+                <span aria-hidden="true">★</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FAQ ===== -->
+      <section id="faq" class="faq" aria-labelledby="faq-header-title">
+        <header class="faq-header">
+          <div class="faq-header-badge badge badge--white" data-aos="fade-up">
+            <span class="badge-text">FAQ</span>
+          </div>
+          <h2
+            id="faq-header-title"
+            class="faq-header-title typography--h2"
+            data-remove-orphans
+            data-aos="fade-up"
+          >
+            Najczęściej zadawane pytania
+          </h2>
+        </header>
+
+        <nav class="faq-nav" aria-label="Kategorie FAQ" data-aos="fade-up">
+          <ul class="faq-nav-list">
+            <li>
+              <button
+                type="button"
+                class="faq-nav-button active"
+                data-faq-target="faq-general"
+              >
+                Ogólne
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="faq-nav-button"
+                data-faq-target="faq-processing"
+              >
+                Przetwarzanie faktur
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="faq-nav-button"
+                data-faq-target="faq-ksef"
+              >
+                KSeF
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="faq-nav-button"
+                data-faq-target="faq-integrations"
+              >
+                Integracje
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="faq-nav-button"
+                data-faq-target="faq-pricing"
+              >
+                Cennik i płatności
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="faq-nav-button"
+                data-faq-target="faq-accountants"
+              >
+                Dla księgowych
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="faq-content">
+          <div class="faq-category" id="faq-general" data-aos="fade-up">
+            <h3 class="faq-category-title typography--h4">Ogólne</h3>
+            <div class="faq-category-panel" id="faq-general-panel">
+              <div class="faq-items">
+                <div class="faq-item is-open">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="true"
+                  >
+                    <span class="faq-item-question">Czym jest DogInvoice?</span>
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      DogInvoice to inteligentna platforma do automatycznego
+                      przetwarzania faktur. System wykorzystuje AI do
+                      rozpoznawania, kategoryzowania i archiwizowania faktur –
+                      niezależnie od tego, czy przychodzą mailem, przez KSeF,
+                      czy robisz im zdjęcie telefonem.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy muszę coś instalować?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Nie. DogInvoice działa w przeglądarce internetowej
+                      (app.doginvoice.com). Na telefonie możesz po prostu
+                      otworzyć aplikację i zrobić zdjęcie faktury aparatem.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Jak szybko mogę zacząć korzystać?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      W kilka minut. Zakładasz konto, łączysz Dysk Google i
+                      możesz już przesyłać pierwsze faktury. Konfiguracja
+                      integracji z KSeF czy systemami zewnętrznymi zajmuje
+                      dodatkowe kilka minut.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy DogInvoice jest bezpieczny?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer" data-remove-orphans>
+                    <p>
+                      Tak. Faktury są przechowywane na Twoim prywatnym Dysku
+                      Google – masz pełną kontrolę nad swoimi danymi.
+                      Komunikacja z KSeF odbywa się przez szyfrowane połączenie
+                      z tokenem autoryzacyjnym.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="faq-processing" data-aos="fade-up">
+            <h3 class="faq-category-title typography--h4">
+              Przetwarzanie faktur
+            </h3>
+            <div class="faq-category-panel" id="faq-processing-panel">
+              <div class="faq-items">
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >W jaki sposób mogę przesyłać faktury do systemu?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Na kilka sposobów: mailem na dedykowany adres (np.
+                      firma@doginvoice.com), przez automatyczne czytanie Twojej
+                      skrzynki pocztowej, upload w aplikacji, zdjęciem z
+                      telefonu lub automatycznie z KSeF i zintegrowanych
+                      systemów (Fakturownia, BaseLinker, Apilo i inne).
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Co jeśli zdjęcie faktury jest niewyraźne?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      System automatycznie uruchamia autorską technologię AI
+                      OCR, która radzi sobie nawet z niskiej jakości skanami i
+                      zdjęciami. Jeśli dokument jest całkowicie nieczytelny,
+                      zostaniesz o tym powiadomiony.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy system rozpoznaje faktury w różnych formatach?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. DogInvoice przetwarza pliki PDF, zdjęcia (JPG, PNG),
+                      pliki XML z KSeF oraz dokumenty przesyłane mailem jako
+                      załączniki.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy DogInvoice obsługuje faktury proforma?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. System obsługuje zarówno faktury VAT (kosztowe i
+                      przychodowe), jak i faktury proforma.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Jak działa automatyczna kategoryzacja?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Algorytm AI analizuje treść faktury – kontrahenta, rodzaj
+                      usługi lub produktu oraz kwoty – i przypisuje wydatek do
+                      odpowiedniej kategorii zgodnie z planem kont i przepisami
+                      podatkowymi. Z czasem system uczy się Twoich wzorców.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="faq-ksef" data-aos="fade-up">
+            <h3 class="faq-category-title typography--h4">KSeF</h3>
+            <div class="faq-category-panel" id="faq-ksef-panel">
+              <div class="faq-items">
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy DogInvoice jest gotowy na obowiązkowy KSeF?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. System automatycznie pobiera faktury z Krajowego
+                      Systemu e-Faktur i prezentuje je w czytelnym formacie –
+                      zamiast surowego XML-a widzisz normalnie wyglądającą
+                      fakturę.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy muszę logować się do portalu KSeF?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Nie. DogInvoice pobiera faktury automatycznie w tle. Ty
+                      dostajesz powiadomienie mailowe o pojawieniu się nowych
+                      dokumentów.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy potrzebuję certyfikatu kwalifikowanego do integracji
+                      z KSeF?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Nie. Do integracji wystarczy bezpłatny token autoryzacyjny
+                      generowany w systemie KSeF. Certyfikat kwalifikowany nie
+                      jest wymagany.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Co z fakturami, które nie przechodzą przez KSeF (np. od
+                      zagranicznych kontrahentów)?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      DogInvoice obsługuje zarówno faktury z KSeF, jak i te
+                      przychodzące tradycyjnymi kanałami (mail, skan, upload).
+                      Wszystkie trafiają do jednego systemu.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="faq-integrations" data-aos="fade-up">
+            <h3 class="faq-category-title typography--h4">Integracje</h3>
+            <div class="faq-category-panel" id="faq-integrations-panel">
+              <div class="faq-items">
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Z jakimi systemami współpracuje DogInvoice?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Aktualnie integrujemy się z: KSeF, Google Drive, Gmail,
+                      GUS, Fakturownia, Apilo, BaseLinker oraz InFakt. Lista
+                      stale się rozszerza.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Dlaczego potrzebuję Google Drive?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Google Drive służy jako bezpieczne miejsce archiwizacji
+                      Twoich faktur. Pliki są uporządkowane w folderach
+                      (rok/miesiąc) i zawsze masz do nich dostęp – nawet bez
+                      logowania do DogInvoice.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy mogę podłączyć kilka źródeł faktur
+                      jednocześnie?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. Możesz jednocześnie pobierać faktury z KSeF,
+                      Fakturowni, BaseLinker i maila. Wszystkie dokumenty
+                      trafiają do jednego dashboardu.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="faq-pricing" data-aos="fade-up">
+            <h3 class="faq-category-title typography--h4">
+              Cennik i płatności
+            </h3>
+            <div class="faq-category-panel" id="faq-pricing-panel">
+              <div class="faq-items">
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy mogę przetestować DogInvoice za darmo?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. Plan Starter jest bezpłatny i pozwala przetwarzać do
+                      10 faktur miesięcznie przez OCR oraz do 100 faktur
+                      miesięcznie przez KSeF. Nie wymaga karty płatniczej.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czym różnią się plany?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Główną różnicą są limity faktur miesięcznie. Limity OCR:
+                      Starter (10), Professional (150), Business (500). Limity
+                      KSeF: Starter (100), Professional (500), Business (1 000).
+                      Plan Enterprise oferuje indywidualną wycenę i dedykowane
+                      wsparcie.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy mogę zmienić plan w dowolnym momencie?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. Przejście na wyższy lub niższy plan jest możliwe w
+                      każdej chwili z poziomu ustawień konta.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="faq-accountants" data-aos="fade-up">
+            <h3 class="faq-category-title typography--h4">Dla księgowych</h3>
+            <div class="faq-category-panel" id="faq-accountants-panel">
+              <div class="faq-items">
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy mogę wysłać komplet dokumentów do księgowej?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Tak. DogInvoice pozwala wyeksportować zestawienia faktur
+                      do Excela, PDF-a lub CSV. Możesz też udostępnić folder na
+                      Google Drive bezpośrednio swojej księgowej.
+                    </p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-item-trigger"
+                    aria-expanded="false"
+                  >
+                    <span class="faq-item-question"
+                      >Czy system zastępuje program księgowy?</span
+                    >
+                    <span class="faq-item-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="faq-item-answer">
+                    <p>
+                      Nie. DogInvoice to narzędzie do automatycznego
+                      przetwarzania, kategoryzowania i archiwizowania faktur.
+                      Współpracuje z systemami księgowymi (InFakt, Fakturownia),
+                      ale ich nie zastępuje.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== STOPKA ===== -->
+    <footer class="footer">
+      <div class="footer__background"></div>
+      <div class="footer-section max-width" aria-labelledby="cta-title">
+        <div class="footer-section-badge badge badge--dark" data-aos="fade-up">
+          <span class="badge-text">ZACZNIJ JUŻ DZIŚ</span>
+        </div>
+        <h2
+          id="cta-title"
+          class="footer-section-title typography--h2"
+          data-aos="fade-up"
+        >
+          W 60 sekund DogInvoice będzie gotowy do pracy
+        </h2>
+        <p
+          class="footer-section-description typography--body-lg"
+          data-aos="fade-up"
+          data-remove-orphans
+        >
+          Załóż konto, podłącz KSeF, automatyzuj zarządzanie finansami swojej
+          firmy.<br />
+          Starter za darmo, do 10 faktur/mies.
+        </p>
+        <a
+          href="https://app.doginvoice.com/register"
+          target="_blank"
+          class="footer-section-button btn"
+          data-aos="fade-up"
+          size="bg"
+          color="green"
+        >
+          <span class="btn-title">Załóż konto bez zobowiązań</span>
+        </a>
+        <span class="footer-section-watermark" aria-hidden="true">
+          <svg
+            width="1321"
+            height="215"
+            viewBox="0 0 1321 215"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M308.66 39.4541C328.613 39.4542 344.012 45.6819 354.799 58.1777L355.308 58.7578C365.915 71.017 371.198 87.5657 371.198 108.361C371.198 129.318 365.745 146.059 354.801 158.543C343.846 171.039 328.447 177.268 308.66 177.269C288.873 177.268 273.475 171.039 262.52 158.543C251.575 146.059 246.121 129.318 246.121 108.361C246.121 87.2359 251.575 70.4931 262.521 58.1777C273.477 45.6834 288.874 39.4542 308.66 39.4541ZM308.66 40.2041C289.043 40.2042 273.869 46.3726 263.084 58.6738L263.082 58.6758C252.289 70.8181 246.871 87.3654 246.871 108.361C246.871 129.186 252.289 145.735 263.084 158.049C273.869 170.35 289.043 176.518 308.66 176.519C328.277 176.518 343.451 170.35 354.236 158.049C365.032 145.735 370.448 129.186 370.448 108.361C370.448 87.3653 365.032 70.8181 354.238 58.6758L354.234 58.6719C343.62 46.3734 328.448 40.2042 308.66 40.2041Z"
+              fill="url(#paint0_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M308.66 1.74805C330.11 1.74809 348.686 6.08937 364.377 14.7861L365.854 15.5967C381.002 24.0848 392.792 36.0963 401.217 51.624C410.085 67.4854 414.51 86.4025 414.51 108.361C414.51 129.984 410.083 148.816 401.215 164.847C392.349 180.873 379.984 193.239 364.126 201.936L364.125 201.935C348.434 210.632 329.942 214.975 308.66 214.975C287.378 214.975 268.799 210.633 252.939 201.936L252.936 201.933C237.25 193.067 224.972 180.703 216.106 164.848L216.105 164.847C207.238 148.816 202.811 129.984 202.811 108.361C202.811 86.5701 207.238 67.7367 216.106 51.875C224.972 35.8501 237.25 23.4848 252.938 14.7881L252.939 14.7871C268.799 6.08977 287.378 1.7481 308.66 1.74805ZM308.66 2.49805C287.481 2.4981 269.032 6.81863 253.301 15.4453L253.3 15.4443C237.738 24.0715 225.56 36.3347 216.762 52.2393L216.761 52.2402C207.966 67.9696 203.561 86.6724 203.561 108.361C203.561 129.879 207.965 148.582 216.761 164.482L217.596 165.947C226.323 180.98 238.223 192.755 253.3 201.277C269.031 209.904 287.481 214.225 308.66 214.225C329.839 214.225 348.203 209.904 363.764 201.278L363.765 201.277C379.497 192.65 391.761 180.387 400.559 164.483C409.355 148.583 413.76 129.88 413.76 108.361C413.76 86.5019 409.354 67.7144 400.56 51.9854L400.557 51.9814C391.929 36.0795 379.752 23.9034 364.021 15.4463L364.018 15.4443C348.458 6.8189 330.009 2.49809 308.66 2.49805Z"
+              fill="url(#paint1_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1134 58.7441C1141.63 58.7442 1148.35 60.0155 1154.15 62.5693L1154.7 62.8115C1160.33 65.3553 1164.99 68.9919 1168.67 73.7188L1169.02 74.1719C1172.62 78.8882 1174.94 84.5092 1175.99 91.0234L1175.62 91.458H1157.57L1157.2 91.1582C1156.15 86.0345 1153.59 82.0568 1149.53 79.2021L1149.53 79.2002C1145.55 76.3449 1140.38 74.9014 1134 74.9014C1124.89 74.9014 1117.75 77.7829 1112.54 83.5166L1112.54 83.5186C1107.33 89.1793 1104.71 97.0504 1104.71 107.181C1104.71 117.309 1107.33 125.219 1112.54 130.957C1117.75 136.615 1124.88 139.459 1134 139.459C1140.38 139.459 1145.55 138.053 1149.53 135.272C1153.59 132.419 1156.14 128.404 1157.2 123.203L1157.57 122.902H1175.62L1175.99 123.337C1174.91 130.061 1172.47 135.871 1168.67 140.755L1168.67 140.757C1164.87 145.56 1160.03 149.238 1154.15 151.791C1148.35 154.345 1141.63 155.616 1134 155.616C1124.52 155.616 1116.17 153.651 1108.98 149.707L1108.98 149.704C1101.86 145.683 1096.33 140.036 1092.39 132.77L1092.39 132.767C1088.52 125.498 1086.6 116.965 1086.6 107.181C1086.6 97.3963 1088.52 88.8637 1092.39 81.5947L1092.39 81.5918C1096.21 74.5523 1101.52 69.0675 1108.32 65.1455L1108.98 64.7705C1116.17 60.7494 1124.52 58.7441 1134 58.7441ZM1134 59.4941C1124.62 59.4941 1116.41 61.4758 1109.34 65.4258L1109.34 65.4268C1102.35 69.3007 1096.93 74.806 1093.05 81.9492L1093.05 81.9482C1089.25 89.0894 1087.35 97.4964 1087.35 107.181C1087.35 116.865 1089.25 125.271 1093.05 132.412C1096.92 139.554 1102.35 145.098 1109.34 149.049C1116.41 152.923 1124.62 154.866 1134 154.866C1141.54 154.866 1148.16 153.609 1153.85 151.104L1153.85 151.104C1159.63 148.597 1164.37 144.993 1168.08 140.292C1171.71 135.623 1174.08 130.079 1175.18 123.652H1157.87C1156.74 128.884 1154.11 132.971 1149.96 135.887L1149.96 135.888C1145.82 138.779 1140.49 140.209 1134 140.209C1124.71 140.209 1117.36 137.305 1111.99 131.465L1111.99 131.463C1106.62 125.55 1103.96 117.44 1103.96 107.181C1103.96 96.9214 1106.62 88.8479 1111.99 83.0107C1117.36 77.0947 1124.71 74.1514 1134 74.1514C1140.49 74.1514 1145.82 75.6202 1149.96 78.5889L1150.36 78.8711C1154.27 81.7625 1156.78 85.7153 1157.87 90.708H1175.18C1174.08 84.2821 1171.71 78.7768 1168.08 74.1836L1168.08 74.1816C1164.36 69.4043 1159.62 65.7623 1153.85 63.2568L1153.85 63.2559C1148.16 60.7514 1141.54 59.4942 1134 59.4941Z"
+              fill="url(#paint2_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1001.91 74.0361C1011.41 74.0362 1018.81 76.9778 1024.03 82.8994L1024.52 83.46C1029.48 89.3184 1031.95 97.2012 1031.95 107.065C1031.95 117.172 1029.32 125.242 1024.03 131.229L1024.03 131.231C1018.73 137.152 1011.34 140.095 1001.91 140.095C992.47 140.095 985.078 137.152 979.78 131.231L979.778 131.229C974.49 125.242 971.865 117.172 971.865 107.065C971.865 96.8829 974.49 88.812 979.78 82.8994C985.078 76.9792 992.47 74.0361 1001.91 74.0361ZM1001.91 74.7861C992.638 74.7861 985.466 77.6693 980.339 83.3994C975.204 89.138 972.615 97.0117 972.615 107.065C972.615 117.04 975.203 124.915 980.339 130.731L980.826 131.26C985.917 136.638 992.927 139.345 1001.91 139.345C1011.17 139.345 1018.34 136.462 1023.47 130.731C1028.61 124.915 1031.2 117.04 1031.2 107.065C1031.2 97.0119 1028.61 89.138 1023.47 83.3994L1023.47 83.3975C1018.42 77.6701 1011.25 74.7862 1001.91 74.7861Z"
+              fill="url(#paint3_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1001.91 58.7441C1011.54 58.7442 1019.92 60.7098 1027.04 64.6543C1034.23 68.598 1039.76 74.2075 1043.63 81.4746C1047.57 88.6688 1049.54 97.204 1049.54 107.065C1049.54 116.851 1047.57 125.385 1043.63 132.654C1039.68 139.922 1034.11 145.532 1026.92 149.477L1026.92 149.476C1019.8 153.42 1011.46 155.387 1001.91 155.387C992.348 155.387 983.967 153.421 976.774 149.477L976.771 149.474C969.658 145.453 964.126 139.846 960.184 132.656L960.183 132.654C956.239 125.385 954.273 116.851 954.273 107.065C954.273 97.2039 956.238 88.6689 960.184 81.4746C964.126 74.2085 969.658 68.5995 976.773 64.6553L976.774 64.6543C983.967 60.7102 992.348 58.7441 1001.91 58.7441ZM1001.91 59.4941C992.453 59.4941 984.2 61.4385 977.136 65.3125L977.135 65.3115C970.147 69.1854 964.718 74.6911 960.843 81.834L960.842 81.8359C956.969 88.899 955.023 97.3041 955.023 107.065C955.023 116.749 956.968 125.154 960.842 132.295L961.209 132.953C965.057 139.704 970.364 144.991 977.135 148.818C984.199 152.692 992.453 154.637 1001.91 154.637C1011.36 154.637 1019.57 152.693 1026.56 148.819L1026.56 148.818C1033.63 144.944 1039.09 139.439 1042.97 132.297C1046.84 125.156 1048.79 116.749 1048.79 107.065C1048.79 97.3042 1046.84 88.8989 1042.97 81.8359L1042.97 81.8311C1039.17 74.6902 1033.74 69.1865 1026.67 65.3125L1026.67 65.3115C1019.69 61.4385 1011.43 59.4942 1001.91 59.4941Z"
+              fill="url(#paint4_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M756.916 60.4961V153.629L756.541 154.004H739.063L738.688 153.629V60.4961L739.063 60.1211H756.541L756.916 60.4961ZM739.438 153.254H756.166V60.8711H739.438V153.254Z"
+              fill="url(#paint5_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M790.241 60.2725L841.536 129.2V60.4961L841.911 60.1211H858.584L858.959 60.4961V153.629L858.584 154.004H839.612L839.312 153.854L788.476 85.957V153.629L788.101 154.004H771.429L771.054 153.629V60.4961L771.429 60.1211H789.94L790.241 60.2725ZM771.804 153.254H787.726V85.4463L788.101 85.0713H788.561L788.86 85.2217L839.8 153.254H858.209V60.8711H842.286V129.714L841.911 130.089H841.451L841.15 129.938L789.752 60.8711H771.804V153.254Z"
+              fill="url(#paint6_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M883.515 60.3594L912.166 133.823H912.228L940.649 60.3604L940.999 60.1211H959.741L960.089 60.6367L922.49 153.77L922.143 154.004H901.562L901.214 153.77L863.615 60.6367L863.963 60.1211H883.165L883.515 60.3594ZM901.814 153.254H921.89L959.186 60.8711H941.256L912.834 134.334L912.484 134.573H911.909L911.56 134.335L882.908 60.8711H864.519L901.814 153.254Z"
+              fill="url(#paint7_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1077.17 60.4961V153.629L1076.8 154.004H1059.32L1058.95 153.629V60.4961L1059.32 60.1211H1076.8L1077.17 60.4961ZM1059.7 153.254H1076.42V60.8711H1059.7V153.254Z"
+              fill="url(#paint8_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1248.89 60.4961V75.6738L1248.52 76.0488H1199.45V97.6045H1245.07L1245.45 97.9795V112.697L1245.07 113.072H1199.45V138.077H1248.52L1248.89 138.452V153.629L1248.52 154.004H1181.49L1181.11 153.629V60.4961L1181.49 60.1211H1248.52L1248.89 60.4961ZM1181.86 153.254H1248.14V138.827H1199.08L1198.7 138.452V112.697L1199.08 112.322H1244.7V98.3545H1199.08L1198.7 97.9795V75.6738L1199.08 75.2988H1248.14V60.8711H1181.86V153.254Z"
+              fill="url(#paint9_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1288.56 0.00292969H1319.91L1320.29 0.37793V182.633L1320.18 182.898L1288.82 214.257L1288.56 214.146V214.36H699.028L699.025 214.363H667.667L667.292 213.988V31.7324L667.401 31.4668L698.76 0.109375L699.025 0H1288.56L1288.56 0.00292969ZM668.042 31.8887V213.613H699.022L699.025 213.61H1288.41L1319.54 182.478V0.75293H1288.56L1288.55 0.75H699.182L668.042 31.8887Z"
+              fill="url(#paint10_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M532.869 0.610352C550.066 0.610446 565.24 3.58719 578.375 9.55762C591.505 15.3561 602.252 23.7181 610.613 34.6377L611.404 35.668C619.482 46.3814 624.59 59.0931 626.737 73.791L626.366 74.2207H581.272L580.902 73.9082C579.049 62.9602 573.921 54.5593 565.52 48.6777L565.516 48.6748C557.103 42.6183 546.23 39.5753 532.869 39.5752C520.187 39.5752 509.127 42.3667 499.682 47.9326L499.68 47.9336C490.409 53.3286 483.151 61.1657 477.917 71.4629L477.918 71.4639C472.853 81.7632 470.315 93.853 470.315 107.734L470.323 109.062C470.482 122.721 473.102 134.616 478.171 144.756C483.405 155.055 490.746 163.074 500.192 168.811C509.636 174.375 520.78 177.161 533.631 177.161C543.1 177.161 551.63 175.641 559.222 172.605C566.816 169.568 572.792 165.355 577.161 159.978C581.387 154.776 583.561 148.953 583.693 142.5L583.7 141.873V139.211L583.707 139.204V139.135L537.996 108.104L538.207 107.418H626.364V107.634L626.366 107.635V107.418L626.476 107.681L626.741 107.791V107.793H626.522L626.523 107.794L626.741 107.793V210.401L626.366 210.776H586.628L586.253 210.401V199.134C583.132 201.184 575.098 205.691 565.767 209.108C557.527 212.126 541.794 213.835 528.025 213.835C507.928 213.834 490.196 209.408 474.847 200.539L474.843 200.536C459.667 191.499 447.728 178.962 439.035 162.939L439.034 162.937C430.51 146.91 426.256 128.419 426.256 107.479C426.256 86.0264 430.682 67.2776 439.549 51.248L440.391 49.7559C449.197 34.4463 461.367 22.4923 476.894 13.9033C492.923 5.03642 511.586 0.610402 532.869 0.610352ZM532.869 1.36035C511.692 1.3604 493.158 5.76358 477.257 14.5596C461.353 23.3574 449.003 35.7076 440.205 51.6113C431.409 67.5119 427.006 86.1313 427.006 107.479L427.019 109.425C427.275 129.46 431.501 147.177 439.694 162.582C448.325 178.489 460.17 190.926 475.226 199.892C490.446 208.684 508.043 213.084 528.025 213.085C541.771 213.085 557.397 211.374 565.509 208.403C575.446 204.764 583.893 199.885 586.413 198.121L587.003 198.429V210.026H625.991V108.168H539.428L584.293 138.626L584.457 138.937V139.211L584.45 139.218V141.873C584.45 148.755 582.211 154.951 577.743 160.45C573.281 165.942 567.192 170.226 559.501 173.303C551.808 176.379 543.181 177.911 533.631 177.911C520.669 177.911 509.39 175.1 499.812 169.457L499.809 169.454C490.235 163.642 482.798 155.515 477.503 145.096L477.502 145.094C472.207 134.503 469.566 122.045 469.565 107.734C469.565 93.7619 472.119 81.5552 477.244 71.1338L477.247 71.1289C482.542 60.7103 489.896 52.7591 499.303 47.2852C508.88 41.6422 520.075 38.8252 532.869 38.8252C546.34 38.8253 557.378 41.8932 565.949 48.0625C574.449 54.0127 579.657 62.4941 581.586 73.4707H625.929C623.691 58.5965 618.389 45.8084 610.021 35.0986L610.02 35.0957C601.737 24.2787 591.09 15.9924 578.068 10.2422L578.064 10.2412C565.044 4.32286 549.98 1.36045 532.869 1.36035Z"
+              fill="url(#paint11_linear_384_19306)"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M81.6465 4.80371C104.112 4.80371 123.537 8.97346 139.905 17.3281C156.273 25.6826 168.896 37.6229 177.766 53.1436C186.636 68.6661 191.062 87.0771 191.062 108.36C191.062 129.475 186.55 147.801 177.51 163.323C168.641 178.842 156.018 190.867 139.652 199.391L139.65 199.392C123.282 207.746 103.943 211.916 81.6465 211.916H0.375L0 211.541V5.17871L0.375 4.80371H81.6465ZM0.75 41.4902H81.6465C103.117 41.4902 119.451 47.5419 130.582 59.6992L131.107 60.2715C142.045 72.3509 147.497 88.3939 147.497 108.36C147.497 128.475 141.87 144.707 130.584 157.019C119.453 169.177 103.118 175.229 81.6465 175.229H43.4307L43.0557 174.854V72.9824L0.75 42.5957V211.166H81.6465C103.849 211.166 123.066 207.014 139.309 198.724C155.551 190.264 168.066 178.339 176.86 162.948L176.861 162.946C185.824 147.557 190.312 129.366 190.312 108.36C190.312 87.1827 185.909 68.9057 177.115 53.5166C168.321 38.126 155.806 26.2863 139.563 17.9961C123.322 9.70621 104.02 5.55371 81.6465 5.55371H0.75V41.4902ZM43.6494 72.4854L43.8057 72.79V174.479H81.6465C102.976 174.479 119.083 168.472 130.031 156.513C141.165 144.367 146.747 128.329 146.747 108.36C146.747 88.2209 141.165 72.1836 130.033 60.209L130.031 60.207C119.083 48.2479 102.976 42.2402 81.6465 42.2402H1.54004L43.6494 72.4854Z"
+              fill="url(#paint12_linear_384_19306)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint1_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint2_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint3_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint4_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint5_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint6_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint7_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint8_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint9_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint10_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint11_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient
+                id="paint12_linear_384_19306"
+                x1="660.145"
+                y1="0"
+                x2="660.145"
+                y2="214.975"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0.3" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+
+        <div class="footer__gradient">
+          <svg
+            width="1212"
+            height="387"
+            viewBox="0 0 1212 387"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_f_452_13256)">
+              <ellipse
+                cx="605.8"
+                cy="193.3"
+                rx="548"
+                ry="135.5"
+                fill="#082B0E"
+              />
+            </g>
+            <g filter="url(#filter1_f_452_13256)">
+              <ellipse
+                cx="605.8"
+                cy="193.3"
+                rx="389"
+                ry="63.5"
+                fill="#1C5F25"
+              />
+            </g>
+            <g filter="url(#filter2_f_452_13256)">
+              <ellipse
+                cx="605.798"
+                cy="193.3"
+                rx="263.493"
+                ry="38.6232"
+                fill="#4FD15F"
+              />
+            </g>
+            <g filter="url(#filter3_f_452_13256)">
+              <ellipse
+                cx="605.801"
+                cy="193.299"
+                rx="189.136"
+                ry="20.6027"
+                fill="#C9F45A"
+              />
+            </g>
+            <g filter="url(#filter4_f_452_13256)">
+              <ellipse
+                cx="605.8"
+                cy="193.299"
+                rx="75.8673"
+                ry="13.4618"
+                fill="#E2FB9B"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_452_13256"
+                x="-0.00019455"
+                y="-0.00019455"
+                width="1211.6"
+                height="386.6"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="28.9"
+                  result="effect1_foregroundBlur_452_13256"
+                />
+              </filter>
+              <filter
+                id="filter1_f_452_13256"
+                x="159"
+                y="71.9998"
+                width="893.6"
+                height="242.6"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="28.9"
+                  result="effect1_foregroundBlur_452_13256"
+                />
+              </filter>
+              <filter
+                id="filter2_f_452_13256"
+                x="282.206"
+                y="94.5768"
+                width="647.185"
+                height="197.446"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="30.05"
+                  result="effect1_foregroundBlur_452_13256"
+                />
+              </filter>
+              <filter
+                id="filter3_f_452_13256"
+                x="370.065"
+                y="126.096"
+                width="471.471"
+                height="134.405"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="23.3"
+                  result="effect1_foregroundBlur_452_13256"
+                />
+              </filter>
+              <filter
+                id="filter4_f_452_13256"
+                x="501.933"
+                y="151.837"
+                width="207.734"
+                height="82.9238"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="14"
+                  result="effect1_foregroundBlur_452_13256"
+                />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <div class="footer-panel">
+        <div class="footer-panel-main">
+          <div class="footer-content">
+            <a href="#" class="footer-content-logo no-hover-effect">
+              <img src="src/assets/images/logo.svg" alt="DogInvoice" />
+            </a>
+            <p
+              class="footer-content-description typography--body-md"
+              data-remove-orphans
+            >
+              Automatyzacja faktur z AI i pełna integracja z KSeF. Oszczędzaj
+              czas, eliminuj błędy i miej kontrolę nad finansami.
+            </p>
+          </div>
+
+          <nav class="footer-nav" aria-label="Stopka">
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-col-title">Produkty</h4>
+              <ul class="footer-nav-col-list">
+                <li><a class="no-hover-effect" href="#features">Funkcje</a></li>
+                <li>
+                  <a class="no-hover-effect" href="#testimonials">Opinie</a>
+                </li>
+                <li><a class="no-hover-effect" href="#price">Cennik</a></li>
+                <li>
+                  <a class="no-hover-effect" href="#integrations">Integracje</a>
+                </li>
+                <li><a class="no-hover-effect" href="#faq">FAQ</a></li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-col-title">Narzędzia</h4>
+              <ul class="footer-nav-col-list">
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://app.doginvoice.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Aplikacja</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://ksef.doginvoice.com/generator-faktur-pdf-ksef.php"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Generator PDF z KSeF</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-col-title">Wsparcie</h4>
+              <ul class="footer-nav-col-list">
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="mailto:support@doginvoice.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Centrum pomocy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://api.doginvoice.com/api/v1/docs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Dokumentacja API</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://dogtronic.io/doginvoice/regulamin.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Regulamin</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://dogtronic.io/doginvoice/polityka_prywatnosci.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Polityka prywatności</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="footer-bottom-copyright typography--body-md"
+            >© 2026 DogInvoice. Wszystkie prawa zastrzeżone.</span
+          >
+          <p class="footer-bottom-credit typography--body-md">
+            Stworzone przez
+            <span class="footer-bottom-credit-link-wrap">
+              <a
+                class="footer-bottom-credit-link"
+                href="https://dogtronic.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Dogtronic Labs.</a
+              >
+            </span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="main.js"></script> -->
+    <script src="src/js/index.js"></script>
+    <script src="src/js/header.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="src/js/gsap-animations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="src/js/pricing.js"></script>
+    <script src="src/js/demo-modal.js"></script>
+    <script src="src/js/logos-swiper.js"></script>
+    <script src="src/js/features-swiper.js"></script>
+    <script src="src/js/integrations-swiper.js"></script>
+    <script src="src/js/testimonials-swiper.js"></script>
+    <script src="src/js/faq.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+    <script src="src/js/features-lottie.js"></script>
+  </body>
+</html>

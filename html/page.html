@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tytuł strony — DogInvoice</title>
+
+    <link rel="icon" href="src/assets/images/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <link rel="stylesheet" href="src/css/index.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body class="page-text">
+    <!-- ===== HEADER / NAV ===== -->
+
+    <header class="site-header">
+      <nav class="site-header-nav" aria-label="Główna nawigacja">
+        <a href="index.html" class="site-header-nav-logo no-hover-effect">
+          <svg
+            width="186"
+            height="31"
+            viewBox="0 0 186 31"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M87.9201 15.09V21.03V29.93H82.3401V27.82C81.7101 28.26 80.7101 28.79 79.3901 29.27C78.2401 29.69 76.0401 29.93 74.1101 29.93C71.3001 29.93 68.8101 29.31 66.6701 28.07C64.5501 26.81 62.8801 25.05 61.6601 22.81C60.4701 20.57 59.8701 17.98 59.8701 15.05C59.8701 12.12 60.4901 9.42001 61.7301 7.18001C62.9701 4.94001 64.7101 3.20001 66.9501 1.96001C69.1901 0.720006 71.8001 0.100006 74.7901 0.100006C77.2001 0.100006 79.3201 0.520006 81.1601 1.35001C83.0001 2.16001 84.5001 3.33001 85.6701 4.86001C86.8601 6.39001 87.6101 8.21001 87.9201 10.33H81.5901C81.3301 8.78001 80.6001 7.59001 79.4101 6.75001C78.2201 5.89001 76.6801 5.46001 74.7901 5.46001C72.9001 5.46001 71.4401 5.85001 70.1001 6.64001C68.7901 7.40001 67.7601 8.51001 67.0201 9.97001C66.3001 11.43 65.9501 13.13 65.9501 15.09C65.9501 17.09 66.3201 18.83 67.0601 20.31C67.8001 21.77 68.8401 22.9 70.1701 23.71C71.5101 24.5 73.0801 24.89 74.8901 24.89C76.2301 24.89 77.4301 24.68 78.5001 24.25C79.5701 23.82 80.4201 23.22 81.0401 22.46C81.6601 21.7 81.9701 20.84 81.9701 19.88V19.51V19.47L75.5301 15.1H81.9701H87.9101"
+              fill="#171717"
+            />
+            <path
+              d="M51.1002 1.91C48.9102 0.689996 46.3102 0.0899963 43.3002 0.0899963C40.2902 0.0899963 37.7202 0.699996 35.5002 1.91C33.3102 3.13 31.5902 4.86 30.3502 7.1C29.1102 9.32 28.4902 11.95 28.4902 15.01C28.4902 18.07 29.1102 20.68 30.3502 22.92C31.5902 25.14 33.3102 26.87 35.5002 28.11C37.7202 29.33 40.3202 29.93 43.3002 29.93C46.2802 29.93 48.8702 29.32 51.0602 28.11C53.2802 26.89 55.0102 25.16 56.2502 22.92C57.4902 20.68 58.1102 18.04 58.1102 15.01C58.1102 11.98 57.4902 9.29 56.2502 7.07C55.0302 4.83 53.3202 3.11 51.1002 1.92V1.91ZM49.7402 22.02C48.2102 23.76 46.0702 24.63 43.3002 24.63C40.5302 24.63 38.3902 23.76 36.8602 22.02C35.3302 20.28 34.5702 17.94 34.5702 15.01C34.5702 12.08 35.3302 9.71 36.8602 8C38.3902 6.26 40.5302 5.39 43.3002 5.39C46.0702 5.39 48.2402 6.26 49.7402 8C51.2702 9.72 52.0302 12.06 52.0302 15.01C52.0302 17.96 51.2702 20.28 49.7402 22.02Z"
+              fill="#171717"
+            />
+            <path
+              d="M19.57 2.23001C17.28 1.06001 14.56 0.480011 11.41 0.480011H0V5.63001H11.41C14.42 5.63001 16.69 6.48001 18.24 8.17001C19.81 9.86001 20.6 12.13 20.6 14.97C20.6 17.81 19.81 20.05 18.24 21.77C16.69 23.46 14.41 24.31 11.41 24.31H6.04V9.98001L0 5.62001V29.45H11.41C14.53 29.45 17.24 28.87 19.53 27.7C21.82 26.51 23.59 24.83 24.83 22.66C26.09 20.49 26.73 17.93 26.73 14.97C26.73 12.01 26.11 9.41001 24.87 7.24001C23.63 5.07001 21.86 3.40001 19.57 2.23001Z"
+              fill="#171717"
+            />
+            <path
+              d="M185.32 0V25.53L180.93 29.92H93.9502V4.39L98.3302 0H185.31H185.32Z"
+              fill="#4FD15F"
+            />
+            <path
+              d="M175.321 21.47H165.931V8.42001H175.321V10.55H168.391V13.67H174.831V15.73H168.391V19.34H175.321V21.47Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M159.271 21.7C157.951 21.7 156.791 21.43 155.791 20.88C154.801 20.32 154.031 19.54 153.491 18.53C152.951 17.52 152.681 16.33 152.681 14.97C152.681 13.61 152.951 12.42 153.491 11.41C154.041 10.4 154.811 9.62001 155.791 9.07001C156.791 8.51001 157.951 8.23001 159.271 8.23001C160.331 8.23001 161.271 8.41001 162.071 8.76001C162.891 9.11001 163.561 9.63001 164.081 10.31C164.611 10.98 164.941 11.78 165.101 12.71H162.571C162.421 11.98 162.061 11.41 161.471 11C160.901 10.59 160.171 10.39 159.261 10.39C157.971 10.39 156.961 10.8 156.221 11.61C155.481 12.42 155.111 13.53 155.111 14.96C155.111 16.39 155.481 17.51 156.221 18.33C156.961 19.14 157.981 19.54 159.261 19.54C160.161 19.54 160.901 19.34 161.471 18.94C162.051 18.53 162.421 17.96 162.571 17.22H165.101C164.951 18.15 164.611 18.96 164.081 19.64C163.551 20.31 162.881 20.82 162.071 21.17C161.261 21.52 160.331 21.7 159.271 21.7Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M148.811 21.47V8.42001H151.261V21.47H148.811Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M140.77 21.66C139.44 21.66 138.27 21.39 137.27 20.84C136.28 20.28 135.51 19.5 134.97 18.5C134.42 17.49 134.15 16.3 134.15 14.94C134.15 13.58 134.42 12.38 134.97 11.38C135.52 10.37 136.29 9.59 137.27 9.04C138.27 8.49 139.43 8.22 140.77 8.22C142.11 8.22 143.28 8.49 144.27 9.04C145.27 9.59 146.04 10.37 146.57 11.38C147.12 12.38 147.39 13.57 147.39 14.94C147.39 16.31 147.12 17.49 146.57 18.5C146.02 19.51 145.25 20.29 144.25 20.84C143.26 21.39 142.1 21.66 140.77 21.66ZM140.77 19.52C142.08 19.52 143.1 19.11 143.83 18.3C144.56 17.47 144.93 16.36 144.93 14.95C144.93 13.54 144.56 12.42 143.83 11.6C143.11 10.78 142.09 10.38 140.77 10.38C139.45 10.38 138.44 10.79 137.71 11.6C136.98 12.42 136.61 13.53 136.61 14.95C136.61 16.37 136.98 17.47 137.71 18.3C138.44 19.12 139.46 19.52 140.77 19.52Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M126.71 21.47L121.44 8.42001H124.13L128.16 18.75H128.24L132.23 8.42001H134.86L129.59 21.47H126.71Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M120.69 21.47H118.03L110.88 11.92H110.82V21.47H108.48V8.42001H111.07L118.29 18.12H118.35V8.42001H120.69V21.47Z"
+              fill="#DEFAE1"
+            />
+            <path
+              d="M103.94 21.47V8.42001H106.39V21.47H103.94Z"
+              fill="#DEFAE1"
+            />
+          </svg>
+        </a>
+
+        <ul class="site-header-nav-menu">
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="index.html#features"
+              >Funkcje</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="index.html#payments"
+              >Płatności</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="index.html#price"
+              >Cennik</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a
+              class="site-header-nav-menu-item-link"
+              href="index.html#integrations"
+              >Integracje</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a
+              class="site-header-nav-menu-item-link"
+              href="index.html#testimonials"
+              >Opinie</a
+            >
+          </li>
+          <li class="site-header-nav-menu-item">
+            <a class="site-header-nav-menu-item-link" href="index.html#faq"
+              >FAQ</a
+            >
+          </li>
+        </ul>
+
+        <div class="site-header-nav-actions">
+          <a
+            class="site-header-nav-actions-login btn"
+            size="sm"
+            color="transparent"
+            href="https://app.doginvoice.com/login"
+            target="_blank"
+          >
+            <span class="btn-title">Zaloguj się</span>
+          </a>
+          <a
+            class="site-header-nav-actions-register btn"
+            size="sm"
+            color="green"
+            href="https://app.doginvoice.com/register"
+            target="_blank"
+          >
+            <span class="btn-title">Załóż konto</span>
+          </a>
+        </div>
+
+        <button
+          class="site-header-nav-hamburger"
+          type="button"
+          aria-label="Otwórz menu"
+          aria-expanded="false"
+          aria-controls="site-header-mobile"
+        >
+          <div class="bars" id="bar1"></div>
+          <div class="bars" id="bar2"></div>
+          <div class="bars" id="bar3"></div>
+        </button>
+      </nav>
+
+      <div
+        class="site-header-mobile"
+        id="site-header-mobile"
+        aria-hidden="true"
+      >
+        <ul class="site-header-mobile-menu">
+          <li class="site-header-mobile-menu-item">
+            <a
+              class="site-header-mobile-menu-item-link"
+              href="index.html#features"
+              >Funkcje</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a
+              class="site-header-mobile-menu-item-link"
+              href="index.html#payments"
+              >Płatności</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="index.html#price"
+              >Cennik</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a
+              class="site-header-mobile-menu-item-link"
+              href="index.html#integrations"
+              >Integracje</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a
+              class="site-header-mobile-menu-item-link"
+              href="index.html#testimonials"
+              >Opinie</a
+            >
+          </li>
+          <li class="site-header-mobile-menu-item">
+            <a class="site-header-mobile-menu-item-link" href="index.html#faq"
+              >FAQ</a
+            >
+          </li>
+        </ul>
+        <div class="site-header-mobile-actions">
+          <a
+            class="site-header-mobile-actions-login btn"
+            size="sm"
+            color="white"
+            href="https://app.doginvoice.com/login"
+            target="_blank"
+          >
+            <span class="btn-title">Zaloguj się</span>
+          </a>
+          <a
+            class="site-header-mobile-actions-register btn"
+            size="sm"
+            color="green"
+            href="https://app.doginvoice.com/register"
+            target="_blank"
+          >
+            <span class="btn-title">Załóż konto</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="text-page" aria-labelledby="text-page-title">
+      <header class="text-page-header" data-aos="fade-up">
+        <span class="text-page-badge badge badge--beige">
+          <span class="badge-text">REGULAMIN</span>
+        </span>
+        <h1 id="text-page-title" class="text-page-title typography--h2">
+          Warunki świadczenia usług DogInvoice
+        </h1>
+        <p class="text-page-lead typography--body-lg" data-remove-orphans>
+          Niniejszy dokument określa zasady korzystania z platformy DogInvoice
+          służącej do wsparcia procesu analizy danych finansowych.<br />
+          Niniejszy dokument stanowi uzupełnienie warunków umowy zawieranej
+          pomiędzy Usługodawcą, a Usługobiorcą i stanowi jej integralną część.
+          <br />
+          <br />
+          Usługodawca przetwarza dane osobowe Użytkowników na zasadach opisanych
+          w
+          <a href="https://dogtronic.io/doginvoice/polityka_prywatnosci.pdf"
+            >Polityce prywatności</a
+          >
+          i zgodnie z RODO. Korzystając z Platformy Usługobiorca potwierdza, że
+          zapoznał się
+          <a href="https://dogtronic.io/doginvoice/polityka_prywatnosci.pdf"
+            >Polityką prywatności</a
+          >
+          i akceptuje zawarte w niej postanowienia
+        </p>
+      </header>
+
+      <div class="text-page-content" data-aos="fade-up">
+        <ol>
+          <li>
+            Definicje
+            <ol>
+              <li><strong>Abonament:</strong> opłata należna Usługodawcy od Usługobiorcy za świadczone Usługi, ustalana na podstawie wybranego przez Usługobiorcę Pakietu oraz długości trwania Okresu Rozliczeniowego</li>
+              <li><strong>Aplikacja:</strong> wersja Platformy udostępniana przez Usługodawcę jako aplikacja natywna przeznaczona na urządzenia desktopowe oraz mobilne lub na inne urządzenia końcowe z odpowiednim systemem operacyjnym (np. iOS lub Android), umożliwiająca dostęp do Usług</li>
+              <li><strong>Konto:</strong> zbiór zasobów i ustawień Usługobiorcy w ramach Platformy do których Usługobiorca uzyskuje dostęp po dokonaniu jednorazowej rejestracji oraz każdorazowym logowaniu do Platformy. Przy wykorzystaniu Konta Usługobiorca może wprowadzać i zarządzać swoimi danymi oraz korzystać z Usług świadczonych za pośrednictwem Platformy</li>
+              <li><strong>Okres Rozliczeniowy:</strong> okres, za który dokonywane są rozliczenia należności Usługobiorcy wobec Usługodawcy z tytułu świadczonych Usług, rozpoczynający się w dniu, o którym mowa w §6 Warunków świadczenia usług i kończący się po upływie określonych miesięcy lub lat</li>
+              <li><strong>Pakiet:</strong> wybrany przez Usługobiorcę pakiet usług świadczonych przez Usługodawcę na Platformie</li>
+              <li><strong>Platforma:</strong> system informatyczny DogInvoice dostępny za pośrednictwem Strony Internetowej <a href="https://doginvoice.com" target="_blank" rel="noopener noreferrer">https://doginvoice.com</a> lub Aplikacji <a href="https://app.doginvoice.com" target="_blank" rel="noopener noreferrer">https://app.doginvoice.com</a>, prowadzony i administrowany przez Usługodawcę. Serwis przeznaczony jest dla Użytkowników i umożliwia korzystanie z Usług świadczonych przez Usługodawcę. Ilekroć w Regulaminie jest mowa o Serwisie, rozumie się przez to również oprogramowanie wraz z interfejsem graficznym oraz zintegrowanymi bazami danych, zainstalowane oraz działające na serwerach Usługodawcy</li>
+              <li><strong>u.ś.u.d.e. –</strong> ustawa z dnia 18.07.2002 r. o świadczeniu usług drogą elektroniczną (Dz.U.2020.344 t.j. z późn. zm.)</li>
+              <li><strong>Umowa:</strong> umowa o świadczenie Usług drogą elektroniczną zawierana pomiędzy Usługobiorcą, a Usługodawcą na warunkach określonych w Warunkach świadczenia usług i Cenniku, zgodnie z wybranym Pakietem, poprzez akceptację Warunków świadczenia usług</li>
+              <li><strong>Usługa/Usługi:</strong> usługa / usługi świadczone przez Usługodawcę na rzecz Usługobiorcy drogą elektroniczną za pośrednictwem Platformy, w zakresie określonym w wybranym przez Usługobiorcę Pakiecie. Szczegółowy zakres Usług świadczonych przez Usługodawcę na rzecz Usługobiorcy został wskazany w § 3 Warunków świadczenia usług</li>
+              <li><strong>Usługobiorca:</strong> osoba fizyczna lub prawna korzystająca z Platformy</li>
+              <li><strong>Usługodawca:</strong> Dogtronic Labs Sp. z o.o. z siedzibą w Lublinie ul. Hajdowska 43C, 20-231 Lublin, wpisaną do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy Lublin-Wschód w Lublinie z siedzibą w Świdniku, VI Wydział Gospodarczy Krajowego Rejestru Sądowego pod nr KRS: 0001229537, NIP: 9462765575, REGON: 544273828</li>
+              <li><strong>Warunki świadczenia usług:</strong> niniejsze Warunki świadczenia usług Doginvoice w ramach Platformy</li>
+            </ol>
+          </li>
+
+          <li>
+            Postanowienia ogólne
+            <ol>
+              <li>Warunki świadczenia usług określają warunki i zasady korzystania z Platformy, w tym Strony Internetowej oraz Usług udostępnianych za pośrednictwem Platformy.</li>
+              <li>Usługodawca świadczy Usługi polegające w szczególności na wsparciu procesu analizy danych finansowych przez Usługobiorcę poprzez udostępnienie Usługobiorcy narzędzi umożliwiających, gromadzenie i przetwarzanie danych oraz generowanie danych, w zakresie i na warunkach określonych w wybranym przez Usługobiorcę Pakiecie.</li>
+              <li>Usługobiorca uprawniony jest do uzyskania dostęp do Warunków świadczenia usług w każdym czasie za pośrednictwem Strony <a href="https://doginvoice.com/" target="_blank" rel="noopener noreferrer">https://doginvoice.com/</a> oraz pobrania ich na urządzenie końcowe.</li>
+              <li>Usługi świadczone przez Usługodawcę nie są dostępne dla konsumentów w rozumieniu art. 22(1) k.c., co oznacza, że Usługobiorcą Usług Usługodawcy nie może być osoba fizyczna dokonująca z Usługodawcą czynności prawnej niezwiązanej bezpośrednio z jej działalnością gospodarczą lub zawodową. Usługobiorca będący osobą fizyczną może korzystać z Usług wyłącznie na potrzeby i w związku z prowadzoną przez siebie działalnością gospodarczą, wpisaną do CEIDG.</li>
+              <li>Warunki świadczenia usług stanowią regulamin, o którym mowa w art. 8 ust. 1 pkt 1) u.ś.u.d.e. Postanowienia Warunków świadczenia usług określają w szczególności sposób rejestracji na Platformie, warunki korzystania z Usług oraz dokonywania płatności, prawa i obowiązki Stron, zasady zamieszczania treści w ramach Platformy, w tym na Stronie Internetowej Platformy oraz informacje o charakterze technicznym i porządkowym.</li>
+              <li>Akceptując warunki świadczenia usług Usługobiorca potwierdza, że nie jest konsumentem w rozumieniu art. 22(1) k.c.</li>
+              <li>Warunki świadczenia usług udostępniane są przez Usługodawcę nieodpłatnie przed zawarciem Umowy za pośrednictwem Platformy w sposób umożliwiający odtworzenie i utrwalenie jego treści za pomocą systemu teleinformatycznego, którym posługuje się Usługobiorca. Na żądanie Usługobiorcy Usługodawca dostarczy Usługobiorcy Warunki świadczenia usług w aktualnie obowiązującym brzmieniu, pocztą elektroniczną na wskazany przez Usługobiorcę adres do kontaktu.</li>
+            </ol>
+          </li>
+
+          <li>
+            Zasady korzystania z Platformy
+            <ol>
+              <li>Korzystanie z Platformy wymaga od Usługobiorcy:
+              <ul class="standard-list">
+              <li>Rejestracji konta na Platformie z podaniem prawdziwych oraz aktualnych danych</li>
+              <li>Akceptacji niniejszych Warunków świadczenia usług</li>
+              <li>Przestrzegania zasad bezpieczeństwa</li>
+              <li>Używania Platformy zgodnie z jej przeznaczeniem</li>
+              <li>Złożenia zamówienia określającego Pakiet, jakie mają być świadczone przez Usługodawcę</li>
+              </ul>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            Pakiety usług świadczonych przez Usługodawcę
+            <ol>
+              <li>Usługodawca w ramach swoich Usług oferuje do wyboru Usługobiorcy następujące Pakiety:</li>
+              <li>
+              <strong>I. Starter:</strong> Obejmuje usługę automatyzacji procesów
+              odczytu i analizy danych z faktur do 10 dokumentów księgowych w
+              okresie rozliczeniowym
+              </li>
+              <li>
+              <strong>II. Professional:</strong> Obejmuje usługę automatyzacji
+              procesów odczytu i analizy danych z faktur do 150 dokumentów
+              księgowych w okresie rozliczeniowym
+              </li>
+              <li>
+              <strong>III. Business:</strong> Obejmuje usługę automatyzacji
+              procesów odczytu i analizy danych z faktur do 500 dokumentów
+              księgowych w okresie rozliczeniowym
+              </li>
+              <li>
+              <strong>IV. Enterprise:</strong> Obejmuje usługę automatyzacji
+              procesów odczytu i analizy danych z faktur w ilości dokumentów
+              uzgodnionych indywidualnie z Usługobiorcą na podstawie zgłoszonego
+              zapotrzebowania
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            Rejestracja Usługobiorcy na Platformie
+            <ol>
+              <li>Korzystanie przez Usługobiorcę z Usług świadczonych przez Usługodawcę w ramach Platformy wymaga zarejestrowania się Usługobiorcy na Platformie (założenia Konta), a w przypadku Usług odpłatnych – ponadto uiszczenia Abonamentu. Rejestracja na Platformie jest równoznaczna z akceptacją przez Usługobiorcę postanowień Warunków świadczenia usług oraz zobowiązaniem Usługobiorcy do ich przestrzegania.</li>
+              <li>Z chwilą rejestracji na Platformie Usługobiorca oświadcza ponadto, że zapoznał się z Polityką prywatności <a href="https://app.doginvoice.com/" target="_blank" rel="noopener noreferrer">https://app.doginvoice.com/</a> oraz wskazanymi w niej zasadami przetwarzania przez Usługodawcę danych osobowych w związku z korzystaniem z Usług świadczonych za pośrednictwem Platformy.</li>
+              <li>Podczas rejestracji na Platformie Usługobiorca zobowiązany jest do podania adresu poczty elektronicznej (e-mail), hasła, imienia, nazwiska, nazwy firmy, numeru NIP.</li>
+              <li>Usługobiorca jest zobowiązany do weryfikacji adresu poczty elektronicznej. W przypadku braku weryfikacji adresu w ciągu 14 (słownie: czternastu) dni licząc od dnia następującego po dniu rejestracji Usługobiorcy na Platformie, Usługodawca zastrzega sobie prawo do zablokowania Usługobiorcy dostępu do Konta do czasu weryfikacji adresu e-mail przez Usługobiorcę albo do ograniczenia Usługobiorcy dostępu do Usług świadczonych za pośrednictwem Platformy.</li>
+              <li>Z chwilą rejestracji przez Usługobiorcę Konta na Platformie dochodzi do zawarcia pomiędzy Usługodawcą, a Usługobiorcą Umowy, której przedmiotem jest świadczenie Usług drogą elektroniczną za pośrednictwem Platformy, na warunkach określonych w Warunkach świadczenia usług.</li>
+              <li>Podany podczas rejestracji adres poczty elektronicznej stanowi jednocześnie login Usługobiorcy, umożliwiający jego identyfikację na Platformie.</li>
+              <li>Hasło wskazane przez Usługobiorcę jest przyporządkowane do jego loginu i stanowi zabezpieczenie Konta przed dostępem osób nieuprawnionych.</li>
+              <li>W przypadku Usługobiorców będących osobami prawnymi lub jednostkami organizacyjnymi niebędącymi osobami prawnymi, którym odrębna ustawa przyznaje zdolność prawną, rejestracji w ich imieniu może dokonać jedynie osoba uprawniona do reprezentacji Usługobiorcy w zakresie upoważniającym do zawarcia i realizacji Umowy. Rejestracja na Platformie jest równoznaczna ze złożeniem przez osobę reprezentującą Usługobiorcę oświadczenia potwierdzającego fakt jej umocowania do zawarcia Umowy w imieniu i na rzecz Usługobiorcy. W przypadku niezgodności oświadczenia ze stanem faktycznym, Usługodawca może podjąć wszelkie przewidziane prawem lub Warunkami świadczenia usług kroki w stosunku do tej osoby oraz odmówić świadczenia Usług.</li>
+            </ol>
+          </li>
+
+          <li>
+            Zakup lub zmiana Pakietu przez Usługobiorcę
+            <ol>
+              <li>Z chwilą rejestracji przez Usługobiorcę na Platformie, Usługobiorca otrzymuje od Usługodawcy dostęp do Pakietu Usług Starter, opisanego w treści §4 pkt I. Warunków świadczenia Usług.</li>
+              <li>Usługobiorca po zarejestrowaniu Konta na Platformie może dokonać zmiany Pakietu Usług świadczonych przez Usługobiorcę poprzez dokonanie zakupu jednego z Pakietów wskazanych w treści §4 pkt II-IV Warunków świadczenia Usług i korzystać z dostępnych w nim funkcjonalności, zgodnie z Cennikiem, Warunkami świadczenia usług, w wybranym Okresie Rozliczeniowym.</li>
+              <li>Nabycie odpłatnych Pakietów Usług odbywa się za pośrednictwem Konta na Platformie. W celu nabycia wybranego Pakietu Usługobiorca zobowiązany jest zaznaczyć na swoim Koncie wybraną opcję Pakietu, wraz z wyborem Okresu Rozliczeniowego, a następnie dokonać płatności.</li>
+              <li>Z chwilą zaksięgowania przez Usługodawcę środków na rachunku bankowym Usługobiorca uzyskuje dostęp do wybranego Pakietu Usług, przez wybrany Okres Rozliczeniowy.</li>
+              <li>Usługobiorca w trakcie trwania Okresu Rozliczeniowego może dokonać zmiany wybranego Pakietu Usług poprzez przejście na pakiet wyższy lub niższy.</li>
+              <li>W przypadku zmiany Pakietu z niższego na wyższy, Usługobiorca zobowiązany jest do uiszczenia na rzecz Usługodawcy dopłaty do Abonamentu. Kwota dopłaty zostanie ustalona jako iloczyn dni pozostałych do końca trwania obowiązującego Okresu Rozliczeniowego oraz różnicy pomiędzy stawką nowego i dotychczasowego Abonamentu w przeliczeniu na jeden dzień. Z chwilą zaksięgowania dopłaty na rachunku bankowym Usługodawcy Usługobiorca uzyskuje dostęp do wybranego, wyższego Pakietu Usług.</li>
+              <li>Zmiana Pakietu z wyższego na niższy, nie uprawnia Usługobiorcy, który nie jest konsumentem, do zwrotu Abonamentu w wysokości proporcjonalnej do kwoty nowego Abonamentu i liczby dni pozostałych do końca trwania Okresu Rozliczeniowego.</li>
+            </ol>
+          </li>
+
+          <li>
+            Płatność
+            <ol>
+              <li>Usługobiorca zobowiązany jest do zapłaty na rzecz Usługodawcy Abonamentu z tytułu świadczonych Usług w ramach wybranego przez Usługobiorcę odpłatnego Pakietu, w danym Okresie Rozliczeniowym.</li>
+              <li>Aktualne stawki Abonamentu dla poszczególnych Planów zawarte są w Cenniku na stronie <a href="https://doginvoice.com/" target="_blank" rel="noopener noreferrer">https://doginvoice.com/</a></li>
+              <li>W sytuacji, gdy kwota podana w Cenniku jest kwotą netto, do kwoty Abonamentu doliczony i usług (VAT), zgodnie z obowiązującymi stawkami towarów zostanie podatek od wynikającymi z wiążących przepisów prawa.</li>
+              <li>Opłata realizowana jest przez Usługobiorcę z góry, za cały czas trwania Okresu Rozliczeniowego, za pośrednictwem Konta Usługobiorcy na Platformie. Kwota Abonamentu jest niepodzielna, co oznacza, że Usługobiorca nie może wnieść opłaty za okres krótszy niż całkowity Okres Rozliczeniowy.</li>
+              <li>Celem nabycia wybranego Pakietu, Usługobiorca zobowiązany jest zaznaczyć na Platformie odpowiedni wariant Pakietu. Usługobiorca posiadający siedzibę w państwie innym niż Polska, posiadający NIP europejski, zobowiązany jest do jego podania.</li>
+              <li>Płatność za Abonament dokonywana jest w wybrany przez Usługobiorcę sposób zapłaty. Aktualne na dzień dokonywania płatności sposoby zapłaty wskazane są w formularzu płatności.</li>
+              <li>Za dzień zapłaty przez Usługobiorcę Abonamentu uważany jest dzień uznania rachunku bankowego Usługodawcy.</li>
+              <li>Usługobiorca wyraża zgodę na otrzymywanie od Usługodawcy faktur VAT drogą elektroniczną.</li>
+            </ol>
+          </li>
+
+          <li>
+            Aplikacja DogInvoice
+            <ol>
+              <li>Usługobiorca przyjmuje do wiadomości, że dostęp do funkcji w ramach wybranego Pakietu, za pośrednictwem Aplikacji oraz Strony Internetowej może się różnić. W przypadku rozbieżności pomiędzy opisem poszczególnych funkcji wskazanych w niniejszych Warunkach świadczenia usług z funkcjami Aplikacji, opis ten należy odnosić do Platformy.</li>
+              <li>Konto Usługobiorcy dostępne na Platformie oraz w Aplikacji jest tym samym Kontem, a logowanie do niego poprzez Aplikację odbywa się przy wykorzystaniu tych samych danych dostępowych (loginu i hasła) co w ramach Platformy.</li>
+              <li>Usługobiorca może dokonać rezygnacji z korzystania z Aplikacji w każdym czasie poprzez jej odinstalowanie z urządzenia mobilnego, co nie wiąże się z usunięciem Konta w ramach Platformy.</li>
+              <li>Aplikacja jest przedmiotem autorskich praw majątkowych Usługodawcy. Wszelkie elementy graficzne, logotypy, znaki towarowe oraz układ interfejsu w niej prezentowane podlegają ochronie prawnej.</li>
+              <li>Korzystanie przez Usługobiorcę z Aplikacji możliwe jest przy zachowaniu warunków opisanych w Warunkach świadczenia usług przewidzianych dla Platformy.</li>
+              <li>Usługodawca nie ponosi odpowiedzialności za błędy Aplikacji wynikające z błędów funkcjonowania sklepów internetowych (np. Google Play i Apple App Store).</li>
+            </ol>
+          </li>
+
+          <li>
+            Licencja
+            <ol>
+              <li>
+              Z dniem rejestracji Konta przez Usługobiorcę, Usługobiorcy zostaje
+              udzielona przez Usługodawcę na czas świadczenia Usług, rozciągająca
+              się na całe terytorium Rzeczypospolitej Polskiej, niewyłączna
+              licencja na korzystanie z Platformy.
+              </li>
+              <li>
+              Usługodawca oświadcza i gwarantuje, że korzystanie przez
+              Usługobiorcę z Platformy nie będzie naruszać praw własności
+              intelektualnej osób trzecich, w tym praw autorskich, patentów ani
+              praw do baz danych.
+              </li>
+              <li>
+              Udzielona licencja, o której mowa w ust. 1, będzie uprawniała
+              Usługobiorcę do korzystania z Platformy na polach eksploatacji
+              obejmujących co najmniej:
+              <ul class="standard-list">
+              <li>
+              używanie Platformy na nieograniczonej liczbie sprzętów
+              należących do Usługobiorcy;
+              </li>
+              <li>
+              przetwarzanie, archiwizowanie, drukowanie i publikowanie danych
+              przetwarzanych przez Platformę.
+              </li>
+              </ul>
+              </li>
+              <li>
+              Usługodawca oświadcza, że posiada uprawnienia niezbędne do
+              korzystania z Platformy w celu wykonania Usług.
+              </li>
+              <li>
+              Usługobiorca nie ponosi odpowiedzialności za naruszenia praw osób
+              trzecich w związku z korzystaniem z Platformy z zachowaniem
+              wszelkich zasad i w przypadku skierowania z tego tytułu roszczeń
+              przeciwko Usługobiorcy Usługodawca zobowiązuje się do całkowitego
+              zaspokojenia roszczeń osób trzecich oraz do zwolnienia Usługobiorcy
+              z obowiązku świadczenia z tego tytułu.
+              </li>
+              <li>
+              Strony zgodnie postanawiają, że Usługobiorcy nie przysługuje prawo
+              udostępniania Platformy osobom trzecim z pominięciem Usługodawcy.
+              </li>
+              <li>
+              Usługobiorca nie jest uprawniony do:
+              <ul class="standard-list">
+              <li>
+              używania, kopiowania oraz pobierania Platformy ani żadnych
+              danych innych niż dane własne Usługobiorcy do celów innych niż
+              cel realizacji Usług;
+              </li>
+              <li>
+              tłumaczenia, dostosowywania, zmieniania lub modyfikowania
+              Platformy;
+              </li>
+              <li>
+              udostępniania Platformy do użytku bezpłatnie lub odpłatnie na
+              rzecz osób trzecich, tj. osób spoza uzgodnionej grupy
+              użytkowników;
+              </li>
+              <li>
+              przetwarzania, modyfikacji, inżynierii wstecznej, programowania
+              zwrotnego (reverse engineering), dekompilacji, dezasemblacji
+              kodu Platformy lub jego części ani do określania kodu
+              źródłowego w żaden inny sposób oraz do tworzenia dzieł
+              pochodnych z Platformy;
+              </li>
+              <li>
+              korzystania z kodów źródłowych Platformy w całości ani w części.
+              </li>
+              </ul>
+              </li>
+              <li>
+              Jakiekolwiek niewypełnienie przez Usługobiorcę obowiązków
+              wskazanych w niniejszym paragrafie, zostanie uznane za naruszenie
+              Licencji przez Usługobiorcę.
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            Aktualizacja Platformy
+            <ol>
+              <li>Usługodawca zobowiązuje się dołożyć należytej staranności w zakresie bieżącego aktualizowania Platformy, w szczególności pod kątem zmian w powszechnie obowiązujących przepisach prawa polskiego, mających wpływ na właściwe działanie Platformy lub jej poszczególnych funkcjonalności. Jakiekolwiek zmiany w Platformie wprowadzane są z uwzględnieniem czasu potrzebnego do ich implementacji oraz możliwości produkcyjnych Usługodawcy. Usługodawca nie ponosi wobec Usługobiorców niebędących Konsumentami odpowiedzialności za jakiekolwiek szkody mogące wyniknąć z niemożliwości dostosowania Platformy do wymogów prawnych, w terminach określonych w przepisach prawa.</li>
+              <li>Usługodawca uprawniony jest do aktualizacji Platformy we wszystkich lub w wybranych przez Usługodawcę Pakietach.</li>
+              <li>Usługobiorca nie ponosi dodatkowych kosztów z tytułu aktualizacji Platformy, ponad opłacony Abonament.</li>
+              <li>Aktualizacje Platformy mogą wprowadzać zmiany w jej funkcjonowaniu. O istotnych zmianach Usługodawca informuje Usługobiorcę za pośrednictwem Platformy lub Aplikacji.</li>
+              <li>Po wdrożeniu aktualizacji, obowiązkiem Usługobiorcy jest upewnienie się co do bieżącej poprawności wystawianych dokumentów oraz generowanych raportów.</li>
+            </ol>
+          </li>
+
+          <li>
+            Warunki techniczne korzystania z Usług oraz Platformy
+            <ol>
+              <li>Korzystanie przez Usługobiorcę z Usług świadczonych przez Usługodawcę za pośrednictwem Platformy wymaga spełnienia następujących warunków technicznych:
+              <ul class="standard-list">
+              <li>Posiadania przez Usługobiorcę urządzenia końcowego (urządzenia komputerowego lub urządzenia mobilnego);</li>
+              <li>Posiadania przez Usługobiorcę dostępu do sieci Internet, gwarantującego nieprzerwany dostęp do Usług podczas korzystania z nich;</li>
+              <li>Zainstalowania przez Usługobiorcę aktualnej wersji przeglądarki internetowej np. Chrome, Safari, Firefox, Microsoft Edge;</li>
+              </ul>
+              </li>
+              <li>Korzystanie przez Usługobiorcę z Usług świadczonych przez Usługodawcę za pośrednictwem Aplikacji jest możliwe:
+              <ul class="standard-list">
+              <li>Posiadania przez Usługobiorcę urządzenia końcowego;</li>
+              <li>Zainstalowania przez Usługobiorcę Aplikacji na urządzeniu końcowym;</li>
+              </ul>
+              </li>
+              <li>Celem skorzystania przez Usługobiorcę z Usług świadczonych przez usługodawcę, Usługobiorca zobowiązany jest posiadać aktywny adres e-mail.</li>
+              <li>Usługodawca nie jest zobowiązany do świadczenia Usług na rzecz podmiotów niespełniających wymogów wskazanych w ust. 1-3 powyżej.</li>
+              <li>W celu prawidłowego funkcjonowania Platformy i korzystania z Usług, Usługobiorca ma obowiązek zadbać, aby używane przez niego oprogramowanie było aktualne, szczególnie w zakresie ewentualnego pobierania nowych wersji lub aktualizacji.</li>
+              <li>Usługodawca zastrzega sobie prawo do modyfikowania technicznego sposobu realizacji lub (np. zmiany szaty graficznej Platformy), bez pogarszania Usług funkcjonalności, a także bez wpływu na zakres praw i obowiązków Stron. jakości ich</li>
+              <li>Wszelkie dane poufne dotyczące Usługobiorcy przesyłane są z użyciem protokołu szyfrowanego HTTPS. Szczególnym zagrożeniem związanym ze świadczeniem usług drogą elektroniczną jest niebezpieczeństwo uzyskania dostępu i ingerencji w dane transmitowane poprzez sieć typu tego rodzaju wirusów niebezpieczeństwom komputerowych, oprogramowania typu malware lub spyware) ważne jest, aby Usługobiorca Platformy zainstalował na swoim urządzeniu końcowym, poprzez które łączy się z siecią Internet, programy antywirusowe i na bieżąco je aktualizował. Internet przez osoby nieuprawnione. Aby zapobiegać (m.in. polegającym na działaniu różnego</li>
+              <li>Usługobiorca powinien dodatkowo:
+              <ul class="standard-list">
+              <li>Stosować odpowiednio mocne hasła oraz nie zapisywać haseł do Platformy ani nie udostępniać danych dostępowych (loginu i hasła) osobom do tego nieupoważnionym;</li>
+              <li>Dokonywać cyklicznej zmiany hasła w celu zachowania bezpieczeństwa danych dostępowych;</li>
+              <li>Unikać klikania w podejrzane linki na poczcie elektronicznej.</li>
+              </ul>
+              </li>
+              <li>W razie wykrycia przez Usługobiorcę nieprawidłowości w działaniu Platformy, podejrzanych treści lub podjęcia wątpliwości co do funkcjonowania Platformy, Usługobiorca powinien przerwać korzystanie z Platformy oraz niezwłocznie poinformować o zauważonych nieprawidłowościach Usługodawcę.</li>
+            </ol>
+          </li>
+
+          <li>
+            Prawa i obowiązki Stron
+            <ol>
+              <li>Usługodawca zobowiązuje się dołożyć należytej staranności w celu zapewnienia poprawnego działania Platformy oraz należytego wykonania Usług, jak również w celu ochrony danych i dokumentów zgromadzonych przez Usługobiorcę za pośrednictwem Platformy.</li>
+              <li>Usługodawca dołoży wszelkich starań, by Usługi świadczone były na rzecz Usługobiorcy w sposób ciągły, niezakłócony i zgodnie z warunkami opisanymi w Warunkach świadczenia usług. Usługodawca zastrzega sobie prawo dokonywania czasowych przerw w dostępie do Usług w celach konserwacyjnych, naprawczych lub w celach aktualizacji albo rozbudowy Platformy lub Usług – o ile działania te takiej przerwy wymagają. Usługodawca poinformuje Usługobiorcę o przerwie technicznej w drodze komunikatu zamieszczonego na Platformie (Aplikacji) lub na wskazany w danych użytkownika adres email.</li>
+              <li>Usługodawca zastrzega sobie prawo do zamieszczania informacji o świadczeniu Usług na rzecz Usługobiorcy niebędącego Konsumentem na Stronie Internetowej Usługodawcy oraz w materiałach i marketingowych Usługodawcy (w tym w prezentacjach sprzedażowych), w celach informacyjnych, handlowych i promocyjnych Usługodawcy. Usługobiorca niebędący Konsumentem wyraża zgodę na wykorzystanie przez Usługodawcę w tym celu swojego logotypu i firmy. informacyjnych</li>
+              <li>Usługobiorca zobowiązany jest do korzystania z Usług w sposób niezakłócający ich działania oraz w sposób zgodny z niniejszymi Warunkami świadczenia usług, powszechnie lub dokumentami obowiązującymi przepisami prawa oraz wszelkimi udostępnionymi Usługobiorcy przez Usługodawcę w związku z zawarciem lub realizacją Umowy. instrukcjami</li>
+              <li>Usługobiorca zobowiązany jest do zapoznawania się z opisami i instrukcjami dotyczącymi działania Platformy i jego poszczególnych funkcji, znajdującymi się na Stronie Internetowej bądź pojawiającymi się w trakcie użytkowania Platformy.</li>
+              <li>Usługobiorca zobowiązany jest prowadzić swoją działalność zgodnie z przepisami prawa oraz przetwarzać Dane Osobowe zgodnie z RODO.</li>
+              <li>Usługobiorca zobowiązany jest do podawania Usługodawcy prawdziwych i aktualnych danych, a w przypadku ich zmiany – do niezwłocznego powiadomienia o tym Usługodawcy, pod rygorem uznania, że wskazane uprzednio dane są aktualne. Usługodawca jest uprawniony w każdym czasie podjąć działania zmierzające do zweryfikowania prawdziwości oraz aktualności podanych przez Usługobiorcę danych.</li>
+              <li>Na adres e-mail Usługobiorcy mogą być wysyłane informacje techniczne, systemowe i obsługowe dotyczące funkcjonowania Platformy, niestanowiące informacji handlowej w rozumieniu u.ś.u.d.e.</li>
+              <li>Usługobiorca zobowiązany jest do zapoznawania się z treścią wiadomości oraz komunikatów, i stosowania się do ewentualnych zaleceń przesyłanych mu przez Usługodawcę Usługodawcy podawanych w również lub komunikatach, powstrzymywania się od korzystania z Usług w terminach przeznaczonych na prace konserwacyjne lub aktualizacyjne – o ile wynika to bezpośrednio z treści komunikatu. tych wiadomościach jak</li>
+              <li>Usługobiorca ponosi odpowiedzialność za niewykonanie lub nienależyte wykonanie Umowy oraz naruszenie postanowień niniejszych Warunków świadczenia usług przez swoich Użytkowników, tj. osoby, które upoważnia do korzystania z Konta oraz ponosi odpowiedzialność za działania i zaniechania ww. osób, jak za działania i zaniechania własne.</li>
+              <li>Usługodawca nie ponosi odpowiedzialności w sytuacji przedstawienia przez Usługobiorcę organom podatkowym błędnie wygenerowanego lub bazującego na błędnych danych dokumentu wygenerowanego za pośrednictwem Platformy.</li>
+            </ol>
+          </li>
+
+          <li>
+            Odpowiedzialność
+            <ol>
+              <li>Wyłącza się odpowiedzialność Usługodawcy z tytułu rękojmi.</li>
+              <li>Usługodawca odpowiada wyłącznie za niewykonanie lub nienależyte wykonanie Umowy, w tym Usług, które jest następstwem zawinionego i umyślnego działania Usługodawcy. Całkowita odpowiedzialność Usługodawcy względem Usługobiorcy w każdym przypadku ograniczona jest do wysokości bieżącego Abonamentu, uiszczonego przez Usługobiorcę z tytułu świadczenia Usług i obejmuje wyłącznie szkodę rzeczywistą.</li>
+              <li>Usługobiorca przyjmuje do wiadomości i akceptuje, że Platforma stanowi jedynie narzędzie wsparcia procesów analitycznych Usługobiorcy, w związku z czym Usługodawca nie ponosi odpowiedzialności związanej z prowadzoną przez Usługobiorcę działalnością gospodarczą oraz obsługą księgowo-rachunkową.</li>
+              <li>Usługobiorca niniejszym przyjmuje do wiadomości i potwierdza, że zobowiązuje się wypłacić odszkodowanie i zwolnić Usługodawcę z odpowiedzialności w przypadku jakichkolwiek strat, odszkodowań i zasadnych kosztów poniesionych przez Usługodawcę w wyniku roszczeń trzecich wobec Usługodawcy, wynikających z korzystania z Platformy przez osób Usługobiorcę lub jego Użytkownika w sposób naruszający niniejsze Warunki świadczenia usług lub warunki Licencji.</li>
+              <li>Usługodawca nie ponosi odpowiedzialności, w granicach zgodnych z obowiązującymi przepisami prawa, za szkody wynikające z:
+              <ul class="standard-list">
+              <li>niespełnienia przez Usługobiorcę warunków technicznych Usług, o których mowa w §11 ust. 1-3 Warunków świadczenia usług;</li>
+              <li>braku lub przerw w dostępie do Internetu po stronie Usługobiorcy;</li>
+              <li>nieprawidłowości w korzystaniu z Usług przez Usługobiorcę, w tym nieprzestrzegania zasad bezpieczeństwa opisanych w Warunkach świadczenia usług;</li>
+              <li>błędów lub braków w danych podanych przez Usługobiorcę lub jego Użytkownika;</li>
+              <li>wystąpienia przerwy technicznej pod warunkiem, że przerwa techniczna nie przekracza 48 godzin, kolejno po sobie następujących;</li>
+              <li>wystąpienia przerwy technicznej, a także trwałej lub czasowej niemożliwości świadczenia Usług, wynikającej z przyczyn niezależnych od Usługodawcy lub będącej następstwem zdarzeń, za które Usługodawca nie ponosi odpowiedzialności;</li>
+              <li>niedziałania albo wadliwego działania oprogramowania firm trzecich, z których korzysta Usługobiorca lub Usługodawca;</li>
+              <li>utraty danych dostępowych (loginu i hasła) służących do logowania na Platformie;</li>
+              <li>udostępnienia przez Usługobiorcę osobom trzecim danych dostępowych (loginu i hasła) służących do logowania na Platformie, a także uzyskania dostępu do Konta przez osoby nieuprawnione;</li>
+              <li>braku weryfikacji przez Usługobiorcę poprawności wygenerowanych w Platformie dokumentów, raportów i obliczeń pod kątem merytorycznym;</li>
+              <li>utraty danych znajdujących się na Koncie, w przypadku, gdy Konto te zostało usunięte na warunkach przewidzianych w niniejszych Warunkach świadczenia usług; lub</li>
+              <li>utraty danych znajdujących się na Koncie spowodowanej siłą wyższą okolicznościami leżącymi po stronie Usługobiorcy lub jego Użytkownika;</li>
+              <li>niebezpieczeństw związanych z użytkowaniem sieci Internet: ataków hackerskich, zainfekowania systemu przez wirusy komputerowe lub zdarzeń podobnych;</li>
+              <li>nieznajomości lub nieprzestrzegania przez Usługobiorcę postanowień Warunków świadczenia usług, w tym załączników stanowiących jego integralną część;</li>
+              <li>korzystania przez Usługobiorcę z Platformy w sposób sprzeczny z powszechnie obowiązującymi przepisami prawa;</li>
+              <li>wykorzystania w trakcie procesu rejestracji przez osobę nieuprawnioną adresu e-mail osoby, która nie wyraziła na to zgody;</li>
+              </ul>
+              </li>
+              <li>Niniejszy paragraf Warunków świadczenia usług ma zastosowanie jedynie do Usługobiorców, którzy nie są Konsumentami.</li>
+            </ol>
+          </li>
+
+          <li>
+            Okres obowiązywania i rozwiązanie
+            <ol>
+              <li>Umowa zawierana jest na czas nieokreślony.</li>
+              <li>Każda ze stron uprawniona jest, z zastrzeżeniem postanowień poniższych, do wypowiedzenia umowy. Wypowiedzenie wymaga przesłania oświadczenia o wypowiedzeniu umowy drugiej Stronie w formie pisemnej lub w formie elektronicznej na adresy email Stron. Adresem Usługodawcy jest <a href="mailto:hello@doginvoice.com">hello@doginvoice.com</a>. Adresem Usługobiorcy jest adres jego siedziby. Adresem email Usługobiorcy jest jego adres email wskazany podczas rejestracji Konta. jego siedziby. Adresem email Usługodawcy jest adres</li>
+              <li>Wypowiedzenie wymaga zachowania 1 miesięcznego okresu wypowiedzenia, ze skutkiem na koniec miesiąca kalendarzowego, co oznacza, że rozwiązanie Umowy z Usługobiorcą następuje z końcem miesiąca kalendarzowego następującego po miesiącu, w którym Strona doręczyła drugiej Stronie oświadczenie o wypowiedzeniu Umowy.</li>
+              <li>W przypadku Usługobiorców będących Konsumentami wypowiedzenie Umowy przez Usługodawcę może nastąpić tylko z ważnych przyczyn, takich jak zaprzestanie oferowania przez Usługodawcę Usług w ramach Platformy, zmiana powszechnie obowiązujących przepisów prawa, które mają wpływ na prawa i obowiązki wynikające z zawartej pomiędzy Usługodawcą a Usługobiorcą Umowy lub zmiana interpretacji powyższych przepisów prawa wskutek orzeczeń sądów, decyzji, nakazów, wytycznych właściwych w danym zakresie urzędów lub organów.</li>
+              <li>W przypadku złożenia przez Usługobiorcę niebędącego Konsumentem oświadczenia o wypowiedzeniu Umowy w trakcie trwania Okresu Rozliczeniowego w odpłatnym Pakiecie, Umowa ulega rozwiązaniu z upływem ostatniego dnia Okresu Rozliczeniowego, za który dokonano zapłaty Abonamentu.</li>
+              <li>Usługobiorcy przysługuje prawo rozwiązania Umowy ze skutkiem natychmiastowym w każdym czasie, bez podania przyczyny, w drodze usunięcia Konta z Platformy, z zastrzeżeniem, że wskutek rozwiązania Umowy w tym trybie Usługobiorcy nie przysługuje proporcjonalny zwrot uiszczonego Abonamentu za niewykorzystaną część Okresu Rozliczeniowego.</li>
+              <li>Usługodawcy przysługuje prawo rozwiązania Umowy ze skutkiem natychmiastowym w przypadku, gdy:
+              <ul class="standard-list">
+              <li>Usługodawca poweźmie wiadomość, że Usługobiorca lub jego Użytkownik korzysta lub korzystał z Usług świadczonych przez Usługodawcę z rażącym naruszeniem postanowień Warunków świadczenia usług, przepisów prawa, reguł uczciwego obrotu lub działając na szkodę Usługodawcy lub innych Użytkowników Platformy;</li>
+              <li>Usługodawca ustali, że Usługobiorca przy opłacaniu Abonamentu lub w trakcie realizacji Umowy podał nieprawdziwe dane lub informacje, a w szczególności posłużył się nieprawdziwymi, sfałszowanymi lub nieważnymi dokumentami;</li>
+              <li>Usługobiorca lub jego Użytkownik prowadzi działania mające na celu uzyskanie nieautoryzowanego dostępu do systemu teleinformatycznego Usługodawcy, w szczególności poprzez przełamywanie zabezpieczeń;</li>
+              <li>Usługobiorca naruszy warunki Licencji;</li>
+              </ul>
+              </li>
+              <li>Oświadczenie o rozwiązaniu Umowy ze skutkiem natychmiastowym, o którym mowa w ust. 7 powyżej, zostanie złożone Usługobiorcy w formie pisemnej lub drogą elektroniczną, na dane wskazane w ust. 2 powyżej. Z chwilą skutecznego doręczenia oświadczenia Usługobiorcy, Usługodawca ma prawo do zablokowania lub ograniczenia Usługobiorca dostępu do Konta oraz usunięcia Konta Usługobiorcy.</li>
+              <li>Z zastrzeżeniem odmiennych postanowień Warunków świadczenia usług, w przypadku rozwiązania z Usługobiorcą będącym Konsumentem Umowy w trybie wypowiedzenia, w trakcie trwania Okresu Rozliczeniowego w odpłatnym Pakiecie, Usługobiorca może żądać od Usługodawcy zwrotu Abonamentu w wysokości proporcjonalnej do niewykorzystanej części Okresu Rozliczeniowego. Kwota zwrotu zostanie ustalona jako iloczyn dni pozostałych do końca trwania Okresu Rozliczeniowego oraz stawki Abonamentu w przeliczeniu na jeden dzień.</li>
+              <li>W sytuacjach opisanych w ust. 7 powyżej, Usługobiorcy niebędącemu Konsumentem nie przysługuje proporcjonalny zwrot uiszczonego Abonamentu za niewykorzystaną część Okresu Rozliczeniowego.</li>
+              <li>Z zastrzeżeniem odmiennych postanowień Warunków świadczenia usług, rozwiązanie Umowy jest równoznaczne z usunięciem Konta Usługobiorcy na Platformie.</li>
+              <li>Usługobiorca przyjmuje do wiadomości i zgadza się z tym, że usunięcie Konta na Platformie jest równoznaczne dla tego Usługobiorcy z utratą wszystkich zgromadzonych w ramach tego Konta danych, w tym danych wprowadzanych przez innych Użytkowników Konta.</li>
+              <li>Usługodawca nie odpowiada za szkody wyrządzone Usługobiorcy niebędącemu Konsumentem, powstałe na skutek usunięcia Konta Usługobiorcy, w tym szkody będące następstwem utraty danych znajdujących się na Koncie, w przypadku, gdy Konto te zostało usunięte na warunkach przewidzianych w niniejszymi Warunkami świadczenia usług.</li>
+            </ol>
+          </li>
+
+          <li>
+            Odstąpienie od umowy przez Konsumentów
+            <ol>
+              <li>W terminie 14 (słownie: czternastu) dni od dnia zawarcia Umowy oraz w terminie 14 (słownie: czternastu) dni licząc od dnia pierwszego opłacenia przez Usługobiorcę-Konsumenta Abonamentu, Usługobiorca będący Konsumentem może od Umowy odstąpić bez podania przyczyny. Usługobiorca-Konsument odstępuje od Umowy poprzez złożenie Usługodawcy jednoznacznego oświadczenia o odstąpieniu. Oświadczenie może zostać złożone w formie elektronicznej, na adres e-mail: <a href="mailto:hello@doginvoice.com">hello@doginvoice.com</a> (forma zalecana) lub na piśmie, poprzez wysyłkę oświadczenia na adres siedziby Usługodawcy. Do zachowania terminu wystarczy wysłanie przez Usługobiorcę-Konsumenta oświadczenia przed upływem 14-dniowego terminu. W celu złożenia oświadczenia Usługobiorca-Konsument może skorzystać ze wzoru oświadczenia stanowiącego Załącznik nr 1 do Warunków świadczenia usług, jednak nie jest to obowiązkowe.</li>
+              <li>Usługodawca niezwłocznie przekaże Usługobiorcy-Konsumentowi potwierdzenie otrzymania oświadczenia o odstąpieniu od Umowy. Potwierdzenie zostanie wysłane drogą elektroniczną na adres e-mail Usługobiorcy-Konsumenta użyty do złożenia oświadczenia, a w przypadku złożenia oświadczenia w formie pisemnej, na adres e-mail Usługobiorcy-Konsumenta będący jego z Usługobiorcą-Konsumentem, przypisany do jego konta na Platformie. na Platformie kontaktu loginem służący e-mail adres lub do</li>
+              <li>W przypadku złożenia przez Usługobiorcę będącego Konsumentem oświadczenia o odstąpieniu od Umowy w trybie i terminie wskazanym w niniejszej paragrafie, Umowę uważa się za niezawartą. Usługodawca, w terminie 14 dni od dnia otrzymania oświadczenia o odstąpieniu, zwróci Usługobiorcy-Konsumentowi wszelkie dokonane przez niego płatności w ramach Umowy, od której odstępuje (jeśli dotyczy). Zwrot należności nastąpi przy użyciu tego samego sposobu zapłaty, jakiego użył pierwotnie Usługobiorca-Konsument. Sposób zapłaty zwracanej kwoty na rzecz Usługobiorcy-Konsumenta może być zmieniony jedynie za wyraźną zgodą Usługobiorcy-Konsumenta.</li>
+              <li>Odstąpienie od Umowy przez Usługobiorcę-Konsumenta jest równoznaczne z usunięciem jego Konta na Platformie.</li>
+            </ol>
+          </li>
+
+          <li>
+            Reklamacje i rozwiązywanie sporów
+            <ol>
+              <li>Usługobiorca ma prawo do złożenia Usługodawcy reklamacji dotyczącej Platformy, w tym Usług świadczonych za jej pośrednictwem. Reklamację należy kierować do Usługodawcy w formie elektronicznej, przesyłając na adres poczty elektronicznej: <a href="mailto:hello@doginvoice.com">hello@doginvoice.com</a></li>
+              <li>Wskazany w ust. 1 powyżej sposób złożenia reklamacji jest obowiązkowy i stanowi warunek skutecznego złożenia reklamacji.</li>
+              <li>Reklamacja Usługobiorcy powinna zawierać opis stanu faktycznego będącego podstawą reklamacji, dane pozwalające zidentyfikować Usługobiorcę na Platformie oraz wskazanie zakresu żądania i jego zwięzłe uzasadnienie.</li>
+              <li>Usługodawca udziela odpowiedzi na reklamację w terminie 14 (słownie: czternastu) dni, licząc od dnia otrzymania prawidłowej, tj. zawierającej co najmniej informacje wskazane w ust. 3 powyżej, reklamacji. Do zachowania terminu, o którym mowa w zdaniu pierwszym, wystarczające jest wysłanie do Usługobiorcy odpowiedzi na reklamację w ostatnim dniu terminu.</li>
+              <li>W przypadku Usługobiorców będących Konsumentami, w przypadku nieudzielenia przez Usługodawcę odpowiedzi w terminie, o którym mowa w ust. 5 powyżej, przyjmuje się, że Usługodawca uznał reklamację.</li>
+              <li>Usługodawca przesyła odpowiedź na reklamację w formie elektronicznej, na adres e-mail usługobiorcy będący jego loginem na Platformie lub adres e-mail służący do kontaktu.</li>
+              <li>W sytuacji, gdy informacje przekazane przez Usługobiorcę nie pozwalają na rozstrzygnięcie reklamacji lub wymagają uzupełnienia, Usługodawca zastrzega sobie prawo do zwrócenia się do Usługobiorcy o uzupełnienie danych dotyczących reklamacji. W takim wypadku termin, o którym mowa w ust. 4 powyżej, liczony jest od dnia uzupełnienia informacji przez Usługobiorcę. W przypadku, gdy okaże się, że problemy z dostępem do Platformy lub Usług wynikają z przyczyn leżących po stronie Usługobiorcy niebędącego Konsumentem, Usługodawca nie jest zobowiązany do odpowiedzi na zgłoszoną reklamację.</li>
+              <li>Usługodawca pozostawia umożliwiających identyfikację Usługobiorcy. bez rozpatrzenia reklamację niezawierającą danych</li>
+              <li>Po wyczerpaniu drogi postępowania reklamacyjnego Usługobiorcy przysługuje możliwość dochodzenia swoich praw na zasadach ogólnych.</li>
+            </ol>
+          </li>
+
+          <li>
+            Postanowienia końcowe
+            <ol>
+              <li>Wszelkie zmiany w niniejszych Warunkach świadczenia usług będą publikowane na stronie internetowej Usługodawcy <a href="https://doginvoice.com/" target="_blank" rel="noopener noreferrer">https://doginvoice.com/</a></li>
+              <li>Niniejsze Warunki świadczenia usług zostały sporządzone w języku polskim. Polska wersja językowa stanowi wyłączną podstawę interpretacji postanowień Umowy.</li>
+              <li>Korespondencja, w tym wszelkie zawiadomienia, informacje oraz inne komunikaty przekazywane będą Usługobiorcy w języku polskim.</li>
+              <li>Korzystanie z Platformy po wprowadzeniu zmian oznacza ich akceptację.</li>
+              <li>W sprawach nieuregulowanych niniejszymi Warunkami świadczenia usług, mają zastosowanie przepisy prawa polskiego.</li>
+              <li>Usługodawca komunikuje się z Usługobiorcą drogą elektroniczną, telefonicznie lub na piśmie, na dane przypisane do jego Konta na Platformie, o ile co innego nie wynika z treści Warunków świadczenia usług.</li>
+              <li>Usługobiorca nie ma prawa przenosić praw i obowiązków związanych z realizacją Umowy, w całości lub w części, na osoby trzecie, bez uprzedniej zgody Usługodawcy wyrażonej w formie co najmniej dokumentowej. Dotychczasowy Usługobiorca odpowiada solidarnie z nowym Usługobiorcą za uregulowanie wszelkich należności związanych z korzystaniem z Konta do dnia przeniesienia praw i obowiązków związanych z Umową.</li>
+              <li>Uznanie poszczególnych postanowień Warunków świadczenia usług w sposób przewidziany prawem za nieważne bądź nieskuteczne nie wpływa na ważność czy skuteczność pozostałych postanowień Warunków świadczenia usług. W miejsce nieważnego postanowienia zastosowana będzie reguła, która jest najbliższa celom nieważnego postanowienia i całych Warunków świadczenia usług.</li>
+              <li>Z zastrzeżeniem zdania drugiego, wszelkie spory wynikające z zawartej Umowy bądź powstałe na tle stosowania postanowień Warunków świadczenia usług będą rozstrzygane przez sąd właściwy miejscowo dla siedziby Usługodawcy. W przypadku Usługobiorcy będącego Konsumentem spory będą rozstrzygane przez miejscowo właściwy sąd powszechny, ustalony na podstawie powszechnie obowiązujących przepisów prawa.</li>
+              <li>Regulamin wchodzi w życie z dniem 2 stycznia 2025 r.</li>
+              <li>Załączniki stanowią integralną część Warunków świadczenia usług:
+              <ul class="standard-list">
+              <li>Nr 1 – Wzór formularza odstąpienia od umowy.</li>
+              </ul>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            Załącznik — wzór formularza odstąpienia od umowy
+            <ol>
+              <li><strong>Adresat:</strong> Dogtronic Labs Sp. z o.o., ul. Hajdowska 43C, 20-231 Lublin</li>
+              <li>Imię i nazwisko konsumenta; Adres konsumenta</li>
+              <li><strong>Oświadczenie o odstąpieniu od umowy zawartej na odległość lub poza lokalem przedsiębiorstwa</strong><br />Na podstawie ustawy z dnia 30 maja 2014 r. o prawach konsumenta (art. 27) odstępuję od umowy zawartej w dniu ……………………. na odległość*/poza lokalem przedsiębiorstwa* bez podania przyczyny. Proszę o zwrot ceny towaru na konto*……… / w sposób, w jaki dokonano płatności.</li>
+              <li>……………………… Podpis konsumenta</li>
+              <li>Załączniki:
+              <ul class="standard-list">
+              <li>Dowód zakupu</li>
+              </ul>
+              </li>
+            </ol>
+          </li>
+
+        </ol>
+      </div>
+    </main>
+
+    <!-- ===== STOPKA ===== -->
+    <footer class="footer">
+      <div class="footer__background"></div>
+
+      <div class="footer-panel">
+        <div class="footer-panel-main">
+          <div class="footer-content">
+            <a href="index.html" class="footer-content-logo no-hover-effect">
+              <img src="src/assets/images/logo.svg" alt="DogInvoice" />
+            </a>
+            <p
+              class="footer-content-description typography--body-md"
+              data-remove-orphans
+            >
+              Automatyzacja faktur z AI i pełna integracja z KSeF. Oszczędzaj
+              czas, eliminuj błędy i miej kontrolę nad finansami.
+            </p>
+          </div>
+
+          <nav class="footer-nav" aria-label="Stopka">
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-col-title">Produkty</h4>
+              <ul class="footer-nav-col-list">
+                <li>
+                  <a class="no-hover-effect" href="index.html#features"
+                    >Funkcje</a
+                  >
+                </li>
+                <li>
+                  <a class="no-hover-effect" href="index.html#testimonials"
+                    >Opinie</a
+                  >
+                </li>
+                <li>
+                  <a class="no-hover-effect" href="index.html#price">Cennik</a>
+                </li>
+                <li>
+                  <a class="no-hover-effect" href="index.html#integrations"
+                    >Integracje</a
+                  >
+                </li>
+                <li>
+                  <a class="no-hover-effect" href="index.html#faq">FAQ</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-col-title">Narzędzia</h4>
+              <ul class="footer-nav-col-list">
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://app.doginvoice.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Aplikacja</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://ksef.doginvoice.com/generator-faktur-pdf-ksef.php"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Generator PDF z KSeF</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-col-title">Wsparcie</h4>
+              <ul class="footer-nav-col-list">
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="mailto:support@doginvoice.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Centrum pomocy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://api.doginvoice.com/api/v1/docs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Dokumentacja API</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://dogtronic.io/doginvoice/regulamin.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Regulamin</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="no-hover-effect"
+                    href="https://dogtronic.io/doginvoice/polityka_prywatnosci.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Polityka prywatności</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="footer-bottom-copyright typography--body-md"
+            >© 2026 DogInvoice. Wszystkie prawa zastrzeżone.</span
+          >
+          <p class="footer-bottom-credit typography--body-md">
+            Stworzone przez
+            <span class="footer-bottom-credit-link-wrap">
+              <a
+                class="footer-bottom-credit-link"
+                href="https://dogtronic.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Dogtronic Labs.</a
+              >
+            </span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- only main script and header script -->
+    <script src="src/js/index.js"></script>
+    <script src="src/js/header.js"></script>
+  </body>
+</html>
