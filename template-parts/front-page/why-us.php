@@ -55,7 +55,7 @@ $why_us_items_count = count( (array) get_field( 'why_us_items' ) );
               <?php echo esc_html( get_sub_field( 'title' ) ); ?>
             </h3>
             <p class="why-us-grid-item-description typography--body-md">
-              <?php echo esc_html( get_sub_field( 'description' ) ); ?>
+              <?php echo wp_kses_post( get_sub_field( 'description' ) ); ?>
             </p>
           </li>
         <?php endwhile; ?>
