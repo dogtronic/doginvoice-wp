@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The footer for this theme
  *
@@ -9,9 +10,9 @@
  * @package doginvoice
  */
 ?>
-  <footer class="footer">
-    <div class="footer__background"></div>
-    <?php if ( is_front_page() ) : ?>
+<footer class="footer">
+  <div class="footer__background"></div>
+  <?php if (is_front_page()) : ?>
     <div class="footer-section max-width" aria-labelledby="cta-title">
       <div class="footer-section-badge badge badge--dark" data-aos="fade-up">
         <span class="badge-text">ZACZNIJ JUŻ DZIŚ</span>
@@ -27,8 +28,7 @@
         data-aos="fade-up"
         data-remove-orphans>
         Załóż konto, podłącz KSeF, automatyzuj zarządzanie finansami swojej
-        firmy.<br />
-        Starter za darmo, do 10 faktur/mies.
+        firmy.
       </p>
       <a
         href="https://app.doginvoice.com/register"
@@ -388,121 +388,123 @@
         </svg>
       </div>
     </div>
-    <?php endif; ?>
-    <div class="footer-panel">
-      <div class="footer-panel-main">
-        <div class="footer-content">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-content-logo no-hover-effect">
-            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/images/logo.svg" alt="DogInvoice" />
-          </a>
-          <p
-            class="footer-content-description typography--body-md"
-            data-remove-orphans>
-            Automatyzacja faktur z AI i pełna integracja z KSeF. Oszczędzaj
-            czas, eliminuj błędy i miej kontrolę nad finansami.
-          </p>
-        </div>
-
-        <nav class="footer-nav" aria-label="Stopka">
-          <div class="footer-nav-col">
-            <h4 class="footer-nav-col-title">Produkt</h4>
-            <?php
-            wp_nav_menu(
-              array(
-                'theme_location' => 'menu-1',
-                'container'      => false,
-                'menu_id'        => 'footer-nav-menu',
-                'menu_class'     => 'footer-nav-col-list',
-                'walker'         => new DogInvoice_Nav_Walker('', 'no-hover-effect'),
-                'fallback_cb'    => false,
-                'depth'          => 1,
-              )
-            );
-            ?>
-          </div>
-          <div class="footer-nav-col">
-            <h4 class="footer-nav-col-title">Narzędzia</h4>
-            <?php
-            wp_nav_menu(
-              array(
-                'menu'        => 4,
-                'container'   => false,
-                'menu_id'     => 'footer-tools-menu',
-                'menu_class'  => 'footer-nav-col-list',
-                'walker'      => new DogInvoice_Nav_Walker('', 'no-hover-effect'),
-                'fallback_cb' => false,
-                'depth'       => 1,
-              )
-            );
-            ?>
-          </div>
-          <div class="footer-nav-col">
-            <h4 class="footer-nav-col-title">Wsparcie</h4>
-            <?php
-            wp_nav_menu(
-              array(
-                'menu'        => 5,
-                'container'   => false,
-                'menu_id'     => 'footer-support-menu',
-                'menu_class'  => 'footer-nav-col-list',
-                'walker'      => new DogInvoice_Nav_Walker('', 'no-hover-effect'),
-                'fallback_cb' => false,
-                'depth'       => 1,
-              )
-            );
-            ?>
-          </div>
-        </nav>
-      </div>
-
-      <div class="footer-bottom">
-        <span class="footer-bottom-copyright typography--body-md">© 2026 DogInvoice. Wszystkie prawa zastrzeżone.</span>
-        <p class="footer-bottom-credit typography--body-md">
-          Stworzone przez
-          <span class="footer-bottom-credit-link-wrap">
-            <a
-              class="footer-bottom-credit-link"
-              href="https://dogtronic.com"
-              target="_blank"
-              rel="noopener noreferrer">Dogtronic Labs.</a>
-          </span>
+  <?php endif; ?>
+  <div class="footer-panel">
+    <div class="footer-panel-main">
+      <div class="footer-content">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-content-logo no-hover-effect">
+          <img src="<?php echo get_template_directory_uri(); ?>/src/assets/images/logo.svg" alt="DogInvoice" />
+        </a>
+        <p
+          class="footer-content-description typography--body-md"
+          data-remove-orphans>
+          Automatyzacja faktur z AI i pełna integracja z KSeF. Oszczędzaj
+          czas, eliminuj błędy i miej kontrolę nad finansami.
         </p>
       </div>
+
+      <nav class="footer-nav" aria-label="Stopka">
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-col-title">Produkt</h4>
+          <?php
+          wp_nav_menu(
+            array(
+              'theme_location' => 'menu-1',
+              'container'      => false,
+              'menu_id'        => 'footer-nav-menu',
+              'menu_class'     => 'footer-nav-col-list',
+              'walker'         => new DogInvoice_Nav_Walker('', 'no-hover-effect'),
+              'fallback_cb'    => false,
+              'depth'          => 1,
+            )
+          );
+          ?>
+        </div>
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-col-title">Narzędzia</h4>
+          <?php
+          wp_nav_menu(
+            array(
+              'menu'        => 4,
+              'container'   => false,
+              'menu_id'     => 'footer-tools-menu',
+              'menu_class'  => 'footer-nav-col-list',
+              'walker'      => new DogInvoice_Nav_Walker('', 'no-hover-effect'),
+              'fallback_cb' => false,
+              'depth'       => 1,
+            )
+          );
+          ?>
+        </div>
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-col-title">Wsparcie</h4>
+          <?php
+          wp_nav_menu(
+            array(
+              'menu'        => 5,
+              'container'   => false,
+              'menu_id'     => 'footer-support-menu',
+              'menu_class'  => 'footer-nav-col-list',
+              'walker'      => new DogInvoice_Nav_Walker('', 'no-hover-effect'),
+              'fallback_cb' => false,
+              'depth'       => 1,
+            )
+          );
+          ?>
+        </div>
+      </nav>
     </div>
-  </footer>
 
-  <?php
-  $organization_schema = array(
-    '@context' => 'https://schema.org',
-    '@type'    => 'Organization',
-    'name'     => get_bloginfo( 'name' ),
-    'url'      => home_url( '/' ),
-    'logo'     => get_template_directory_uri() . '/src/assets/images/logo.svg',
-  );
-  ?>
-  <script type="application/ld+json"><?php echo wp_json_encode( $organization_schema, JSON_UNESCAPED_UNICODE ); ?></script>
+    <div class="footer-bottom">
+      <span class="footer-bottom-copyright typography--body-md">© 2026 DogInvoice. Wszystkie prawa zastrzeżone.</span>
+      <p class="footer-bottom-credit typography--body-md">
+        Stworzone przez
+        <span class="footer-bottom-credit-link-wrap">
+          <a
+            class="footer-bottom-credit-link"
+            href="https://dogtronic.com"
+            target="_blank"
+            rel="noopener noreferrer">Dogtronic Labs.</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
 
-  <!-- <script src="main.js"></script> -->
-  <script src="<?php echo get_template_directory_uri(); ?>/src/js/index.js" defer></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/src/js/header.js" defer></script>
-  <?php if ( is_front_page() ) : ?>
-    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-    <script src="https://unpkg.com/tippy.js@6" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/gsap-animations.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/pricing.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/demo-modal.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/logos-swiper.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-swiper.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/integrations-swiper.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/testimonials-swiper.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/faq.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-lottie.js" defer></script>
-  <?php endif; ?>
-  <?php wp_footer(); ?>
+<?php
+$organization_schema = array(
+  '@context' => 'https://schema.org',
+  '@type'    => 'Organization',
+  'name'     => get_bloginfo('name'),
+  'url'      => home_url('/'),
+  'logo'     => get_template_directory_uri() . '/src/assets/images/logo.svg',
+);
+?>
+<script type="application/ld+json">
+  <?php echo wp_json_encode($organization_schema, JSON_UNESCAPED_UNICODE); ?>
+</script>
+
+<!-- <script src="main.js"></script> -->
+<script src="<?php echo get_template_directory_uri(); ?>/src/js/index.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/src/js/header.js" defer></script>
+<?php if (is_front_page()) : ?>
+  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+  <script src="https://unpkg.com/tippy.js@6" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/gsap-animations.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/pricing.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/demo-modal.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/logos-swiper.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-swiper.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/integrations-swiper.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/testimonials-swiper.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/faq.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-lottie.js" defer></script>
+<?php endif; ?>
+<?php wp_footer(); ?>
 </body>
 
 </html>

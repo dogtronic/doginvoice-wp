@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for this theme
  *
@@ -17,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/src/assets/images/favicon.svg" />
-  <?php if ( is_front_page() ) : ?>
+  <?php if (is_front_page()) : ?>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -26,15 +27,63 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <?php wp_head(); ?>
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '4f9a61086ec9068eb86b96d8c65a741f9158b6ad';
+    window.smartsupp || (function(d) {
+      var s, c, o = smartsupp = function() {
+        o._.push(arguments)
+      };
+      o._ = [];
+      s = d.getElementsByTagName('script')[0];
+      c = d.createElement('script');
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+
+
 </head>
 
 <body <?php body_class(); ?>>
+  <!-- Meta Pixel Code -->
+  <script>
+    ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '912538241784436');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1357246289770759&ev=PageView&noscript=1" /></noscript>
+
+
+
   <?php wp_body_open(); ?>
   <!-- ===== HEADER / NAV ===== -->
 
   <header class="site-header">
     <nav class="site-header-nav" aria-label="Główna nawigacja">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-header-nav-logo no-hover-effect">
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="site-header-nav-logo no-hover-effect">
         <svg
           width="186"
           height="31"
