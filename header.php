@@ -45,7 +45,13 @@
       s.parentNode.insertBefore(c, s);
     })(document);
   </script>
-
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const partner = params.get('partner');
+    if (partner) {
+      document.cookie = `doginvoice-partner=${partner}; max-age=${60 * 60 * 24 * 30}; path=/; domain=.doginvoice.com; SameSite=Lax`;
+    }
+  </script>
 
 </head>
 
