@@ -462,7 +462,7 @@
         <span class="footer-bottom-credit-link-wrap">
           <a
             class="footer-bottom-credit-link"
-            href="https://dogtronic.com"
+            href="https://dogtronic.io"
             target="_blank"
             rel="noopener noreferrer">Dogtronic Labs.</a>
         </span>
