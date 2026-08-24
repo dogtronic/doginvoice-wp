@@ -504,6 +504,9 @@ $organization_schema = array(
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js" defer></script>
   <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-lottie.js" defer></script>
 <?php endif; ?>
+<?php if (is_page_template('page-partner-program.php')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-calculator.js" defer></script>
+<?php endif; ?>
 <?php wp_footer(); ?>
 </body>
 

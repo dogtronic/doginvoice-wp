@@ -76,3 +76,29 @@ function doginvoice_fix_svg_media_preview() {
 	<?php
 }
 add_action( 'admin_head', 'doginvoice_fix_svg_media_preview' );
+
+/**
+ * Honeypot spam check for the Contact Form 7 partner-program form.
+ *
+ * CF7 has no built-in honeypot, so the "firma-druga" field (hidden off-screen
+ * via .partner-form-hp in _partner-form.scss) is treated as a trap: real
+ * visitors never see or fill it, so any submission with it filled is spam.
+ *
+ * @param bool               $spam    Current spam status.
+ * @param WPCF7_Submission   $submission Submission object.
+ * @return bool
+ */
+function doginvoice_cf7_honeypot_spam_check( $spam, $submission ) {
+	if ( $spam ) {
+		return $spam;
+	}
+
+	$data = $submission->get_posted_data();
+
+	if ( ! empty( $data['firma-druga'] ) ) {
+		return true;
+	}
+
+	return $spam;
+}
+add_filter( 'wpcf7_spam', 'doginvoice_cf7_honeypot_spam_check', 10, 2 );

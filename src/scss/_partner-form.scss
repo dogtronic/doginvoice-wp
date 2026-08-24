@@ -1,0 +1,245 @@
+@use "variables" as *;
+
+.partner-form {
+  width: 100%;
+  padding: $spacing-xl $spacing-sm;
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+.partner-form-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+
+  &-title {
+    max-width: 20em;
+  }
+
+  &-description {
+    max-width: 50em;
+    color: $color-grey;
+  }
+}
+
+.partner-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  align-items: start;
+
+  @media #{$min-lg} {
+    grid-template-columns: 1.35fr 0.65fr;
+  }
+}
+
+// ===== Karta z formularzem =====
+
+.partner-form-card {
+  position: relative;
+  padding: $spacing-md;
+  background: transparent;
+  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18))
+    drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: $color-white;
+    clip-path: polygon(
+      20px 0%,
+      100% 0,
+      100% calc(100% - 20px),
+      calc(100% - 20px) 100%,
+      0 100%,
+      0% 20px
+    );
+  }
+}
+
+.partner-form-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+
+  @media #{$min-sm} {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.partner-form-field {
+  display: flex;
+  flex-direction: column;
+
+  &--full {
+    @media #{$min-sm} {
+      grid-column: 1 / -1;
+    }
+  }
+
+  label {
+    font-weight: $fw-medium;
+    color: $color-dark;
+    margin-bottom: 6px;
+  }
+}
+
+.partner-form-field-hint {
+  font-weight: $fw-regular;
+  color: $color-grey;
+}
+
+.partner-form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.partner-form-consent {
+  margin-top: $spacing-sm;
+
+  .wpcf7-list-item {
+    margin: 0;
+  }
+
+  label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: $color-grey;
+    line-height: 1.5;
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: $color-green;
+    flex: 0 0 auto;
+  }
+
+  a {
+    color: $color-dark-green;
+  }
+}
+
+// ===== Pola formularza CF7 =====
+
+.wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+.wpcf7-form-control.wpcf7-text,
+.wpcf7-form-control.wpcf7-email,
+.wpcf7-form-control.wpcf7-tel,
+.wpcf7-form-control.wpcf7-select {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid rgba(23, 23, 23, 0.12);
+  background: $color-white;
+  font-family: $ff-body;
+  font-size: var(--fs-body-md);
+  color: $color-dark;
+
+  &:focus {
+    outline: none;
+    border-color: $color-green;
+    box-shadow: 0 0 0 3px rgba(79, 209, 95, 0.25);
+  }
+}
+
+.wpcf7-not-valid-tip {
+  display: block;
+  margin-top: 6px;
+  color: #b3261e;
+  font-size: var(--fs-body-sm);
+  font-weight: $fw-medium;
+}
+
+.wpcf7-response-output {
+  margin: $spacing-sm 0 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  font-size: var(--fs-body-md);
+  font-weight: $fw-medium;
+  line-height: 1.5;
+}
+
+.wpcf7-form.sent .wpcf7-response-output {
+  background: #f2fdf4;
+  border: 1px solid #cdefd4;
+  color: #2f9e3d;
+}
+
+.wpcf7-form.failed .wpcf7-response-output,
+.wpcf7-form.aborted .wpcf7-response-output,
+.wpcf7-form.spam .wpcf7-response-output {
+  background: #fff2f1;
+  border: 1px solid #f2c4c0;
+  color: #8c1d18;
+}
+
+.wpcf7-form.invalid .wpcf7-response-output {
+  background: #fff8e6;
+  border: 1px solid #f0d9a0;
+  color: #6b4e00;
+}
+
+.partner-form-card .wpcf7-submit {
+  width: 100%;
+  margin-top: $spacing-sm;
+  padding: 15px 30px;
+  border: none;
+  background: $color-green;
+  color: $color-dark;
+  font-family: $ff-body;
+  font-weight: $fw-medium;
+  font-size: var(--fs-body-lg);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// ===== Kolumna boczna =====
+
+.partner-form-aside {
+  padding: $spacing-md;
+  background: $color-dark;
+  color: #c6d0c8;
+
+  &-title {
+    color: $color-white;
+    margin-bottom: $spacing-xs;
+  }
+
+  &-description {
+    margin-bottom: $spacing-sm;
+  }
+
+  &-cta {
+    width: 100%;
+  }
+
+  &-mail {
+    display: block;
+    margin-top: $spacing-sm;
+    color: #c6d0c8;
+
+    a {
+      color: $color-green;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@use "variables" as *;
+
+.partner-how {
+  width: 100%;
+  padding: $spacing-xl $spacing-sm;
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+.partner-how-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+
+  &-badge {
+    margin-bottom: 0;
+  }
+
+  &-title {
+    max-width: 16em;
+  }
+
+  &-description {
+    max-width: 40em;
+    color: $color-grey;
+  }
+}
+
+.partner-how-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+  list-style: none;
+
+  @media #{$min-sm} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media #{$min-lg} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.partner-how-grid-item {
+  position: relative;
+  padding: $spacing-sm;
+  background: transparent;
+  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18))
+    drop-shadow(0 8px 24px rgba(23, 23, 23, 0.06));
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: $color-white;
+    clip-path: polygon(
+      16px 0%,
+      100% 0,
+      100% calc(100% - 16px),
+      calc(100% - 16px) 100%,
+      0 100%,
+      0% 16px
+    );
+  }
+
+  &-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: $spacing-xs;
+    background: $color-green;
+    color: $color-dark;
+    font-family: $ff-heading;
+    font-weight: $fw-bold;
+    clip-path: polygon(
+      8px 0%,
+      100% 0,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      0 100%,
+      0% 8px
+    );
+  }
+
+  &-title {
+    color: $color-dark;
+    margin-bottom: 6px;
+  }
+
+  &-description {
+    color: $color-grey;
+  }
+}
