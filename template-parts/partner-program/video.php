@@ -2,11 +2,6 @@
 /**
  * Program partnerski: Zobacz, co polecasz (wideo)
  *
- * UWAGA: plik src/assets/videos/modul-windykacja-1x1.mp4 jeszcze nie
- * istnieje w motywie — trzeba go dograć (~6 MB, z mockupu w
- * html/Landing programu partnerskiego DI (gotowy 13.08).html), inaczej
- * <video> nie ma czego odtworzyć.
- *
  * @package doginvoice
  */
 ?>
@@ -30,7 +25,7 @@
         </header>
 
         <div class="partner-video-grid">
-          <div class="partner-video-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="partner-video-box">
             <video controls preload="metadata" playsinline width="1080" height="1080">
               <source src="<?php echo esc_url( get_template_directory_uri() . '/src/assets/videos/modul-windykacja-1x1.mp4' ); ?>" type="video/mp4" />
               Twoja przeglądarka nie odtworzy tego materiału.
