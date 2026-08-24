@@ -1431,7 +1431,6 @@ body.is-menu-open {
 .partner-tiles-item {
   padding: 24px;
   background: rgb(255, 255, 255);
-  border: 1px solid rgba(23, 23, 23, 0.08);
 }
 .partner-tiles-item-title {
   color: rgb(23, 23, 23);
@@ -1469,7 +1468,6 @@ body.is-menu-open {
 .partner-plans-item {
   padding: 24px;
   background: rgb(255, 255, 255);
-  border: 1px solid rgba(23, 23, 23, 0.1);
 }
 .partner-plans-item-tag {
   display: block;
@@ -1488,7 +1486,7 @@ body.is-menu-open {
   color: rgba(78, 86, 78, 0.8);
 }
 .partner-plans-item--featured {
-  border-color: rgb(79, 209, 95);
+  border: 1px solid rgb(79, 209, 95);
   box-shadow: 0 10px 28px rgba(79, 209, 95, 0.18);
 }
 
