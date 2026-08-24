@@ -1074,7 +1074,7 @@ body.is-menu-open {
   position: relative;
   padding: 24px;
   background: transparent;
-  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18)) drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
+  filter: drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
 }
 .partner-calc::before {
   content: "";
@@ -1266,7 +1266,7 @@ body.is-menu-open {
   position: relative;
   padding: 24px;
   background: transparent;
-  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18)) drop-shadow(0 8px 24px rgba(23, 23, 23, 0.06));
+  filter: drop-shadow(0 8px 24px rgba(23, 23, 23, 0.06));
 }
 .partner-how-grid-item::before {
   content: "";
@@ -1538,7 +1538,7 @@ body.is-menu-open {
   position: relative;
   padding: 24px;
   background: transparent;
-  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18)) drop-shadow(0 8px 24px rgba(23, 23, 23, 0.06));
+  filter: drop-shadow(0 8px 24px rgba(23, 23, 23, 0.06));
 }
 .partner-audience-grid-item::before {
   content: "";
@@ -1620,7 +1620,7 @@ body.is-menu-open {
   position: relative;
   padding: 32px;
   background: transparent;
-  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18)) drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
+  filter: drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
 }
 .partner-form-card::before {
   content: "";

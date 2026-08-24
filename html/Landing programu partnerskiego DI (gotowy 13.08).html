@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  ==========================================================================
+  DogInvoice, Program Partnerski. Strona jednoplikowa (index.html).
+  Wersja: 13.08.2026. Zero zasobow zewnetrznych: brak CDN, brak Google Fonts.
+  Dziala po wgraniu katalogu razem z assets/modul-windykacja-1x1.mp4.
+  ==========================================================================
+
+  STOP PRZED PUBLIKACJA
+  ---------------------------------------------------------------------------
+  NIE WOLNO opublikowac tej strony, dopoki kancelaria Creativa nie zaakceptuje
+  regulaminu programu partnerskiego.
+  (Projekt regulaminu: operations/marketing/partnerzy/regulamin-programu-partnerskiego.md,
+   brief kancelaryjny: operations/firma/creativa-openterms-brief-10-08.md.)
+  Strona obiecuje pieniadze i zniżki, wiec bez zaakceptowanego regulaminu
+  publikacja tworzy zobowiazanie, ktorego nie mamy czym pokryc.
+
+  CO PODMIENIC PRZED PUBLIKACJA
+  ---------------------------------------------------------------------------
+  1. FORMULARZ: atrybut action w <form id="partner-form">. Szukaj znacznika
+     "FORM ACTION SLOT". Przy formularzu Google trzeba dodatkowo zmienic
+     atrybuty name= pol na entry.XXXXXXX z tego formularza (albo wystawic
+     webhook w Apps Script, wtedy nazwy pol zostaja bez zmian).
+     Dopoki action jest puste, wysylka pokazuje komunikat z adresem e-mail,
+     nie znika po cichu.
+  2. LINKI PRAWNE: szukaj "LINK SLOT". Regulamin programu i polityka
+     prywatnosci maja dzis href="#".
+  3. TERMINY ROZLICZEN: w FAQ celowo nie ma konkretnych dni. Wpisz je dopiero
+     wtedy, gdy kancelaria zamknie pola [..] w regulaminie (termin wyplaty,
+     minimalna kwota wyplaty, okres na reklamacje).
+  4. og:url oraz og:image: uzupelnic po ustaleniu adresu strony. og:image musi
+     lezec na tej samej domenie, zadnych zewnetrznych hostow.
+  5. VIDEO: plik assets/modul-windykacja-1x1.mp4 (6 MB) wgrywamy razem z
+     index.html. Sciezka jest wzgledna.
+  6. PRODUKCJA doginvoice.com: na zywo stoi jeszcze stara wersja programu
+     partnerskiego ze stara, nizsza stawka prowizji. To blad, do podmiany
+     razem z ta strona (pozycja D21 w DECISIONS.md). Obowiazuje wylacznie 50%
+     i taka stawka jest na tej stronie w kazdym miejscu.
+
+  ZRODLA LICZB (nie zmieniac bez zrodla)
+  ---------------------------------------------------------------------------
+  Prowizja 50% bezterminowo, podstawa = kwota faktycznie zaplacona:
+    DECISIONS.md D21 (zatwierdzone przez Marka 10.08.2026),
+    operations/marketing/partnerzy/model-prowizji-liczby.md,
+    regulamin § 4.
+  Znizka 50% na pierwszy okres rozliczeniowy, udziela wylacznie partner:
+    to samo zrodlo.
+  Plany i limity: operations/doginvoice/doginvoice-landing-content-FINAL.md.
+  Sekcja dla biur rachunkowych: research/24-biuro-rachunkowe-jako-partner.md.
+-->
+
+<title>Program Partnerski DogInvoice: 50% od każdej płatności Twojego klienta</title>
+<meta name="description" content="Polecasz DogInvoice swoim klientom i dostajesz 50% od każdej ich płatności, bezterminowo, na każdym planie. Klient dostaje od Ciebie 50% zniżki na pierwszy okres rozliczeniowy.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#4fd15f">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="DogInvoice">
+<meta property="og:title" content="Program Partnerski DogInvoice: 50% od każdej płatności Twojego klienta">
+<meta property="og:description" content="Jedna stawka, bez terminów i gwiazdek. Połowa każdej płatności Twojego klienta, tak długo jak on płaci. Tylko Ty możesz dać mu 50% zniżki na start.">
+<!-- LINK SLOT: uzupelnij po ustaleniu adresu strony
+<meta property="og:url" content="https://doginvoice.com/partnerzy">
+<meta property="og:image" content="https://doginvoice.com/partnerzy/og.png">
+-->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Program Partnerski DogInvoice">
+<meta name="twitter:description" content="50% od każdej płatności Twojego klienta, bezterminowo, na każdym planie.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234fd15f'/%3E%3Cpath d='M9 10h5.5a6 6 0 0 1 0 12H9z' fill='%23111'/%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --green:#4fd15f;
+    --green-dark:#2f9e3d;
+    --green-deep:#0f3d17;
+    --ink:#171717;
+    --ink-soft:#3a423d;
+    --gray:#5b6560;
+    --mint:#defae1;
+    --mint-soft:#f2fdf4;
+    --line:#e2ebe4;
+    --white:#ffffff;
+    --radius:18px;
+    --radius-lg:26px;
+    --shadow:0 14px 44px rgba(23,23,23,.09);
+    --shadow-sm:0 4px 16px rgba(23,23,23,.05);
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);background:var(--white);line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{max-width:100%;display:block}
+  a{color:var(--green-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  section{padding:72px 0;border-top:1px solid var(--line);scroll-margin-top:76px}
+  section:first-of-type{border-top:none}
+  h1,h2,h3,h4{line-height:1.16;letter-spacing:-.02em;font-weight:800}
+  h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:14px}
+  h3{font-size:20px}
+  p{overflow-wrap:break-word}
+  .lead{font-size:clamp(16.5px,1.8vw,19px);color:var(--gray);max-width:720px}
+  .eyebrow{
+    display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--green-dark);background:var(--mint);
+    padding:7px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  .btn{
+    display:inline-block;font-weight:700;font-size:16px;text-decoration:none;
+    padding:15px 30px;border-radius:999px;cursor:pointer;border:none;
+    font-family:inherit;line-height:1.2;text-align:center;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--green);color:var(--ink);box-shadow:0 8px 22px rgba(79,209,95,.35)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-dark{background:var(--ink);color:var(--white)}
+  .btn-dark:hover{transform:translateY(-2px)}
+  .btn-ghost{background:var(--white);color:var(--ink);border:1.5px solid var(--line)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{
+    outline:3px solid var(--green-dark);outline-offset:2px
+  }
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--maxw);margin:0 auto;padding:12px 22px}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+  .logo .pill{background:var(--green);color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.04em;padding:4px 8px;border-radius:6px;text-transform:uppercase}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:15px;font-weight:600}
+  .nav-links a:hover{color:var(--green-dark)}
+  .nav .btn{padding:11px 20px;font-size:15px}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,var(--mint) 0%, #eefbf0 50%, var(--white) 100%);padding:70px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  .hero h1{font-size:clamp(32px,4.6vw,54px);max-width:16ch}
+  .hero .sub{font-size:clamp(17px,2vw,20px);color:var(--ink-soft);margin:20px 0 26px;max-width:44ch}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-facts{list-style:none;margin-top:26px;display:grid;gap:10px}
+  .hero-facts li{position:relative;padding-left:28px;font-size:15.5px;color:var(--ink-soft)}
+  .hero-facts li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green-dark);font-weight:800}
+  .hero-facts b{color:var(--ink)}
+
+  /* KALKULATOR */
+  .calc{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:28px}
+  .calc h2{font-size:21px;margin-bottom:4px}
+  .calc .calc-sub{font-size:14.5px;color:var(--gray);margin-bottom:22px}
+  .calc label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px}
+  .calc .rangeval{color:var(--green-dark);font-size:19px}
+  .calc input[type=range]{width:100%;accent-color:var(--green-dark);height:26px}
+  .range-scale{display:flex;justify-content:space-between;font-size:12px;color:var(--gray);margin-top:-4px}
+  .plan-toggle{display:flex;gap:10px;margin:18px 0 6px}
+  .plan-toggle button{
+    flex:1;padding:12px 8px;border-radius:14px;border:2px solid var(--line);background:var(--white);
+    font-family:inherit;font-weight:700;font-size:15px;color:var(--ink);cursor:pointer;transition:.15s
+  }
+  .plan-toggle button span{display:block;font-size:12.5px;font-weight:500;color:var(--gray);margin-top:3px}
+  .plan-toggle button[aria-pressed="true"]{border-color:var(--green);background:var(--mint-soft)}
+  .calc-out{margin-top:22px;border-top:1px solid var(--line);padding-top:6px}
+  .res{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .res:last-child{border-bottom:none}
+  .res .rl{font-weight:600;font-size:14.5px}
+  .res .rl small{display:block;font-weight:400;font-size:12.5px;color:var(--gray);margin-top:2px}
+  .res .rv{font-weight:800;font-size:22px;white-space:nowrap}
+  .res.big .rv{font-size:30px;color:var(--green-dark)}
+  .calc-note{font-size:12.5px;color:var(--gray);margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+
+  /* SIATKI */
+  .grid{display:grid;gap:18px;margin-top:30px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm)}
+  .card h3{margin-bottom:8px}
+  .card p{color:var(--gray);font-size:15px}
+  .card .tag{display:block;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--green-dark);margin-bottom:6px}
+  .ico{width:44px;height:44px;border-radius:12px;background:var(--mint);color:var(--green-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;letter-spacing:0}
+
+  .step{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow-sm)}
+  .step .num{width:38px;height:38px;border-radius:11px;background:var(--green);color:var(--ink);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step h3{font-size:17px;margin-bottom:6px}
+  .step p{font-size:14.5px;color:var(--gray)}
+
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  .tile{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:18px 20px}
+  .tile h3{font-size:16px;margin-bottom:5px}
+  .tile h3 .check{color:var(--green-dark);margin-right:7px}
+  .tile p{font-size:14px;color:var(--gray)}
+
+  /* VIDEO */
+  .video-sec{background:var(--ink);color:var(--white)}
+  .video-sec h2{color:var(--white)}
+  .video-sec .lead{color:#bcc7bf}
+  .video-grid{display:grid;grid-template-columns:minmax(0,460px) 1fr;gap:40px;align-items:center;margin-top:32px}
+  .video-box{background:#000;border-radius:var(--radius-lg);overflow:hidden;border:1px solid #2a2f2b}
+  .video-box video{width:100%;height:auto;aspect-ratio:1/1;background:#000}
+  .video-copy h3{color:var(--white);font-size:22px;margin-bottom:10px}
+  .video-copy p{color:#bcc7bf;font-size:16px;margin-bottom:14px}
+  .video-copy ol{color:#bcc7bf;font-size:15.5px;margin:0 0 16px 20px;display:grid;gap:8px}
+  .video-copy b{color:var(--white)}
+  .video-cap{font-size:13px;color:#8d978f;margin-top:14px}
+
+  /* KSEF BOX */
+  .ksef{background:linear-gradient(150deg,var(--mint),#eefbf0);border:1px solid #cdefd4;border-radius:var(--radius-lg);padding:34px}
+  .ksef h3{font-size:clamp(21px,2.6vw,28px);margin-bottom:12px;max-width:22ch}
+  .ksef p{color:var(--ink-soft);font-size:16.5px;max-width:70ch;margin-bottom:12px}
+  .ksef .flag{display:inline-block;background:var(--green-deep);color:#c9f5d0;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:14px}
+
+  /* BIURA */
+  .biuro{background:var(--ink);color:var(--white);border-radius:var(--radius-lg);padding:42px}
+  .biuro h2{color:var(--white)}
+  .biuro .lead{color:#bcc7bf;max-width:74ch}
+  .quote-box{background:#212621;border:1px solid #33392f;border-left:4px solid var(--green);border-radius:14px;padding:22px 24px;margin:26px 0}
+  .quote-box .qlabel{font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+  .quote-box p{font-size:17px;line-height:1.6;color:#f0f4f0}
+  .biuro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .bcard{background:#212621;border:1px solid #33392f;border-radius:14px;padding:20px}
+  .bcard h3{color:var(--white);font-size:16.5px;margin-bottom:6px}
+  .bcard p{color:#b6c1b8;font-size:14.5px}
+
+  /* FAQ */
+  details.faq{border:1px solid var(--line);border-radius:14px;background:var(--white);margin-bottom:10px;overflow:hidden}
+  details.faq summary{
+    cursor:pointer;list-style:none;padding:18px 52px 18px 20px;font-weight:700;font-size:16.5px;position:relative
+  }
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{
+    content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
+    color:var(--green-dark);font-weight:800;font-size:22px;line-height:1
+  }
+  details.faq[open] summary::after{content:"\2212"}
+  details.faq[open] summary{background:var(--mint-soft)}
+  details.faq .answer{padding:2px 20px 20px;color:var(--gray);font-size:15.5px}
+  details.faq .answer p + p{margin-top:10px}
+
+  /* FORMULARZ */
+  .formsec{background:linear-gradient(180deg,var(--white),#f3fbf5)}
+  .form-grid-outer{display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:start;margin-top:30px}
+  .form-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow)}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+  .field{display:flex;flex-direction:column}
+  .field.full{grid-column:1 / -1}
+  .field label{font-weight:600;font-size:14px;margin-bottom:6px}
+  .field .hint{font-weight:400;color:var(--gray)}
+  .field input,.field select{
+    padding:13px 15px;border:1.5px solid var(--line);border-radius:13px;font-size:15.5px;
+    font-family:inherit;color:var(--ink);background:var(--white);width:100%
+  }
+  .field input:focus,.field select:focus{outline:none;border-color:var(--green-dark);box-shadow:0 0 0 3px rgba(79,209,95,.25)}
+  .field .err{display:none;color:#b3261e;font-size:13px;margin-top:6px;font-weight:600}
+  .field.invalid input,.field.invalid select{border-color:#b3261e;background:#fff7f6}
+  .field.invalid .err{display:block}
+  .consent{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--ink-soft);margin-top:20px;line-height:1.5}
+  .consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--green-dark);flex:0 0 auto}
+  .consent.invalid{color:#b3261e}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .form-card .btn{margin-top:22px;width:100%}
+  .form-status{display:none;margin-top:18px;padding:16px 18px;border-radius:14px;font-size:15px;font-weight:600;line-height:1.5}
+  .form-status.show{display:block}
+  .form-status.warn{background:#fff8e6;border:1px solid #f0d9a0;color:#6b4e00}
+  .form-status.bad{background:#fff2f1;border:1px solid #f2c4c0;color:#8c1d18}
+  .rodo{font-size:12.5px;color:var(--gray);line-height:1.55;margin-top:16px}
+  .aside-card{background:var(--ink);color:#c6d0c8;border-radius:var(--radius-lg);padding:28px}
+  .aside-card h3{color:var(--white);font-size:19px;margin-bottom:10px}
+  .aside-card p{font-size:15px;margin-bottom:16px}
+  .aside-card .btn{width:100%}
+  .aside-card .mail{display:block;margin-top:18px;font-size:14.5px;color:#c6d0c8}
+  .aside-card .mail a{color:var(--green)}
+
+  /* STOPKA */
+  footer{background:var(--ink);color:#9aa89f;padding:44px 0 36px;font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:26px}
+  footer .logo{color:var(--white);margin-bottom:12px}
+  footer h4{color:var(--white);font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  footer a{color:#bcc7bf;text-decoration:none}
+  footer a:hover{color:var(--green)}
+  footer ul{list-style:none;display:grid;gap:7px}
+  .foot-bottom{border-top:1px solid #2b302c;margin-top:28px;padding-top:18px;font-size:13px;color:#7f8a82}
+
+  @media(max-width:980px){
+    .hero-grid,.video-grid,.form-grid-outer{grid-template-columns:1fr}
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3,.biuro-grid,.foot-grid{grid-template-columns:1fr 1fr}
+    .tiles{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .video-box{max-width:460px}
+  }
+  @media(max-width:660px){
+    section{padding:52px 0}
+    .g2,.g3,.g4,.tiles,.biuro-grid,.foot-grid,.fields{grid-template-columns:1fr}
+    .hero{padding:52px 0 48px}
+    .card,.form-card,.biuro,.ksef,.calc{padding:24px 20px}
+    .plan-toggle{flex-direction:column}
+    .res .rv{font-size:20px}
+    .res.big .rv{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#gora">Dog<span class="pill">Invoice</span></a>
+    <nav class="nav-links" aria-label="Nawigacja">
+      <a href="#kalkulator">Ile zarobisz</a>
+      <a href="#jak-to-dziala">Jak to działa</a>
+      <a href="#produkt">Co dostaje klient</a>
+      <a href="#biura">Dla biur rachunkowych</a>
+      <a href="#faq">Pytania</a>
+    </nav>
+    <a class="btn btn-primary" href="https://calendar.app.google/TrvZSUXYfkFGZcBe8" target="_blank" rel="noopener">Umów rozmowę</a>
+  </div>
+</header>
+
+<main id="gora">
+
+<!-- 1. HERO + KALKULATOR -->
+<section class="hero" id="kalkulator">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Program partnerski DogInvoice</span>
+        <h1>Twoi klienci Ci ufają. Niech to zaufanie płaci co miesiąc.</h1>
+        <p class="sub">Polecasz DogInvoice, klient zakłada konto z Twoim kodem. Dostajesz połowę każdej jego płatności, tak długo jak on płaci.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#zgloszenie">Zostań partnerem</a>
+          <a class="btn btn-dark" href="https://calendar.app.google/TrvZSUXYfkFGZcBe8" target="_blank" rel="noopener">Umów rozmowę</a>
+        </div>
+        <ul class="hero-facts">
+          <li><b>50% od każdej płatności klienta, bezterminowo.</b> Ta sama stawka na każdym planie, przy rozliczeniu miesięcznym i rocznym.</li>
+          <li><b>Liczymy od kwoty, którą klient naprawdę zapłacił.</b> Bez cen nominalnych i bez gwiazdek pod tabelką.</li>
+          <li><b>50% zniżki na pierwszy okres rozliczeniowy daje wyłącznie partner.</b> Miesiąc przy abonamencie miesięcznym, cały rok przy rocznym. My nie rozdajemy rabatów nikomu.</li>
+          <li><b>Nie prosimy o listę Twoich klientów.</b> Ty piszesz do swoich, my rozliczamy konta założone z Twoim kodem.</li>
+        </ul>
+      </div>
+
+      <!-- KALKULATOR PROWIZJI -->
+      <div class="calc">
+        <h2>Policz to na swoich klientach</h2>
+        <p class="calc-sub">Przesuń suwak, wybierz plan. Kwoty netto, prowizja 50%.</p>
+
+        <label for="clients">Ilu klientów polecisz: <span class="rangeval" id="clientsVal">10</span></label>
+        <input type="range" id="clients" min="1" max="50" step="1" value="10"
+               aria-describedby="calcOutDesc">
+        <div class="range-scale" aria-hidden="true"><span>1</span><span>50</span></div>
+
+        <p style="font-weight:700;font-size:14.5px;margin-top:18px">Plan klienta</p>
+        <div class="plan-toggle" role="group" aria-label="Plan klienta">
+          <button type="button" class="plan-btn" data-price="149" aria-pressed="true">Professional<span>149 zł netto / mies.</span></button>
+          <button type="button" class="plan-btn" data-price="299" aria-pressed="false">Business<span>299 zł netto / mies.</span></button>
+        </div>
+
+        <div class="calc-out" id="calcOutDesc" aria-live="polite">
+          <div class="res big">
+            <div class="rl">Twoja prowizja co miesiąc<small>od pełnej ceny, czyli od drugiego okresu</small></div>
+            <div class="rv" id="resMonth">745 zł</div>
+          </div>
+          <div class="res">
+            <div class="rl">Twoja prowizja przez pierwszy rok<small>klient płaci co miesiąc, pierwszy miesiąc ze zniżką od Ciebie</small></div>
+            <div class="rv" id="resYear">8 568 zł</div>
+          </div>
+          <div class="res">
+            <div class="rl">Pierwszy miesiąc<small>klient płaci połowę, więc prowizja też jest z połowy</small></div>
+            <div class="rv" id="resFirst">373 zł</div>
+          </div>
+        </div>
+        <p class="calc-note" id="resAnnual"></p>
+        <p class="calc-note" style="border-top:none;padding-top:0">Klient na planie Starter płaci 0 zł, więc prowizji z niego nie ma. Prowizja startuje od pierwszej opłaconej faktury. Kwoty zaokrąglamy do pełnych złotych.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. JAK TO DZIAŁA -->
+<section id="jak-to-dziala" style="background:#f7fbf8">
+  <div class="wrap">
+    <span class="eyebrow">Jak to działa</span>
+    <h2>Cztery kroki. Nic więcej po Twojej stronie</h2>
+    <p class="lead">Stawka jest jedna dla wszystkich, więc nie ma czego negocjować. Rozmowa służy temu, żeby ustalić pierwszy ruch.</p>
+    <div class="grid g4">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Zgłaszasz się</h3>
+        <p>Wypełniasz formularz albo od razu wybierasz termin w kalendarzu. Odpowiadamy w ciągu jednego dnia roboczego i rozmawiamy piętnaście minut.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Dostajesz kod i materiały</h3>
+        <p>Dostajesz własny kod, link i komplet gotowych tekstów: mail do klienta, opis produktu, odpowiedzi na pytania, które na pewno padną. Pokazujemy też aplikację na żywo.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Piszesz do swoich klientów</h3>
+        <p>Wysyłasz gotowy tekst osobom, z którymi jesteś w kontakcie i które zgodziły się na wiadomości od Ciebie. Pomożemy dopasować treść do Twojej branży.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Klient płaci, Ty dostajesz połowę</h3>
+        <p>Klient zakłada konto z Twoim kodem. Raz w miesiącu dostajesz zestawienie i wystawiasz nam fakturę. Rozmowę z klientem prowadzisz Ty, bo to Twój klient.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. WIDEO -->
+<section class="video-sec">
+  <div class="wrap">
+    <span class="eyebrow" style="background:#252b26;color:var(--green)">Zobacz, co polecasz</span>
+    <h2>Moduł, który upomina się o pieniądze za Twojego klienta</h2>
+    <p class="lead">Czterdzieści trzy sekundy. To ten sam materiał, którego używamy w reklamie, więc możesz go wysłać klientowi bez zmian.</p>
+    <div class="video-grid">
+      <div class="video-box">
+        <video controls preload="metadata" playsinline width="1080" height="1080">
+          <source src="assets/modul-windykacja-1x1.mp4" type="video/mp4">
+          Twoja przeglądarka nie odtworzy tego materiału. Plik: assets/modul-windykacja-1x1.mp4
+        </video>
+      </div>
+      <div class="video-copy">
+        <h3>Co widać w tym filmie</h3>
+        <p>Historia jednej niezapłaconej faktury, od terminu płatności do przelewu na koncie. Krok po kroku:</p>
+        <ol>
+          <li><b>Faktura trafia do systemu.</b> Zdjęciem telefonem, mailem, z KSeF albo z programu, w którym klient wystawia dokumenty.</li>
+          <li><b>DogInvoice sprawdza przelewy w banku.</b> Widzi, kto zapłacił, więc nie zawraca głowy tym, którzy uregulowali.</li>
+          <li><b>Wysyła przypomnienie do dłużnika.</b> Kulturalne, w imieniu Twojego klienta, po 3, 7, 14 i 30 dniach od terminu.</li>
+          <li><b>Twój klient przestaje być windykatorem we własnej firmie.</b> Nie dzwoni, nie przypomina, nie odkłada tego na później.</li>
+        </ol>
+        <p>Ten jeden moduł sprzedaje się najlepiej, bo każdy przedsiębiorca ma dziś fakturę po terminie i wie, ile kosztuje jej pilnowanie.</p>
+        <p class="video-cap">Film ma dźwięk, ale rozumiesz go też bez włączania głośnika. Plik leży na tym serwerze, nie w zewnętrznym serwisie, więc działa nawet bez internetu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CO DOSTAJE TWÓJ KLIENT -->
+<section id="produkt">
+  <div class="wrap">
+    <span class="eyebrow">Co dostaje Twój klient</span>
+    <h2>Kontrola finansów firmy, nie kolejny program do wystawiania faktur</h2>
+    <p class="lead">DogInvoice nie zastępuje programu do fakturowania ani księgowej. Pilnuje tego, co dzieje się po wystawieniu dokumentu: czy klient zapłacił, co przyszło z KSeF i ile zostaje na koniec miesiąca. To wszystko działa dzisiaj, więc nie polecasz obietnic.</p>
+
+    <div class="ksef" style="margin-top:32px">
+      <span class="flag">Nowe od 1 kwietnia 2026</span>
+      <h3>Faktura kosztowa wpada do KSeF sama. Nikt o niej nie mówi.</h3>
+      <p>Od 1 kwietnia 2026 każdy dostawca wystawia fakturę w KSeF. Dokument ląduje u przedsiębiorcy automatycznie, bez maila i bez telefonu. Firmy zaglądają do KSeF co kilka dni, jak się komuś przypomni, i przez to płacą po terminie za towar dostarczony na czas.</p>
+      <p><b>DogInvoice wysyła mail, gdy w KSeF pojawi się nowy dokument, i przypomina, jeśli faktura wciąż nie została opłacona.</b> Klient nie musi pamiętać o zaglądaniu do rządowego portalu.</p>
+      <p>Dla biura rachunkowego to konkretna korzyść: mniej telefonów od klientów i mniej gaszenia pożarów na koniec miesiąca.</p>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><h3><span class="check">✓</span>Import z KSeF</h3><p>Faktury kosztowe i przychodowe pobierają się same. Surowy XML zamienia się w czytelny PDF.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Decyzja, co idzie do księgowej</h3><p>W KSeF fakturę wystawi każdy, kto zna NIP. Klient odrzuca pomyłki, zanim wejdą w koszty, bo odpowiedzialność jest po jego stronie.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Zdjęcie zamiast przepisywania</h3><p>Zdjęcie telefonem, PDF albo mail na dedykowany adres. AI odczytuje kwoty, daty i kontrahenta, potem sama kategoryzuje.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Przypomnienia o zaległych płatnościach</h3><p>Program sam wysyła kulturalne przypomnienia po 3, 7, 14 i 30 dniach od terminu.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Wyciąg z banku i dopasowanie wpłat</h3><p>Wgrany wyciąg MT940 albo CSV sam dopasowuje wpłaty do faktur. Od razu widać, kto zapłacił.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Przelewy jedną paczką</h3><p>Zaznaczasz faktury i wgrywasz jeden plik do banku. ING, mBank, Nest, banki spółdzielcze, także podzielona płatność.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Komplet dla księgowej na Dysku Google</h3><p>Dokumenty układają się w foldery rok po roku i miesiąc po miesiącu. Archiwum zostaje u klienta, nie u nas.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Statystyki i rentowność projektów</h3><p>Marża, VAT, bilans, rankingi kontrahentów. Koszty i przychody przypisane do projektu, więc widać, który kontrakt naprawdę zarabia.</p></div>
+      <div class="tile"><h3><span class="check">✓</span>Integracje</h3><p>inFakt, Fakturownia, wFirma, Apilo, BaseLinker, Gmail, Dysk Google, GUS. Klient nie rezygnuje z tego, czego już używa.</p></div>
+    </div>
+
+    <div class="grid g4" style="margin-top:34px">
+      <div class="card">
+        <span class="tag">Starter</span>
+        <h3>0 zł na zawsze</h3>
+        <p>10 faktur OCR i 100 faktur KSeF miesięcznie. Klient sprawdza wszystko bez podawania karty.</p>
+      </div>
+      <div class="card" style="border-color:var(--green);box-shadow:0 10px 28px rgba(79,209,95,.18)">
+        <span class="tag">Professional</span>
+        <h3>149 zł netto</h3>
+        <p>150 faktur OCR i 500 faktur KSeF miesięcznie.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Business</span>
+        <h3>299 zł netto</h3>
+        <p>500 faktur OCR i 1 000 faktur KSeF miesięcznie, klucze API, priorytetowy support.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Enterprise</span>
+        <h3>Indywidualnie</h3>
+        <p>Większe wolumeny i wymagania własne. Wycenę robimy razem z Tobą.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:18px;font-size:14.5px">Prowizja wynosi 50% niezależnie od planu. Ceny netto, miesięcznie.</p>
+  </div>
+</section>
+
+<!-- 5. DLA KOGO -->
+<section style="background:#f7fbf8">
+  <div class="wrap">
+    <span class="eyebrow">Dla kogo</span>
+    <h2>Najwięcej zarabiają ci, którzy już rozmawiają z firmami o pieniądzach</h2>
+    <p class="lead">Trzy typy partnerów, z którymi to działa najszybciej.</p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="ico">BR</div>
+        <span class="tag">Najwięcej klientów naraz</span>
+        <h3>Biuro rachunkowe</h3>
+        <p>Dokumenty przychodzą do Ciebie kompletne i uporządkowane, więc obsłużysz więcej firm bez zatrudniania kogokolwiek. Klient przestaje dzwonić z pytaniem, co z fakturą w KSeF. Za każdego, który zostanie, dostajesz połowę abonamentu.</p>
+      </div>
+      <div class="card">
+        <div class="ico">DP</div>
+        <span class="tag">Doradzasz przy pieniądzach</span>
+        <h3>Doradca albo kancelaria</h3>
+        <p>Rozmawiasz z właścicielami o kosztach, płynności i terminach. DogInvoice daje im widok, którego dziś nie mają, a Ty dostajesz połowę każdej płatności, tak długo jak klient korzysta.</p>
+      </div>
+      <div class="card">
+        <div class="ico">IT</div>
+        <span class="tag">Wdrażasz systemy</span>
+        <h3>Firma IT albo integrator</h3>
+        <p>Dokładasz DogInvoice do tego, co już wdrażasz. Łączy się z narzędziami klienta i ma publiczne API, więc wpina się w Twoje automatyzacje. Do jednorazowego wdrożenia dostajesz przychód powtarzalny.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. DLA BIUR RACHUNKOWYCH -->
+<section id="biura">
+  <div class="wrap">
+    <div class="biuro">
+      <span class="eyebrow" style="background:#252b26;color:var(--green)">Dla biur rachunkowych</span>
+      <h2>Powiedz klientowi o prowizji. To chroni Ciebie.</h2>
+      <p class="lead">Jeśli prowadzisz biuro rachunkowe, prosimy o jedną rzecz, której nie wymaga od Ciebie żaden inny dostawca: poinformuj klienta o prowizji, zanim użyje Twojego kodu. Dajemy gotowe zdanie, więc zajmuje to minutę.</p>
+
+      <div class="quote-box">
+        <div class="qlabel">Wzór zdania do skopiowania</div>
+        <p>„Polecam Państwu DogInvoice. Za polecenie otrzymuję od producenta wynagrodzenie prowizyjne. Nie wpływa to na cenę ani zakres naszej obsługi księgowej, a z narzędzia korzystają Państwo dobrowolnie."</p>
+      </div>
+
+      <p class="lead" style="margin-bottom:24px">Powód jest prosty. Umowa o obsługę księgową to umowa o usługi, a przy takiej umowie klient może uznać, że korzyść, którą uzyskałeś przy okazji prowadzenia jego spraw, należy się jemu. Dopóki nie wie o prowizji, ma argument. Kiedy wie i mimo to zakłada konto, argument znika. Jedno zdanie zamyka temat na lata, także wtedy, gdy prowizja płynie co miesiąc przez kilka lat.</p>
+
+      <div class="biuro-grid">
+        <div class="bcard">
+          <h3>Mówisz to raz, na piśmie</h3>
+          <p>Wystarczy mail albo akapit w aneksie do umowy. Trzymasz kopię, my nie pytamy o nic więcej.</p>
+        </div>
+        <div class="bcard">
+          <h3>Prowizja jest wyłącznie za polecenie</h3>
+          <p>Bez wdrożeń i szkoleń w pakiecie. Jeśli chcesz konfigurować program u klienta, to osobna usługa i osobne wynagrodzenie. Dzięki temu nie mieszasz dwóch rodzajów przychodu w swoim rozliczeniu.</p>
+        </div>
+        <div class="bcard">
+          <h3>Nie warunkujesz obsługi księgowej</h3>
+          <p>Cena i zakres Twoich usług nie zależą od tego, czy klient weźmie DogInvoice. To zapis regulaminu, nie prośba.</p>
+        </div>
+        <div class="bcard">
+          <h3>Doradca podatkowy w zespole</h3>
+          <p>Jeśli w biurze pracuje doradca podatkowy, powiemy wprost, co i w jakim terminie zgłasza do swojej izby. Damy gotowy tekst, żeby nie szukał.</p>
+        </div>
+        <div class="bcard">
+          <h3>Twoje ubezpieczenie tego nie obejmuje</h3>
+          <p>Obowiązkowe OC biura dotyczy prowadzenia ksiąg, nie polecania narzędzi. Mówimy o tym na starcie, nie w najgorszym momencie.</p>
+        </div>
+        <div class="bcard">
+          <h3>Konkurencja tego nie wymaga</h3>
+          <p>Inni dostawcy płacą prowizję i milczą o ujawnianiu. My wolimy partnera, którego nikt nie zaczepi za dwa lata.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section id="faq" style="background:#f7fbf8">
+  <div class="wrap">
+    <span class="eyebrow">Pytania</span>
+    <h2>Najczęstsze pytania partnerów</h2>
+    <p class="lead" style="margin-bottom:30px">Czegoś tu brakuje? Napisz na <a href="mailto:kamil.sobkowicz@dogtronic.io">kamil.sobkowicz@dogtronic.io</a>, odpowiadamy w ciągu jednego dnia roboczego.</p>
+
+    <details class="faq">
+      <summary>Ile wynosi prowizja i jak długo ją dostaję?</summary>
+      <div class="answer"><p>50% od każdej płatności Twojego klienta, bezterminowo. Ta sama stawka obowiązuje na każdym planie i przy każdej formie rozliczenia, miesięcznej i rocznej. Prowizja płynie tak długo, jak długo klient płaci za DogInvoice.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Od jakiej kwoty liczycie te 50%?</summary>
+      <div class="answer"><p>Od kwoty netto, którą klient faktycznie zapłacił, nie od ceny z cennika. Jeśli dałeś mu 50% zniżki na pierwszy okres, w tym okresie prowizja liczy się od połowy. Od kolejnego okresu klient płaci pełną cenę, więc i Twoja prowizja jest pełna.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Kto daje klientowi zniżkę, Ty czy ja?</summary>
+      <div class="answer"><p>Ty. Zniżki 50% na pierwszy okres rozliczeniowy udziela wyłącznie partner, poprzez swój kod. My nie rozdajemy rabatów nikomu, więc masz argument, którego nie ma nasza własna sprzedaż.</p><p>Przy abonamencie miesięcznym zniżka obejmuje jeden miesiąc. Przy rocznym cały rok, dlatego większość klientów wybiera rok, a Ty dostajesz swoją część od razu z góry.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Kto może zostać partnerem?</summary>
+      <div class="answer"><p>Tylko firma, która wystawia faktury lub rachunki. Osoba prywatna bez działalności nie może, bo wtedy musielibyśmy rozliczać za nią podatek przy każdej wypłacie.</p><p>Zgłoszenie nie oznacza automatycznego przyjęcia. Rozmawiamy z każdym kandydatem, bo program stoi na jakości poleceń, nie na ich liczbie.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Czy muszę przekazać wam listę swoich klientów?</summary>
+      <div class="answer"><p>Nie. Nigdy o nią nie prosimy i nigdy jej nie zobaczymy. Ty piszesz do osób, z którymi jesteś w kontakcie i które zgodziły się na wiadomości od Ciebie, a my rozliczamy konta założone z Twoim kodem.</p><p>Dostajesz informację o liczbie kont, ich statusie i naliczonej prowizji. Nie dostajesz danych osobowych klientów ani treści ich dokumentów.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Jak wygląda rozliczenie?</summary>
+      <div class="answer"><p>Raz w miesiącu wysyłamy Ci zestawienie: konta założone z Twoim kodem, ich plan i status płatności oraz naliczona prowizja. Na tej podstawie wystawiasz nam fakturę, my płacimy.</p><p>Dokładne terminy i minimalną kwotę wypłaty znajdziesz w regulaminie programu, który dostajesz przed przystąpieniem.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Co, jeśli klient zrezygnuje albo cofnie płatność?</summary>
+      <div class="answer"><p>Prowizja przysługuje od płatności, które zostały u nas i nie zostały cofnięte. Jeśli klient odzyska pieniądze albo subskrypcja zostanie anulowana przed rozliczeniem, prowizja od tej płatności nie powstaje, a rozliczoną korygujemy. Za wszystkie kolejne miesiące, w których klient płaci, prowizja leci normalnie.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Czy muszę wdrażać program u klienta i go szkolić?</summary>
+      <div class="answer"><p>Nie. Prowizja jest wyłącznie za polecenie. Podłączenie zajmuje kilkanaście minut i klient robi to sam, a jeśli chce, dołączamy do rozmowy i pokazujemy wszystko na żywo.</p><p>Jeśli sam chcesz wdrażać i szkolić, umawiamy to osobno, jako oddzielną usługę z oddzielnym wynagrodzeniem. Trzymanie tych rzeczy osobno upraszcza Twoje rozliczenie podatkowe.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Prowadzę biuro rachunkowe. Czy mogę w ogóle brać prowizję od dostawcy oprogramowania?</summary>
+      <div class="answer"><p>Tak. Przepisy o usługowym prowadzeniu ksiąg tego nie zabraniają, a na rynku robi to jawnie kilku dużych dostawców.</p><p>U nas obowiązuje jeden warunek: informujesz klienta o prowizji, zanim użyje Twojego kodu, i nie uzależniasz ceny ani zakresu obsługi księgowej od tego, czy weźmie DogInvoice. Gotowe zdanie do skopiowania masz w sekcji dla biur rachunkowych.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Co dokładnie polecam? To kolejny program do faktur?</summary>
+      <div class="answer"><p>Nie. DogInvoice nie wystawia faktur i nie zastępuje księgowej. Zbiera dokumenty z KSeF, maila i zdjęć, pilnuje terminów płatności, upomina się o zaległości i pokazuje, ile firmie zostaje. Klient może dalej używać programu, w którym fakturuje dzisiaj.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Czy mogę reklamować DogInvoice w wyszukiwarce?</summary>
+      <div class="answer"><p>Nie na nasze nazwy. Kampanie na słowa „DogInvoice", „Dogtronic" i ich warianty są wyłączone, bo licytowalibyśmy się z Tobą o własną markę. Wszystko inne, czyli mail do Twoich klientów, rozmowa, spotkanie, post z oznaczeniem współpracy, jest w porządku.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Ile trwa start i co dostaję na początku?</summary>
+      <div class="answer"><p>Od zgłoszenia do kodu mija zwykle kilka dni roboczych: odpowiedź w ciągu jednego dnia, potem piętnastominutowa rozmowa, potem kod i pakiet startowy.</p><p>W pakiecie: własny kod i link, gotowe teksty maili, opis produktu, odpowiedzi na typowe obiekcje, dostęp do konta demo i nasza obecność na pierwszej rozmowie z klientem, jeśli jej potrzebujesz.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- 8. FORMULARZ -->
+<section class="formsec" id="zgloszenie">
+  <div class="wrap">
+    <span class="eyebrow">Zgłoszenie</span>
+    <h2>Zgłoś się do programu partnerskiego</h2>
+    <p class="lead">Zostaw kontakt. Odezwiemy się w ciągu jednego dnia roboczego i umówimy krótką rozmowę. Nie zapisujemy Cię do żadnego newslettera.</p>
+
+    <div class="form-grid-outer">
+      <div class="form-card">
+        <!-- FORM ACTION SLOT: podmień action na URL formularza Google -->
+        <form id="partner-form" action="" method="post" novalidate>
+          <div class="fields">
+            <div class="field full" data-msg="Wpisz imię i nazwisko, żebyśmy wiedzieli, do kogo piszemy.">
+              <label for="f-name">Imię i nazwisko</label>
+              <input type="text" id="f-name" name="imie-nazwisko" autocomplete="name" required>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field" data-msg="Wpisz nazwę firmy. Partnerem może być tylko firma.">
+              <label for="f-company">Nazwa firmy</label>
+              <input type="text" id="f-company" name="firma" autocomplete="organization" required>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field" data-msg="NIP ma 10 cyfr. Wpisz same cyfry, bez myślników i spacji.">
+              <label for="f-nip">NIP</label>
+              <input type="text" id="f-nip" name="nip" inputmode="numeric" maxlength="13" placeholder="1234567890" required>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field" data-msg="Wpisz adres e-mail w formacie jan@firma.pl.">
+              <label for="f-email">E-mail</label>
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="jan@firma.pl" required>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field" data-msg="Wpisz numer telefonu, minimum 9 cyfr.">
+              <label for="f-phone">Telefon</label>
+              <input type="tel" id="f-phone" name="telefon" autocomplete="tel" placeholder="600 100 200" required>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field" data-msg="Wybierz typ partnera z listy.">
+              <label for="f-type">Typ partnera</label>
+              <select id="f-type" name="typ-partnera" required>
+                <option value="" selected disabled>Wybierz z listy</option>
+                <option value="biuro-rachunkowe">Biuro rachunkowe</option>
+                <option value="doradca-kancelaria">Doradca albo kancelaria</option>
+                <option value="firma-it">Firma IT albo integrator</option>
+                <option value="dostawca-b2b">Sprzedaję coś firmom</option>
+                <option value="inne">Coś innego</option>
+              </select>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field" data-msg="Wybierz, ilu mniej więcej klientów obsługujesz.">
+              <label for="f-clients">Ilu klientów obsługujesz</label>
+              <select id="f-clients" name="liczba-klientow" required>
+                <option value="" selected disabled>Wybierz z listy</option>
+                <option value="1-20">1 do 20</option>
+                <option value="21-50">21 do 50</option>
+                <option value="51-150">51 do 150</option>
+                <option value="151+">Ponad 150</option>
+              </select>
+              <span class="err" role="alert"></span>
+            </div>
+
+            <div class="field full" data-msg="Napisz krótko, skąd o nas wiesz.">
+              <label for="f-source">Skąd o nas wiesz <span class="hint">(nieobowiązkowe)</span></label>
+              <input type="text" id="f-source" name="skad-wiesz" placeholder="BNI, polecenie, LinkedIn, spotkanie">
+              <span class="err" role="alert"></span>
+            </div>
+          </div>
+
+          <!-- pulapka na boty, ludzie tego nie widza -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-hp">Zostaw to pole puste</label>
+            <input type="text" id="f-hp" name="firma-druga" tabindex="-1" autocomplete="off">
+          </div>
+
+          <label class="consent" id="consent-wrap" data-msg="Zaznacz zgodę na kontakt, bez niej nie możemy się odezwać.">
+            <input type="checkbox" id="f-consent" name="zgoda-kontakt" value="tak" required>
+            <span>Zgadzam się na kontakt w sprawie programu partnerskiego i akceptuję
+              <!-- LINK SLOT: podmien href na adres regulaminu programu -->
+              <a href="#" target="_blank" rel="noopener">Regulamin Programu Partnerskiego</a>.</span>
+          </label>
+          <span class="err" role="alert" id="consent-err" style="display:none;color:#b3261e;font-size:13px;font-weight:600"></span>
+
+          <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+          <p class="rodo">
+            Administratorem danych jest Dogtronic Labs Sp. z o.o., ul. Hajdowska 43C, 20-231 Lublin, NIP 9462765575.
+            Dane z formularza przetwarzamy wyłącznie po to, żeby rozpatrzyć zgłoszenie i skontaktować się w sprawie współpracy.
+            Podanie danych jest dobrowolne, ale bez nich nie rozpatrzymy zgłoszenia. Masz prawo dostępu do danych, ich sprostowania,
+            usunięcia i sprzeciwu. Szczegóły w
+            <!-- LINK SLOT: podmien href na adres polityki prywatnosci -->
+            <a href="#" target="_blank" rel="noopener">Polityce prywatności</a>.
+          </p>
+        </form>
+      </div>
+
+      <aside class="aside-card">
+        <h3>Wolisz od razu porozmawiać?</h3>
+        <p>Wybierz termin w kalendarzu. Piętnaście minut wystarczy, żeby ustalić, czy program ma dla Ciebie sens, i zobaczyć aplikację na żywo.</p>
+        <a class="btn btn-primary" href="https://calendar.app.google/TrvZSUXYfkFGZcBe8" target="_blank" rel="noopener">Wybierz termin rozmowy</a>
+        <span class="mail">Albo napisz wprost:<br><a href="mailto:kamil.sobkowicz@dogtronic.io">kamil.sobkowicz@dogtronic.io</a></span>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">Dog<span class="pill">Invoice</span></div>
+        <p>Kontrola finansów firmy. Faktury z KSeF, maila i zdjęć w jednym miejscu, z pilnowaniem płatności.</p>
+      </div>
+      <div>
+        <h4>Program partnerski</h4>
+        <ul>
+          <li><a href="#kalkulator">Ile zarobisz</a></li>
+          <li><a href="#jak-to-dziala">Jak to działa</a></li>
+          <li><a href="#biura">Dla biur rachunkowych</a></li>
+          <li><a href="#faq">Pytania</a></li>
+          <li><a href="#zgloszenie">Zgłoś się</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:kamil.sobkowicz@dogtronic.io">kamil.sobkowicz@dogtronic.io</a></li>
+          <li><a href="https://calendar.app.google/TrvZSUXYfkFGZcBe8" target="_blank" rel="noopener">Umów rozmowę</a></li>
+          <!-- LINK SLOT: regulamin i polityka prywatnosci -->
+          <li><a href="#" target="_blank" rel="noopener">Regulamin programu</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Polityka prywatności</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-bottom">
+      Dogtronic Labs Sp. z o.o., ul. Hajdowska 43C, 20-231 Lublin, NIP 9462765575.
+      Ceny podajemy netto. Wysokość prowizji i zasady rozliczenia określa regulamin programu partnerskiego.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- KALKULATOR PROWIZJI ---------- */
+  /* Stawki w jednym miejscu. Zrodlo: DECISIONS.md D21 (Marek, 10.08.2026). */
+  var RATE = 0.50;      // prowizja partnera od kwoty faktycznie zaplaconej
+  var DISCOUNT = 0.50;  // znizka klienta na pierwszy okres rozliczeniowy
+
+  var slider   = document.getElementById('clients');
+  var sliderVal= document.getElementById('clientsVal');
+  var outMonth = document.getElementById('resMonth');
+  var outYear  = document.getElementById('resYear');
+  var outFirst = document.getElementById('resFirst');
+  var outAnnual= document.getElementById('resAnnual');
+  var planBtns = Array.prototype.slice.call(document.querySelectorAll('.plan-btn'));
+  var price = 149;
+
+  function zl(n){
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' zł';
+  }
+
+  function calc(){
+    var n = parseInt(slider.value, 10);
+    var base = n * price;                            // laczny abonament miesieczny poleconych
+    var monthFull  = base * RATE;                    // prowizja od pelnej ceny
+    var monthFirst = base * (1 - DISCOUNT) * RATE;   // pierwszy miesiac, klient ze znizka
+    var year       = monthFirst + monthFull * 11;    // rok przy rozliczeniu miesiecznym
+    var annualNow  = base * 12 * (1 - DISCOUNT) * RATE; // rozliczenie roczne, znizka na caly rok
+
+    sliderVal.textContent = n;
+    outMonth.textContent = zl(monthFull);
+    outYear.textContent  = zl(year);
+    outFirst.textContent = zl(monthFirst);
+    outAnnual.innerHTML  = 'Gdy klient wybierze abonament roczny, zniżka obejmuje cały rok, a Ty dostajesz <b>' +
+                           zl(annualNow) + '</b> od razu, z góry. Od drugiego roku jest to <b>' +
+                           zl(base * 12 * RATE) + '</b> rocznie.';
+  }
+
+  if (slider) {
+    slider.addEventListener('input', calc);
+    planBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        planBtns.forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+        btn.setAttribute('aria-pressed','true');
+        price = parseInt(btn.getAttribute('data-price'), 10);
+        calc();
+      });
+    });
+    calc();
+  }
+
+  /* ---------- FORMULARZ ---------- */
+  var form   = document.getElementById('partner-form');
+  if (!form) return;
+  var status = document.getElementById('form-status');
+  var consentWrap = document.getElementById('consent-wrap');
+  var consentBox  = document.getElementById('f-consent');
+  var consentErr  = document.getElementById('consent-err');
+  var MAIL = 'kamil.sobkowicz@dogtronic.io';
+
+  function fieldOf(el){ return el.closest ? el.closest('.field') : null; }
+
+  function setError(wrap, msg){
+    if (!wrap) return;
+    wrap.classList.add('invalid');
+    var box = wrap.querySelector('.err');
+    if (box) box.textContent = msg;
+  }
+  function clearError(wrap){
+    if (!wrap) return;
+    wrap.classList.remove('invalid');
+    var box = wrap.querySelector('.err');
+    if (box) box.textContent = '';
+  }
+
+  function digits(v){ return (v || '').replace(/\D/g, ''); }
+
+  function validateField(el){
+    var wrap = fieldOf(el);
+    if (!wrap) return true;
+    var msg = wrap.getAttribute('data-msg') || 'Uzupełnij to pole.';
+    var val = (el.value || '').trim();
+
+    if (el.hasAttribute('required') && val === '') { setError(wrap, msg); return false; }
+    if (val === '') { clearError(wrap); return true; }
+
+    if (el.id === 'f-email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) {
+      setError(wrap, 'Ten adres wygląda na niepełny. Popraw go na format jan@firma.pl.'); return false;
+    }
+    if (el.id === 'f-nip' && digits(val).length !== 10) {
+      setError(wrap, 'NIP ma 10 cyfr. Wpisz same cyfry, bez myślników i spacji.'); return false;
+    }
+    if (el.id === 'f-phone' && digits(val).length < 9) {
+      setError(wrap, 'Numer telefonu ma minimum 9 cyfr. Sprawdź, czy nie brakuje kilku.'); return false;
+    }
+    if (el.id === 'f-name' && val.length < 3) {
+      setError(wrap, 'Wpisz imię i nazwisko, minimum trzy znaki.'); return false;
+    }
+    clearError(wrap);
+    return true;
+  }
+
+  function validateConsent(){
+    if (consentBox.checked) {
+      consentWrap.classList.remove('invalid');
+      consentErr.style.display = 'none';
+      consentErr.textContent = '';
+      return true;
+    }
+    consentWrap.classList.add('invalid');
+    consentErr.textContent = consentWrap.getAttribute('data-msg');
+    consentErr.style.display = 'block';
+    return false;
+  }
+
+  Array.prototype.forEach.call(form.querySelectorAll('input, select'), function(el){
+    if (el.id === 'f-hp' || el.type === 'checkbox') return;
+    el.addEventListener('blur', function(){ validateField(el); });
+    el.addEventListener('input', function(){
+      var wrap = fieldOf(el);
+      if (wrap && wrap.classList.contains('invalid')) validateField(el);
+    });
+  });
+  consentBox.addEventListener('change', function(){
+    if (consentBox.checked) validateConsent();
+  });
+
+  // link w tresci zgody nie moze przelaczac checkboxa
+  Array.prototype.forEach.call(consentWrap.querySelectorAll('a'), function(a){
+    a.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+
+  function showStatus(kind, html){
+    status.className = 'form-status show ' + kind;
+    status.innerHTML = html;
+  }
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    status.className = 'form-status';
+    status.innerHTML = '';
+
+    var firstBad = null;
+    Array.prototype.forEach.call(form.querySelectorAll('input, select'), function(el){
+      if (el.id === 'f-hp' || el.type === 'checkbox') return;
+      if (!validateField(el) && !firstBad) firstBad = el;
+    });
+    if (!validateConsent() && !firstBad) firstBad = consentBox;
+
+    if (firstBad) {
+      showStatus('bad', 'Popraw zaznaczone pola i wyślij jeszcze raz. Przy każdym z nich jest napisane, co zmienić.');
+      firstBad.focus();
+      return;
+    }
+
+    // pulapka na boty: wypelnione = udajemy sukces i nic nie wysylamy
+    if (document.getElementById('f-hp').value !== '') { return; }
+
+    var action = (form.getAttribute('action') || '').trim();
+    if (action === '') {
+      showStatus('warn',
+        'Formularz nie jest jeszcze podpięty. Napisz na <a href="mailto:' + MAIL +
+        '?subject=Zg%C5%82oszenie%20do%20programu%20partnerskiego%20DogInvoice">' + MAIL + '</a>' +
+        ' albo umów rozmowę w kalendarzu. Twoje dane nie zostały nigdzie wysłane.');
+      status.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+
+    form.submit();
+  });
+})();
+</script>
+
+</body>
+</html>

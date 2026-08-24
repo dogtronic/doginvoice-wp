@@ -44,8 +44,7 @@
   position: relative;
   padding: $spacing-md;
   background: transparent;
-  filter: drop-shadow(0 0 0.5px rgba(23, 23, 23, 0.18))
-    drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
+  filter: drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
 
   &::before {
     content: "";
