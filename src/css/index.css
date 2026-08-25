@@ -1284,7 +1284,7 @@ body.is-menu-open {
   height: 38px;
   margin-bottom: 16px;
   background: rgb(79, 209, 95);
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255);
   font-family: "Inter", sans-serif;
   font-weight: 700;
   clip-path: polygon(8px 0%, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0% 8px);
@@ -1554,7 +1554,7 @@ body.is-menu-open {
   height: 44px;
   margin-bottom: 24px;
   background: rgb(79, 209, 95);
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255);
   font-family: "Inter", sans-serif;
   font-weight: 700;
   clip-path: polygon(10px 0%, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0% 10px);
