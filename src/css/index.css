@@ -1761,11 +1761,12 @@ body.is-menu-open {
   padding: 15px 30px;
   border: none;
   background: rgb(79, 209, 95);
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255);
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: var(--fs-body-lg);
   cursor: pointer;
+  clip-path: polygon(10px 0%, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0% 10px);
   transition: transform 0.15s ease;
 }
 .partner-form-card .wpcf7-submit:hover {

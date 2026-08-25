@@ -200,11 +200,19 @@
   padding: 15px 30px;
   border: none;
   background: $color-green;
-  color: $color-dark;
+  color: $color-white;
   font-family: $ff-body;
   font-weight: $fw-medium;
   font-size: var(--fs-body-lg);
   cursor: pointer;
+  clip-path: polygon(
+    $corner 0%,
+    100% 0,
+    100% calc(100% - #{$corner}),
+    calc(100% - #{$corner}) 100%,
+    0 100%,
+    0% $corner
+  );
   transition: transform 0.15s ease;
 
   &:hover {
