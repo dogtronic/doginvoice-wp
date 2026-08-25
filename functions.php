@@ -15,7 +15,7 @@ if (! defined('_S_VERSION')) {
 
 if (! defined('DOGINVOICE_CSS_VERSION')) {
 	// Bump this whenever src/css/index.css changes to bust the browser cache.
-	define('DOGINVOICE_CSS_VERSION', '1.0.18');
+	define('DOGINVOICE_CSS_VERSION', '1.0.19');
 }
 
 /**
