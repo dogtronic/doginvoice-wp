@@ -23,6 +23,7 @@ get_header();
     <?php get_template_part( 'template-parts/partner-program/video' ); ?>
     <?php get_template_part( 'template-parts/partner-program/product' ); ?>
     <?php get_template_part( 'template-parts/partner-program/audience' ); ?>
+    <?php get_template_part( 'template-parts/partner-program/testimonials' ); ?>
     <?php get_template_part( 'template-parts/partner-program/form' ); ?>
   </main>
 <?php

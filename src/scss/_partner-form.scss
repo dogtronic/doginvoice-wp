@@ -2,10 +2,10 @@
 
 .partner-form {
   width: 100%;
-  padding: $spacing-xl $spacing-sm;
+  padding: $spacing-md $spacing-sm $spacing-xl;
 
   @media #{$min-lg} {
-    padding: $spacing-xxl $spacing-lg;
+    padding: $spacing-lg $spacing-lg $spacing-xxl;
   }
 }
 

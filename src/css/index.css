@@ -1497,11 +1497,11 @@ body.is-menu-open {
 
 .partner-audience {
   width: 100%;
-  padding: 96px 24px;
+  padding: 32px 24px 96px;
 }
 @media (min-width: 1024px) {
   .partner-audience {
-    padding: 130px 64px;
+    padding: 64px 64px 130px;
   }
 }
 
@@ -1578,11 +1578,11 @@ body.is-menu-open {
 
 .partner-form {
   width: 100%;
-  padding: 96px 24px;
+  padding: 32px 24px 96px;
 }
 @media (min-width: 1024px) {
   .partner-form {
-    padding: 130px 64px;
+    padding: 64px 64px 130px;
   }
 }
 
