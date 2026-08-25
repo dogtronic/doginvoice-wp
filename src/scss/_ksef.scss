@@ -1,0 +1,350 @@
+@use "variables" as *;
+
+// Style dla page-ksef-template.php (klaster artykułów KSeF, treść z Gutenberga).
+// Wszystko scope'owane pod .ksef-cluster (body_class w functions.php),
+// żeby nie ruszać wyglądu innych szablonów.
+
+.ksef-cluster {
+  background-color: $color-beige-light;
+
+  #gora {
+    padding-top: 150px;
+    padding-bottom: $spacing-xl;
+
+    @media #{$min-xl} {
+      padding-top: 200px;
+    }
+  }
+
+  .entry-header,
+  .entry-content,
+  .entry-footer,
+  .post-navigation,
+  .comments-area {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 $spacing-sm;
+
+    @media #{$min-lg} {
+      padding: 0 $spacing-lg;
+    }
+  }
+
+  .entry-header {
+    margin-bottom: $spacing-lg;
+  }
+
+  .entry-title {
+    font-family: $ff-heading;
+    font-weight: $fw-medium;
+    font-size: var(--fs-h2);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: $color-dark;
+  }
+
+  // ===== Treść (bloki Gutenberga) =====
+
+  .entry-content {
+    color: $color-grey;
+    font-size: var(--fs-body-md);
+    line-height: 1.6;
+
+    > * {
+      margin-bottom: $spacing-sm;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: $spacing-lg;
+      color: $color-dark;
+      font-family: $ff-heading;
+      font-weight: $fw-medium;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: var(--fs-h3);
+    }
+
+    h3 {
+      font-size: var(--fs-h4);
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: var(--fs-body-xl);
+    }
+
+    p {
+      font-size: var(--fs-body-md);
+      line-height: 1.6;
+    }
+
+    a {
+      color: $color-dark-green;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    strong,
+    b {
+      color: $color-dark;
+      font-weight: $fw-medium;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.3em;
+    }
+
+    li {
+      margin-bottom: calc(#{$spacing-xs} / 2);
+      line-height: 1.6;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style: decimal;
+    }
+
+    blockquote {
+      padding-left: $spacing-sm;
+      border-left: 3px solid $color-green;
+      color: $color-dark;
+      font-style: italic;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid rgba(23, 23, 23, 0.12);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      margin-top: $spacing-xs;
+      color: $color-grey;
+      font-size: var(--fs-body-sm);
+      text-align: center;
+    }
+
+    // Tabela porównawcza
+    .wp-block-table {
+      overflow-x: auto;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--fs-body-sm);
+      }
+
+      th,
+      td {
+        padding: 10px 14px;
+        border: 1px solid rgba(23, 23, 23, 0.12);
+        text-align: left;
+      }
+
+      thead th {
+        background: $color-dark;
+        color: $color-white;
+        font-weight: $fw-medium;
+      }
+
+      tbody tr:nth-child(even) {
+        background: rgba(23, 23, 23, 0.03);
+      }
+    }
+
+    // Grupa z tłem (np. "W skrócie — nasi zwycięzcy")
+    .wp-block-group.has-background {
+      color: $color-dark;
+
+      h2,
+      h3,
+      h4 {
+        margin-top: 0;
+      }
+    }
+
+    code {
+      padding: 2px 6px;
+      background: rgba(23, 23, 23, 0.06);
+      border-radius: 4px;
+      font-family: $ff-special;
+      font-size: 0.9em;
+    }
+  }
+
+  // Wyrównania szerokie / pełna szerokość (align-wide theme support)
+  .entry-content > .alignwide {
+    @media #{$min-lg} {
+      max-width: 1100px;
+      margin-left: calc(50% - 550px);
+      margin-right: calc(50% - 550px);
+    }
+  }
+
+  .entry-content > .alignfull {
+    max-width: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0 $spacing-sm;
+
+    @media #{$min-lg} {
+      padding: 0 $spacing-lg;
+    }
+  }
+
+  // ===== Nawigacja między wpisami =====
+
+  .post-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-sm;
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+    border-top: 1px solid rgba(23, 23, 23, 0.12);
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      gap: $spacing-sm;
+      width: 100%;
+    }
+
+    .nav-next {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .nav-subtitle {
+      display: block;
+      margin-bottom: 4px;
+      color: $color-grey;
+      font-size: var(--fs-body-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-title {
+      color: $color-dark;
+      font-weight: $fw-medium;
+    }
+  }
+
+  // ===== Komentarze =====
+
+  .comments-area {
+    padding-top: $spacing-lg;
+  }
+
+  .comments-title,
+  #reply-title {
+    margin-bottom: $spacing-sm;
+    color: $color-dark;
+    font-family: $ff-heading;
+    font-weight: $fw-medium;
+    font-size: var(--fs-h4);
+  }
+
+  .comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $spacing-lg;
+
+    .comment-body {
+      padding: $spacing-sm 0;
+      border-top: 1px solid rgba(23, 23, 23, 0.12);
+    }
+
+    .comment-author {
+      font-weight: $fw-medium;
+      color: $color-dark;
+    }
+
+    .comment-metadata {
+      margin-bottom: $spacing-xs;
+      color: $color-grey;
+      font-size: var(--fs-body-sm);
+    }
+
+    .children {
+      list-style: none;
+      padding-left: $spacing-md;
+    }
+  }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: $fw-medium;
+      color: $color-dark;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid rgba(23, 23, 23, 0.12);
+      background: $color-white;
+      font-family: $ff-body;
+      font-size: var(--fs-body-md);
+      color: $color-dark;
+
+      &:focus {
+        outline: none;
+        border-color: $color-green;
+        box-shadow: 0 0 0 3px rgba(79, 209, 95, 0.25);
+      }
+    }
+
+    .form-submit input[type="submit"] {
+      padding: 13px 28px;
+      border: none;
+      background: $color-green;
+      color: $color-white;
+      font-family: $ff-body;
+      font-weight: $fw-medium;
+      font-size: var(--fs-body-md);
+      cursor: pointer;
+      clip-path: polygon(
+        $corner 0%,
+        100% 0,
+        100% calc(100% - #{$corner}),
+        calc(100% - #{$corner}) 100%,
+        0 100%,
+        0% $corner
+      );
+    }
+  }
+}
