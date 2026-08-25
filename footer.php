@@ -508,6 +508,7 @@ $organization_schema = array(
   <script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-calculator.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="<?php echo get_template_directory_uri(); ?>/src/js/testimonials-swiper.js" defer></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-meta-events.js" defer></script>
 <?php endif; ?>
 <?php wp_footer(); ?>
 </body>
