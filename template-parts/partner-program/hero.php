@@ -30,7 +30,7 @@
       data-aos="fade-up"
       data-aos-delay="150"
       data-remove-orphans>
-      Rekomendujesz DogInvoice angdy klient zakłada konto z Twojego polecenia dostajesz połowę każdej jego płatności co miesiąc.
+      Rekomendujesz DogInvoice, a gdy klient zakłada konto z Twojego polecenia dostajesz połowę każdej jego płatności co miesiąc.
     </p>
     <div class="partner-hero-content-cta" data-aos="fade-up" data-aos-delay="200">
       <a href="#zgloszenie" class="partner-hero-content-cta-button btn" size="bg" color="green">
