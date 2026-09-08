@@ -48,11 +48,28 @@
     })(document);
   </script>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const partner = params.get('partner');
-    if (partner) {
-      document.cookie = `doginvoice-partner=${partner}; max-age=${60 * 60 * 24 * 30}; path=/; domain=.doginvoice.com; SameSite=Lax`;
-    }
+    (function() {
+      function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return match ? decodeURIComponent(match[1]) : null;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const partnerParam = params.get('partner');
+
+      if (partnerParam) {
+        document.cookie = `doginvoice-partner=${encodeURIComponent(partnerParam)}; max-age=${60 * 60 * 24 * 30}; path=/; domain=.doginvoice.com; SameSite=Lax`;
+      }
+
+      const partner = partnerParam || getCookie('doginvoice-partner');
+      if (!partner) return;
+
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="https://app.doginvoice.com"]').forEach(function(link) {
+          link.href = `https://app.doginvoice.com/promo/${encodeURIComponent(partner)}`;
+        });
+      });
+    })();
   </script>
 
 <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"HQvMsVp6MkdU7SU7g3EAmM",debug:true});</script>
