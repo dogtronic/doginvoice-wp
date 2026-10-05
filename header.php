@@ -66,6 +66,7 @@
 
       document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('a[href^="https://app.doginvoice.com"]').forEach(function(link) {
+          if (link.href === 'https://app.doginvoice.com/demo') return;
           link.href = `https://app.doginvoice.com/promo/${encodeURIComponent(partner)}`;
         });
       });
