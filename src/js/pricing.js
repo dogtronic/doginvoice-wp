@@ -1,9 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initPricing() {
   wrapPricingInfoWithLastWord();
   initPricingTooltips();
   initPricingSwitcher();
   initPricingModal();
-});
+}
+
+document.addEventListener("DOMContentLoaded", initPricing);
 
 function initPricingTooltips() {
   if (typeof tippy !== "function") return;
@@ -21,6 +23,7 @@ function initPricingTooltips() {
 
 function initPricingSwitcher() {
   const pricingSwitch = document.querySelector(".pricing-switcher");
+  if (pricingSwitch?.dataset.inited === "true") return;
   const pricingSwitchButton = pricingSwitch?.querySelector(
     ".pricing-switcher-button",
   );
@@ -32,6 +35,7 @@ function initPricingSwitcher() {
 
   if (!pricingSwitch || !pricingSwitchButton || !monthlyOption || !yearlyOption)
     return;
+  pricingSwitch.dataset.inited = "true";
 
   const setPeriod = (isYearly) => {
     pricingSwitchButton.setAttribute("aria-pressed", String(isYearly));
@@ -86,6 +90,8 @@ function initPricingModal() {
   ) {
     return;
   }
+  if (modal.dataset.inited === "true") return;
+  modal.dataset.inited = "true";
 
   const featureDescriptions = collectFeatureDescriptions();
 

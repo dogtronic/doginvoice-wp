@@ -1,4 +1,4 @@
-(() => {
+function initDemoModal() {
   const modal = document.querySelector(".demo-modal");
   const dialog = modal?.querySelector(".demo-modal-dialog");
   const iframe = modal?.querySelector("[data-demo-modal-iframe]");
@@ -7,6 +7,8 @@
   const backdrop = document.querySelector(".demo-modal-backdrop");
 
   if (!modal || !iframe) return;
+  if (modal.dataset.inited === "true") return;
+  modal.dataset.inited = "true";
 
   const videoSrc = iframe.getAttribute("data-src") || "";
 
@@ -51,4 +53,6 @@
       closeModal();
     }
   });
-})();
+}
+
+document.addEventListener("DOMContentLoaded", initDemoModal);

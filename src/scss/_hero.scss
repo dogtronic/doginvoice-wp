@@ -154,6 +154,7 @@
 
       @media #{$min-md} {
         display: block;
+        animation: fadeIn 0.5s 0.3s ease-out forwards;
       }
     }
 

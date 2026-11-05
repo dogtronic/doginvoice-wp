@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  initPartnerCalculator();
-});
+document.addEventListener("DOMContentLoaded", initPartnerCalculator);
 
 // Stawki w jednym miejscu. Źródło: DECISIONS.md D21 (Marek, 10.08.2026).
 const PARTNER_RATE = 0.5; // prowizja partnera od kwoty faktycznie zapłaconej
@@ -9,6 +7,8 @@ const PARTNER_DISCOUNT = 0.5; // zniżka klienta na pierwszy okres rozliczeniowy
 function initPartnerCalculator() {
   const slider = document.getElementById("partner-calc-clients");
   if (!slider) return;
+  if (slider.dataset.inited === "true") return;
+  slider.dataset.inited = "true";
 
   const sliderValue = document.getElementById("partner-calc-clients-value");
   const outMonth = document.getElementById("partner-calc-month");

@@ -1,5 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initGsapAnimations() {
+  initGsapAnimations.cleanup?.();
+  initGsapAnimations.cleanup = null;
+
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (typeof gsap === "undefined") return;
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -52,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const footerGradient = document.querySelector(".footer__gradient");
   const footerBackground = document.querySelector(".footer__background");
+  const footerSection = document.querySelector(".footer-section");
   if (footerGradient) {
     gsap.to(footerGradient, {
       opacity: 1,
@@ -64,16 +69,23 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
-  if (footerBackground) {
+  if (footerBackground && footerSection) {
     gsap.to(footerBackground, {
       opacity: 1,
       ease: "none",
       scrollTrigger: {
-        trigger: ".footer-section",
+        trigger: footerSection,
         start: "top center",
         end: "top 30%",
         scrub: 1,
       },
     });
   }
-});
+
+  initGsapAnimations.cleanup = () => {
+    mm.revert();
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  };
+}
+
+document.addEventListener("DOMContentLoaded", initGsapAnimations);

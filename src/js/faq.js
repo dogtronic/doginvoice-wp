@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initFaq() {
   const faq = document.querySelector(".faq");
   if (!faq) return;
+  if (faq.dataset.inited === "true") return;
+  faq.dataset.inited = "true";
 
   const navButtons = [...faq.querySelectorAll(".faq-nav-button")];
   const categories = [...faq.querySelectorAll(".faq-category")];
@@ -171,4 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
   updateActiveOnScroll();
-});
+}
+
+document.addEventListener("DOMContentLoaded", initFaq);

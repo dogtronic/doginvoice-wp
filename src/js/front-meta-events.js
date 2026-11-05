@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initFrontMetaEvents() {
   function fbTrack(event, params) {
     if (typeof fbq !== "function") return;
     params ? fbq("track", event, params) : fbq("track", event);
@@ -184,4 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const intervalId = setInterval(tick, 1000);
   })();
-});
+}
+
+document.addEventListener("DOMContentLoaded", initFrontMetaEvents);

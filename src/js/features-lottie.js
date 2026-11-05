@@ -1,10 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initFeaturesLottie() {
+  initFeaturesLottie.cleanup?.();
+  initFeaturesLottie.cleanup = null;
+
   const containers = document.querySelectorAll("[data-lottie]");
   if (!containers.length || typeof lottie === "undefined") return;
 
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
+
+  const animations = [];
+  const observers = [];
 
   containers.forEach((container) => {
     const path = container.dataset.lottie;
@@ -17,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       autoplay: false,
       path,
     });
+    animations.push(animation);
 
     if (reduceMotion) {
       animation.addEventListener("DOMLoaded", () => {
@@ -37,5 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     observer.observe(container);
+    observers.push(observer);
   });
-});
+
+  initFeaturesLottie.cleanup = () => {
+    observers.forEach((observer) => observer.disconnect());
+    animations.forEach((animation) => animation.destroy());
+  };
+}
+
+document.addEventListener("DOMContentLoaded", initFeaturesLottie);

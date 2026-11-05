@@ -23,6 +23,9 @@ add_action( 'acf/init', 'doginvoice_acf_pricing_fields' );
 add_action( 'acf/init', 'doginvoice_acf_integrations_fields' );
 add_action( 'acf/init', 'doginvoice_acf_testimonials_fields' );
 add_action( 'acf/init', 'doginvoice_acf_faq_fields' );
+add_action( 'acf/init', 'doginvoice_acf_blog_fields' );
+add_action( 'acf/init', 'doginvoice_acf_blog_page_fields' );
+add_action( 'acf/init', 'doginvoice_acf_post_fields' );
 add_action( 'acf/init', 'doginvoice_acf_notfound_fields' );
 add_action( 'acf/init', 'doginvoice_acf_text_page_fields' );
 
@@ -1195,13 +1198,156 @@ function doginvoice_acf_notfound_fields() {
 }
 
 /**
- * Fields for the generic text-page template (page.php).
- *
- * Applies to every Page using the default template — i.e. every Page
- * that front-page.php doesn't take over. Title and body come from the
- * normal WordPress editor (get_the_title() / the_content()); these two
- * fields only add the optional badge and lead paragraph the design has
- * above the main content.
+ * Selected posts on the front page (template-parts/front-page/blog.php).
+ */
+function doginvoice_acf_blog_fields() {
+	acf_add_local_field_group(
+		array(
+			'key'         => 'group_doginvoice_blog',
+			'title'       => 'Front Page — Blog',
+			'fields'      => array(
+				array(
+					'key'           => 'field_doginvoice_blog_badge',
+					'label'         => 'Tekst odznaki (badge)',
+					'name'          => 'blog_badge',
+					'type'          => 'text',
+					'default_value' => 'Blog',
+				),
+				array(
+					'key'           => 'field_doginvoice_blog_title',
+					'label'         => 'Nagłówek (H2)',
+					'name'          => 'blog_title',
+					'type'          => 'text',
+					'default_value' => 'Poradniki, które oszczędzają godziny',
+				),
+				array(
+					'key'           => 'field_doginvoice_blog_description',
+					'label'         => 'Opis',
+					'name'          => 'blog_description',
+					'type'          => 'textarea',
+					'rows'          => 3,
+					'default_value' => 'Faktury, KSeF i automatyzacje opisane tak, żeby dało się je wdrożyć.',
+				),
+				array(
+					'key'           => 'field_doginvoice_blog_posts',
+					'label'         => 'Wybrane wpisy',
+					'name'          => 'blog_posts',
+					'type'          => 'relationship',
+					'instructions'  => 'Kolejność na liście jest kolejnością na stronie głównej. Puste pole pokazuje 3 najnowsze wpisy.',
+					'post_type'     => array( 'post' ),
+					'filters'       => array( 'search' ),
+					'return_format' => 'object',
+					'min'           => 0,
+					'max'           => 3,
+				),
+			),
+			'location'    => array(
+				array(
+					array(
+						'param'    => 'page_type',
+						'operator' => '==',
+						'value'    => 'front_page',
+					),
+				),
+			),
+			'menu_order'  => 10,
+			'position'    => 'normal',
+			'style'       => 'default',
+			'active'      => true,
+			'description' => 'Sekcja bloga na stronie głównej (front-page.php).',
+		)
+	);
+}
+
+/**
+ * Heading fields for the blog listing page (template-blog.php).
+ */
+function doginvoice_acf_blog_page_fields() {
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_doginvoice_blog_page',
+			'title'    => 'Lista wpisów',
+			'fields'   => array(
+				array(
+					'key'          => 'field_doginvoice_blog_page_display_title',
+					'label'        => 'Tytuł wyświetlany',
+					'name'         => 'display_title',
+					'type'         => 'text',
+					'instructions' => 'Opcjonalne. Zastępuje nazwę strony w nagłówku. Zostaw puste, by pokazać nazwę strony.',
+				),
+				array(
+					'key'           => 'field_doginvoice_blog_page_badge',
+					'label'         => 'Tekst odznaki (badge)',
+					'name'          => 'blog_page_badge',
+					'type'          => 'text',
+					'instructions'  => 'Opcjonalne, np. "WIEDZA". Zostaw puste, by nie pokazywać odznaki.',
+					'default_value' => 'Wiedza',
+				),
+				array(
+					'key'           => 'field_doginvoice_blog_page_lead',
+					'label'         => 'Lead (wstęp pod tytułem)',
+					'name'          => 'blog_page_lead',
+					'type'          => 'textarea',
+					'instructions'  => 'Opcjonalne. Wstęp pod tytułem listy.',
+					'rows'          => 3,
+					'default_value' => 'Poradniki o fakturach, KSeF i automatyzacji, które da się wdrożyć od razu.',
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'page_template',
+						'operator' => '==',
+						'value'    => 'template-blog.php',
+					),
+				),
+			),
+			'active'   => true,
+			'description' => 'Odznaka i lead nad listą wpisów (template-blog.php).',
+		)
+	);
+}
+
+/**
+ * Cover image for a single post (single.php).
+ */
+function doginvoice_acf_post_fields() {
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_doginvoice_post',
+			'title'    => 'Wpis',
+			'fields'   => array(
+				array(
+					'key'           => 'field_doginvoice_post_cover',
+					'label'         => 'Okładka',
+					'name'          => 'post_cover',
+					'type'          => 'image',
+					'instructions'  => 'Pokazywane jako główne zdjęcie na stronie wpisu.',
+					'return_format' => 'array',
+					'preview_size'  => 'medium',
+					'library'       => 'all',
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'post',
+					),
+				),
+			),
+			'menu_order'  => 0,
+			'position'    => 'side',
+			'style'       => 'default',
+			'active'      => true,
+			'description' => 'Okładka wpisu (single.php).',
+		)
+	);
+}
+
+/**
+ * Heading fields for the text-page template (template-text.php).
  */
 function doginvoice_acf_text_page_fields() {
 	acf_add_local_field_group(
@@ -1209,6 +1355,13 @@ function doginvoice_acf_text_page_fields() {
 			'key'         => 'group_doginvoice_text_page',
 			'title'       => 'Nagłówek strony',
 			'fields'      => array(
+				array(
+					'key'          => 'field_doginvoice_page_display_title',
+					'label'        => 'Tytuł wyświetlany',
+					'name'         => 'display_title',
+					'type'         => 'text',
+					'instructions' => 'Opcjonalne. Zastępuje nazwę strony w nagłówku. Zostaw puste, by pokazać nazwę strony.',
+				),
 				array(
 					'key'          => 'field_doginvoice_page_badge',
 					'label'        => 'Tekst odznaki (badge)',
@@ -1230,12 +1383,12 @@ function doginvoice_acf_text_page_fields() {
 					array(
 						'param'    => 'page_template',
 						'operator' => '==',
-						'value'    => 'default',
+						'value'    => 'template-text.php',
 					),
 				),
 			),
 			'active'      => true,
-			'description' => 'Opcjonalna odznaka i lead nad główną treścią strony (page.php). Tytuł i treść edytujesz normalnie w edytorze WordPressa.',
+			'description' => 'Odznaka, tytuł wyświetlany i lead nad treścią (template-text.php).',
 		)
 	);
 }

@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initIntegrationsSwiper() {
   const integrationsEl = document.querySelector(".integrations-swiper");
   if (!integrationsEl || typeof Swiper === "undefined") return;
+  if (integrationsEl.swiper) return;
 
   const wrapper = integrationsEl.querySelector(".swiper-wrapper");
   if (!wrapper) return;
@@ -39,4 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", initIntegrationsSwiper);

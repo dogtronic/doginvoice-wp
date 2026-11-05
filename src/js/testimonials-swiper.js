@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initTestimonialsSwiper() {
   const testimonialsEl = document.querySelector(".testimonials-swiper");
   if (!testimonialsEl || typeof Swiper === "undefined") return;
+  if (testimonialsEl.swiper) return;
 
   // const wrapper = testimonialsEl.querySelector(".swiper-wrapper");
   // if (!wrapper) return;
@@ -39,4 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", initTestimonialsSwiper);
