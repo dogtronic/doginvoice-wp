@@ -505,6 +505,9 @@ $organization_schema = array(
   <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-lottie.js" defer></script>
   <script src="<?php echo get_template_directory_uri(); ?>/src/js/front-meta-events.js" defer></script>
 <?php endif; ?>
+<?php if (is_singular('post')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/src/js/post-toc.js" defer></script>
+<?php endif; ?>
 <?php if (is_page_template('page-partner-program.php')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-calculator.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>

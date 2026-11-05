@@ -15,7 +15,7 @@ if (! defined('_S_VERSION')) {
 
 if (! defined('DOGINVOICE_CSS_VERSION')) {
 	// Bump this whenever src/css/index.css changes to bust the browser cache.
-	define('DOGINVOICE_CSS_VERSION', '1.0.20');
+	define('DOGINVOICE_CSS_VERSION', '1.0.24');
 }
 
 /**
@@ -220,6 +220,24 @@ add_action('after_setup_theme', function () {
 	add_editor_style('editor-style.css');
 });
 
+/**
+ * Gutenberg tylko dla wpisów. Strony i pozostałe typy treści
+ * edytowane są klasycznym edytorem.
+ */
+add_filter('use_block_editor_for_post_type', function ($use_block_editor, $post_type) {
+	if ('post' === $post_type) {
+		return true;
+	}
+
+	// Wewnętrzne typy bloków (wzorce, szablony) zostają, żeby edytor wpisu działał.
+	$internal = array('wp_block', 'wp_template', 'wp_template_part', 'wp_navigation');
+	if (in_array($post_type, $internal, true)) {
+		return $use_block_editor;
+	}
+
+	return false;
+}, 10, 2);
+
 
 add_filter('body_class', function ($classes) {
 	if (is_page_template('page-ksef-template.php')) {
@@ -255,6 +273,50 @@ function disable_comments()
     add_filter('comments_array', '__return_empty_array', 10, 2);
 }
 add_action('admin_menu', 'disable_comments');
+
+
+//============================================================
+// HIDE PAGE EDITOR META BOXES.
+// ============================================================
+function doginvoice_hide_page_editor_boxes()
+{
+	$boxes = array(
+		'commentstatusdiv',
+		'commentsdiv',
+		'slugdiv',
+		'authordiv',
+		'revisionsdiv',
+		'wpcode-metabox-snippets',
+	);
+
+	foreach ($boxes as $box) {
+		foreach (array('normal', 'advanced', 'side') as $context) {
+			remove_meta_box($box, 'page', $context);
+		}
+	}
+}
+add_action('add_meta_boxes', 'doginvoice_hide_page_editor_boxes', 100);
+
+
+//============================================================
+// DISABLE TAGS ON POSTS.
+// ============================================================
+function doginvoice_disable_post_tags()
+{
+	unregister_taxonomy_for_object_type('post_tag', 'post');
+}
+add_action('init', 'doginvoice_disable_post_tags');
+
+function doginvoice_remove_post_tags_ui()
+{
+	remove_meta_box('tagsdiv-post_tag', 'post', 'side');
+
+	add_filter('manage_edit-post_columns', function ($columns) {
+		unset($columns['tags']);
+		return $columns;
+	});
+}
+add_action('admin_menu', 'doginvoice_remove_post_tags_ui');
 
 
 //============================================================
@@ -321,3 +383,402 @@ function custom_admin_bar_logo()
 }
 add_action('wp_before_admin_bar_render', 'custom_admin_bar_logo');
 add_action('login_enqueue_scripts', 'custom_admin_bar_logo');
+
+
+//============================================================
+// BLOG: TOC, reading time, listing page in admin.
+// ============================================================
+
+/**
+ * Minutes of reading, with Polish plural forms.
+ *
+ * @param int|null $post_id Post ID. Defaults to the current post.
+ * @return string
+ */
+function doginvoice_reading_time( $post_id = null ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+	$text    = wp_strip_all_tags( (string) get_post_field( 'post_content', $post_id ) );
+	$words   = preg_split( '/\s+/u', trim( $text ), -1, PREG_SPLIT_NO_EMPTY );
+	$minutes = max( 1, (int) ceil( count( (array) $words ) / 200 ) );
+
+	$mod10  = $minutes % 10;
+	$mod100 = $minutes % 100;
+
+	if ( 1 === $minutes ) {
+		$unit = 'minuta';
+	} elseif ( $mod10 >= 2 && $mod10 <= 4 && ( $mod100 < 12 || $mod100 > 14 ) ) {
+		$unit = 'minuty';
+	} else {
+		$unit = 'minut';
+	}
+
+	return sprintf( '%d %s czytania', $minutes, $unit );
+}
+
+/**
+ * First real category of a post, skipping empty default buckets.
+ *
+ * @param int|null $post_id Post ID.
+ * @return WP_Term|null
+ */
+function doginvoice_primary_category( $post_id = null ) {
+	$categories = get_the_category( $post_id ? (int) $post_id : get_the_ID() );
+
+	if ( empty( $categories ) ) {
+		return null;
+	}
+
+	foreach ( $categories as $category ) {
+		if ( ! in_array( $category->slug, array( 'bez-kategorii', 'uncategorized' ), true ) ) {
+			return $category;
+		}
+	}
+
+	return $categories[0];
+}
+
+/**
+ * Permalink of the Blog page (template-blog.php).
+ *
+ * @return string
+ */
+function doginvoice_blog_page_id() {
+	$page_id = (int) get_option( 'doginvoice_blog_page_id' );
+
+	if ( $page_id && 'publish' === get_post_status( $page_id ) ) {
+		return $page_id;
+	}
+
+	$pages = get_pages(
+		array(
+			'meta_key'   => '_wp_page_template',
+			'meta_value' => 'template-blog.php',
+			'number'     => 1,
+		)
+	);
+
+	return $pages ? (int) $pages[0]->ID : 0;
+}
+
+function doginvoice_blog_url() {
+	$page_id = doginvoice_blog_page_id();
+
+	return $page_id ? get_permalink( $page_id ) : home_url( '/blog/' );
+}
+
+/**
+ * Heading shown on a page: the optional display title, or the page name.
+ *
+ * @param int|null $post_id Page ID. Defaults to the current page.
+ * @return string
+ */
+function doginvoice_page_heading( $post_id = null ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+	$display = function_exists( 'get_field' ) ? get_field( 'display_title', $post_id ) : '';
+
+	if ( is_string( $display ) && '' !== trim( $display ) ) {
+		return $display;
+	}
+
+	return get_the_title( $post_id );
+}
+
+/**
+ * Breadcrumb trail for posts and pages.
+ */
+function doginvoice_breadcrumbs() {
+	if ( ! is_singular( array( 'post', 'page' ) ) ) {
+		return;
+	}
+
+	$crumbs = array(
+		array(
+			'label' => 'Strona główna',
+			'url'   => home_url( '/' ),
+		),
+	);
+
+	if ( is_singular( 'post' ) ) {
+		$blog_id  = doginvoice_blog_page_id();
+		$crumbs[] = array(
+			'label' => $blog_id ? get_the_title( $blog_id ) : 'Blog',
+			'url'   => doginvoice_blog_url(),
+		);
+	} else {
+		foreach ( array_reverse( get_post_ancestors( get_the_ID() ) ) as $ancestor_id ) {
+			$crumbs[] = array(
+				'label' => get_the_title( $ancestor_id ),
+				'url'   => get_permalink( $ancestor_id ),
+			);
+		}
+	}
+
+	$crumbs[] = array(
+		'label' => get_the_title(),
+	);
+
+	echo '<nav class="breadcrumbs" aria-label="Okruszki"><ol>';
+
+	$last = count( $crumbs ) - 1;
+	foreach ( $crumbs as $index => $crumb ) {
+		echo '<li>';
+		if ( $index === $last || empty( $crumb['url'] ) ) {
+			echo '<span aria-current="page">' . esc_html( $crumb['label'] ) . '</span>';
+		} else {
+			echo '<a href="' . esc_url( $crumb['url'] ) . '">' . esc_html( $crumb['label'] ) . '</a>';
+			echo '<span class="breadcrumbs-sep" aria-hidden="true">/</span>';
+		}
+		echo '</li>';
+	}
+
+	echo '</ol></nav>';
+}
+
+/**
+ * Add stable ids to h2/h3 and return a table of contents.
+ *
+ * @param string $html Rendered post HTML (after the_content).
+ * @return array{html: string, toc: array<int, array{id: string, text: string, level: int}>}
+ */
+function doginvoice_content_with_toc( $html ) {
+	$result = array(
+		'html' => (string) $html,
+		'toc'  => array(),
+	);
+
+	if ( '' === trim( $result['html'] ) ) {
+		return $result;
+	}
+
+	$used = array();
+
+	$result['html'] = preg_replace_callback(
+		'/<h([23])(\s[^>]*)?>(.*?)<\/h\1>/is',
+		function ( $matches ) use ( &$used, &$result ) {
+			$level = (int) $matches[1];
+			$attrs = isset( $matches[2] ) ? $matches[2] : '';
+			$inner = $matches[3];
+			$text  = trim( wp_strip_all_tags( $inner ) );
+
+			if ( '' === $text ) {
+				return $matches[0];
+			}
+
+			$id = '';
+			if ( preg_match( '/\sid=(["\'])([^"\']+)\1/i', $attrs, $id_match ) ) {
+				$id = $id_match[2];
+			} else {
+				$base = sanitize_title( $text );
+				$base = $base ? $base : 'sekcja';
+				$id   = $base;
+				$i    = 2;
+
+				while ( isset( $used[ $id ] ) ) {
+					$id = $base . '-' . $i;
+					++$i;
+				}
+
+				$attrs .= ' id="' . esc_attr( $id ) . '"';
+			}
+
+			$used[ $id ]     = true;
+			$result['toc'][] = array(
+				'id'    => $id,
+				'text'  => $text,
+				'level' => $level,
+			);
+
+			return '<h' . $level . $attrs . '>' . $inner . '</h' . $level . '>';
+		},
+		$result['html']
+	);
+
+	return $result;
+}
+
+/**
+ * Nested list markup for the table of contents.
+ *
+ * @param array<int, array{id: string, text: string, level: int}> $toc Headings.
+ * @return string
+ */
+function doginvoice_render_toc( $toc ) {
+	if ( empty( $toc ) ) {
+		return '';
+	}
+
+	$html     = '<ol class="blog-toc-list">';
+	$open_sub = false;
+	$count    = count( $toc );
+
+	for ( $i = 0; $i < $count; $i++ ) {
+		$item       = $toc[ $i ];
+		$next       = $toc[ $i + 1 ] ?? null;
+		$next_is_h3 = $next && 3 === (int) $next['level'];
+		$link       = '<a href="#' . esc_attr( $item['id'] ) . '">' . esc_html( $item['text'] ) . '</a>';
+
+		if ( 2 === (int) $item['level'] ) {
+			if ( $open_sub ) {
+				$html    .= '</ol></li>';
+				$open_sub = false;
+			}
+
+			$html .= '<li class="blog-toc-item">' . $link;
+
+			if ( $next_is_h3 ) {
+				$html    .= '<ol class="blog-toc-sub">';
+				$open_sub = true;
+			} else {
+				$html .= '</li>';
+			}
+
+			continue;
+		}
+
+		if ( ! $open_sub ) {
+			$html    .= '<li class="blog-toc-item"><ol class="blog-toc-sub">';
+			$open_sub = true;
+		}
+
+		$html .= '<li>' . $link . '</li>';
+
+		if ( ! $next_is_h3 ) {
+			$html    .= '</ol></li>';
+			$open_sub = false;
+		}
+	}
+
+	if ( $open_sub ) {
+		$html .= '</ol></li>';
+	}
+
+	$html .= '</ol>';
+
+	return $html;
+}
+
+/**
+ * Create the Blog page in wp-admin the first time the theme runs.
+ */
+function doginvoice_ensure_blog_page() {
+	$page_id = (int) get_option( 'doginvoice_blog_page_id' );
+	$page    = $page_id ? get_post( $page_id ) : null;
+
+	if ( $page && 'trash' !== $page->post_status ) {
+		if ( 'template-blog.php' !== get_page_template_slug( $page_id ) ) {
+			update_post_meta( $page_id, '_wp_page_template', 'template-blog.php' );
+		}
+		return;
+	}
+
+	$found = get_pages(
+		array(
+			'meta_key'    => '_wp_page_template',
+			'meta_value'  => 'template-blog.php',
+			'number'      => 1,
+			'post_status' => array( 'publish', 'draft', 'private' ),
+		)
+	);
+
+	if ( $found ) {
+		update_option( 'doginvoice_blog_page_id', (int) $found[0]->ID );
+		return;
+	}
+
+	$by_slug = get_page_by_path( 'blog' );
+
+	if ( $by_slug && 'page' === $by_slug->post_type ) {
+		update_post_meta( $by_slug->ID, '_wp_page_template', 'template-blog.php' );
+		update_option( 'doginvoice_blog_page_id', (int) $by_slug->ID );
+		return;
+	}
+
+	$inserted = wp_insert_post(
+		array(
+			'post_type'   => 'page',
+			'post_title'  => 'Blog',
+			'post_name'   => 'blog',
+			'post_status' => 'publish',
+		)
+	);
+
+	if ( is_wp_error( $inserted ) || ! $inserted ) {
+		return;
+	}
+
+	update_post_meta( $inserted, '_wp_page_template', 'template-blog.php' );
+	update_option( 'doginvoice_blog_page_id', (int) $inserted );
+
+	if ( function_exists( 'update_field' ) ) {
+		update_field( 'field_doginvoice_blog_page_badge', 'Wiedza', $inserted );
+		update_field(
+			'field_doginvoice_blog_page_lead',
+			'Poradniki o fakturach, KSeF i automatyzacji, które da się wdrożyć od razu.',
+			$inserted
+		);
+	}
+}
+add_action( 'init', 'doginvoice_ensure_blog_page' );
+
+/**
+ * Hide the content editor on the default page template and the blog listing.
+ * Text pages use template-text.php, where the editor stays available.
+ */
+function doginvoice_hide_default_page_editor() {
+	$screen = get_current_screen();
+
+	if ( ! $screen || 'page' !== $screen->post_type ) {
+		return;
+	}
+
+	$post_id = isset( $_GET['post'] ) ? (int) $_GET['post'] : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+	if ( 'add' === $screen->action || ! $post_id ) {
+		remove_post_type_support( 'page', 'editor' );
+		return;
+	}
+
+	$template = get_page_template_slug( $post_id );
+
+	if ( '' === $template || 'default' === $template || 'template-blog.php' === $template ) {
+		remove_post_type_support( 'page', 'editor' );
+	}
+}
+add_action( 'current_screen', 'doginvoice_hide_default_page_editor' );
+
+/**
+ * Move existing default-template pages onto the text template once,
+ * so regulamin-style pages keep their layout. The front page stays default.
+ */
+function doginvoice_assign_text_template() {
+	if ( get_option( 'doginvoice_text_template_migrated' ) ) {
+		return;
+	}
+
+	$front_id = (int) get_option( 'page_on_front' );
+	$pages    = get_posts(
+		array(
+			'post_type'      => 'page',
+			'post_status'    => array( 'publish', 'draft', 'private', 'pending' ),
+			'posts_per_page' => -1,
+			'fields'         => 'ids',
+		)
+	);
+
+	foreach ( $pages as $page_id ) {
+		$page_id = (int) $page_id;
+
+		if ( $page_id === $front_id ) {
+			continue;
+		}
+
+		$template = get_page_template_slug( $page_id );
+
+		if ( '' === $template || 'default' === $template ) {
+			update_post_meta( $page_id, '_wp_page_template', 'template-text.php' );
+		}
+	}
+
+	update_option( 'doginvoice_text_template_migrated', 1 );
+}
+add_action( 'init', 'doginvoice_assign_text_template' );

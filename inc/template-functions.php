@@ -22,11 +22,11 @@ function doginvoice_body_classes( $classes ) {
 		$classes[] = 'no-sidebar';
 	}
 
-	// Design-specific classes expected by index.css for the 404 and
-	// generic text-page layouts (short content needs the footer pinned).
+	// Ta sama stopka co na stronach tekstowych: bez ciemnego tła,
+	// panel leży na beżu strony.
 	if ( is_404() ) {
 		$classes[] = 'page-404';
-	} elseif ( is_page() && ! is_front_page() ) {
+	} elseif ( ( is_page() && ! is_front_page() ) || is_singular( 'post' ) ) {
 		$classes[] = 'page-text';
 	}
 
