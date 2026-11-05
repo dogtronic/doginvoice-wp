@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initLogosSwiper() {
   const logosEl = document.querySelector(".trust-logos");
   if (!logosEl || typeof Swiper === "undefined") return;
+  if (logosEl.swiper) return;
 
   const wrapper = logosEl.querySelector(".swiper-wrapper");
   if (!wrapper) return;
@@ -40,4 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", initLogosSwiper);

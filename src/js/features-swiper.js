@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initFeaturesSwiper() {
+  initFeaturesSwiper.cleanup?.();
+  initFeaturesSwiper.cleanup = null;
+
   const featuresEl = document.querySelector(".features-swiper");
   if (!featuresEl || typeof Swiper === "undefined") return;
 
@@ -81,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  new Swiper(featuresEl, {
+  const swiper = new Swiper(featuresEl, {
     slidesPerView: "auto",
     spaceBetween: 16,
     loop: true,
@@ -114,4 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.addEventListener("resize", syncEdgeTracking);
-});
+
+  initFeaturesSwiper.cleanup = () => {
+    stopTracking();
+    window.removeEventListener("resize", syncEdgeTracking);
+    swiper.destroy(true, true);
+  };
+}
+
+document.addEventListener("DOMContentLoaded", initFeaturesSwiper);

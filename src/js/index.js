@@ -27,12 +27,17 @@ function removeOrphans() {
   );
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  AOS.init({
-    duration: 700,
-    once: true,
-    easing: "ease",
-    anchorPlacement: "top-bottom",
-  });
+function initIndex() {
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 700,
+      once: true,
+      easing: "ease",
+      anchorPlacement: "top-bottom",
+    });
+    AOS.refreshHard();
+  }
   removeOrphans();
-});
+}
+
+document.addEventListener("DOMContentLoaded", initIndex);

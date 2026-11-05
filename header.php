@@ -18,14 +18,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/src/assets/images/favicon.svg" />
-  <?php if (is_front_page() || is_page_template('page-partner-program.php')) : ?>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <?php endif; ?>
-  <?php if (is_front_page()) : ?>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
-  <?php endif; ?>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <?php wp_head(); ?>
@@ -78,7 +74,7 @@
   
 </head>
 
-<body <?php body_class(); ?>>
+<body data-barba="wrapper" <?php body_class(); ?>>
   <!-- Meta Pixel Code -->
   <script>
     ! function(f, b, e, v, n, t, s) {
@@ -237,3 +233,5 @@
       </div>
     </div>
   </header>
+
+  <div data-barba="container" data-barba-namespace="default">

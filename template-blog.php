@@ -41,7 +41,7 @@ while ( have_posts() ) :
 		</header>
 
 		<?php if ( $query->have_posts() ) : ?>
-			<div class="blog-grid">
+			<div class="blog-grid" data-aos="fade-up">
 				<?php
 				while ( $query->have_posts() ) :
 					$query->the_post();

@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initPostToc() {
   const toc = document.querySelector(".blog-toc");
   if (!toc) return;
+  if (toc.dataset.inited === "true") return;
+  toc.dataset.inited = "true";
 
   const panel = toc.querySelector(".blog-toc-panel");
   const links = [...toc.querySelectorAll('a[href^="#"]')];
@@ -93,4 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sync();
   window.addEventListener("load", sync);
-});
+}
+
+document.addEventListener("DOMContentLoaded", initPostToc);
