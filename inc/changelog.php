@@ -159,3 +159,58 @@ function doginvoice_changelog_admin_column_content( $column, $post_id ) {
 	}
 }
 add_action( 'manage_changelog_posts_custom_column', 'doginvoice_changelog_admin_column_content', 10, 2 );
+
+/**
+ * Prefill the "Data zmiany" field with the entry's publish date.
+ *
+ * @param mixed      $value   Stored value.
+ * @param int|string $post_id Post ID.
+ * @return mixed
+ */
+function doginvoice_changelog_date_load_value( $value, $post_id ) {
+	if ( empty( $value ) && is_numeric( $post_id ) && 'changelog' === get_post_type( (int) $post_id ) ) {
+		return get_the_date( 'Ymd', (int) $post_id );
+	}
+
+	return $value;
+}
+add_filter( 'acf/load_value/name=changelog_date', 'doginvoice_changelog_date_load_value', 10, 2 );
+
+/**
+ * Copy "Data zmiany" into the post date, so ordering and display follow it.
+ * The time of day stays as it was, so entries from one day keep their order.
+ *
+ * @param int|string $post_id Post ID.
+ */
+function doginvoice_changelog_sync_date( $post_id ) {
+	static $running = false;
+
+	if ( $running || ! is_numeric( $post_id ) || 'changelog' !== get_post_type( (int) $post_id ) ) {
+		return;
+	}
+
+	$date = get_field( 'changelog_date', (int) $post_id, false );
+
+	if ( ! $date || ! preg_match( '/^(\d{4})-?(\d{2})-?(\d{2})$/', $date, $m ) ) {
+		return;
+	}
+
+	$post     = get_post( (int) $post_id );
+	$new_date = sprintf( '%s-%s-%s %s', $m[1], $m[2], $m[3], substr( $post->post_date, 11, 8 ) );
+
+	if ( $new_date === $post->post_date ) {
+		return;
+	}
+
+	$running = true;
+	wp_update_post(
+		array(
+			'ID'            => $post->ID,
+			'post_date'     => $new_date,
+			'post_date_gmt' => get_gmt_from_date( $new_date ),
+			'edit_date'     => true,
+		)
+	);
+	$running = false;
+}
+add_action( 'acf/save_post', 'doginvoice_changelog_sync_date', 20 );

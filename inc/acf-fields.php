@@ -1502,11 +1502,21 @@ function doginvoice_acf_changelog_entry_fields() {
 			'title'       => 'Szczegóły zmiany',
 			'fields'      => array(
 				array(
+					'key'            => 'field_doginvoice_changelog_date',
+					'label'          => 'Data zmiany',
+					'name'           => 'changelog_date',
+					'type'           => 'date_picker',
+					'instructions'   => 'Data wyświetlana na stronie i kolejność wpisów. Po zapisaniu ustawia datę publikacji wpisu.',
+					'display_format' => 'j F Y',
+					'return_format'  => 'Y-m-d',
+					'first_day'      => 1,
+				),
+				array(
 					'key'          => 'field_doginvoice_changelog_version',
 					'label'        => 'Wersja',
 					'name'         => 'changelog_version',
 					'type'         => 'text',
-					'instructions' => 'Opcjonalne, np. "v2.4.0". Datą wpisu jest data publikacji.',
+					'instructions' => 'Opcjonalne, np. "v2.4.0".',
 				),
 				array(
 					'key'           => 'field_doginvoice_changelog_type',
