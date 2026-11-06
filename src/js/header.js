@@ -50,9 +50,42 @@ function scrollToHash(hash, { behavior = "smooth" } = {}) {
   return true;
 }
 
+function leavesCurrentPage(link, event) {
+  if (!link || event.button !== 0) return false;
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+  if (link.target && link.target !== "_self") return false;
+  if (link.hasAttribute("download")) return false;
+
+  const href = link.getAttribute("href");
+  if (!href) return false;
+
+  let url;
+  try {
+    url = new URL(href, window.location.href);
+  } catch {
+    return false;
+  }
+
+  if (url.origin !== window.location.origin) return false;
+
+  const hash = parseHash(href);
+  const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const nextPath = url.pathname.replace(/\/+$/, "") || "/";
+  const sameDocument =
+    nextPath === currentPath && url.search === window.location.search;
+
+  if (hash && (href.trim().startsWith("#") || isHomePath(url.pathname))) {
+    return !isHomePath(currentPath);
+  }
+
+  return !sameDocument;
+}
+
 function goToHash(hash) {
   const header = document.querySelector(".site-header");
-  if (header?.classList.contains("is-menu-open")) {
+  const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (isHomePath(currentPath) && header?.classList.contains("is-menu-open")) {
     setMenuOpen(false);
   }
 
@@ -62,7 +95,6 @@ function goToHash(hash) {
   stripHashFromUrl();
 
   const homeUrl = getHomeUrl();
-  const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
 
   if (isHomePath(currentPath)) {
     window.__pendingSectionHash = "";
@@ -99,6 +131,13 @@ function setMenuOpen(isOpen) {
   hamburger.setAttribute("aria-expanded", String(isOpen));
   hamburger.setAttribute("aria-label", isOpen ? "Zamknij menu" : "Otwórz menu");
   mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+}
+
+function handleMobileNavClick(event) {
+  const link = event.target.closest("#site-header-mobile a[href]");
+  if (!link) return;
+  if (leavesCurrentPage(link, event)) return;
+  setMenuOpen(false);
 }
 
 function handleHashLinkClick(event) {
@@ -161,6 +200,7 @@ function initHeader() {
     setMenuOpen(!header.classList.contains("is-menu-open"));
   });
 
+  document.addEventListener("click", handleMobileNavClick, true);
   document.addEventListener("click", handleHashLinkClick, true);
 
   document.addEventListener("keydown", (event) => {

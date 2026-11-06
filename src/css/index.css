@@ -361,6 +361,7 @@ a:not(.btn, .no-hover-effect):hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
 .breadcrumbs a {
   color: rgba(78, 86, 78, 0.8);
@@ -878,17 +879,17 @@ body.is-menu-open {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 32px 16px;
-  margin-top: 90px;
+  padding: 0 16px;
+  margin-top: 150px;
 }
 @media (min-width: 480px) {
   .hero {
-    margin-top: 140px;
+    margin-top: 170px;
   }
 }
 @media (min-width: 1280px) {
   .hero {
-    padding: 32px 64px;
+    padding: 0 64px;
     margin-top: 200px;
   }
 }
@@ -4034,15 +4035,16 @@ html.is-demo-modal-open body {
 }
 @media (min-width: 1024px) {
   .text-page {
+    margin-top: 170px;
     padding: 0 64px;
   }
 }
 @media (min-width: 1280px) {
   .text-page {
-    margin-top: 200px;
+    margin-top: 230px;
   }
 }
-.text-page a {
+.text-page a:not(.breadcrumbs__link) {
   color: rgb(79, 209, 95);
   text-decoration: none;
   text-underline-offset: 0.15em;
@@ -4434,32 +4436,51 @@ html.is-demo-modal-open body {
   clip-path: polygon(10px 0%, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0% 10px);
 }
 
-.blog-archive,
-.blog-post {
+.blog-archive .blog-post {
   width: 100%;
-  padding: 150px 16px 96px;
-  padding-bottom: 0;
+  padding-right: 16px;
+  padding-left: 16px;
   max-width: 1472px;
   margin: 0 auto;
 }
 @media (min-width: 768px) {
-  .blog-archive,
-  .blog-post {
+  .blog-archive .blog-post {
     padding-right: 32px;
     padding-left: 32px;
   }
 }
 @media (min-width: 1024px) {
-  .blog-archive,
-  .blog-post {
+  .blog-archive .blog-post {
     padding-right: 64px;
     padding-left: 64px;
   }
 }
+
+.blog-archive {
+  padding-top: 150px;
+}
+@media (min-width: 1024px) {
+  .blog-archive {
+    padding-top: 170px;
+  }
+}
 @media (min-width: 1280px) {
-  .blog-archive,
+  .blog-archive {
+    padding-top: 230px;
+  }
+}
+
+.blog-post {
+  padding-top: 170px;
+}
+@media (min-width: 1024px) {
   .blog-post {
     padding-top: 200px;
+  }
+}
+@media (min-width: 1280px) {
+  .blog-post {
+    padding-top: 230px;
   }
 }
 
@@ -5191,3 +5212,5 @@ html.is-demo-modal-open body {
   color: rgb(79, 209, 95);
   font-weight: 600;
 }
+
+/*# sourceMappingURL=index.css.map */

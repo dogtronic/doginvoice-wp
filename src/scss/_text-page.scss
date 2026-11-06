@@ -26,14 +26,15 @@
   margin: 150px auto 0;
 
   @media #{$min-lg} {
+    margin-top: 170px;
     padding: 0 $spacing-lg;
   }
 
   @media #{$min-xl} {
-    margin-top: 200px;
+    margin-top: 230px;
   }
 
-  a {
+  a:not(.breadcrumbs__link) {
     color: $color-green;
     text-decoration: none;
     text-underline-offset: 0.15em;
@@ -45,7 +46,6 @@
     align-items: center;
     margin-bottom: $spacing-lg;
     gap: $spacing-md;
-
   }
 
   &-title {

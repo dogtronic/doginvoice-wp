@@ -327,6 +327,7 @@ a:not(.btn, .no-hover-effect) {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
   }
 
   a {

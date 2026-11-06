@@ -8,16 +8,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: $spacing-md $spacing-xs;
-  margin-top: 90px;
+  padding: 0 $spacing-xs;
+  margin-top: 150px;
 
   @media #{$min-xs} {
     // margin-top: 120px;
-    margin-top: 140px;
+    margin-top: 170px;
   }
 
   @media #{$min-xl} {
-    padding: $spacing-md $spacing-lg;
+    padding: 0 $spacing-lg;
     // margin-top: 150px;
     margin-top: 200px;
   }

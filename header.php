@@ -172,7 +172,7 @@
           color="transparent"
           href="https://app.doginvoice.com/login"
           target="_blank">
-          <span class="btn-title">Zaloguj się</span>
+          <span class="btn-title">Logowanie</span>
         </a>
         <a
           class="site-header-nav-actions-register btn"
@@ -180,7 +180,7 @@
           color="green"
           href="https://app.doginvoice.com/register"
           target="_blank">
-          <span class="btn-title">Załóż konto</span>
+          <span class="btn-title">Rejestracja</span>
         </a>
       </div>
 
@@ -220,7 +220,7 @@
           color="white"
           href="https://app.doginvoice.com/login"
           target="_blank">
-          <span class="btn-title">Zaloguj się</span>
+          <span class="btn-title">Logowanie</span>
         </a>
         <a
           class="site-header-mobile-actions-register btn"
@@ -228,7 +228,7 @@
           color="green"
           href="https://app.doginvoice.com/register"
           target="_blank">
-          <span class="btn-title">Załóż konto</span>
+          <span class="btn-title">Rejestracja</span>
         </a>
       </div>
     </div>

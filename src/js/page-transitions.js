@@ -30,7 +30,7 @@ function syncBodyClass(next) {
   const match = nextHtml.match(/<body[^>]*class="([^"]*)"/i);
   if (!match) return;
 
-  const keep = ["is-menu-open", "is-demo-modal-open", "is-pricing-modal-open"];
+  const keep = ["is-demo-modal-open", "is-pricing-modal-open"];
   const preserved = keep.filter((name) =>
     document.body.classList.contains(name),
   );
@@ -38,6 +38,10 @@ function syncBodyClass(next) {
   document.body.className = match[1];
   preserved.forEach((name) => document.body.classList.add(name));
 }
+
+barba.hooks.beforeEnter(function () {
+  if (typeof setMenuOpen === "function") setMenuOpen(false);
+});
 
 barba.init({
   debug: true,

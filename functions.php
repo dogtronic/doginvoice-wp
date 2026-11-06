@@ -14,8 +14,7 @@ if (! defined('_S_VERSION')) {
 }
 
 if (! defined('DOGINVOICE_CSS_VERSION')) {
-	// Bump this whenever src/css/index.css changes to bust the browser cache.
-	define('DOGINVOICE_CSS_VERSION', '1.0.24');
+	define('DOGINVOICE_CSS_VERSION', '1.0.27');
 }
 
 /**
@@ -151,7 +150,13 @@ function doginvoice_scripts()
 	wp_enqueue_style('doginvoice-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('doginvoice-style', 'rtl', 'replace');
 
-	wp_enqueue_style('doginvoice-index', get_template_directory_uri() . '/src/css/index.css', array(), DOGINVOICE_CSS_VERSION);
+	$index_css = get_template_directory() . '/src/css/index.css';
+	wp_enqueue_style(
+		'doginvoice-index',
+		get_template_directory_uri() . '/src/css/index.css',
+		array(),
+		file_exists($index_css) ? (string) filemtime($index_css) : DOGINVOICE_CSS_VERSION
+	);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -525,7 +530,7 @@ function doginvoice_breadcrumbs() {
 		if ( $index === $last || empty( $crumb['url'] ) ) {
 			echo '<span aria-current="page">' . esc_html( $crumb['label'] ) . '</span>';
 		} else {
-			echo '<a href="' . esc_url( $crumb['url'] ) . '">' . esc_html( $crumb['label'] ) . '</a>';
+			echo '<a class="breadcrumbs__link" href="' . esc_url( $crumb['url'] ) . '">' . esc_html( $crumb['label'] ) . '</a>';
 			echo '<span class="breadcrumbs-sep" aria-hidden="true">/</span>';
 		}
 		echo '</li>';

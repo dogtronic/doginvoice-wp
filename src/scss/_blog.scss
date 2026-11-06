@@ -1,10 +1,9 @@
 @use "variables" as *;
 
-.blog-archive,
-.blog-post {
+.blog-archive .blog-post {
   width: 100%;
-  padding: 150px $spacing-xs $spacing-xl;
-  padding-bottom: 0;
+  padding-right: $spacing-xs;
+  padding-left: $spacing-xs;
   max-width: calc($max-width - $spacing-lg * 2);
   margin: 0 auto;
 
@@ -17,9 +16,29 @@
     padding-right: $spacing-lg;
     padding-left: $spacing-lg;
   }
+}
+
+.blog-archive {
+  padding-top: 150px;
+
+  @media #{$min-lg} {
+    padding-top: 170px;
+  }
 
   @media #{$min-xl} {
+    padding-top: 230px;
+  }
+}
+
+.blog-post {
+  padding-top: 170px;
+
+  @media #{$min-lg} {
     padding-top: 200px;
+  }
+
+  @media #{$min-xl} {
+    padding-top: 230px;
   }
 }
 
