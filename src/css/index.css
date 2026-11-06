@@ -4436,7 +4436,8 @@ html.is-demo-modal-open body {
   clip-path: polygon(10px 0%, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0% 10px);
 }
 
-.blog-archive .blog-post {
+.blog-archive,
+.blog-post {
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -4444,13 +4445,15 @@ html.is-demo-modal-open body {
   margin: 0 auto;
 }
 @media (min-width: 768px) {
-  .blog-archive .blog-post {
+  .blog-archive,
+  .blog-post {
     padding-right: 32px;
     padding-left: 32px;
   }
 }
 @media (min-width: 1024px) {
-  .blog-archive .blog-post {
+  .blog-archive,
+  .blog-post {
     padding-right: 64px;
     padding-left: 64px;
   }
