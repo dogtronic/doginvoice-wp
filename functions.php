@@ -175,6 +175,11 @@ require get_template_directory() . '/inc/class-nav-walker.php';
 require get_template_directory() . '/inc/acf-fields.php';
 
 /**
+ * Changelog post type and page (template-changelog.php).
+ */
+require get_template_directory() . '/inc/changelog.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -745,7 +750,7 @@ function doginvoice_hide_default_page_editor() {
 
 	$template = get_page_template_slug( $post_id );
 
-	if ( '' === $template || 'default' === $template || 'template-blog.php' === $template || 'template-contact.php' === $template ) {
+	if ( '' === $template || 'default' === $template || 'template-blog.php' === $template || 'template-contact.php' === $template || 'template-changelog.php' === $template ) {
 		remove_post_type_support( 'page', 'editor' );
 	}
 }

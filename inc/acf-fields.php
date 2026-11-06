@@ -29,6 +29,7 @@ add_action( 'acf/init', 'doginvoice_acf_post_fields' );
 add_action( 'acf/init', 'doginvoice_acf_notfound_fields' );
 add_action( 'acf/init', 'doginvoice_acf_text_page_fields' );
 add_action( 'acf/init', 'doginvoice_acf_contact_page_fields' );
+add_action( 'acf/init', 'doginvoice_acf_changelog_entry_fields' );
 
 /**
  * Hero section fields (front-page.php, <section class="hero">).
@@ -1394,9 +1395,16 @@ function doginvoice_acf_text_page_fields() {
 						'value'    => 'template-contact.php',
 					),
 				),
+				array(
+					array(
+						'param'    => 'page_template',
+						'operator' => '==',
+						'value'    => 'template-changelog.php',
+					),
+				),
 			),
 			'active'      => true,
-			'description' => 'Odznaka, tytuł wyświetlany i lead nad treścią (template-text.php, template-contact.php).',
+			'description' => 'Odznaka, tytuł wyświetlany i lead nad treścią (template-text.php, template-contact.php, template-changelog.php).',
 		)
 	);
 }
@@ -1480,6 +1488,50 @@ function doginvoice_acf_contact_page_fields() {
 			'menu_order'  => 1,
 			'active'      => true,
 			'description' => 'Dane kontaktowe i formularz CF7 (template-contact.php).',
+		)
+	);
+}
+
+/**
+ * Version and change type for changelog entries (inc/changelog.php).
+ */
+function doginvoice_acf_changelog_entry_fields() {
+	acf_add_local_field_group(
+		array(
+			'key'         => 'group_doginvoice_changelog_entry',
+			'title'       => 'Szczegóły zmiany',
+			'fields'      => array(
+				array(
+					'key'          => 'field_doginvoice_changelog_version',
+					'label'        => 'Wersja',
+					'name'         => 'changelog_version',
+					'type'         => 'text',
+					'instructions' => 'Opcjonalne, np. "v2.4.0". Datą wpisu jest data publikacji.',
+				),
+				array(
+					'key'           => 'field_doginvoice_changelog_type',
+					'label'         => 'Typ zmian',
+					'name'          => 'changelog_type',
+					'type'          => 'checkbox',
+					'instructions'  => 'Zaznacz wszystkie, które pasują.',
+					'choices'       => doginvoice_changelog_types(),
+					'default_value' => array( 'nowosc' ),
+					'layout'        => 'vertical',
+					'return_format' => 'value',
+				),
+			),
+			'location'    => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'changelog',
+					),
+				),
+			),
+			'position'    => 'side',
+			'active'      => true,
+			'description' => 'Wersja i typ zmian wpisu changelogu (template-changelog.php).',
 		)
 	);
 }
