@@ -745,7 +745,7 @@ function doginvoice_hide_default_page_editor() {
 
 	$template = get_page_template_slug( $post_id );
 
-	if ( '' === $template || 'default' === $template || 'template-blog.php' === $template ) {
+	if ( '' === $template || 'default' === $template || 'template-blog.php' === $template || 'template-contact.php' === $template ) {
 		remove_post_type_support( 'page', 'editor' );
 	}
 }

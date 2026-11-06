@@ -28,6 +28,7 @@ add_action( 'acf/init', 'doginvoice_acf_blog_page_fields' );
 add_action( 'acf/init', 'doginvoice_acf_post_fields' );
 add_action( 'acf/init', 'doginvoice_acf_notfound_fields' );
 add_action( 'acf/init', 'doginvoice_acf_text_page_fields' );
+add_action( 'acf/init', 'doginvoice_acf_contact_page_fields' );
 
 /**
  * Hero section fields (front-page.php, <section class="hero">).
@@ -1386,9 +1387,99 @@ function doginvoice_acf_text_page_fields() {
 						'value'    => 'template-text.php',
 					),
 				),
+				array(
+					array(
+						'param'    => 'page_template',
+						'operator' => '==',
+						'value'    => 'template-contact.php',
+					),
+				),
 			),
 			'active'      => true,
-			'description' => 'Odznaka, tytuł wyświetlany i lead nad treścią (template-text.php).',
+			'description' => 'Odznaka, tytuł wyświetlany i lead nad treścią (template-text.php, template-contact.php).',
+		)
+	);
+}
+
+/**
+ * Company details and form shortcode for the contact template (template-contact.php).
+ */
+function doginvoice_acf_contact_page_fields() {
+	acf_add_local_field_group(
+		array(
+			'key'         => 'group_doginvoice_contact_page',
+			'title'       => 'Kontakt: dane firmy i formularz',
+			'fields'      => array(
+				array(
+					'key'   => 'field_doginvoice_contact_company_name',
+					'label' => 'Nazwa firmy',
+					'name'  => 'contact_company_name',
+					'type'  => 'text',
+				),
+				array(
+					'key'   => 'field_doginvoice_contact_email',
+					'label' => 'E-mail',
+					'name'  => 'contact_email',
+					'type'  => 'email',
+				),
+				array(
+					'key'          => 'field_doginvoice_contact_phone',
+					'label'        => 'Telefon',
+					'name'         => 'contact_phone',
+					'type'         => 'text',
+					'instructions' => 'W formacie wyświetlanym, np. "+48 123 456 789".',
+				),
+				array(
+					'key'          => 'field_doginvoice_contact_hours',
+					'label'        => 'Godziny pracy',
+					'name'         => 'contact_hours',
+					'type'         => 'textarea',
+					'instructions' => 'Opcjonalne, np. "Pon.–pt. 9:00–17:00". Każda linia to osobny wiersz.',
+					'rows'         => 2,
+				),
+				array(
+					'key'          => 'field_doginvoice_contact_company_address',
+					'label'        => 'Adres',
+					'name'         => 'contact_company_address',
+					'type'         => 'textarea',
+					'instructions' => 'Każda linia to osobny wiersz.',
+					'rows'         => 3,
+				),
+				array(
+					'key'          => 'field_doginvoice_contact_company_ids',
+					'label'        => 'Dane rejestrowe',
+					'name'         => 'contact_company_ids',
+					'type'         => 'textarea',
+					'instructions' => 'Np. NIP, REGON, KRS. Każda linia to osobny wiersz.',
+					'rows'         => 3,
+				),
+				array(
+					'key'           => 'field_doginvoice_contact_form_title',
+					'label'         => 'Nagłówek nad formularzem',
+					'name'          => 'contact_form_title',
+					'type'          => 'text',
+					'default_value' => 'Napisz do nas',
+				),
+				array(
+					'key'          => 'field_doginvoice_contact_form_shortcode',
+					'label'        => 'Shortcode formularza',
+					'name'         => 'contact_form_shortcode',
+					'type'         => 'text',
+					'instructions' => 'Skopiuj z wp-admin > Contact > Contact Forms, np. [contact-form-7 id="abc1234" title="Kontakt"].',
+				),
+			),
+			'location'    => array(
+				array(
+					array(
+						'param'    => 'page_template',
+						'operator' => '==',
+						'value'    => 'template-contact.php',
+					),
+				),
+			),
+			'menu_order'  => 1,
+			'active'      => true,
+			'description' => 'Dane kontaktowe i formularz CF7 (template-contact.php).',
 		)
 	);
 }

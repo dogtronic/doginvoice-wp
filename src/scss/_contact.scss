@@ -1,0 +1,264 @@
+@use "variables" as *;
+
+// Strona kontaktowa (template-contact.php). Stopka bez ciemnego tła
+// pochodzi z body.page-text (_text-page.scss). Bazowe style pól CF7
+// (.wpcf7-form-control, komunikaty) są globalne w _partner-form.scss.
+
+.contact-page {
+  animation: fadeIn 0.5s 0.3s ease-out forwards;
+  opacity: 0;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 $spacing-sm $spacing-xl;
+  margin: 150px auto 0;
+
+  @media #{$min-lg} {
+    margin-top: 170px;
+    padding: 0 $spacing-lg $spacing-xxl;
+  }
+
+  @media #{$min-xl} {
+    margin-top: 230px;
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &-title {
+    max-width: 14em;
+  }
+
+  &-lead {
+    max-width: 50em;
+    color: $color-grey;
+    line-height: 1.6;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+    align-items: start;
+
+    @media #{$min-lg} {
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: $spacing-lg;
+    }
+  }
+}
+
+// ===== Dane kontaktowe =====
+
+.contact-info {
+  padding: $spacing-md;
+  background: $color-dark;
+  color: #c6d0c8;
+  clip-path: polygon(
+    20px 0%,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%,
+    0% 20px
+  );
+
+  &-title {
+    color: $color-white;
+    margin-bottom: $spacing-md;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin: 0;
+  }
+
+  &-item {
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  &-label {
+    margin-bottom: 4px;
+    color: rgba(198, 208, 200, 0.7);
+  }
+
+  &-value {
+    margin: 0;
+    color: $color-white;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+
+    address {
+      font-style: normal;
+    }
+
+    a {
+      color: $color-green;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+      }
+    }
+  }
+}
+
+// ===== Karta z formularzem =====
+
+.contact-form-card {
+  position: relative;
+  padding: $spacing-md;
+  filter: drop-shadow(0 14px 40px rgba(23, 23, 23, 0.09));
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: $color-white;
+    clip-path: polygon(
+      20px 0%,
+      100% 0,
+      100% calc(100% - 20px),
+      calc(100% - 20px) 100%,
+      0 100%,
+      0% 20px
+    );
+  }
+
+  &-title {
+    margin-bottom: $spacing-sm;
+  }
+
+  &-empty {
+    color: $color-grey;
+  }
+
+  .wpcf7-form-control.wpcf7-textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 13px 15px;
+    border: 1.5px solid rgba(23, 23, 23, 0.12);
+    background: $color-white;
+    font-family: $ff-body;
+    font-size: var(--fs-body-md);
+    color: $color-dark;
+    resize: vertical;
+
+    &:focus {
+      outline: none;
+      border-color: $color-green;
+      box-shadow: 0 0 0 3px rgba(79, 209, 95, 0.25);
+    }
+  }
+
+  .wpcf7-submit {
+    width: 100%;
+    margin-top: $spacing-sm;
+    padding: 15px 30px;
+    border: none;
+    background: $color-green;
+    color: $color-white;
+    font-family: $ff-body;
+    font-weight: $fw-medium;
+    font-size: var(--fs-body-lg);
+    cursor: pointer;
+    clip-path: polygon(
+      $corner 0%,
+      100% 0,
+      100% calc(100% - #{$corner}),
+      calc(100% - #{$corner}) 100%,
+      0 100%,
+      0% $corner
+    );
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .wpcf7-spinner {
+    display: block;
+    margin: $spacing-xs auto 0;
+  }
+}
+
+// Pola formularza (klasy używane w szablonie formularza CF7).
+
+.contact-form-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+
+  @media #{$min-sm} {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-form-field {
+  display: flex;
+  flex-direction: column;
+
+  &--full {
+    @media #{$min-sm} {
+      grid-column: 1 / -1;
+    }
+  }
+
+  label {
+    font-weight: $fw-medium;
+    color: $color-dark;
+    margin-bottom: 6px;
+  }
+}
+
+.contact-form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form-consent {
+  margin-top: $spacing-sm;
+
+  .wpcf7-list-item {
+    margin: 0;
+  }
+
+  label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: $color-grey;
+    line-height: 1.5;
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: $color-green;
+    flex: 0 0 auto;
+  }
+
+  a {
+    color: $color-dark-green;
+  }
+}
