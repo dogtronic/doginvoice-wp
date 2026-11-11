@@ -20,8 +20,8 @@
         data-remove-orphans>
         Moduł, który upomina się o pieniądze za Twojego klienta
       </h2>
-      <p style class="partner-video-head-description typography--body-lg" data-aos="fade-up" data-remove-orphans>
-        Analiza wyciągów bankowych, windykacja i przelewy w jednym miejscu. <br />Zero przełączania między aplikacjami.
+      <p class="partner-video-head-description typography--body-lg" data-aos="fade-up" data-remove-orphans>
+        Wyciągi bankowe, przypomnienia o płatnościach i przelewy w jednym miejscu.
       </p>
     </header>
 
@@ -33,19 +33,13 @@
         </video>
       </div>
       <div class="partner-video-copy" data-aos="fade-up" data-aos-delay="150">
-        <h3 class="partner-video-copy-title typography--h4">Jedna faktura, od terminu płatności do przelewu</h3>
-        <p class="partner-video-copy-lead typography--body-md">
-          Pełny obieg Twojej faktury w Doginvoice:
-        </p>
+        <h3 class="partner-video-copy-title typography--h4">Od faktury do przelewu</h3>
         <ol class="partner-video-copy-list typography--body-md">
-          <li><strong>Faktura trafia do systemu.</strong> <br />Zdjęciem telefonem, mailem, z KSeF albo z programu, w którym klient wystawia dokumenty.</li>
-          <li><strong>DogInvoice sprawdza przelewy w banku.</strong><br /> Widzi, kto zapłacił, więc nie zawraca głowy tym, którzy uregulowali.</li>
-          <li><strong>Wysyła przypomnienie do dłużnika.</strong> <br /> Kulturalne, w imieniu Twojego klienta, po 3, 7, 14 i 30 dniach od terminu.</li>
-          <li><strong>Twój klient przestaje być windykatorem we własnej firmie.</strong> <br /> Nie dzwoni, nie przypomina, nie odkłada tego na później.</li>
+          <li><strong>Faktura trafia do systemu.</strong><br />Ze zdjęcia, maila, KSeF albo programu do fakturowania.</li>
+          <li><strong>DogInvoice sprawdza wyciąg z banku.</strong><br />Widzi, kto już zapłacił.</li>
+          <li><strong>Dłużnik dostaje przypomnienie.</strong><br />W imieniu Twojego klienta, po 3, 7, 14 i 30 dniach od terminu.</li>
+          <li><strong>Twój klient nie musi sam ścigać dłużników.</strong></li>
         </ol>
-        <p class="partner-video-copy-outro typography--body-md">
-
-        </p>
       </div>
     </div>
   </div>

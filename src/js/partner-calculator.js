@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", initPartnerCalculator);
 
 // Stawki w jednym miejscu. Źródło: DECISIONS.md D21 (Marek, 10.08.2026).
-const PARTNER_RATE = 0.5; // prowizja partnera od kwoty faktycznie zapłaconej
+const PARTNER_RATE = 0.25; // stała prowizja partnera od kwoty faktycznie zapłaconej (bez podziału na lata)
 const PARTNER_DISCOUNT = 0.5; // zniżka klienta na pierwszy okres rozliczeniowy
 
 function initPartnerCalculator() {

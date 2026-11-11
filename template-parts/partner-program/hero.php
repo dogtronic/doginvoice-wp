@@ -3,10 +3,9 @@
 /**
  * Program partnerski: Hero + kalkulator prowizji
  *
- * Stawki (prowizja od kwoty faktycznie zapłaconej: 50% w 1. roku, 40% w 2.,
- * 30% w 3., wygasa po 36 mies.; zniżka 50% na pierwszy okres rozliczeniowy
- * udzielana wyłącznie przez partnera) — ustalone 25.08.2026, nie zmieniać
- * bez potwierdzenia.
+ * Stawki (stała prowizja 25% od kwoty faktycznie zapłaconej, bez podziału
+ * na lata; zniżka 50% na pierwszy okres rozliczeniowy udzielana wyłącznie
+ * przez partnera) — zmienione 11.11.2026, nie zmieniać bez potwierdzenia.
  *
  * @package doginvoice
  */
@@ -23,14 +22,14 @@
       data-aos="fade-up"
       data-aos-delay="100"
       data-remove-orphans>
-      Twoi klienci Ci ufają. Niech to zaufanie płaci co miesiąc.
+      Polecasz DogInvoice, zarabiasz co miesiąc
     </h1>
     <p
       class="partner-hero-content-subtitle typography--body-xl"
       data-aos="fade-up"
       data-aos-delay="150"
       data-remove-orphans>
-      Rekomendujesz DogInvoice, a gdy klient zakłada konto z Twojego polecenia dostajesz połowę każdej jego płatności co miesiąc.
+      Za każdego klienta, który założy konto z Twojego polecenia, dostajesz 25% jego abonamentu.
     </p>
     <div class="partner-hero-content-cta" data-aos="fade-up" data-aos-delay="200">
       <a href="#zgloszenie" class="partner-hero-content-cta-button btn" size="bg" color="green">
@@ -47,15 +46,14 @@
       </a>
     </div>
     <ul class="partner-hero-content-facts standard-list" data-aos="fade-up" data-aos-delay="250">
-      <li><strong>50% od każdej płatności klienta w pierwszym roku.</strong> <br />W drugim roku 40%, w trzecim roku 30%.</li>
-
+      <li><strong>25% od każdej płatności klienta.</strong></li>
     </ul>
   </div>
 
   <!-- KALKULATOR PROWIZJI -->
   <div class="partner-calc" data-aos="fade-up" data-aos-delay="150">
     <h2 class="partner-calc-title typography--h4">Policz to na swoich klientach</h2>
-    <p class="partner-calc-subtitle typography--body-sm">Przesuń suwak, wybierz plan. Kwoty netto, prowizja 50%.</p>
+    <p class="partner-calc-subtitle typography--body-sm">Przesuń suwak i wybierz plan. Kwoty netto.</p>
 
     <div class="partner-calc-field">
       <label for="partner-calc-clients" class="partner-calc-field-label typography--body-sm">
@@ -91,13 +89,13 @@
     <div class="partner-calc-out" id="partner-calc-out" aria-live="polite">
       <div class="partner-calc-out-row partner-calc-out-row--big">
         <div class="partner-calc-out-row-label typography--body-sm">Twoja prowizja co miesiąc</div>
-        <div class="partner-calc-out-row-value" id="partner-calc-month">745 zł</div>
+        <div class="partner-calc-out-row-value" id="partner-calc-month">373 zł</div>
       </div>
       <div class="partner-calc-out-row">
-        <div class="partner-calc-out-row-label typography--body-sm">Twoja prowizja przez pierwszy rok</div>
-        <div class="partner-calc-out-row-value" id="partner-calc-year">8 568 zł</div>
+        <div class="partner-calc-out-row-label typography--body-sm">Twoja prowizja przez rok</div>
+        <div class="partner-calc-out-row-value" id="partner-calc-year">4 284 zł</div>
       </div>
     </div>
-    <p class="partner-calc-note typography--body-sm">Stawka 50% obowiązuje w pierwszym roku. W drugim roku 40%, w 3 trzecim 30%, po 36 miesiącach prowizja wygasa.</p>
+    <p class="partner-calc-note typography--body-sm">Prowizję liczymy od kwot, które klient faktycznie zapłacił.</p>
   </div>
 </section>

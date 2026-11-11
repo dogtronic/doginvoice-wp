@@ -17,10 +17,10 @@
       class="partner-audience-head-title typography--h2"
       data-aos="fade-up"
       data-remove-orphans>
-      Najwięcej zarabiają ci, którzy już rozmawiają z firmami o pieniądzach
+      Dla tych, którzy na co dzień rozmawiają z firmami o pieniądzach
     </h2>
     <p class="partner-audience-head-description typography--body-lg" data-aos="fade-up" data-remove-orphans>
-      Trzy typy partnerów, z którymi nasz program partnerski działa najszybciej.
+      Tu program sprawdza się najlepiej.
     </p>
   </header>
 
@@ -30,7 +30,7 @@
       <span class="partner-audience-grid-item-tag">Najwięcej klientów naraz</span>
       <h3 class="partner-audience-grid-item-title typography--h4">Biuro rachunkowe</h3>
       <p class="partner-audience-grid-item-description typography--body-md">
-        Dokumenty przychodzą do Ciebie kompletne i uporządkowane, więc obsłużysz więcej firm bez zatrudniania kogokolwiek. Klient przestaje dzwonić z pytaniem, co z fakturą w KSeF. Za każdego, który zostanie, dostajesz połowę abonamentu.
+        Dostajesz od klientów komplet uporządkowanych dokumentów, więc obsłużysz więcej firm tym samym zespołem. Za każdego poleconego klienta dostajesz 25% abonamentu.
       </p>
     </li>
     <li class="partner-audience-grid-item" data-aos="fade-up" data-aos-delay="100">
@@ -38,7 +38,7 @@
       <span class="partner-audience-grid-item-tag">Doradzasz przy pieniądzach</span>
       <h3 class="partner-audience-grid-item-title typography--h4">Doradca albo kancelaria</h3>
       <p class="partner-audience-grid-item-description typography--body-md">
-        Rozmawiasz z właścicielami o kosztach, płynności i terminach. DogInvoice daje im widok, którego dziś nie mają, a Ty dostajesz połowę każdej płatności w pierwszym roku.
+        Rozmawiasz z właścicielami firm o kosztach i płynności. Z DogInvoice widzą to na bieżąco, a Ty dostajesz 25% każdej płatności.
       </p>
     </li>
     <li class="partner-audience-grid-item" data-aos="fade-up" data-aos-delay="150">
@@ -46,7 +46,7 @@
       <span class="partner-audience-grid-item-tag">Wdrażasz systemy</span>
       <h3 class="partner-audience-grid-item-title typography--h4">Firma IT albo integrator</h3>
       <p class="partner-audience-grid-item-description typography--body-md">
-        Dokładasz DogInvoice do tego, co już wdrażasz. Łączy się z narzędziami klienta i ma publiczne API, więc wpina się w Twoje automatyzacje. Do jednorazowego wdrożenia dostajesz powtarzalny przychód.
+        Dodajesz DogInvoice do swoich wdrożeń. Ma integracje i publiczne API, więc łatwo wpiąć go w automatyzacje. Oprócz zapłaty za wdrożenie masz stały przychód co miesiąc.
       </p>
     </li>
   </ul>

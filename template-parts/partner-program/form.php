@@ -24,7 +24,7 @@
       Zgłoś się do programu partnerskiego
     </h2>
     <p class="partner-form-head-description typography--body-lg" data-aos="fade-up" data-remove-orphans>
-      Zostaw kontakt. Odezwiemy się w ciągu jednego dnia roboczego i umówimy krótką rozmowę.
+      Zostaw kontakt, odezwiemy się w ciągu dnia roboczego.
     </p>
   </header>
 
@@ -36,7 +36,7 @@
     <aside class="partner-form-aside" data-aos="fade-up" data-aos-delay="100">
       <h3 class="partner-form-aside-title typography--h4">Wolisz od razu porozmawiać?</h3>
       <p class="partner-form-aside-description typography--body-md">
-        Wybierz termin w kalendarzu. Piętnaście minut wystarczy, żeby ustalić, czy program ma dla Ciebie sens, i zobaczyć aplikację na żywo.
+        Wybierz termin w kalendarzu. W 15 minut pokażemy aplikację i sprawdzimy, czy program do Ciebie pasuje.
       </p>
       <a
         href="https://calendar.app.google/TrvZSUXYfkFGZcBe8"
@@ -48,8 +48,8 @@
         <span class="btn-title">Wybierz termin rozmowy</span>
       </a>
       <span class="partner-form-aside-mail typography--body-md">
-        Albo napisz wprost:<br />
-        <a href="mailto:kamil.sobkowicz@dogtronic.io">kamil.sobkowicz@dogtronic.io</a>
+        Albo napisz:<br />
+        <a href="mailto:hello@doginvoice.com">hello@doginvoice.com</a>
       </span>
     </aside>
   </div>

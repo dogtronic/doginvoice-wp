@@ -32,7 +32,7 @@ $testimonial_index              = 0;
       class="testimonials-header-title typography--h2"
       data-remove-orphans
       data-aos="fade-up">
-      Co mówią o DogInvoice klienci?
+      Co mówią klienci
     </h2>
   </header>
 

@@ -17,10 +17,10 @@
       class="partner-product-head-title typography--h2"
       data-aos="fade-up"
       data-remove-orphans>
-      Kontrola finansów firmy, nie kolejny program do wystawiania faktur
+      Porządek w fakturach i płatnościach
     </h2>
     <p class="partner-product-head-description typography--body-lg" data-aos="fade-up" data-remove-orphans>
-      DogInvoice nie zastępuje programu do fakturowania ani księgowej. Pilnuje tego, co dzieje się po wystawieniu dokumentu: czy klient zapłacił, co przyszło z KSeF i jakie masz bilans na koniec miesiącaske.
+      DogInvoice działa obok programu do faktur i księgowej. Pokazuje, kto zapłacił, co przyszło z KSeF i jaki jest bilans na koniec miesiąca.
     </p>
   </header>
 
@@ -28,39 +28,39 @@
   <ul class="partner-tiles">
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="50">
       <h4 class="partner-tiles-item-title typography--body-lg">Import z KSeF</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Faktury kosztowe i przychodowe pobierają się same. Surowy XML zamienia się w czytelny PDF.</p>
+      <p class="partner-tiles-item-description typography--body-sm">Faktury kosztowe i przychodowe pobierają się same, a XML zamienia się w czytelny PDF.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="100">
-      <h4 class="partner-tiles-item-title typography--body-lg">Decyzja, co idzie do księgowej</h4>
-      <p class="partner-tiles-item-description typography--body-sm">W KSeF fakturę wystawi każdy, kto zna NIP. Klient odrzuca pomyłki, zanim wejdą w koszty, bo odpowiedzialność jest po jego stronie.</p>
+      <h4 class="partner-tiles-item-title typography--body-lg">Akceptacja przed księgową</h4>
+      <p class="partner-tiles-item-description typography--body-sm">W KSeF fakturę na firmę wystawi każdy, kto zna jej NIP. Klient odrzuca błędne, zanim trafią do kosztów.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="150">
       <h4 class="partner-tiles-item-title typography--body-lg">Zdjęcie zamiast przepisywania</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Zdjęcie telefonem, PDF albo mail na dedykowany adres. AI odczytuje kwoty, daty i kontrahenta, potem sama kategoryzuje.</p>
+      <p class="partner-tiles-item-description typography--body-sm">Wystarczy zdjęcie, PDF albo mail. AI odczyta kwoty, daty i kontrahenta, a potem przypisze kategorię.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="200">
-      <h4 class="partner-tiles-item-title typography--body-lg">Przypomnienia o zaległych płatnościach</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Program sam wysyła kulturalne przypomnienia po 3, 7, 14 i 30 dniach od terminu.</p>
+      <h4 class="partner-tiles-item-title typography--body-lg">Przypomnienia o płatnościach</h4>
+      <p class="partner-tiles-item-description typography--body-sm">Automatycznie po 3, 7, 14 i 30 dniach od terminu.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="250">
-      <h4 class="partner-tiles-item-title typography--body-lg">Wyciąg z banku i dopasowanie wpłat</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Wgrany wyciąg MT940 albo CSV sam dopasowuje wpłaty do faktur. Od razu widać, kto zapłacił.</p>
+      <h4 class="partner-tiles-item-title typography--body-lg">Dopasowanie wpłat</h4>
+      <p class="partner-tiles-item-description typography--body-sm">Po wgraniu wyciągu (MT940 lub CSV) wpłaty same łączą się z fakturami.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="300">
-      <h4 class="partner-tiles-item-title typography--body-lg">Przelewy jedną paczką</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Zaznaczasz faktury i wgrywasz jeden plik do banku. ING, mBank, Nest, banki spółdzielcze, także podzielona płatność.</p>
+      <h4 class="partner-tiles-item-title typography--body-lg">Przelewy w paczce</h4>
+      <p class="partner-tiles-item-description typography--body-sm">Zaznaczone faktury idą do banku jednym plikiem. ING, mBank, Nest Bank, banki spółdzielcze, także split payment.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="350">
-      <h4 class="partner-tiles-item-title typography--body-lg">Komplet dla księgowej na Dysku Google</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Dokumenty układają się w foldery rok po roku i miesiąc po miesiącu. Archiwum zostaje u klienta, nie u nas.</p>
+      <h4 class="partner-tiles-item-title typography--body-lg">Dokumenty na Dysku Google</h4>
+      <p class="partner-tiles-item-description typography--body-sm">Faktury same układają się w foldery według roku i miesiąca. Archiwum zostaje u klienta.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="400">
-      <h4 class="partner-tiles-item-title typography--body-lg">Statystyki i rentowność projektów</h4>
-      <p class="partner-tiles-item-description typography--body-sm">Marża, VAT, bilans, rankingi kontrahentów. Koszty i przychody przypisane do projektu, więc widać, który kontrakt naprawdę zarabia.</p>
+      <h4 class="partner-tiles-item-title typography--body-lg">Statystyki i projekty</h4>
+      <p class="partner-tiles-item-description typography--body-sm">Marża, VAT, bilans i ranking kontrahentów. Koszty i przychody można przypisać do projektu i sprawdzić, czy się opłaca.</p>
     </li>
     <li class="partner-tiles-item" data-aos="fade-up" data-aos-delay="450">
       <h4 class="partner-tiles-item-title typography--body-lg">Integracje</h4>
-      <p class="partner-tiles-item-description typography--body-sm">inFakt, Fakturownia, wFirma, Apilo, BaseLinker, Gmail, Dysk Google, GUS. Klient nie rezygnuje z tego, czego już używa.</p>
+      <p class="partner-tiles-item-description typography--body-sm">inFakt, Fakturownia, wFirma, Apilo, BaseLinker, Gmail, Dysk Google i GUS. Klient zostaje przy swoich narzędziach.</p>
     </li>
   </ul>
 
@@ -69,7 +69,7 @@
     <li class="partner-plans-item" data-aos="fade-up" data-aos-delay="50">
       <span class="partner-plans-item-tag">Starter</span>
       <p class="partner-plans-item-price typography--h4">0 zł na zawsze</p>
-      <p class="partner-plans-item-description typography--body-sm">10 faktur OCR i 100 faktur KSeF miesięcznie. Klient sprawdza wszystko bez podawania karty.</p>
+      <p class="partner-plans-item-description typography--body-sm">10 faktur OCR i 100 faktur KSeF miesięcznie. Bez podawania karty.</p>
     </li>
     <li class="partner-plans-item" data-aos="fade-up" data-aos-delay="100">
       <span class="partner-plans-item-tag">Professional</span>
@@ -84,8 +84,8 @@
     <li class="partner-plans-item" data-aos="fade-up" data-aos-delay="200">
       <span class="partner-plans-item-tag">Enterprise</span>
       <p class="partner-plans-item-price typography--h4">Indywidualnie</p>
-      <p class="partner-plans-item-description typography--body-sm">Większe wolumeny i wymagania własne. Wycenę robimy razem z Tobą.</p>
+      <p class="partner-plans-item-description typography--body-sm">Dla firm z dużą liczbą dokumentów i własnymi wymaganiami.</p>
     </li>
   </ul>
-  <p class="partner-plans-note typography--body-sm">Prowizja wynosi 50% w pierwszym roku, niezależnie od planu. Ceny netto, miesięcznie.</p>
+  <p class="partner-plans-note typography--body-sm">Prowizja 25% w każdym planie. Ceny netto za miesiąc.</p>
 </section>
