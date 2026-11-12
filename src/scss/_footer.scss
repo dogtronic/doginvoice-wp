@@ -201,6 +201,30 @@
     &-description {
       color: $color-grey;
     }
+
+    &-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: $color-dark;
+      font-size: var(--fs-body-md);
+      font-weight: $fw-regular;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      svg {
+        display: block;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: $color-dark-green;
+      }
+    }
   }
 
   &-nav {

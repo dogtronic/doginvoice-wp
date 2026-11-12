@@ -400,6 +400,19 @@
           Automatyzacja faktur z AI i pełna integracja z KSeF. Oszczędzaj
           czas, eliminuj błędy i miej kontrolę nad finansami.
         </p>
+        <a
+          class="footer-content-social no-hover-effect"
+          href="https://www.instagram.com/doginvoice/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Obserwuj nas na Instagramie">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.25" cy="6.75" r="0.6" fill="currentColor" />
+          </svg>
+          <span>Obserwuj nas</span>
+        </a>
       </div>
 
       <nav class="footer-nav" aria-label="Stopka">

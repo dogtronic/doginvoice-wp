@@ -5586,6 +5586,26 @@ html.is-demo-modal-open body {
 .footer-content-description {
   color: rgba(78, 86, 78, 0.8);
 }
+.footer-content-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgb(23, 23, 23);
+  font-size: var(--fs-body-md);
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-content-social svg {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.footer-content-social:hover, .footer-content-social:focus-visible {
+  color: rgb(47, 174, 99);
+}
 .footer-nav {
   display: flex;
   flex-direction: column;
