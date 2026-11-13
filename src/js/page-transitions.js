@@ -30,7 +30,11 @@ function syncBodyClass(next) {
   const match = nextHtml.match(/<body[^>]*class="([^"]*)"/i);
   if (!match) return;
 
-  const keep = ["is-demo-modal-open", "is-pricing-modal-open"];
+  const keep = [
+    "is-demo-modal-open",
+    "is-pricing-modal-open",
+    "is-promo-modal-open",
+  ];
   const preserved = keep.filter((name) =>
     document.body.classList.contains(name),
   );
@@ -94,6 +98,7 @@ barba.hooks.after(function ({ current, next }) {
     "initGsapAnimations",
     "initPricing",
     "initDemoModal",
+    "initPromoModal",
     "initLogosSwiper",
     "initFeaturesSwiper",
     "initIntegrationsSwiper",

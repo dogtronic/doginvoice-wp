@@ -27,6 +27,7 @@ get_header();
     <?php get_template_part( 'template-parts/front-page/pricing' ); ?>
     <?php get_template_part( 'template-parts/front-page/pricing-modal' ); ?>
     <?php get_template_part( 'template-parts/front-page/demo-modal' ); ?>
+    <?php get_template_part( 'template-parts/front-page/promo-modal' ); ?>
     <?php get_template_part( 'template-parts/front-page/integrations' ); ?>
     <?php get_template_part( 'template-parts/front-page/testimonials' ); ?>
     <?php get_template_part( 'template-parts/front-page/faq' ); ?>

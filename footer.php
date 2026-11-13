@@ -510,6 +510,7 @@ $organization_schema = array(
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/pricing.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/demo-modal.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/src/js/promo-modal.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/logos-swiper.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/features-swiper.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/integrations-swiper.js" defer></script>

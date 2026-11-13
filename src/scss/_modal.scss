@@ -540,3 +540,208 @@ html.is-demo-modal-open,
 html.is-demo-modal-open body {
   overflow: hidden;
 }
+
+// ===== PROMO MODAL (CTA do rejestracji) =====
+.promo-modal {
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: min(560px, calc(100vw - 24px));
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease-out,
+    visibility 0.3s ease-out;
+
+  @media #{$min-md} {
+    width: min(560px, calc(100vw - 64px));
+  }
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+
+    .promo-modal-dialog {
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    ~ .promo-modal-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &-dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-height: calc(100vh - 48px);
+    padding: $spacing-lg $spacing-sm $spacing-md;
+    background: $color-white;
+    overflow-y: auto;
+    transition: transform 0.3s ease-out;
+    transform: scale(0.9);
+    clip-path: polygon(
+      16px 0%,
+      100% 0,
+      100% calc(100% - 16px),
+      calc(100% - 16px) 100%,
+      0 100%,
+      0% 16px
+    );
+
+    @media #{$min-md} {
+      padding: $spacing-lg 48px 48px;
+      clip-path: polygon(
+        20px 0%,
+        100% 0,
+        100% calc(100% - 20px),
+        calc(100% - 20px) 100%,
+        0 100%,
+        0% 20px
+      );
+    }
+  }
+
+  &-backdrop {
+    position: fixed;
+    z-index: 9998;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-out;
+  }
+
+  &-close {
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    background: $color-green;
+    clip-path: polygon(
+      6px 0%,
+      100% 0,
+      100% calc(100% - 6px),
+      calc(100% - 6px) 100%,
+      0 100%,
+      0% 6px
+    );
+    cursor: pointer;
+    transition: opacity 0.2s ease-out;
+
+    @media #{$min-md} {
+      top: $spacing-sm;
+      right: $spacing-sm;
+    }
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M6 1.5V10.5M1.5 6H10.5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      transform: rotate(45deg);
+      transform-origin: center;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &-variant {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &-title {
+    margin: 0;
+    color: $color-dark;
+    font-weight: $fw-medium;
+    line-height: 1.15;
+  }
+
+  &-text {
+    margin: 0;
+    color: $color-grey;
+    line-height: 1.5;
+  }
+
+  &-stars {
+    color: $color-stars;
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  &-quote {
+    display: -webkit-box;
+    margin: 0;
+    color: $color-dark;
+    line-height: 1.5;
+    white-space: pre-line;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+  }
+
+  &-author {
+    margin: 0;
+    color: $color-grey;
+
+    strong {
+      color: $color-dark;
+      font-weight: $fw-semibold;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-xs $spacing-sm;
+    margin-top: $spacing-xs;
+  }
+
+  &-dismiss {
+    padding: 8px 0;
+    border: none;
+    background: transparent;
+    color: $color-grey;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+}
+
+html.is-promo-modal-open,
+html.is-promo-modal-open body {
+  overflow: hidden;
+}
