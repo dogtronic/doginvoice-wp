@@ -10,7 +10,7 @@
  */
 const PROMO_MODAL = {
   MIN_ARM_MS: 8000, // wcześniej modal się nie pokaże
-  MAX_WAIT_MS: 40000, // aktywny czas, po którym pokazujemy bez zamiaru wyjścia
+  MAX_WAIT_MS: 20000, // aktywny czas, po którym pokazujemy bez zamiaru wyjścia
   MIN_SCROLL: 0.35, // wymagany scroll dla triggera czasowego
   COOLDOWN_DAYS: 3,
   KEY_LAST_SHOWN: "doginvoice-promo-shown-at",
