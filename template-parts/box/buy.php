@@ -17,11 +17,11 @@ $img     = $args['assets'] . '/images/box';
     <img
       class="box-buy-photo"
       src="<?php echo esc_url($img . '/doginvoicebox-karton-800.webp'); ?>"
-      srcset="<?php echo esc_url($img . '/doginvoicebox-karton-800.webp'); ?> 800w, <?php echo esc_url($img . '/doginvoicebox-karton-1600.webp'); ?> 1600w"
+      srcset="<?php echo esc_url($img . '/doginvoicebox-karton-800.webp'); ?> 800w, <?php echo esc_url($img . '/doginvoicebox-karton-1400.webp'); ?> 1400w"
       sizes="(min-width: 768px) 45vw, 100vw"
       alt="Doginvoice Box z pulpitem na ekranie, widziany z góry"
-      width="1600"
-      height="1120"
+      width="1400"
+      height="1150"
       loading="lazy"
       data-aos="fade-up" />
     <div class="box-buy-content" data-aos="fade-up" data-aos-delay="100">

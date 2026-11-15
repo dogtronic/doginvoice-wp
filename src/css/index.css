@@ -2520,13 +2520,9 @@ body.page-box #smartsupp-widget-container {
   .box-card:hover {
     translate: 0 -5px;
   }
-  .box-card:hover .box-card-zoom {
-    scale: 1.05;
-  }
 }
 .box-card-zoom {
   position: relative;
-  transition: scale 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .box-card-pic {
   position: relative;
@@ -3151,7 +3147,6 @@ body.page-box #smartsupp-widget-container {
     animation: none;
   }
   .box-card,
-  .box-card-zoom,
   .box-who-item::before,
   .box-who-item-title {
     transition: none;
