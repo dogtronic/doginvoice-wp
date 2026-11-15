@@ -1,0 +1,1143 @@
+@use "variables" as *;
+
+// Landing Doginvoice Box (page-doginvoice-box.php, template-parts/box/*).
+
+$box-dark: #0a0a0a;
+$box-line: #e4e2d8;
+
+@mixin box-cut($size: 20px) {
+  clip-path: polygon(
+    $size 0%,
+    100% 0,
+    100% calc(100% - #{$size}),
+    calc(100% - #{$size}) 100%,
+    0 100%,
+    0% $size
+  );
+}
+
+.box-page {
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// ===== Nagłówek sekcji =====
+.box-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+
+  &-title {
+    max-width: 18em;
+    color: $color-dark;
+    text-wrap: balance;
+  }
+
+  &-description {
+    max-width: 34em;
+    color: $color-grey;
+  }
+}
+
+// ===== Plakietka oferty (cena + wysyłka) =====
+.box-offer {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 100%;
+  background: $box-dark;
+  color: $color-white;
+  text-align: left;
+  filter: none;
+  @include box-cut(16px);
+
+  @media #{$min-sm} {
+    grid-template-columns: auto auto auto;
+    align-items: stretch;
+  }
+
+  &-tag {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px $spacing-sm;
+    background: $color-green;
+    color: $color-white;
+    font-family: $ff-funnel;
+    font-weight: $fw-light;
+    font-size: var(--fs-body-sm);
+    letter-spacing: 2.1px;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @media #{$min-sm} {
+      grid-column: auto;
+      padding: 0 $spacing-sm;
+    }
+  }
+
+  &-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+    padding: $spacing-xs 20px;
+
+    @media #{$min-sm} {
+      padding: 18px $spacing-md;
+    }
+
+    & + & {
+      border-left: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    &-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--fs-body-xs);
+      letter-spacing: 0.12em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    &-prices {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+    }
+
+    &-after {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--fs-body-sm);
+      line-height: 1;
+    }
+
+    &-value {
+      font-family: $ff-special;
+      font-weight: $fw-medium;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      // krój ma szeroką spację: zwężamy odstęp przed „zł”
+      word-spacing: -0.3em;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+
+      @media #{$min-sm} {
+        font-size: 34px;
+      }
+
+      &--price {
+        color: $color-green;
+        font-size: 34px;
+
+        @media #{$min-sm} {
+          font-size: 52px;
+        }
+      }
+    }
+  }
+}
+
+// ===== Hero =====
+.box-hero {
+  animation: fadeIn 0.5s 0.3s ease-out forwards;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 $spacing-xs $spacing-xl;
+  margin-top: 150px;
+  text-align: center;
+
+  @media #{$min-xs} {
+    margin-top: 170px;
+  }
+
+  @media #{$min-xl} {
+    padding: 0 $spacing-lg $spacing-xxl;
+    margin-top: 200px;
+  }
+}
+
+.box-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-title {
+    max-width: 13em;
+    color: $color-dark;
+    margin-bottom: $spacing-sm;
+    text-wrap: balance;
+  }
+
+  &-subtitle {
+    max-width: 34em;
+    color: $color-grey;
+  }
+
+  &-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 16px;
+    margin-top: $spacing-sm;
+
+    @media #{$min-xs} {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    @media #{$min-md} {
+      margin-top: $spacing-md;
+    }
+  }
+}
+
+.box-hero-stage {
+  position: relative;
+  width: 100%;
+  margin-top: $spacing-lg;
+}
+
+.box-hero-film-wrap {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+// Pulsująca naklejka „Nowość” na rogu filmu (poza .box-hero-film, bo ten ma clip-path).
+.box-hero-new {
+  position: absolute;
+  top: -22px;
+  right: -8px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  transform: rotate(12deg);
+  animation: boxNewPulse 1.3s ease-in-out infinite;
+  pointer-events: none;
+
+  @media #{$min-md} {
+    top: -40px;
+    right: -40px;
+    width: 136px;
+    height: 136px;
+  }
+
+  svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: #e5252a;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+  }
+
+  &-text {
+    position: relative;
+    color: $color-white;
+    font-family: $ff-special;
+    font-weight: $fw-medium;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+
+    @media #{$min-md} {
+      font-size: 22px;
+    }
+  }
+}
+
+// zielona → pomarańczowa → czerwona, z krótkim przejściem między kolorami
+@keyframes boxLedCycle {
+  0%,
+  28% {
+    color: #4fd15f;
+  }
+  33%,
+  61% {
+    color: #f5a524;
+  }
+  66%,
+  95% {
+    color: #ef4444;
+  }
+  100% {
+    color: #4fd15f;
+  }
+}
+
+@keyframes boxNewPulse {
+  0%,
+  100% {
+    transform: rotate(12deg) scale(1);
+  }
+  50% {
+    transform: rotate(12deg) scale(1.1);
+  }
+}
+
+.box-hero-film {
+  position: relative;
+  background: #f9f7f1;
+  @include box-cut;
+
+  video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: 50% 50%;
+    // ciaśniejszy kadr: urządzenie większe, nadmiar tła ucina clip-path playera
+    transform: scale(1.18);
+
+    // film 16:9 w kadrze 16:8: przycięcie głównie od dołu, urządzenie na środku
+    @media (min-width: 761px) {
+      aspect-ratio: 16 / 8;
+      object-position: 50% 35%;
+    }
+  }
+
+  &-sound {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    height: 36px;
+    padding: 0 14px;
+    border: 0;
+    background: $color-dark;
+    color: $color-white;
+    font-family: $ff-body;
+    font-size: 14px;
+    font-weight: $fw-medium;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    @include box-cut(8px);
+
+    &:hover {
+      background: #000;
+    }
+  }
+}
+
+.box-hero-offer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  max-width: 100%;
+  margin-top: $spacing-lg;
+}
+
+// ===== Kasa =====
+.box-till {
+  position: relative;
+  overflow: hidden;
+  background: $box-dark;
+  color: $color-white;
+  text-align: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 60%;
+    background: radial-gradient(
+      ellipse 50% 100% at 50% 0,
+      rgba(79, 209, 95, 0.22),
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+}
+
+.box-till-inner {
+  position: relative;
+  padding: $spacing-xl $spacing-xs;
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+.box-till-badge {
+  margin-bottom: $spacing-sm;
+
+  .badge-text {
+    background: $box-dark;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.box-till-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+
+  // nowe powiadomienie: treść wjeżdża na ekran, ekran i dioda błyskają
+  &.is-pop {
+    .box-till-screen > * {
+      animation: boxTillNotify 0.5s cubic-bezier(0.2, 1.2, 0.4, 1) backwards;
+    }
+
+    .box-till-who {
+      animation-delay: 0.06s;
+    }
+
+    .box-till-invoice {
+      animation-delay: 0.12s;
+    }
+
+    .box-till-screen {
+      animation: boxTillScreen 0.9s ease-out;
+    }
+
+    .box-till-led {
+      animation: boxTillLed 0.9s ease-out;
+    }
+  }
+}
+
+// Kontur Boxa z ekranem. Proporcje i pozycje w % pochodzą z viewBox
+// 05-przod-kontur-prosty.svg (1378.67×964.34).
+.box-till-device {
+  position: relative;
+  display: block;
+  width: 128%;
+  max-width: 860px;
+  margin: 0 -14%;
+  aspect-ratio: 1378.67 / 964.34;
+
+  @media #{$min-sm} {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.box-till-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+
+  g {
+    stroke: $color-white;
+  }
+
+  #obudowa {
+    opacity: 0.45;
+  }
+
+  #ekran {
+    opacity: 0.8;
+  }
+
+  path {
+    vector-effect: non-scaling-stroke;
+    stroke-width: 1.5px;
+  }
+}
+
+.box-till-led {
+  position: absolute;
+  top: 64.98%;
+  left: 12.09%;
+  width: 2.6%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: $color-green;
+  box-shadow: 0 0 14px 3px rgba(79, 209, 95, 0.7);
+  transform: translate(-50%, -50%);
+}
+
+.box-till-screen {
+  position: absolute;
+  top: 18.03%;
+  left: 19.47%;
+  width: 61.06%;
+  height: 58.2%;
+  container-type: size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(79, 209, 95, 0.05);
+}
+
+.box-till-smile {
+  width: auto;
+  height: 22cqh;
+  margin-bottom: 5cqh;
+}
+
+.box-till-sum {
+  display: block;
+  font-family: $ff-special;
+  font-weight: $fw-medium;
+  font-size: 15cqw;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  word-spacing: -0.4em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: $color-green;
+}
+
+.box-till-who {
+  display: block;
+  margin-top: 5cqh;
+  color: $color-white;
+  font-size: max(13px, 5cqw);
+  font-weight: $fw-medium;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.box-till-invoice {
+  display: block;
+  margin-top: 2.5cqh;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: max(11px, 3.6cqw);
+  line-height: 1.1;
+}
+
+.box-till-title {
+  max-width: 22em;
+  margin: 0 auto;
+  color: $color-white;
+}
+
+.box-till-description {
+  max-width: 30em;
+  margin: $spacing-xs auto clamp(28px, 4vw, 56px);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.box-till-tap {
+  margin: $spacing-md auto 0;
+  pointer-events: none;
+
+  @media #{$min-lg} {
+    margin-top: 48px;
+  }
+}
+
+.box-till-confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@keyframes boxTillNotify {
+  0% {
+    opacity: 0;
+    transform: translateY(18%) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes boxTillScreen {
+  0% {
+    background-color: rgba(79, 209, 95, 0.3);
+  }
+  100% {
+    background-color: rgba(79, 209, 95, 0.05);
+  }
+}
+
+@keyframes boxTillLed {
+  0% {
+    box-shadow: 0 0 34px 14px rgba(79, 209, 95, 0.95);
+  }
+  100% {
+    box-shadow: 0 0 14px 3px rgba(79, 209, 95, 0.7);
+  }
+}
+
+// ===== Karty =====
+.box-card {
+  position: relative;
+  z-index: 1;
+  padding: $spacing-sm;
+  background: $color-white;
+  @include box-cut;
+
+  &-pic {
+    position: relative;
+    // jednostki cqw w .box-card-anim liczą się od szerokości zdjęcia
+    container-type: inline-size;
+    margin-bottom: $spacing-sm;
+    border: 1px solid $box-line;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Animacja ekranu nałożona na 05-przod-pusty.jpg (2400×1600). Pole ekranu
+  // na zdjęciu to trapez: góra (790,497)–(1610,497), dół (779,1029)–(1621,1029).
+  // GIF 3:2 leży na dolnej krawędzi (842 px) i jest odchylony do tyłu tak,
+  // żeby góra zwęziła się do 820 px, a wysokość spadła do 532 px.
+  &-pic &-anim {
+    position: absolute;
+    bottom: 35.6875%; // (1600 − 1029) / 1600
+    left: 32.4583%; // 779 / 2400
+    width: 35.0833%; // 842 / 2400
+    aspect-ratio: 3 / 2;
+    transform: perspective(200.5cqw) rotateX(13.3deg);
+    transform-origin: 50% 100%;
+    opacity: 0.9;
+  }
+
+  &-title {
+    color: $color-dark;
+  }
+
+  &-description {
+    max-width: 34em;
+    margin-top: 10px;
+    color: $color-grey;
+  }
+
+  // Dioda nałożona na zdjęcie w karcie „Terminy”: pozycja w % kadru
+  // 05-przod-terminy.gif (dioda w 340×463 px na 1200×800).
+  &-led {
+    position: absolute;
+    top: 57.9%;
+    left: 28.33%;
+    width: 2.1%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    color: #4fd15f;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 0.75) 0, rgba(255, 255, 255, 0) 65%),
+      currentColor;
+    box-shadow: 0 0 10px 4px currentColor;
+    transform: translate(-50%, -50%);
+    animation: boxLedCycle 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  &-leds {
+    display: inline-flex;
+    gap: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+
+    i {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--led);
+    }
+  }
+
+  &--text {
+    padding: $spacing-md;
+  }
+}
+
+// ===== Co pokazuje Box =====
+.box-shows {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: $spacing-xl $spacing-xs;
+  overflow: hidden;
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+
+  .box-head {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.box-shows-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+
+  @media #{$min-md} {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  // ta sama zielona poświata co za siatką .offer-grid na stronie głównej
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    width: 100%;
+    min-width: 1000px;
+    min-height: 1000px;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      circle,
+      rgba(117, 223, 60, 0.6784313725) 0,
+      rgb(248, 247, 241) 40%
+    );
+    pointer-events: none;
+
+    @media #{$max-md} {
+      width: min(120vw, 520px);
+      height: min(140vw, 720px);
+      opacity: 0.7;
+    }
+  }
+
+  // ścięte rogi jak w .offer-grid: karty 2 i 3 lustrzanie
+  @media #{$min-md} {
+    .box-card:nth-child(2),
+    .box-card:nth-child(3) {
+      clip-path: polygon(
+        0 0,
+        calc(100% - 20px) 0,
+        100% 20px,
+        100% 100%,
+        20px 100%,
+        0 calc(100% - 20px)
+      );
+    }
+  }
+}
+
+// ===== Trzy kroki =====
+.box-steps {
+  width: 100%;
+  padding: 0 $spacing-xs $spacing-xl;
+
+  @media #{$min-lg} {
+    padding: 0 $spacing-lg $spacing-xxl;
+  }
+}
+
+.box-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media #{$min-md} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.box-step {
+  padding: $spacing-md $spacing-sm;
+
+  &-number {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: $spacing-sm;
+    background: $color-green;
+    color: $color-white;
+    font-family: $ff-special;
+    font-weight: $fw-medium;
+    font-size: 24px;
+    line-height: 1;
+    @include box-cut(10px);
+  }
+}
+
+// ===== Dla kogo =====
+.box-who {
+  position: relative;
+  overflow: hidden;
+  background: $box-dark;
+  color: $color-white;
+
+  // zielona poświata za rysunkiem
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    background: radial-gradient(
+      ellipse 60% 60% at 70% 50%,
+      rgba(79, 209, 95, 0.16),
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+}
+
+// Rysunek konturowy Boxa w tle: jasne linie, na mobile mocno przygaszony.
+.box-who-drawing {
+  position: absolute;
+  right: -34%;
+  bottom: -6%;
+  width: 130%;
+  height: auto;
+  opacity: 0.16;
+  pointer-events: none;
+
+  @media #{$min-md} {
+    top: 50%;
+    right: 2%;
+    bottom: auto;
+    width: min(50%, 780px);
+    opacity: 0.5;
+    transform: translateY(-50%);
+  }
+
+  g {
+    stroke: $color-white;
+  }
+
+  path {
+    vector-effect: non-scaling-stroke;
+    stroke-width: 1.25px;
+  }
+}
+
+.box-who-inner {
+  position: relative;
+  z-index: 1;
+  padding: $spacing-xl $spacing-xs;
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+.box-who-content {
+  @media #{$min-md} {
+    max-width: 46%;
+  }
+}
+
+.box-who-badge {
+  margin-bottom: $spacing-sm;
+
+  .badge-text {
+    background: $box-dark;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.box-who-title {
+  color: $color-white;
+  text-wrap: balance;
+}
+
+.box-who-list {
+  margin: $spacing-md 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.box-who-item {
+  padding: $spacing-sm 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &-title {
+    color: $color-green;
+  }
+
+  &-description {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+// ===== Box + Doginvoice =====
+.box-duo {
+  width: 100%;
+  padding: $spacing-xl $spacing-xs;
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+.box-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: $color-white;
+  @include box-cut;
+
+  @media #{$min-md} {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.box-split-photo {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+
+  @media #{$min-md} {
+    aspect-ratio: auto;
+    min-height: 420px;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.box-split-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 72px) clamp(24px, 5vw, 64px);
+
+  &-title {
+    margin-top: 20px;
+    color: $color-dark;
+  }
+
+  &-description {
+    max-width: 36em;
+    margin-top: 14px;
+    color: $color-dark;
+  }
+
+  // ul.standard-list zeruje marginesy, stąd wyższa specyficzność
+  ul#{&}-list {
+    margin: 22px 0 $spacing-md;
+  }
+
+  &-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+// ===== Kup =====
+.box-buy {
+  width: 100%;
+  background: $color-white;
+}
+
+.box-buy-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  align-items: center;
+  padding: $spacing-xl $spacing-xs;
+
+  @media #{$min-md} {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 6vw, 96px);
+  }
+
+  @media #{$min-lg} {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+// desktop: treść po lewej, zdjęcie po prawej (na mobile zdjęcie zostaje nad treścią)
+.box-buy-photo {
+  @media #{$min-md} {
+    order: 2;
+  }
+}
+
+.box-buy-content {
+  &-title {
+    color: $color-dark;
+  }
+
+  &-lead {
+    margin-top: 12px;
+    color: $color-grey;
+  }
+
+  &-offer {
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.box-buy-specs {
+  margin: 30px 0;
+  border-top: 1px solid $box-line;
+  font-size: var(--fs-body-lg);
+
+  &-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px 0;
+    border-bottom: 1px solid $box-line;
+  }
+
+  dt {
+    color: $color-grey;
+  }
+
+  dd {
+    text-align: right;
+    color: $color-dark;
+  }
+}
+
+.box-buy-note {
+  margin: -10px 0 30px;
+  padding: 12px 16px;
+  background: #f9f8f3;
+  color: $color-dark;
+  @include box-cut(8px);
+}
+
+.box-buy-guarantee {
+  margin-top: 14px;
+  color: $color-grey;
+}
+
+// ===== Przyklejony pasek zakupu (mobile) =====
+.box-sticky {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-xs;
+  padding: 10px $spacing-xs calc(10px + env(safe-area-inset-bottom));
+  background: $box-dark;
+  color: $color-white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+
+  @media #{$max-md} {
+    display: flex;
+  }
+
+  &.is-visible {
+    transform: none;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &-name {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--fs-body-xs);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: var(--fs-body-sm);
+    line-height: 1;
+    white-space: nowrap;
+
+    strong {
+      color: $color-green;
+      font-family: $ff-special;
+      font-weight: $fw-medium;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+      word-spacing: -0.3em;
+    }
+
+    s,
+    span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  &-button {
+    flex-shrink: 0;
+  }
+}
+
+// ===== Pytania =====
+.box-qa {
+  width: 100%;
+  padding: $spacing-xl $spacing-xs;
+
+  @media #{$min-lg} {
+    padding: $spacing-xl $spacing-lg $spacing-xxl;
+  }
+}
+
+.box-qa-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+
+  @media #{$min-md} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box-till-button.is-pop .box-till-screen,
+  .box-till-button.is-pop .box-till-screen > *,
+  .box-till-button.is-pop .box-till-led,
+  .box-hero-new,
+  .box-card-led {
+    animation: none;
+  }
+
+  .box-sticky {
+    transition: none;
+  }
+}

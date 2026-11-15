@@ -109,6 +109,7 @@ barba.hooks.after(function ({ current, next }) {
     "initPostToc",
     "initPartnerCalculator",
     "initPartnerMetaEvents",
+    "initBox",
   ].forEach(function (name) {
     if (typeof window[name] === "function") window[name]();
   });

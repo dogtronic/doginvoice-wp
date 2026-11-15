@@ -180,6 +180,11 @@ require get_template_directory() . '/inc/acf-fields.php';
 require get_template_directory() . '/inc/changelog.php';
 
 /**
+ * Doginvoice Box: Open Graph landing page'a urządzenia.
+ */
+require get_template_directory() . '/inc/box.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';

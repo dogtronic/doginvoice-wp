@@ -9,34 +9,59 @@
  *
  * @package doginvoice
  */
+
+// Sekcja CTA nad stopką: strona główna i landing Doginvoice Box (inne treści).
+$footer_cta = null;
+if (is_front_page()) {
+  $footer_cta = array(
+    'badge'       => 'ZACZNIJ JUŻ DZIŚ',
+    'title'       => 'W 60 sekund DogInvoice będzie gotowy do pracy',
+    'description' => 'Załóż konto, podłącz KSeF, automatyzuj zarządzanie finansami swojej firmy.',
+    'button'      => 'Załóż konto bez zobowiązań',
+    'url'         => 'https://app.doginvoice.com/register',
+    'new_tab'     => true,
+    'track'       => '',
+  );
+} elseif (is_page_template('page-doginvoice-box.php')) {
+  $footer_cta = array(
+    'badge'       => 'PRZEDSPRZEDAŻ',
+    'title'       => 'Postaw Box na biurku i słuchaj jak zarabiasz',
+    'description' => 'Zamów Doginvoice Box w przedsprzedaży.',
+    'button'      => 'Zamów Doginvoice Box',
+    // Adres sklepu ustawia page-doginvoice-box.php; bez niego przewijamy do sekcji #kup.
+    'url'         => get_query_var('box_buy_url', '#kup'),
+    'new_tab'     => false,
+    'track'       => 'stopka', // Meta Pixel: src/js/box.js
+  );
+}
 ?>
 <footer class="footer">
   <div class="footer__background"></div>
-  <?php if (is_front_page()) : ?>
+  <?php if ($footer_cta) : ?>
     <div class="footer-section max-width" aria-labelledby="cta-title">
       <div class="footer-section-badge badge badge--dark" data-aos="fade-up">
-        <span class="badge-text">ZACZNIJ JUŻ DZIŚ</span>
+        <span class="badge-text"><?php echo esc_html($footer_cta['badge']); ?></span>
       </div>
       <h2
         id="cta-title"
         class="footer-section-title typography--h2"
         data-aos="fade-up">
-        W 60 sekund DogInvoice będzie gotowy do pracy
+        <?php echo esc_html($footer_cta['title']); ?>
       </h2>
       <p
         class="footer-section-description typography--body-lg"
         data-aos="fade-up"
         data-remove-orphans>
-        Załóż konto, podłącz KSeF, automatyzuj zarządzanie finansami swojej
-        firmy.
+        <?php echo esc_html($footer_cta['description']); ?>
       </p>
       <a
-        href="https://app.doginvoice.com/register"
-        target="_blank"
+        href="<?php echo esc_url($footer_cta['url']); ?>"
+        <?php echo $footer_cta['new_tab'] ? 'target="_blank"' : ''; ?>
+        <?php echo $footer_cta['track'] ? 'data-box-order="' . esc_attr($footer_cta['track']) . '"' : ''; ?>
         class="footer-section-button btn"
         size="bg"
         color="green">
-        <span class="btn-title">Załóż konto bez zobowiązań</span>
+        <span class="btn-title"><?php echo esc_html($footer_cta['button']); ?></span>
       </a>
       <span class="footer-section-watermark" aria-hidden="true">
         <svg
@@ -522,6 +547,7 @@ $organization_schema = array(
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/post-toc.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-calculator.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-meta-events.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/src/js/box.js" defer></script>
 <?php wp_footer(); ?>
 
 </div> <!-- data-barba="container" data-barba-namespace="default" -->

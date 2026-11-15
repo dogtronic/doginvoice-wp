@@ -24,8 +24,12 @@ function doginvoice_body_classes( $classes ) {
 
 	// Ta sama stopka co na stronach tekstowych: bez ciemnego tła,
 	// panel leży na beżu strony.
+	// Wyjątek: landing DogInvoice Box ma sekcję CTA nad stopką, więc dostaje
+	// ciemną stopkę jak strona główna.
 	if ( is_404() ) {
 		$classes[] = 'page-404';
+	} elseif ( is_page_template( 'page-doginvoice-box.php' ) ) {
+		$classes[] = 'page-box';
 	} elseif ( ( is_page() && ! is_front_page() ) || is_singular( 'post' ) ) {
 		$classes[] = 'page-text';
 	}
