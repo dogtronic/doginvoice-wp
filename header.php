@@ -27,6 +27,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <?php wp_head(); ?>
+  <?php if ( ! is_page_template( 'page-doginvoice-box.php' ) ) : // na Boxie bez czatu ?>
   <!-- Smartsupp Live Chat script -->
   <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
@@ -45,6 +46,7 @@
       s.parentNode.insertBefore(c, s);
     })(document);
   </script>
+  <?php endif; ?>
   <script>
     (function() {
       function getCookie(name) {

@@ -17,6 +17,31 @@ function initBox() {
   initBoxMetaEvents();
   initBoxInview();
   initBoxScreens();
+  initBoxTouchPlay();
+}
+
+// iPhone w trybie oszczędzania energii blokuje autoodtwarzanie: filmy ruszają
+// wtedy po pierwszym dotknięciu strony.
+function initBoxTouchPlay() {
+  if (window.__boxTouchPlay) return;
+  window.__boxTouchPlay = true;
+
+  const resume = () => {
+    const film = document.getElementById("box-film");
+    if (film && film.paused) film.play().catch(() => {});
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.querySelectorAll("video.box-card-anim").forEach((video) => {
+      const { top, bottom } = video.getBoundingClientRect();
+      if (video.paused && bottom > -200 && top < window.innerHeight + 200) {
+        video.play().catch(() => {});
+      }
+    });
+  };
+
+  ["touchend", "click"].forEach((type) =>
+    document.addEventListener(type, resume, { passive: true }),
+  );
 }
 
 // Film: dźwięk na żądanie.

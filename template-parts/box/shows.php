@@ -29,7 +29,7 @@ $img = $args['assets'] . '/images/box';
         <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją pulpitu: wynik miesiąca" width="2400" height="1600" loading="lazy" />
         <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
           poster="<?php echo esc_url($img . '/animacje/jasny/miesiac.webp'); ?>">
-          <source src="<?php echo esc_url($img . '/animacje/jasny/miesiac.mp4'); ?>" type="video/mp4" />
+          <source src="<?php echo esc_url(doginvoice_asset_url('/src/assets/images/box/animacje/jasny/miesiac.mp4')); ?>" type="video/mp4" />
         </video>
         </div>
       </div>
@@ -43,7 +43,7 @@ $img = $args['assets'] . '/images/box';
         <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją powiadomienia o wpłacie" width="2400" height="1600" loading="lazy" />
         <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
           poster="<?php echo esc_url($img . '/animacje/jasny/wplaty.webp'); ?>">
-          <source src="<?php echo esc_url($img . '/animacje/jasny/wplaty.mp4'); ?>" type="video/mp4" />
+          <source src="<?php echo esc_url(doginvoice_asset_url('/src/assets/images/box/animacje/jasny/wplaty.mp4')); ?>" type="video/mp4" />
         </video>
         </div>
       </div>
@@ -57,7 +57,7 @@ $img = $args['assets'] . '/images/box';
         <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją nowej faktury z KSeF" width="2400" height="1600" loading="lazy" />
         <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
           poster="<?php echo esc_url($img . '/animacje/jasny/ksef.webp'); ?>">
-          <source src="<?php echo esc_url($img . '/animacje/jasny/ksef.mp4'); ?>" type="video/mp4" />
+          <source src="<?php echo esc_url(doginvoice_asset_url('/src/assets/images/box/animacje/jasny/ksef.mp4')); ?>" type="video/mp4" />
         </video>
         </div>
       </div>
@@ -71,7 +71,7 @@ $img = $args['assets'] . '/images/box';
         <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją ekranu należności i terminów" width="2400" height="1600" loading="lazy" />
         <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
           poster="<?php echo esc_url($img . '/animacje/jasny/naleznosci.webp'); ?>">
-          <source src="<?php echo esc_url($img . '/animacje/jasny/naleznosci.mp4'); ?>" type="video/mp4" />
+          <source src="<?php echo esc_url(doginvoice_asset_url('/src/assets/images/box/animacje/jasny/naleznosci.mp4')); ?>" type="video/mp4" />
         </video>
         <span class="box-card-led" aria-hidden="true"></span>
         </div>

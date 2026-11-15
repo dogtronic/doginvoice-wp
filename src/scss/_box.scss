@@ -116,6 +116,11 @@ $box-line: #e4e2d8;
     gap: 6px;
     padding: $spacing-xs 20px;
 
+    // najwęższe telefony (320 px): inaczej plakietka jest szersza niż ekran
+    @media (max-width: 359px) {
+      padding: $spacing-xs 12px;
+    }
+
     @media #{$min-sm} {
       padding: 18px $spacing-md;
     }
@@ -156,6 +161,10 @@ $box-line: #e4e2d8;
       white-space: nowrap;
       font-variant-numeric: tabular-nums;
 
+      @media (max-width: 359px) {
+        font-size: 20px;
+      }
+
       @media #{$min-sm} {
         font-size: 34px;
       }
@@ -165,6 +174,10 @@ $box-line: #e4e2d8;
         display: inline-block;
         color: $color-green;
         font-size: 34px;
+
+        @media (max-width: 359px) {
+          font-size: 30px;
+        }
 
         @media #{$min-sm} {
           font-size: 52px;
@@ -240,6 +253,12 @@ $box-line: #e4e2d8;
     opacity: 1;
     transform: none;
   }
+}
+
+// Czat (Smartsupp) jest na Boxie wyłączony w header.php; ta reguła chowa go,
+// gdy został wczytany na innej podstronie przed przejściem bez przeładowania.
+body.page-box #smartsupp-widget-container {
+  display: none !important;
 }
 
 // ===== Hero =====
@@ -318,7 +337,9 @@ $box-line: #e4e2d8;
 .box-hero-new {
   position: absolute;
   top: -22px;
-  right: -8px;
+  // obrócona i pulsująca naklejka musi zmieścić się w marginesie strony (16 px),
+  // inaczej na telefonie pojawia się poziomy scroll
+  right: 0;
   z-index: 3;
   display: grid;
   place-items: center;
@@ -330,9 +351,14 @@ $box-line: #e4e2d8;
 
   @media #{$min-md} {
     top: -40px;
-    right: -40px;
+    right: 8px;
     width: 136px;
     height: 136px;
+  }
+
+  // wysunięta poza film dopiero tam, gdzie obok jest na nią miejsce
+  @media (min-width: 1280px) {
+    right: -40px;
   }
 
   svg {
@@ -392,6 +418,8 @@ $box-line: #e4e2d8;
 .box-hero-film {
   position: relative;
   background: #f9f7f1;
+  // clip-path ucina tylko obraz: bez overflow powiększony film poszerza stronę
+  overflow: hidden;
   @include box-cut;
 
   video {
@@ -1084,7 +1112,11 @@ $box-line: #e4e2d8;
 .box-who-item {
   position: relative;
   padding: $spacing-sm 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+
+  // linie między wierszami tylko od tabletu; na telefonie sam tekst
+  @media #{$min-md} {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
 
   &:last-child {
     padding-bottom: 0;
@@ -1093,12 +1125,18 @@ $box-line: #e4e2d8;
   // najechanie: linia nad wierszem rozjaśnia się od lewej, tytuł się przesuwa
   &::before {
     content: "";
+    display: none;
     position: absolute;
     top: -1px;
     right: 0;
     left: 0;
     height: 1px;
     background: $color-green;
+
+    @media #{$min-md} {
+      display: block;
+    }
+
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.45s ease;

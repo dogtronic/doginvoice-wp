@@ -1929,6 +1929,11 @@ body.is-menu-open {
   gap: 6px;
   padding: 16px 20px;
 }
+@media (max-width: 359px) {
+  .box-offer-cell {
+    padding: 16px 12px;
+  }
+}
 @media (min-width: 640px) {
   .box-offer-cell {
     padding: 18px 32px;
@@ -1965,6 +1970,11 @@ body.is-menu-open {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+@media (max-width: 359px) {
+  .box-offer-cell-value {
+    font-size: 20px;
+  }
+}
 @media (min-width: 640px) {
   .box-offer-cell-value {
     font-size: 34px;
@@ -1975,6 +1985,11 @@ body.is-menu-open {
   display: inline-block;
   color: rgb(79, 209, 95);
   font-size: 34px;
+}
+@media (max-width: 359px) {
+  .box-offer-cell-value--price {
+    font-size: 30px;
+  }
 }
 @media (min-width: 640px) {
   .box-offer-cell-value--price {
@@ -2037,6 +2052,10 @@ body.is-menu-open {
     transform: none;
   }
 }
+body.page-box #smartsupp-widget-container {
+  display: none !important;
+}
+
 .box-hero {
   animation: fadeIn 0.5s 0.3s ease-out forwards;
   opacity: 0;
@@ -2112,7 +2131,7 @@ body.is-menu-open {
 .box-hero-new {
   position: absolute;
   top: -22px;
-  right: -8px;
+  right: 0;
   z-index: 3;
   display: grid;
   place-items: center;
@@ -2125,9 +2144,14 @@ body.is-menu-open {
 @media (min-width: 768px) {
   .box-hero-new {
     top: -40px;
-    right: -40px;
+    right: 8px;
     width: 136px;
     height: 136px;
+  }
+}
+@media (min-width: 1280px) {
+  .box-hero-new {
+    right: -40px;
   }
 }
 .box-hero-new svg {
@@ -2179,6 +2203,7 @@ body.is-menu-open {
 .box-hero-film {
   position: relative;
   background: #f9f7f1;
+  overflow: hidden;
   clip-path: polygon(20px 0%, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0% 20px);
 }
 .box-hero-film video {
@@ -2809,19 +2834,31 @@ body.is-menu-open {
 .box-who-item {
   position: relative;
   padding: 24px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+@media (min-width: 768px) {
+  .box-who-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
 }
 .box-who-item:last-child {
   padding-bottom: 0;
 }
 .box-who-item::before {
   content: "";
+  display: none;
   position: absolute;
   top: -1px;
   right: 0;
   left: 0;
   height: 1px;
   background: rgb(79, 209, 95);
+}
+@media (min-width: 768px) {
+  .box-who-item::before {
+    display: block;
+  }
+}
+.box-who-item::before {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.45s ease;
