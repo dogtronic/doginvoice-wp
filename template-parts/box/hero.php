@@ -13,7 +13,7 @@ $assets  = $args['assets'];
 $film_path   = '/videos/produkt_16x9.mp4';
 $poster_path = '/images/box/produkt_16x9_okladka.jpg';
 $film_ver    = (string) @filemtime(get_template_directory() . '/src/assets' . $film_path);
-$film_url    = add_query_arg('v', $film_ver, $assets . $film_path);
+$film_url    = doginvoice_box_media_url('produkt_16x9.mp4', '/src/assets' . $film_path); // film z R2, patrz inc/box.php
 $poster_url  = add_query_arg('v', $film_ver, $assets . $poster_path);
 ?>
 <!-- ===== HERO ===== -->

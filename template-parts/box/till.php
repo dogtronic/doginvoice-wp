@@ -27,7 +27,7 @@ $assets = $args['assets'];
       type="button"
       class="box-till-button"
       id="box-till"
-      data-sound="<?php echo esc_url($assets . '/audio/ka-ching.mp3'); ?>">
+      data-sound="<?php echo esc_url(doginvoice_box_media_url('ka-ching.mp3', '/src/assets/audio/ka-ching.mp3')); ?>">
       <span class="box-till-device">
         <?php
         // Rysunek konturowy Boxa (kolor linii ustawia CSS). To wersja „prosty”:

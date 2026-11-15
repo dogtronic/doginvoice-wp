@@ -61,3 +61,27 @@ add_filter(
 		return $metadata;
 	}
 );
+
+/**
+ * Adres filmu lub dźwięku Boxa w Cloudflare R2 (bucket „doginvoice-media”,
+ * domena media.doginvoice.com).
+ *
+ * Serwer strony wysyła większe pliki bez Content-Length i bez obsługi żądań
+ * zakresowych (Range), przez co Safari na iPhonie nie odtwarza z niego wideo.
+ * R2 odpowiada poprawnie. Plik w motywie zostaje źródłem: po jego podmianie
+ * trzeba wgrać go ponownie pod tę samą nazwę:
+ *
+ *   npx wrangler r2 object put doginvoice-media/box/<nazwa> --file <plik> --remote
+ *
+ * Parametr „v” (data lokalnego pliku) omija cache po podmianie.
+ *
+ * @param string $name Nazwa pliku w R2, w katalogu box/.
+ * @param string $path Ścieżka pliku źródłowego względem katalogu motywu.
+ * @return string
+ */
+function doginvoice_box_media_url( $name, $path ) {
+	$url  = 'https://media.doginvoice.com/box/' . $name;
+	$file = get_template_directory() . $path;
+
+	return file_exists( $file ) ? add_query_arg( 'v', (string) filemtime( $file ), $url ) : $url;
+}
