@@ -14,7 +14,7 @@
  * @package doginvoice
  */
 
-$box_shop_url = '';
+$box_shop_url = 'https://buy.stripe.com/3cIeV7diL1Fy1vx4X0asg00';
 
 // Oferta: jedyne miejsce, w którym zmienia się ceny i daty na tej stronie.
 // Ceny Boxa i wysyłka podane przez Marka 14.11.2026; koniec przedsprzedaży
