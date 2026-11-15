@@ -49,8 +49,10 @@ $assets = $args['assets'];
         </span>
       </span>
       <span class="box-till-tap btn" size="bg" color="green">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05A4.48 4.48 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z" />
+        <svg class="btn-icon box-till-speaker" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 9v6h4l5 5V4L7 9H3z" />
+          <path class="box-till-wave box-till-wave--1" d="M16.5 12A4.5 4.5 0 0 0 14 7.97v8.05A4.48 4.48 0 0 0 16.5 12z" />
+          <path class="box-till-wave box-till-wave--2" d="M14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z" />
         </svg>
         <span class="btn-title">Kliknij</span>
       </span>

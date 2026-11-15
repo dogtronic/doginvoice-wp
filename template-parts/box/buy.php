@@ -16,7 +16,9 @@ $img     = $args['assets'] . '/images/box';
   <div class="box-buy-inner max-width">
     <img
       class="box-buy-photo"
-      src="<?php echo esc_url($img . '/04-prawy.jpg'); ?>"
+      src="<?php echo esc_url($img . '/04-prawy-800.webp'); ?>"
+      srcset="<?php echo esc_url($img . '/04-prawy-800.webp'); ?> 800w, <?php echo esc_url($img . '/04-prawy-1600.webp'); ?> 1600w"
+      sizes="(min-width: 768px) 45vw, 100vw"
       alt="Doginvoice Box z pulpitem na ekranie, widziany z góry"
       width="2400"
       height="1600"

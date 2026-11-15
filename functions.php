@@ -14,7 +14,7 @@ if (! defined('_S_VERSION')) {
 }
 
 if (! defined('DOGINVOICE_CSS_VERSION')) {
-	define('DOGINVOICE_CSS_VERSION', '1.0.27');
+	define('DOGINVOICE_CSS_VERSION', '1.0.28');
 }
 
 /**

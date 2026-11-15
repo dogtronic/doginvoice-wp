@@ -50,6 +50,9 @@ barba.hooks.beforeEnter(function () {
 barba.init({
   debug: true,
   timeout: 5000,
+  // Strona wczytana z okrojonym zestawem skryptów (footer.php, np. landing
+  // Boxa): linki robią zwykłe przeładowanie zamiast przejścia Barby.
+  prevent: () => window.__lightScripts === true,
   transitions: [
     {
       name: "opacity-transition",

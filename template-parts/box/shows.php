@@ -25,8 +25,13 @@ $img = $args['assets'] . '/images/box';
   <div class="box-shows-grid">
     <article class="box-card" data-aos="fade-up" data-aos-delay="50">
       <div class="box-card-pic">
-        <img src="<?php echo esc_url($img . '/05-przod-pusty.jpg'); ?>" alt="Doginvoice Box z animacją pulpitu: wynik miesiąca" width="2400" height="1600" loading="lazy" />
-        <img class="box-card-anim" src="<?php echo esc_url($img . '/animacje/jasny/miesiac.gif'); ?>" alt="" aria-hidden="true" width="960" height="640" loading="lazy" />
+        <div class="box-card-zoom">
+        <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją pulpitu: wynik miesiąca" width="2400" height="1600" loading="lazy" />
+        <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
+          poster="<?php echo esc_url($img . '/animacje/jasny/miesiac.webp'); ?>">
+          <source src="<?php echo esc_url($img . '/animacje/jasny/miesiac.mp4'); ?>" type="video/mp4" />
+        </video>
+        </div>
       </div>
       <h3 class="box-card-title typography--h4">Aktualne wyniki Twojej firmy</h3>
       <p class="box-card-description typography--body-lg" data-remove-orphans>Przychody, koszty i zysk. Liczą się automatycznie.</p>
@@ -34,8 +39,13 @@ $img = $args['assets'] . '/images/box';
 
     <article class="box-card" data-aos="fade-up" data-aos-delay="100">
       <div class="box-card-pic">
-        <img src="<?php echo esc_url($img . '/05-przod-pusty.jpg'); ?>" alt="Doginvoice Box z animacją powiadomienia o wpłacie" width="2400" height="1600" loading="lazy" />
-        <img class="box-card-anim" src="<?php echo esc_url($img . '/animacje/jasny/wplaty.gif'); ?>" alt="" aria-hidden="true" width="960" height="640" loading="lazy" />
+        <div class="box-card-zoom">
+        <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją powiadomienia o wpłacie" width="2400" height="1600" loading="lazy" />
+        <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
+          poster="<?php echo esc_url($img . '/animacje/jasny/wplaty.webp'); ?>">
+          <source src="<?php echo esc_url($img . '/animacje/jasny/wplaty.mp4'); ?>" type="video/mp4" />
+        </video>
+        </div>
       </div>
       <h3 class="box-card-title typography--h4">Wpłaty na Twój rachunek</h3>
       <p class="box-card-description typography--body-lg" data-remove-orphans>Analizujemy przelewy na Twoim koncie bankowe. Dopasowujemy je do faktur.</p>
@@ -43,8 +53,13 @@ $img = $args['assets'] . '/images/box';
 
     <article class="box-card" data-aos="fade-up" data-aos-delay="50">
       <div class="box-card-pic">
-        <img src="<?php echo esc_url($img . '/05-przod-pusty.jpg'); ?>" alt="Doginvoice Box z animacją nowej faktury z KSeF" width="2400" height="1600" loading="lazy" />
-        <img class="box-card-anim" src="<?php echo esc_url($img . '/animacje/jasny/ksef.gif'); ?>" alt="" aria-hidden="true" width="960" height="640" loading="lazy" />
+        <div class="box-card-zoom">
+        <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją nowej faktury z KSeF" width="2400" height="1600" loading="lazy" />
+        <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
+          poster="<?php echo esc_url($img . '/animacje/jasny/ksef.webp'); ?>">
+          <source src="<?php echo esc_url($img . '/animacje/jasny/ksef.mp4'); ?>" type="video/mp4" />
+        </video>
+        </div>
       </div>
       <h3 class="box-card-title typography--h4">Faktury z KSeF</h3>
       <p class="box-card-description typography--body-lg" data-remove-orphans>Kosztowe i sprzedażowe – w chwili, gdy trafią do systemu poinformujemy Cię o tym.</p>
@@ -52,9 +67,14 @@ $img = $args['assets'] . '/images/box';
 
     <article class="box-card" data-aos="fade-up" data-aos-delay="100">
       <div class="box-card-pic">
-        <img src="<?php echo esc_url($img . '/05-przod-pusty.jpg'); ?>" alt="Doginvoice Box z animacją ekranu należności i terminów" width="2400" height="1600" loading="lazy" />
-        <img class="box-card-anim" src="<?php echo esc_url($img . '/animacje/jasny/naleznosci.gif'); ?>" alt="" aria-hidden="true" width="960" height="640" loading="lazy" />
+        <div class="box-card-zoom">
+        <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją ekranu należności i terminów" width="2400" height="1600" loading="lazy" />
+        <video class="box-card-anim" muted loop playsinline preload="none" aria-hidden="true" width="960" height="640"
+          poster="<?php echo esc_url($img . '/animacje/jasny/naleznosci.webp'); ?>">
+          <source src="<?php echo esc_url($img . '/animacje/jasny/naleznosci.mp4'); ?>" type="video/mp4" />
+        </video>
         <span class="box-card-led" aria-hidden="true"></span>
+        </div>
       </div>
       <h3 class="box-card-title typography--h4">
         Terminy płatności

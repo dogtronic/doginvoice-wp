@@ -15,6 +15,8 @@ function initBox() {
   initBoxTill();
   initBoxSticky();
   initBoxMetaEvents();
+  initBoxInview();
+  initBoxScreens();
 }
 
 // Film: dźwięk na żądanie.
@@ -136,6 +138,11 @@ function initBoxTill() {
     }
 
     showPayment(true);
+
+    // fale przy ikonie głośnika pulsują razem z „ka-ching”
+    till.classList.remove("is-sound");
+    void till.offsetWidth;
+    till.classList.add("is-sound");
     // po kliknięciu odliczanie do następnej automatycznej wpłaty rusza od nowa
     if (timer) startAuto();
   });
@@ -258,9 +265,15 @@ function initBoxSticky() {
     document.querySelector(".footer"),
   ].filter(Boolean);
   const inView = new Set();
+  let hopped = false;
 
   const update = () => {
     const visible = inView.size === 0;
+    // przy pierwszym wysunięciu paska cena lekko podskakuje
+    if (visible && !hopped) {
+      hopped = true;
+      bar.classList.add("is-hop");
+    }
     bar.classList.toggle("is-visible", visible);
     bar.setAttribute("aria-hidden", String(!visible));
     if (visible) link.removeAttribute("tabindex");
@@ -300,5 +313,65 @@ function initBoxMetaEvents() {
     if (!(link.getAttribute("href") || "").startsWith("#")) {
       boxTrack("InitiateCheckout", { content_name: "Doginvoice Box" }, true);
     }
+  });
+}
+
+// Animacje „na wejście w ekran” (rysowanie konturów, kroki, zamiana ceny).
+// Element z data-box-inview dostaje .is-armed (stan początkowy animacji),
+// a po pojawieniu się na ekranie .is-inview. Bez JS albo przy ograniczonym
+// ruchu klasy nie ma, więc wszystko jest od razu w stanie końcowym.
+function initBoxInview() {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const items = [...document.querySelectorAll("[data-box-inview]")].filter(
+    (item) => item.dataset.inited !== "true",
+  );
+  if (!items.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-inview");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.3 },
+  );
+
+  items.forEach((item) => {
+    item.dataset.inited = "true";
+    item.classList.add("is-armed");
+    observer.observe(item);
+  });
+}
+
+// Animacje ekranów w kartach „Funkcji” to krótkie filmy w pętli. Plik
+// pobiera się dopiero, gdy karta zbliża się do ekranu, a film gra tylko
+// wtedy, gdy ją widać. Przy ograniczonym ruchu zostaje sam kadr (poster).
+function initBoxScreens() {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const videos = [...document.querySelectorAll("video.box-card-anim")].filter(
+    (video) => video.dataset.inited !== "true",
+  );
+  if (!videos.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) target.play().catch(() => {});
+        else target.pause();
+      });
+    },
+    { rootMargin: "200px 0px" },
+  );
+
+  videos.forEach((video) => {
+    video.dataset.inited = "true";
+    video.muted = true;
+    observer.observe(video);
   });
 }

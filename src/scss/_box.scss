@@ -16,6 +16,31 @@ $box-line: #e4e2d8;
   );
 }
 
+// Dorysowywanie konturu przy wejściu w ekran. Ścieżki mają pathLength="1"
+// (inc/box.php), klasy .is-armed / .is-inview nadaje initBoxInview().
+@mixin box-draw {
+  &.is-armed path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  &.is-armed.is-inview path {
+    animation: boxDraw 1.8s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+  }
+
+  // ekran i logo chwilę po obudowie
+  &.is-armed.is-inview #ekran path,
+  &.is-armed.is-inview #logo path {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes boxDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .box-page {
   img,
   video {
@@ -136,6 +161,8 @@ $box-line: #e4e2d8;
       }
 
       &--price {
+        position: relative;
+        display: inline-block;
         color: $color-green;
         font-size: 34px;
 
@@ -144,6 +171,74 @@ $box-line: #e4e2d8;
         }
       }
     }
+  }
+}
+
+// Zamiana ceny przy pierwszym pojawieniu się plakietki: stara cena
+// zostaje przekreślona, znika, a na jej miejsce wskakuje nowa.
+.box-offer-price-new {
+  display: inline-block;
+}
+
+.box-offer-price-old {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -4%;
+    left: -4%;
+    height: 0.08em;
+    background: #ef4444;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}
+
+.box-offer.is-armed {
+  .box-offer-price-new {
+    opacity: 0;
+  }
+
+  .box-offer-price-old {
+    opacity: 1;
+  }
+
+  &.is-inview {
+    .box-offer-price-old {
+      animation: boxPriceOut 0.3s 1.15s ease-in forwards;
+
+      &::after {
+        animation: boxStepLine 0.35s 0.55s ease-out forwards;
+      }
+    }
+
+    .box-offer-price-new {
+      animation: boxPriceIn 0.45s 1.4s cubic-bezier(0.2, 1.5, 0.4, 1) forwards;
+    }
+  }
+}
+
+@keyframes boxPriceOut {
+  to {
+    opacity: 0;
+    transform: translateY(-45%);
+  }
+}
+
+@keyframes boxPriceIn {
+  from {
+    opacity: 0;
+    transform: translateY(45%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -455,10 +550,16 @@ $box-line: #e4e2d8;
     opacity: 0.8;
   }
 
+  // grubość w jednostkach rysunku (viewBox 1378 px): ok. 1,4 px na ekranie
   path {
-    vector-effect: non-scaling-stroke;
-    stroke-width: 1.5px;
+    stroke-width: 4.2;
+
+    @media #{$min-sm} {
+      stroke-width: 2.6;
+    }
   }
+
+  @include box-draw;
 }
 
 .box-till-led {
@@ -546,6 +647,37 @@ $box-line: #e4e2d8;
   }
 }
 
+// fale przy głośniku pulsują po kliknięciu (klasę .is-sound nadaje box.js)
+.box-till-wave {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.box-till-button.is-sound {
+  .box-till-wave {
+    animation: boxTillWave 0.45s ease-out 2;
+  }
+
+  .box-till-wave--2 {
+    animation-delay: 0.1s;
+  }
+}
+
+@keyframes boxTillWave {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .box-till-confetti {
   position: absolute;
   inset: 0;
@@ -592,11 +724,31 @@ $box-line: #e4e2d8;
   background: $color-white;
   @include box-cut;
 
+  // najechanie: karta lekko się unosi, zdjęcie przybliża. `translate`
+  // i `scale` nie kolidują z transformacją, którą ustawia AOS.
+  @media (hover: hover) {
+    transition: translate 0.35s ease;
+
+    &:hover {
+      translate: 0 -5px;
+
+      .box-card-zoom {
+        scale: 1.05;
+      }
+    }
+  }
+
+  &-zoom {
+    position: relative;
+    transition: scale 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
   &-pic {
     position: relative;
     // jednostki cqw w .box-card-anim liczą się od szerokości zdjęcia
     container-type: inline-size;
     margin-bottom: $spacing-sm;
+    overflow: hidden;
     border: 1px solid $box-line;
 
     img {
@@ -615,7 +767,10 @@ $box-line: #e4e2d8;
     bottom: 35.6875%; // (1600 − 1029) / 1600
     left: 32.4583%; // 779 / 2400
     width: 35.0833%; // 842 / 2400
+    display: block;
+    height: auto;
     aspect-ratio: 3 / 2;
+    object-fit: cover;
     transform: perspective(200.5cqw) rotateX(13.3deg);
     transform-origin: 50% 100%;
     opacity: 0.9;
@@ -764,7 +919,56 @@ $box-line: #e4e2d8;
 }
 
 .box-step {
+  position: relative;
   padding: $spacing-md $spacing-sm;
+
+  // linia prowadząca od numeru do następnej karty (tylko w układzie 3 kolumn)
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(#{$spacing-md} + 23px);
+    right: 0;
+    left: calc(#{$spacing-sm} + 48px + 14px);
+    display: none;
+    height: 2px;
+    background: rgba(79, 209, 95, 0.45);
+    transform-origin: left;
+
+    @media #{$min-md} {
+      display: block;
+    }
+  }
+
+  // kroki zapalają się po kolei po wejściu w ekran
+  .is-armed & {
+    .box-step-number {
+      background: #d9d7cc;
+    }
+
+    &::after {
+      transform: scaleX(0);
+    }
+  }
+
+  .is-armed.is-inview & {
+    .box-step-number {
+      animation: boxStepOn 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) forwards;
+    }
+
+    &::after {
+      animation: boxStepLine 0.45s ease-out forwards;
+    }
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) .box-step-number {
+        animation-delay: #{0.3 + ($i - 1) * 0.55}s;
+      }
+
+      &:nth-child(#{$i})::after {
+        animation-delay: #{0.5 + ($i - 1) * 0.55}s;
+      }
+    }
+  }
 
   &-number {
     display: grid;
@@ -829,10 +1033,16 @@ $box-line: #e4e2d8;
     stroke: $color-white;
   }
 
+  // grubość w jednostkach rysunku (viewBox 1398 px): ok. 1,3 px na ekranie
   path {
-    vector-effect: non-scaling-stroke;
-    stroke-width: 1.25px;
+    stroke-width: 3.6;
+
+    @media #{$min-md} {
+      stroke-width: 2.6;
+    }
   }
+
+  @include box-draw;
 }
 
 .box-who-inner {
@@ -872,6 +1082,7 @@ $box-line: #e4e2d8;
 }
 
 .box-who-item {
+  position: relative;
   padding: $spacing-sm 0;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 
@@ -879,13 +1090,59 @@ $box-line: #e4e2d8;
     padding-bottom: 0;
   }
 
+  // najechanie: linia nad wierszem rozjaśnia się od lewej, tytuł się przesuwa
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: $color-green;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s ease;
+  }
+
   &-title {
     color: $color-green;
+    transition: translate 0.35s ease;
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      transform: scaleX(1);
+    }
+
+    &:hover &-title {
+      translate: 8px 0;
+    }
   }
 
   &-description {
     margin-top: 8px;
     color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+@keyframes boxStepOn {
+  0% {
+    background: #d9d7cc;
+    transform: scale(1);
+  }
+  60% {
+    background: $color-green;
+    transform: scale(1.18);
+  }
+  100% {
+    background: $color-green;
+    transform: scale(1);
+  }
+}
+
+@keyframes boxStepLine {
+  to {
+    transform: scaleX(1);
   }
 }
 
@@ -1089,6 +1346,7 @@ $box-line: #e4e2d8;
     white-space: nowrap;
 
     strong {
+      display: inline-block;
       color: $color-green;
       font-family: $ff-special;
       font-weight: $fw-medium;
@@ -1105,6 +1363,27 @@ $box-line: #e4e2d8;
 
   &-button {
     flex-shrink: 0;
+  }
+}
+
+// przy pierwszym wysunięciu paska cena podskakuje (klasa .is-hop z box.js)
+.box-sticky.is-hop .box-sticky-price strong {
+  animation: boxStickyHop 0.7s 0.45s ease-out;
+}
+
+@keyframes boxStickyHop {
+  0%,
+  100% {
+    transform: none;
+  }
+  30% {
+    transform: translateY(-7px) scale(1.08);
+  }
+  55% {
+    transform: none;
+  }
+  75% {
+    transform: translateY(-3px);
   }
 }
 
@@ -1133,8 +1412,17 @@ $box-line: #e4e2d8;
   .box-till-button.is-pop .box-till-screen > *,
   .box-till-button.is-pop .box-till-led,
   .box-hero-new,
-  .box-card-led {
+  .box-card-led,
+  .box-till-button.is-sound .box-till-wave,
+  .box-sticky.is-hop .box-sticky-price strong {
     animation: none;
+  }
+
+  .box-card,
+  .box-card-zoom,
+  .box-who-item::before,
+  .box-who-item-title {
+    transition: none;
   }
 
   .box-sticky {

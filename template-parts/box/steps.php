@@ -17,7 +17,7 @@
     </h2>
   </header>
 
-  <ol class="box-steps-grid">
+  <ol class="box-steps-grid" data-box-inview>
     <li class="box-card box-card--text box-step" data-aos="fade-up" data-aos-delay="50">
       <span class="box-step-number" aria-hidden="true">1</span>
       <h3 class="box-card-title typography--h4">Podłącz</h3>

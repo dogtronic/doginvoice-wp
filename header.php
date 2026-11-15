@@ -18,10 +18,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/src/assets/images/favicon.svg" />
+  <?php if ( ! is_page_template( 'page-doginvoice-box.php' ) ) : // Box ich nie używa (por. footer.php) ?>
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+  <?php endif; ?>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <?php wp_head(); ?>

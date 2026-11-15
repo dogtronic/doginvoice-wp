@@ -26,12 +26,16 @@ function doginvoice_box_outline( $file, $class ) {
 		return '';
 	}
 
-	return preg_replace(
+	$svg = preg_replace(
 		array( '/<\?xml[^>]*\?>\s*/', '/<svg /', '/\s(width|height)="[\d.]+"/' ),
-		array( '', '<svg class="' . esc_attr( $class ) . '" aria-hidden="true" focusable="false" ', '' ),
+		array( '', '<svg class="' . esc_attr( $class ) . '" data-box-inview aria-hidden="true" focusable="false" ', '' ),
 		$svg,
 		1
 	);
+
+	// pathLength="1" pozwala „dorysować” każdą linię tą samą animacją CSS,
+	// niezależnie od jej długości (stroke-dashoffset 1 → 0).
+	return str_replace( '<path ', '<path pathLength="1" ', $svg );
 }
 
 add_filter(
