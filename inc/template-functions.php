@@ -106,3 +106,20 @@ function doginvoice_cf7_honeypot_spam_check( $spam, $submission ) {
 	return $spam;
 }
 add_filter( 'wpcf7_spam', 'doginvoice_cf7_honeypot_spam_check', 10, 2 );
+
+/**
+ * Adres pliku motywu z wersją z daty modyfikacji (?ver=…).
+ *
+ * Skrypty w footer.php są wstawiane ręcznie, bez wp_enqueue_script, więc
+ * bez tego parametru przeglądarka i Cloudflare trzymają starą wersję pliku
+ * przez kilka godzin po wdrożeniu.
+ *
+ * @param string $path Ścieżka względem katalogu motywu, np. '/src/js/box.js'.
+ * @return string
+ */
+function doginvoice_asset_url( $path ) {
+	$file = get_template_directory() . $path;
+	$url  = get_template_directory_uri() . $path;
+
+	return file_exists( $file ) ? add_query_arg( 'ver', (string) filemtime( $file ), $url ) : $url;
+}

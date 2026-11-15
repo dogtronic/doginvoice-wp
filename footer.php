@@ -535,35 +535,35 @@ if ( $light_scripts ) :
 <?php endif; ?>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/page-transitions.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/index.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/header.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/page-transitions.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/index.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/header.js' ) ); ?>" defer></script>
 <?php if ( ! $light_scripts ) : ?>
 <script src="https://unpkg.com/@popperjs/core@2" defer></script>
 <script src="https://unpkg.com/tippy.js@6" defer></script>
 <?php endif; ?>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/gsap-animations.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/gsap-animations.js' ) ); ?>" defer></script>
 <?php if ( ! $light_scripts ) : ?>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/pricing.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/demo-modal.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/promo-modal.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/logos-swiper.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/features-swiper.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/integrations-swiper.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/testimonials-swiper.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/faq.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/pricing.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/demo-modal.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/promo-modal.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/logos-swiper.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/features-swiper.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/integrations-swiper.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/testimonials-swiper.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/faq.js' ) ); ?>" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/features-lottie.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/features-lottie.js' ) ); ?>" defer></script>
 <?php endif; ?>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/front-meta-events.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/front-meta-events.js' ) ); ?>" defer></script>
 <?php if ( ! $light_scripts ) : ?>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/post-toc.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-calculator.js" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/partner-meta-events.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/post-toc.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/partner-calculator.js' ) ); ?>" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/partner-meta-events.js' ) ); ?>" defer></script>
 <?php endif; ?>
-<script src="<?php echo get_template_directory_uri(); ?>/src/js/box.js" defer></script>
+<script src="<?php echo esc_url( doginvoice_asset_url( '/src/js/box.js' ) ); ?>" defer></script>
 <?php wp_footer(); ?>
 
 </div> <!-- data-barba="container" data-barba-namespace="default" -->
