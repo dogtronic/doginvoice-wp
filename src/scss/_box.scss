@@ -752,16 +752,6 @@ body.page-box #smartsupp-widget-container {
   background: $color-white;
   @include box-cut;
 
-  // najechanie: karta lekko się unosi. `translate` nie koliduje
-  // z transformacją, którą ustawia AOS.
-  @media (hover: hover) {
-    transition: translate 0.35s ease;
-
-    &:hover {
-      translate: 0 -5px;
-    }
-  }
-
   &-zoom {
     position: relative;
   }
@@ -1451,7 +1441,6 @@ body.page-box #smartsupp-widget-container {
     animation: none;
   }
 
-  .box-card,
   .box-who-item::before,
   .box-who-item-title {
     transition: none;

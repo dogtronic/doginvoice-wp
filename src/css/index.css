@@ -164,6 +164,14 @@ a:not(.btn, .no-hover-effect):hover {
   opacity: 0.6;
 }
 
+.highlight {
+  padding: 0.08em 0.35em;
+  background: rgb(79, 209, 95);
+  color: rgb(222, 250, 225);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .typography--h1 {
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -2513,14 +2521,6 @@ body.page-box #smartsupp-widget-container {
   background: rgb(255, 255, 255);
   clip-path: polygon(20px 0%, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0% 20px);
 }
-@media (hover: hover) {
-  .box-card {
-    transition: translate 0.35s ease;
-  }
-  .box-card:hover {
-    translate: 0 -5px;
-  }
-}
 .box-card-zoom {
   position: relative;
 }
@@ -3146,7 +3146,6 @@ body.page-box #smartsupp-widget-container {
   .box-sticky.is-hop .box-sticky-price strong {
     animation: none;
   }
-  .box-card,
   .box-who-item::before,
   .box-who-item-title {
     transition: none;

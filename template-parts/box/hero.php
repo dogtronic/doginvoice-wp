@@ -24,14 +24,14 @@ $poster_url  = add_query_arg('v', $film_ver, $assets . $poster_path);
       class="box-hero-content-title typography--h1"
       data-aos="fade-up"
       data-remove-orphans>
-      Finanse firmy bez otwierania laptopa
+      Twoje finanse. Na biurku. Na żywo.
     </h1>
     <p
       class="box-hero-content-subtitle typography--body-xl"
       data-aos="fade-up"
       data-aos-delay="100"
       data-remove-orphans>
-      Doginvoice Box to pierwsze w Polsce urządzenie, które informuje Cię na bieżąco co dzieje się w Twojej firmie. Wyniki, płatności, przelewy, KSeF.
+      <span class="highlight">Doginvoice Box to pierwsze takie urządzenie</span>, które informuje Cię na bieżąco co dzieje się w Twojej firmie. Wyniki, płatności, przelewy, KSeF.
     </p>
     <div class="box-hero-content-cta" data-aos="fade-up" data-aos-delay="150">
       <a href="<?php echo esc_url($buy_url); ?>" class="btn" size="bg" color="green" data-box-order="hero">
@@ -48,24 +48,26 @@ $poster_url  = add_query_arg('v', $film_ver, $assets . $poster_path);
 
   <div class="box-hero-stage" data-aos="fade-up" data-aos-delay="200">
     <div class="box-hero-film-wrap">
-    <div class="box-hero-new">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50.0,0.0 57.4,8.1 67.1,3.0 71.2,13.2 82.1,11.7 82.6,22.7 93.3,25.0 89.9,35.5 99.2,41.3 92.5,50.0 99.2,58.7 89.9,64.5 93.3,75.0 82.6,77.3 82.1,88.3 71.3,86.8 67.1,97.0 57.4,91.9 50.0,100.0 42.6,91.9 32.9,97.0 28.7,86.8 17.9,88.3 17.4,77.3 6.7,75.0 10.1,64.5 0.8,58.7 7.5,50.0 0.8,41.3 10.1,35.5 6.7,25.0 17.4,22.7 17.9,11.7 28.8,13.2 32.9,3.0 42.6,8.1" /></svg>
-      <span class="box-hero-new-text">Nowość</span>
-    </div>
-    <div class="box-hero-film">
-      <video
-        id="box-film"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="<?php echo esc_url($poster_url); ?>"
-        aria-label="Doginvoice Box pokazuje pulpit, wpłatę i fakturę z KSeF">
-        <source src="<?php echo esc_url($film_url); ?>" type="video/mp4" />
-      </video>
-      <button class="box-hero-film-sound" id="box-film-sound" type="button" aria-pressed="false">Włącz dźwięk</button>
-    </div>
+      <div class="box-hero-new">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="50.0,0.0 57.4,8.1 67.1,3.0 71.2,13.2 82.1,11.7 82.6,22.7 93.3,25.0 89.9,35.5 99.2,41.3 92.5,50.0 99.2,58.7 89.9,64.5 93.3,75.0 82.6,77.3 82.1,88.3 71.3,86.8 67.1,97.0 57.4,91.9 50.0,100.0 42.6,91.9 32.9,97.0 28.7,86.8 17.9,88.3 17.4,77.3 6.7,75.0 10.1,64.5 0.8,58.7 7.5,50.0 0.8,41.3 10.1,35.5 6.7,25.0 17.4,22.7 17.9,11.7 28.8,13.2 32.9,3.0 42.6,8.1" />
+        </svg>
+        <span class="box-hero-new-text">Nowość</span>
+      </div>
+      <div class="box-hero-film">
+        <video
+          id="box-film"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="<?php echo esc_url($poster_url); ?>"
+          aria-label="Doginvoice Box pokazuje pulpit, wpłatę i fakturę z KSeF">
+          <source src="<?php echo esc_url($film_url); ?>" type="video/mp4" />
+        </video>
+        <button class="box-hero-film-sound" id="box-film-sound" type="button" aria-pressed="false">Włącz dźwięk</button>
+      </div>
     </div>
   </div>
 

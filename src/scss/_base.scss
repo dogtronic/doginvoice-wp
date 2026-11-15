@@ -99,6 +99,16 @@ a:not(.btn, .no-hover-effect) {
   }
 }
 
+// Wyróżnienie fragmentu tekstu: zielone tło i jasna czcionka jak w logo.
+// Użycie: <span class="highlight">tekst</span>
+.highlight {
+  padding: 0.08em 0.35em;
+  background: $color-green;
+  color: $color-mint;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .typography {
   &--h1 {
     font-family: $ff-heading;
