@@ -31,7 +31,7 @@ $poster_url  = add_query_arg('v', $film_ver, $assets . $poster_path);
       data-aos="fade-up"
       data-aos-delay="100"
       data-remove-orphans>
-      <span class="highlight">Doginvoice Box to pierwsze takie urządzenie</span>, które informuje Cię na bieżąco co dzieje się w Twojej firmie. Wyniki, płatności, przelewy, KSeF.
+      Doginvoice Box to pierwsze takie urządzenie, które informuje Cię na bieżąco co dzieje się w Twojej firmie. Wyniki, płatności, przelewy, KSeF.
     </p>
     <div class="box-hero-content-cta" data-aos="fade-up" data-aos-delay="150">
       <a href="<?php echo esc_url($buy_url); ?>" class="btn" size="bg" color="green" data-box-order="hero">

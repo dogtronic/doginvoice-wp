@@ -2106,15 +2106,14 @@ body.page-box #smartsupp-widget-container {
 }
 .box-hero-content-cta {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 8px 16px;
+  gap: 8px 12px;
   margin-top: 24px;
 }
 @media (min-width: 480px) {
   .box-hero-content-cta {
-    flex-direction: row;
     gap: 24px;
   }
 }

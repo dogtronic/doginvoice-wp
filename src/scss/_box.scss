@@ -304,14 +304,13 @@ body.page-box #smartsupp-widget-container {
 
   &-cta {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 8px 16px;
+    gap: 8px 12px;
     margin-top: $spacing-sm;
 
     @media #{$min-xs} {
-      flex-direction: row;
       gap: 24px;
     }
 
