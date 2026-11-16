@@ -17,12 +17,12 @@
 $box_shop_url = 'https://buy.stripe.com/3cIeV7diL1Fy1vx4X0asg00';
 
 // Oferta: jedyne miejsce, w którym zmienia się ceny i daty na tej stronie.
-// Ceny Boxa i wysyłka podane przez Marka 14.11.2026; koniec przedsprzedaży
+// Wysyłka podana przez Marka 14.11.2026, ceny Boxa zmienione 16.11.2026; koniec przedsprzedaży
 // i 30 dni na zwrot zatwierdzone 15.11.2026. Cena planu Professional
 // wg template-parts/partner-program/product.php.
 $box_offer = array(
-  'price'        => 199,          // cena w przedsprzedaży, zł
-  'price_normal' => 299,          // cena po przedsprzedaży, zł
+  'price'        => 249,          // cena w przedsprzedaży, zł
+  'price_normal' => 349,          // cena po przedsprzedaży, zł
   'presale_end'  => '27.12.2026', // ostatni dzień ceny przedsprzedażowej
   'shipping'     => '28.12.2026',
   'plan_price'   => '75 zł netto', // Professional, miesięcznie, po darmowym miesiącu
