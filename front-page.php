@@ -24,6 +24,7 @@ get_header();
     <?php get_template_part( 'template-parts/front-page/features' ); ?>
     <?php get_template_part( 'template-parts/front-page/payments' ); ?>
     <?php get_template_part( 'template-parts/front-page/why-us' ); ?>
+    <?php get_template_part( 'template-parts/front-page/box' ); ?>
     <?php get_template_part( 'template-parts/front-page/pricing' ); ?>
     <?php get_template_part( 'template-parts/front-page/pricing-modal' ); ?>
     <?php get_template_part( 'template-parts/front-page/demo-modal' ); ?>

@@ -879,6 +879,35 @@ body.is-menu-open {
   overflow: hidden;
 }
 
+.site-header-nav-menu-item.new .site-header-nav-menu-item-link::after,
+.site-header-mobile-menu-item.new .site-header-mobile-menu-item-link::after {
+  content: "Nowość";
+  padding: 3px 6px;
+  background: #e5252a;
+  color: rgb(255, 255, 255);
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.site-header-nav-menu-item.new .site-header-nav-menu-item-link::after {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  margin: 0 0 -1px -12px;
+}
+
+.site-header-mobile-menu-item.new .site-header-mobile-menu-item-link::after {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
 .hero {
   animation: fadeIn 0.5s 0.3s ease-out forwards;
   opacity: 0;
@@ -2901,6 +2930,23 @@ body.page-box #smartsupp-widget-container {
 @media (min-width: 1024px) {
   .box-duo {
     padding: 130px 64px;
+  }
+}
+
+.home-box {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 64px 16px;
+}
+@media (min-width: 768px) {
+  .home-box {
+    padding: 80px 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .home-box {
+    padding: 96px 64px;
   }
 }
 

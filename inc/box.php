@@ -85,3 +85,25 @@ function doginvoice_box_media_url( $name, $path ) {
 
 	return file_exists( $file ) ? add_query_arg( 'v', (string) filemtime( $file ), $url ) : $url;
 }
+
+/**
+ * Adres strony Doginvoice Box (strona z szablonem page-doginvoice-box.php).
+ * Szukany po szablonie, nie po slugu, żeby zmiana adresu w WP adminie
+ * nie psuła linków w motywie.
+ *
+ * @return string
+ */
+function doginvoice_box_page_url() {
+	static $url = null;
+	if ( null === $url ) {
+		$pages = get_pages(
+			array(
+				'meta_key'   => '_wp_page_template',
+				'meta_value' => 'page-doginvoice-box.php',
+				'number'     => 1,
+			)
+		);
+		$url   = $pages ? get_permalink( $pages[0] ) : home_url( '/doginvoice-box/' );
+	}
+	return $url;
+}

@@ -358,3 +358,36 @@
 body.is-menu-open {
   overflow: hidden;
 }
+
+// Plakietka „Nowość” przy pozycji menu. Włącza ją klasa CSS „new” nadana
+// pozycji w WP adminie (Wygląd → Menu → Klasy CSS).
+.site-header-nav-menu-item.new .site-header-nav-menu-item-link::after,
+.site-header-mobile-menu-item.new .site-header-mobile-menu-item-link::after {
+  content: "Nowość";
+  padding: 3px 6px;
+  background: #e5252a; // ta sama czerwień co naklejka „Nowość” w hero Boxa
+  color: $color-white;
+  font-family: $ff-body;
+  font-size: 10px;
+  font-weight: $fw-semibold;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+// Desktop: nad prawym końcem nazwy, żeby nie rozpychać menu.
+.site-header-nav-menu-item.new .site-header-nav-menu-item-link::after {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  margin: 0 0 -1px -12px;
+}
+
+// Menu mobilne: obok nazwy.
+.site-header-mobile-menu-item.new .site-header-mobile-menu-item-link::after {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  vertical-align: middle;
+}
