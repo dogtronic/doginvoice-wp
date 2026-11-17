@@ -68,10 +68,10 @@ $img = $args['assets'] . '/images/box';
     <article class="box-card" data-aos="fade-up" data-aos-delay="100">
       <div class="box-card-pic">
         <div class="box-card-zoom">
-        <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją ekranu należności i terminów" width="2400" height="1600" loading="lazy" />
+        <img src="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?>" srcset="<?php echo esc_url($img . '/05-przod-pusty-800.webp'); ?> 800w, <?php echo esc_url($img . '/05-przod-pusty-1600.webp'); ?> 1600w" sizes="(min-width: 768px) 45vw, 100vw" alt="Doginvoice Box z animacją ekranu należności i terminów oraz płatności kodem QR" width="2400" height="1600" loading="lazy" />
         <picture>
           <source media="(prefers-reduced-motion: reduce)" srcset="<?php echo esc_url($img . '/animacje/jasny/naleznosci.webp'); ?>" />
-          <img class="box-card-anim" src="<?php echo esc_url($img . '/animacje/jasny/naleznosci.gif'); ?>" alt="" width="420" height="280" loading="lazy" decoding="async" />
+          <img class="box-card-anim" src="<?php echo esc_url($img . '/animacje/jasny/naleznosci-qr.gif'); ?>" alt="" width="420" height="280" loading="lazy" decoding="async" />
         </picture>
         <span class="box-card-led" aria-hidden="true"></span>
         </div>
@@ -82,7 +82,7 @@ $img = $args['assets'] . '/images/box';
           <i style="--led: #4fd15f"></i><i style="--led: #f5a524"></i><i style="--led: #ef4444"></i>
         </span>
       </h3>
-      <p class="box-card-description typography--body-lg" data-remove-orphans>Dioda: zielona – spokój, pomarańczowa – płatność dziś lub jutro, czerwona – coś po terminie. Już nic nie przegagpisz.</p>
+      <p class="box-card-description typography--body-lg" data-remove-orphans>Dioda: zielona – spokój, pomarańczowa – płatność dziś lub jutro, czerwona – coś po terminie. Już nic nie przegapisz, a fakturę opłacisz, skanując kod QR w aplikacji banku.</p>
     </article>
   </div>
 </section>
