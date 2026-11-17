@@ -16,7 +16,6 @@ function initBox() {
   initBoxSticky();
   initBoxMetaEvents();
   initBoxInview();
-  initBoxScreens();
   initBoxTouchPlay();
 }
 
@@ -29,14 +28,6 @@ function initBoxTouchPlay() {
   const resume = () => {
     const film = document.getElementById("box-film");
     if (film && film.paused) film.play().catch(() => {});
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    document.querySelectorAll("video.box-card-anim").forEach((video) => {
-      const { top, bottom } = video.getBoundingClientRect();
-      if (video.paused && bottom > -200 && top < window.innerHeight + 200) {
-        video.play().catch(() => {});
-      }
-    });
   };
 
   ["touchend", "click"].forEach((type) =>
@@ -369,34 +360,5 @@ function initBoxInview() {
     item.dataset.inited = "true";
     item.classList.add("is-armed");
     observer.observe(item);
-  });
-}
-
-// Animacje ekranów w kartach „Funkcji” to krótkie filmy w pętli. Plik
-// pobiera się dopiero, gdy karta zbliża się do ekranu, a film gra tylko
-// wtedy, gdy ją widać. Przy ograniczonym ruchu zostaje sam kadr (poster).
-function initBoxScreens() {
-  if (!("IntersectionObserver" in window)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  const videos = [...document.querySelectorAll("video.box-card-anim")].filter(
-    (video) => video.dataset.inited !== "true",
-  );
-  if (!videos.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(({ target, isIntersecting }) => {
-        if (isIntersecting) target.play().catch(() => {});
-        else target.pause();
-      });
-    },
-    { rootMargin: "200px 0px" },
-  );
-
-  videos.forEach((video) => {
-    video.dataset.inited = "true";
-    video.muted = true;
-    observer.observe(video);
   });
 }
