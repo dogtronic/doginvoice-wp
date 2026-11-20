@@ -3080,6 +3080,21 @@ body.page-box #smartsupp-widget-container {
   color: rgba(78, 86, 78, 0.8);
 }
 
+.box-thanks .box-hero-content .badge {
+  margin-bottom: 24px;
+}
+
+.box-thanks-note {
+  max-width: 40em;
+  margin: 64px auto 0;
+  color: rgba(78, 86, 78, 0.8);
+  text-align: center;
+}
+.box-thanks-note a {
+  color: rgb(23, 23, 23);
+  text-decoration: underline;
+}
+
 .box-sticky {
   position: fixed;
   right: 0;

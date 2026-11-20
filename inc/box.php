@@ -107,3 +107,53 @@ function doginvoice_box_page_url() {
 	}
 	return $url;
 }
+
+/**
+ * Oferta Doginvoice Box: jedyne miejsce, w którym zmienia się ceny i daty.
+ * Korzystają z niej landing (page-doginvoice-box.php) i strona podziękowania
+ * (page-doginvoice-box-dziekujemy.php).
+ *
+ * Wysyłka podana przez Marka 14.11.2026, ceny Boxa zmienione 16.11.2026;
+ * koniec przedsprzedaży i 30 dni na zwrot zatwierdzone 15.11.2026.
+ * Cena planu Professional wg template-parts/partner-program/product.php.
+ *
+ * @return array
+ */
+function doginvoice_box_offer() {
+	return array(
+		'price'        => 249,           // cena w przedsprzedaży, zł
+		'price_normal' => 349,           // cena po przedsprzedaży, zł
+		'presale_end'  => '27.12.2026',  // ostatni dzień ceny przedsprzedażowej
+		'shipping'     => '28.12.2026',
+		'plan_price'   => '75 zł netto', // Professional, miesięcznie, po darmowym miesiącu
+		'return_days'  => 30,
+	);
+}
+
+/**
+ * Cena Boxa obowiązująca dziś: przedsprzedażowa do końca dnia presale_end,
+ * potem zwykła. Trafia jako wartość do zdarzenia Purchase.
+ *
+ * @return int
+ */
+function doginvoice_box_current_price() {
+	$offer = doginvoice_box_offer();
+	$end   = DateTime::createFromFormat( 'd.m.Y', $offer['presale_end'], wp_timezone() );
+
+	if ( $end && current_datetime() > $end->setTime( 23, 59, 59 ) ) {
+		return $offer['price_normal'];
+	}
+	return $offer['price'];
+}
+
+// Strona podziękowania po zakupie nie powinna trafić do wyszukiwarek.
+add_filter(
+	'wp_robots',
+	function ( $robots ) {
+		if ( is_page_template( 'page-doginvoice-box-dziekujemy.php' ) ) {
+			$robots['noindex']  = true;
+			$robots['nofollow'] = true;
+		}
+		return $robots;
+	}
+);

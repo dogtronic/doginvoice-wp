@@ -1335,6 +1335,23 @@ body.page-box #smartsupp-widget-container {
   color: $color-grey;
 }
 
+// ===== Strona podziękowania po zakupie (page-doginvoice-box-dziekujemy.php) =====
+.box-thanks .box-hero-content .badge {
+  margin-bottom: $spacing-sm;
+}
+
+.box-thanks-note {
+  max-width: 40em;
+  margin: $spacing-lg auto 0;
+  color: $color-grey;
+  text-align: center;
+
+  a {
+    color: $color-dark;
+    text-decoration: underline;
+  }
+}
+
 // ===== Przyklejony pasek zakupu (mobile) =====
 .box-sticky {
   position: fixed;
