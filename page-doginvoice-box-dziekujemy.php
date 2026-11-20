@@ -45,7 +45,7 @@ get_header();
         data-aos="fade-up"
         data-aos-delay="100"
         data-remove-orphans>
-        Płatność do nas dotarła. Od teraz Twoja firma ma swoje miejsce na biurku: wpłaty, faktury z KSeF, terminy i wynik miesiąca na żywo.
+        Płatność do nas dotarła. Już niedługo wpłaty, faktury z KSeF, terminy i wynik miesiąca zobaczysz na żywo na swoim biurku.
       </p>
       <div class="box-hero-content-cta" data-aos="fade-up" data-aos-delay="150">
         <a href="https://app.doginvoice.com/register" class="btn" size="bg" color="green" target="_blank" rel="noopener">
@@ -82,7 +82,7 @@ get_header();
       <li class="box-card box-card--text box-step" data-aos="fade-up" data-aos-delay="150">
         <span class="box-step-number" aria-hidden="true">3</span>
         <h3 class="box-card-title typography--h4">Załóż konto już teraz</h3>
-        <p class="box-card-description typography--body-lg" data-remove-orphans>Nie masz jeszcze konta? Załóż je i wystaw pierwsze faktury. Box będzie miał co pokazywać od pierwszej minuty.</p>
+        <p class="box-card-description typography--body-lg" data-remove-orphans>Nie masz jeszcze konta? Załóż je i pobierz pierwsze faktury. Box będzie miał co pokazywać od pierwszej minuty.</p>
       </li>
     </ol>
 
