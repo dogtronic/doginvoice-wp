@@ -563,7 +563,7 @@ a:not(.btn, .no-hover-effect):hover {
   animation: fadeIn 0.5s 0.3s ease-out forwards;
   opacity: 0;
   position: fixed;
-  top: 0;
+  top: var(--box-bar-h, 0px);
   left: 0;
   display: flex;
   justify-content: center;
@@ -755,7 +755,7 @@ a:not(.btn, .no-hover-effect):hover {
   justify-content: space-between;
   width: 100%;
   height: 100dvh;
-  padding: 114px 16px calc(32px + env(safe-area-inset-bottom));
+  padding: calc(114px + var(--box-bar-h, 0px)) 16px calc(32px + env(safe-area-inset-bottom));
   background-color: rgb(248, 247, 241);
   visibility: hidden;
   pointer-events: none;
@@ -906,6 +906,76 @@ body.is-menu-open {
   margin-left: 10px;
   font-size: 12px;
   vertical-align: middle;
+}
+
+body.has-box-bar {
+  --box-bar-h: 44px;
+  padding-top: var(--box-bar-h);
+}
+body.has-box-bar.page-box, body.has-box-bar.page-template-page-doginvoice-box-dziekujemy {
+  --box-bar-h: 0px;
+}
+body.has-box-bar.page-box .box-bar, body.has-box-bar.page-template-page-doginvoice-box-dziekujemy .box-bar {
+  display: none;
+}
+
+.box-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 16px;
+  background: rgb(23, 23, 23);
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .box-bar {
+    font-size: 14px;
+  }
+}
+.box-bar-badge {
+  padding: 4px 8px;
+  background: rgb(79, 209, 95);
+  color: rgb(23, 23, 23);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.box-bar-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.box-bar-text strong {
+  font-weight: 600;
+}
+.box-bar-text-long {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .box-bar-text-long {
+    display: inline;
+  }
+}
+.box-bar-link {
+  color: rgb(79, 209, 95);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.box-bar:hover .box-bar-link {
+  text-decoration: none;
 }
 
 .hero {

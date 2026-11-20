@@ -5,7 +5,7 @@
   animation: fadeIn 0.5s 0.3s ease-out forwards;
   opacity: 0;
   position: fixed;
-  top: 0;
+  top: var(--box-bar-h, 0px);
   left: 0;
   display: flex;
   justify-content: center;
@@ -225,7 +225,7 @@
   justify-content: space-between;
   width: 100%;
   height: 100dvh;
-  padding: calc(90px + $spacing-sm) $spacing-xs
+  padding: calc(90px + $spacing-sm + var(--box-bar-h, 0px)) $spacing-xs
     calc($spacing-md + env(safe-area-inset-bottom));
   background-color: $color-beige-light;
 
@@ -390,4 +390,85 @@ body.is-menu-open {
   margin-left: 10px;
   font-size: 12px;
   vertical-align: middle;
+}
+
+// ===== Pasek przedsprzedaży Doginvoice Box nad nagłówkiem (header.php) =====
+// Klasę has-box-bar nadaje doginvoice_body_classes(), dopóki trwa przedsprzedaż.
+// --box-bar-h przesuwa nagłówek, menu mobilne i treść strony o wysokość paska.
+body.has-box-bar {
+  --box-bar-h: 44px;
+  padding-top: var(--box-bar-h);
+
+  // Na stronach Boxa pasek byłby powtórzeniem.
+  &.page-box,
+  &.page-template-page-doginvoice-box-dziekujemy {
+    --box-bar-h: 0px;
+
+    .box-bar {
+      display: none;
+    }
+  }
+}
+
+.box-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 $spacing-xs;
+  background: $color-dark;
+  color: $color-white;
+  font-size: 13px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+
+  @media #{$min-md} {
+    font-size: 14px;
+  }
+
+  &-badge {
+    padding: 4px 8px;
+    background: $color-green;
+    color: $color-dark;
+    font-family: $ff-special;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  &-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    strong {
+      font-weight: 600;
+    }
+
+    &-long {
+      display: none;
+
+      @media #{$min-lg} {
+        display: inline;
+      }
+    }
+  }
+
+  &-link {
+    color: $color-green;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:hover .box-bar-link {
+    text-decoration: none;
+  }
 }

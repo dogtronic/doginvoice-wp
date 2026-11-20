@@ -108,6 +108,24 @@
 
 
   <?php wp_body_open(); ?>
+  <?php
+  // Pasek przedsprzedaży Doginvoice Box. Znika sam po dniu presale_end
+  // (inc/box.php); na stronach Boxa chowa go CSS (_header.scss).
+  if (doginvoice_box_presale_active()) :
+    $box_bar_offer = doginvoice_box_offer();
+    $box_bar_until = substr($box_bar_offer['presale_end'], 0, 5); // „27.12”
+  ?>
+    <a class="box-bar no-hover-effect" href="<?php echo esc_url(doginvoice_box_page_url()); ?>">
+      <span class="box-bar-badge">Nowość</span>
+      <span class="box-bar-text">
+        <strong>Doginvoice Box</strong>
+        <span class="box-bar-text-long">– Twoje finanse na biurku, na żywo. W przedsprzedaży</span>
+        za <?php echo esc_html($box_bar_offer['price']); ?> zł do <?php echo esc_html($box_bar_until); ?>
+      </span>
+      <span class="box-bar-link">Zobacz</span>
+    </a>
+  <?php endif; ?>
+
   <!-- ===== HEADER / NAV ===== -->
 
   <header class="site-header">

@@ -138,12 +138,21 @@ function doginvoice_box_offer() {
  */
 function doginvoice_box_current_price() {
 	$offer = doginvoice_box_offer();
+
+	return doginvoice_box_presale_active() ? $offer['price'] : $offer['price_normal'];
+}
+
+/**
+ * Czy trwa przedsprzedaż Boxa (do końca dnia presale_end).
+ * Steruje ceną w zdarzeniu Purchase i paskiem nad nagłówkiem (header.php).
+ *
+ * @return bool
+ */
+function doginvoice_box_presale_active() {
+	$offer = doginvoice_box_offer();
 	$end   = DateTime::createFromFormat( 'd.m.Y', $offer['presale_end'], wp_timezone() );
 
-	if ( $end && current_datetime() > $end->setTime( 23, 59, 59 ) ) {
-		return $offer['price_normal'];
-	}
-	return $offer['price'];
+	return ! $end || current_datetime() <= $end->setTime( 23, 59, 59 );
 }
 
 // Strona podziękowania po zakupie nie powinna trafić do wyszukiwarek.
