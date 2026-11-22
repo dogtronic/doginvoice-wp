@@ -52,6 +52,12 @@ function initGsapAnimations() {
       ease: "none",
       scrollTrigger: scroll,
     });
+    gsap.to(".hero-media-screen--box", {
+      x: 240,
+      y: 80,
+      ease: "none",
+      scrollTrigger: scroll,
+    });
   });
 
   const footerGradient = document.querySelector(".footer__gradient");

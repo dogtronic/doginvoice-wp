@@ -1185,6 +1185,18 @@ body.has-box-bar.page-box .box-bar, body.has-box-bar.page-template-page-doginvoi
   width: 18.03%;
   min-width: 200px;
 }
+.hero-media-screen--box {
+  top: 24%;
+  left: 2.5%;
+  width: 16.5%;
+  min-width: 180px;
+}
+.hero-media-screen--box::before {
+  content: none;
+}
+.hero-media-screen--box img {
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.18));
+}
 
 .partner-hero {
   display: grid;

@@ -15,6 +15,8 @@ $hero_badge_caption = get_field('hero_badge_caption');
 $hero_cta_primary   = get_field('hero_cta_primary');
 $hero_cta_demo      = get_field('hero_cta_demo');
 $hero_media         = get_field('hero_media');
+$hero_box_url       = doginvoice_box_page_url();
+$hero_box_img       = get_template_directory_uri() . '/src/assets/images/box';
 ?>
 <section class="hero max-width" aria-labelledby="hero-title">
   <div class="hero-content">
@@ -130,6 +132,23 @@ $hero_media         = get_field('hero_media');
           data-aos-delay="400"
           data-aos-anchor=".hero" />
       </div>
+
+      <?php // Doginvoice Box: wycięte zdjęcie produktu, linkuje do strony Boxa. ?>
+      <a
+        class="hero-media-screen hero-media-screen--box no-hover-effect"
+        href="<?php echo esc_url($hero_box_url); ?>"
+        aria-label="Doginvoice Box">
+        <img
+          src="<?php echo esc_url($hero_box_img . '/box-wyciety-360.webp'); ?>"
+          srcset="<?php echo esc_url($hero_box_img . '/box-wyciety-360.webp'); ?> 360w, <?php echo esc_url($hero_box_img . '/box-wyciety-720.webp'); ?> 720w"
+          sizes="(min-width: 1100px) 16.5vw, 180px"
+          alt=""
+          width="720"
+          height="527"
+          data-aos="fade-zoom-in"
+          data-aos-delay="400"
+          data-aos-anchor=".hero" />
+      </a>
     </div>
   </div>
 </section>

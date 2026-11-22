@@ -230,6 +230,23 @@
         width: 18.03%; // 238px
         min-width: 200px;
       }
+
+      // Doginvoice Box: wycięte zdjęcie produktu, po lewej między ekranami 5 i 3
+      &--box {
+        top: 24%;
+        left: 2.5%;
+        width: 16.5%;
+        min-width: 180px;
+
+        // Cień po kształcie urządzenia zamiast prostokątnego z ::before
+        &::before {
+          content: none;
+        }
+
+        img {
+          filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.18));
+        }
+      }
     }
   }
 }
