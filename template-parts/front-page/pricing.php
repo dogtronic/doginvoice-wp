@@ -31,18 +31,19 @@
         </p>
       </header>
 
+      <?php // Domyślnie wybrane rozliczenie roczne; przełączanie obsługuje src/js/pricing.js. ?>
       <div class="pricing-switcher" data-aos="fade-up">
         <button
           type="button"
           class="pricing-switcher-option typography--body-md"
           data-period="monthly"
-          aria-pressed="true">
+          aria-pressed="false">
           Miesięcznie
         </button>
         <button
           type="button"
           class="pricing-switcher-button"
-          aria-pressed="false"
+          aria-pressed="true"
           aria-label="Przełącz okres rozliczeniowy">
           <span class="pricing-switcher-button-slider"></span>
         </button>
@@ -50,7 +51,7 @@
           type="button"
           class="pricing-switcher-option typography--body-md"
           data-period="yearly"
-          aria-pressed="false">
+          aria-pressed="true">
           Rocznie
           <span class="pricing-switcher-option-badge typography--body-sm">
             -50%
@@ -71,6 +72,8 @@
           $plan_cta_label      = get_sub_field( 'cta_label' );
           $plan_cta_url        = get_sub_field( 'cta_url' );
           $plan_has_price      = $plan_price_monthly !== '' && $plan_price_monthly !== null;
+          // Cena widoczna po załadowaniu: roczna, a gdy plan jej nie ma, miesięczna.
+          $plan_price_default  = ( $plan_price_yearly !== '' && $plan_price_yearly !== null ) ? $plan_price_yearly : $plan_price_monthly;
           ?>
           <article
             class="pricing-main-plan<?php echo $plan_featured ? ' pricing-main-plan--featured' : ''; ?>"
@@ -87,7 +90,7 @@
                   <span
                     class="pricing-main-plan-header-price-value ff-special typography--h3"
                     data-price-monthly="<?php echo esc_attr( $plan_price_monthly ); ?>"
-                    data-price-yearly="<?php echo esc_attr( $plan_price_yearly ); ?>"><?php echo esc_html( $plan_price_monthly ); ?></span>
+                    data-price-yearly="<?php echo esc_attr( $plan_price_default ); ?>"><?php echo esc_html( $plan_price_default ); ?></span>
                   <span
                     class="pricing-main-plan-header-price-unit typography--body-md">
                     PLN/miesiąc (netto)
