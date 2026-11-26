@@ -3032,6 +3032,30 @@ body.page-box #smartsupp-widget-container {
   }
 }
 
+.home-founder {
+  padding-top: 0;
+}
+.home-founder .box-split {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .home-founder .box-split {
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  }
+}
+.home-founder .box-split-photo {
+  aspect-ratio: 1/1;
+}
+@media (min-width: 768px) {
+  .home-founder .box-split-photo {
+    aspect-ratio: auto;
+  }
+}
+.home-founder .box-split-photo img {
+  object-position: 40% 30%;
+}
+
 .box-split {
   display: grid;
   grid-template-columns: 1fr;

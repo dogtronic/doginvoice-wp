@@ -1194,6 +1194,33 @@ body.page-box #smartsupp-widget-container {
   }
 }
 
+// „Nie jesteśmy anonimowi” (template-parts/front-page/founder.php): sekcja stoi
+// tuż pod opiniami, a zdjęcie ma 500 px, więc jego kolumna jest wąska i kwadratowa.
+.home-founder {
+  padding-top: 0;
+
+  .box-split {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    @media #{$min-md} {
+      grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    }
+  }
+
+  .box-split-photo {
+    aspect-ratio: 1 / 1;
+
+    @media #{$min-md} {
+      aspect-ratio: auto;
+    }
+
+    img {
+      object-position: 40% 30%;
+    }
+  }
+}
+
 .box-split {
   display: grid;
   grid-template-columns: 1fr;
