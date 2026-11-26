@@ -4339,6 +4339,26 @@ body.page-landing--no-chat #smartsupp-widget-container {
   margin-top: 32px;
 }
 
+.lp-video {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 40px rgba(23, 23, 23, 0.08));
+}
+.lp-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  background: #efeee6;
+  clip-path: polygon(16px 0%, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0% 16px);
+}
+@media (min-width: 768px) {
+  .lp-video video {
+    clip-path: polygon(24px 0%, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0% 24px);
+  }
+}
+
 .lp-steps {
   display: grid;
   grid-template-columns: 1fr;

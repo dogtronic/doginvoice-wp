@@ -537,6 +537,36 @@ function doginvoice_landing_layouts() {
 				)
 			),
 		),
+		'video'        => array(
+			'label'  => 'Film',
+			'fields' => array_merge(
+				doginvoice_landing_head_fields( 'video' ),
+				array(
+					array(
+						'key'           => 'field_dilp_video_file',
+						'label'         => 'Film',
+						'name'          => 'file',
+						'type'          => 'file',
+						'instructions'  => 'Plik MP4 w proporcjach 16:9, najlepiej do 10 MB. Film odtwarza się sam, bez dźwięku i w pętli, gdy pojawi się na ekranie.',
+						'required'      => 1,
+						'return_format' => 'array',
+						'library'       => 'all',
+						'mime_types'    => 'mp4',
+						'wrapper'       => array( 'width' => '50' ),
+					),
+					array(
+						'key'           => 'field_dilp_video_poster',
+						'label'         => 'Kadr startowy',
+						'name'          => 'poster',
+						'type'          => 'image',
+						'instructions'  => 'Obraz widoczny, zanim film się wczyta. Najlepiej kadr z filmu w proporcjach 16:9.',
+						'return_format' => 'array',
+						'preview_size'  => 'medium',
+						'wrapper'       => array( 'width' => '50' ),
+					),
+				)
+			),
+		),
 		'stats'        => array(
 			'label'  => 'Liczby',
 			'fields' => array_merge(

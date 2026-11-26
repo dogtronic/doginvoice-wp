@@ -38,6 +38,42 @@ function initIndex() {
     AOS.refreshHard();
   }
   removeOrphans();
+  initPlayInView();
+}
+
+// Filmy z atrybutem data-play-in-view (np. sekcja „Film” na landingach):
+// start, gdy film pojawi się na ekranie, pauza, gdy z niego zniknie.
+// Przy ograniczonych animacjach film czeka na kliknięcie „odtwórz”.
+function initPlayInView() {
+  const videos = document.querySelectorAll("video[data-play-in-view]");
+  if (
+    !videos.length ||
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          const playing = video.play();
+          if (playing && typeof playing.catch === "function") {
+            playing.catch(function () {});
+          }
+        } else {
+          video.pause();
+        }
+      });
+    },
+    { threshold: 0.4 },
+  );
+
+  videos.forEach(function (video) {
+    observer.observe(video);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", initIndex);

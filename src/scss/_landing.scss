@@ -302,6 +302,27 @@ body.page-landing--no-chat #smartsupp-widget-container {
   }
 }
 
+// ===== Film =====
+.lp-video {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 40px rgba(23, 23, 23, 0.08));
+
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #efeee6;
+    @include lp-cut(16px);
+
+    @media #{$min-md} {
+      @include lp-cut(24px);
+    }
+  }
+}
+
 // ===== Kroki =====
 .lp-steps {
   display: grid;
