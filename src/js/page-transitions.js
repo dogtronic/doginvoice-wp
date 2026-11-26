@@ -52,7 +52,9 @@ barba.init({
   timeout: 5000,
   // Strona wczytana z okrojonym zestawem skryptów (footer.php, np. landing
   // Boxa): linki robią zwykłe przeładowanie zamiast przejścia Barby.
-  prevent: () => window.__lightScripts === true,
+  // To samo na landingu kampanii z uproszczonym nagłówkiem (__noPageTransitions).
+  prevent: () =>
+    window.__lightScripts === true || window.__noPageTransitions === true,
   transitions: [
     {
       name: "opacity-transition",

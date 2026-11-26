@@ -155,6 +155,16 @@ function doginvoice_box_presale_active() {
 	return ! $end || current_datetime() <= $end->setTime( 23, 59, 59 );
 }
 
+/**
+ * Czy pokazać pasek przedsprzedaży nad nagłówkiem: trwa przedsprzedaż,
+ * a strona nie jest landingiem kampanii z ukrytym paskiem (inc/landing.php).
+ *
+ * @return bool
+ */
+function doginvoice_box_bar_visible() {
+	return doginvoice_box_presale_active() && ! doginvoice_landing_setting( 'lp_hide_box_bar', true );
+}
+
 // Strona podziękowania po zakupie nie powinna trafić do wyszukiwarek.
 add_filter(
 	'wp_robots',

@@ -35,7 +35,7 @@ function doginvoice_body_classes( $classes ) {
 	}
 
 	// Pasek przedsprzedaży Boxa nad nagłówkiem (header.php, _header.scss).
-	if ( doginvoice_box_presale_active() ) {
+	if ( doginvoice_box_bar_visible() ) {
 		$classes[] = 'has-box-bar';
 	}
 

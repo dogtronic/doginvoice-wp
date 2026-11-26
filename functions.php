@@ -185,6 +185,11 @@ require get_template_directory() . '/inc/changelog.php';
 require get_template_directory() . '/inc/box.php';
 
 /**
+ * Landingi kampanii reklamowych: typ treści „Landingi” i pola ACF.
+ */
+require get_template_directory() . '/inc/landing.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';

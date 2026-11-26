@@ -54,6 +54,16 @@ function initFrontMetaEvents() {
       });
     });
 
+  // Landing kampanii: główny przycisk -> Landing_CTA_Click (który landing i gdzie kliknięto)
+  document.querySelectorAll("[data-lp-cta]").forEach((link) => {
+    link.addEventListener("click", () => {
+      fbCustom("Landing_CTA_Click", {
+        landing: window.location.pathname,
+        placement: link.dataset.lpCta,
+      });
+    });
+  });
+
   // Demo wideo -> WatchDemo
   document.querySelectorAll("[data-demo-modal-open]").forEach((trigger) => {
     trigger.addEventListener("click", () => {

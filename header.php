@@ -27,7 +27,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <?php wp_head(); ?>
-  <?php if ( ! is_page_template( 'page-doginvoice-box.php' ) ) : // na Boxie bez czatu ?>
+  <?php if ( ! is_page_template( 'page-doginvoice-box.php' ) && ! doginvoice_landing_setting( 'lp_hide_chat', false ) ) : // bez czatu: Box i landingi z wyłączonym czatem ?>
   <!-- Smartsupp Live Chat script -->
   <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
@@ -111,7 +111,7 @@
   <?php
   // Pasek przedsprzedaży Doginvoice Box. Znika sam po dniu presale_end
   // (inc/box.php); na stronach Boxa chowa go CSS (_header.scss).
-  if (doginvoice_box_presale_active()) :
+  if (doginvoice_box_bar_visible()) :
     $box_bar_offer = doginvoice_box_offer();
     $box_bar_until = substr($box_bar_offer['presale_end'], 0, 5); // „27.12”
   ?>
@@ -174,6 +174,16 @@
       </a>
 
       <?php
+      // Landing kampanii z uproszczonym nagłówkiem (inc/landing.php):
+      // zamiast menu, logowania i hamburgera jest tylko główny przycisk.
+      $landing_simple_header = doginvoice_landing_setting('lp_simple_header', true);
+      ?>
+      <?php if ($landing_simple_header) : ?>
+        <div class="site-header-nav-landing">
+          <?php doginvoice_landing_cta_button('naglowek', 'sm'); ?>
+        </div>
+      <?php else : ?>
+      <?php
       wp_nav_menu(
         array(
           'theme_location' => 'menu-1',
@@ -216,7 +226,10 @@
         <div class="bars" id="bar2"></div>
         <div class="bars" id="bar3"></div>
       </button>
+      <?php endif; ?>
     </nav>
+
+    <?php if (! $landing_simple_header) : ?>
 
     <div
       class="site-header-mobile"
@@ -254,6 +267,7 @@
         </a>
       </div>
     </div>
+    <?php endif; ?>
   </header>
 
   <div data-barba="container" data-barba-namespace="default">

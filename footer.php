@@ -33,15 +33,33 @@ if (is_front_page()) {
     'new_tab'     => false,
     'track'       => 'stopka', // Meta Pixel: src/js/box.js
   );
+} elseif (is_singular('landing')) {
+  // Landing kampanii: treść z zakładki „Zakończenie”, przycisk wspólny dla całej strony.
+  $landing_cta = doginvoice_landing_cta();
+  $footer_cta  = array(
+    'badge'       => (string) get_field('lp_final_badge'),
+    'title'       => (string) get_field('lp_final_title'),
+    'description' => (string) get_field('lp_final_description'),
+    'button'      => $landing_cta['label'],
+    'url'         => $landing_cta['url'],
+    'new_tab'     => $landing_cta['new_tab'],
+    'track'       => '',
+    'landing'     => true,
+  );
+  if ('' === $footer_cta['title']) {
+    $footer_cta = null;
+  }
 }
 ?>
 <footer class="footer">
   <div class="footer__background"></div>
   <?php if ($footer_cta) : ?>
     <div class="footer-section max-width" aria-labelledby="cta-title">
+      <?php if ($footer_cta['badge']) : ?>
       <div class="footer-section-badge badge badge--dark" data-aos="fade-up">
         <span class="badge-text"><?php echo esc_html($footer_cta['badge']); ?></span>
       </div>
+      <?php endif; ?>
       <h2
         id="cta-title"
         class="footer-section-title typography--h2"
@@ -58,6 +76,7 @@ if (is_front_page()) {
         href="<?php echo esc_url($footer_cta['url']); ?>"
         <?php echo $footer_cta['new_tab'] ? 'target="_blank"' : ''; ?>
         <?php echo $footer_cta['track'] ? 'data-box-order="' . esc_attr($footer_cta['track']) . '"' : ''; ?>
+        <?php echo ! empty($footer_cta['landing']) ? 'data-lp-cta="zakonczenie"' : ''; ?>
         class="footer-section-button btn"
         size="bg"
         color="green">
@@ -532,6 +551,10 @@ $light_scripts = is_page_template( 'page-doginvoice-box.php' );
 if ( $light_scripts ) :
 ?>
 <script>window.__lightScripts = true;</script>
+<?php elseif ( doginvoice_landing_setting( 'lp_simple_header', true ) ) : ?>
+<?php // Landing z uproszczonym nagłówkiem: Barba podmienia tylko treść, więc po
+      // przejściu na inną stronę nagłówek zostałby bez menu. Stąd zwykłe przeładowanie. ?>
+<script>window.__noPageTransitions = true;</script>
 <?php endif; ?>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js" defer></script>
