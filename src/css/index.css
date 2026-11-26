@@ -3939,6 +3939,163 @@ body.page-box #smartsupp-widget-container {
   line-height: 1.55;
 }
 
+.accountant {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 64px 16px;
+}
+@media (min-width: 768px) {
+  .accountant {
+    padding: 80px 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .accountant {
+    padding: 96px 64px;
+  }
+}
+
+.accountant-title {
+  max-width: 18em;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .accountant-title {
+    margin-bottom: 48px;
+  }
+}
+
+.accountant-table {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .accountant-table {
+    display: table;
+    table-layout: fixed;
+  }
+}
+.accountant-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .accountant-table thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+}
+@media (min-width: 768px) {
+  .accountant-table thead td {
+    width: 24%;
+  }
+}
+.accountant-table tbody,
+.accountant-table tr,
+.accountant-table tbody th,
+.accountant-table tbody td {
+  display: block;
+}
+@media (min-width: 768px) {
+  .accountant-table tbody,
+  .accountant-table tr,
+  .accountant-table tbody th,
+  .accountant-table tbody td {
+    display: revert;
+  }
+}
+.accountant-table tbody tr {
+  padding: 24px 0;
+  border-top: 1px solid rgba(23, 23, 23, 0.1);
+}
+@media (min-width: 768px) {
+  .accountant-table tbody tr {
+    padding: 0;
+  }
+}
+
+.accountant-table-col,
+.accountant-table-label,
+.accountant-table-cell::before {
+  font-family: "Funnel", sans-serif;
+  font-size: var(--fs-body-xs);
+  font-weight: 300;
+  letter-spacing: 2.1px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: rgba(78, 86, 78, 0.8);
+}
+
+.accountant-table-col {
+  padding: 0 24px 16px 0;
+}
+.accountant-table-col--brand {
+  color: rgb(47, 174, 99);
+}
+
+.accountant-table-label {
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .accountant-table-label {
+    padding: 24px 24px 24px 0;
+    vertical-align: top;
+    line-height: 1.9;
+  }
+}
+
+.accountant-table-cell {
+  font-size: var(--fs-body-md);
+  line-height: 1.55;
+  color: rgba(78, 86, 78, 0.8);
+}
+@media (min-width: 768px) {
+  .accountant-table-cell {
+    padding: 24px 24px 24px 0;
+    vertical-align: top;
+  }
+}
+.accountant-table-cell + .accountant-table-cell {
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  .accountant-table-cell + .accountant-table-cell {
+    margin-top: 0;
+    padding-right: 0;
+  }
+}
+.accountant-table-cell--brand {
+  color: rgb(23, 23, 23);
+  font-weight: 500;
+}
+.accountant-table-cell::before {
+  content: attr(data-label);
+  display: block;
+  margin-bottom: 4px;
+}
+@media (min-width: 768px) {
+  .accountant-table-cell::before {
+    content: none;
+  }
+}
+.accountant-table-cell--brand::before {
+  color: rgb(47, 174, 99);
+}
+
 .pricing {
   position: relative;
   z-index: 1;

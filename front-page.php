@@ -24,6 +24,7 @@ get_header();
     <?php get_template_part( 'template-parts/front-page/features' ); ?>
     <?php get_template_part( 'template-parts/front-page/payments' ); ?>
     <?php get_template_part( 'template-parts/front-page/why-us' ); ?>
+    <?php get_template_part( 'template-parts/front-page/accountant' ); ?>
     <?php // Sekcja Doginvoice Box ukryta na czas kampanii zapowiadającej; odkomentuj, żeby wróciła. ?>
     <?php get_template_part( 'template-parts/front-page/box' ); ?>
     <?php get_template_part( 'template-parts/front-page/pricing' ); ?>
