@@ -1,0 +1,267 @@
+/*
+ * Style edytora blokowego (Gutenberg) dla wpisów.
+ * Odwzorowują typografię .blog-post-content z src/scss/_blog.scss,
+ * żeby podgląd w adminie wyglądał jak frontend.
+ * Plik ładowany przez add_editor_style() w functions.php.
+ * Przy zmianach typografii wpisu na froncie zaktualizuj też ten plik.
+ */
+
+/* Fonty */
+@font-face {
+	font-family: "Inter";
+	src: url("src/assets/fonts/Inter_28pt-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("src/assets/fonts/Inter_28pt-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("src/assets/fonts/Inter_28pt-Medium.ttf") format("truetype");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("src/assets/fonts/Inter_28pt-SemiBold.ttf") format("truetype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("src/assets/fonts/Inter_28pt-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("src/assets/fonts/JetBrainsMono-Medium.ttf") format("truetype");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("src/assets/fonts/JetBrainsMono-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Baza — WordPress zamienia "body" na kontener edytora. */
+body {
+	--fs-h2: 34px;
+	--fs-h3: 28px;
+	--fs-h4: 20px;
+	--fs-body-xl: 18px;
+	--fs-body-md: 15px;
+	--fs-body-sm: 13px;
+
+	font-family: "Inter", sans-serif;
+	font-size: var(--fs-body-md);
+	line-height: 1.7;
+	letter-spacing: 0.02em;
+	color: rgba(78, 86, 78, 0.8);
+	background-color: rgba(248, 247, 241, 1);
+}
+
+@media (min-width: 1024px) {
+	body {
+		--fs-h2: 52px;
+		--fs-h3: 34px;
+		--fs-h4: 26px;
+		--fs-body-xl: 20px;
+		--fs-body-md: 16px;
+		--fs-body-sm: 15px;
+	}
+}
+
+/* Tytuł wpisu (na froncie: .blog-post-title.typography--h2) */
+.editor-post-title__input,
+.wp-block-post-title {
+	margin-top: 0;
+	margin-bottom: 32px;
+	color: rgba(23, 23, 23, 1);
+	font-family: "Inter", sans-serif;
+	font-weight: 500;
+	font-size: var(--fs-h2);
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+}
+
+/* Nagłówki */
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 32px;
+	margin-bottom: 24px;
+	color: rgba(23, 23, 23, 1);
+	font-family: "Inter", sans-serif;
+	font-weight: 500;
+	line-height: 1.25;
+}
+
+h2 {
+	font-size: var(--fs-h3);
+}
+
+h3 {
+	font-size: var(--fs-h4);
+}
+
+h4,
+h5,
+h6 {
+	font-size: var(--fs-body-xl);
+}
+
+/* Tekst */
+p,
+li {
+	font-size: var(--fs-body-md);
+	line-height: 1.7;
+}
+
+p,
+ul,
+ol,
+blockquote,
+figure,
+pre,
+hr {
+	margin-top: 0;
+	margin-bottom: 24px;
+}
+
+a {
+	color: rgba(47, 174, 99, 1);
+	text-decoration: none;
+}
+
+strong,
+b {
+	color: rgba(23, 23, 23, 1);
+	font-weight: 500;
+}
+
+/* Listy */
+ul,
+ol {
+	padding-left: 1.3em;
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+li:last-child {
+	margin-bottom: 0;
+}
+
+/* Cytat i separator */
+blockquote {
+	margin-left: 0;
+	padding-left: 24px;
+	border-left: 3px solid rgba(79, 209, 95, 1);
+	color: rgba(23, 23, 23, 1);
+}
+
+hr {
+	border: none;
+	border-top: 1px solid rgba(23, 23, 23, 0.12);
+}
+
+/* Media */
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+figcaption {
+	margin-top: 16px;
+	color: rgba(78, 86, 78, 0.8);
+	font-size: var(--fs-body-sm);
+	text-align: center;
+}
+
+/* Tabele */
+.wp-block-table table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--fs-body-sm);
+}
+
+.wp-block-table th,
+.wp-block-table td {
+	padding: 10px 14px;
+	border: 1px solid rgba(23, 23, 23, 0.12);
+	text-align: left;
+	vertical-align: top;
+}
+
+.wp-block-table thead th {
+	background: rgba(23, 23, 23, 1);
+	color: rgba(255, 255, 255, 1);
+	font-weight: 500;
+}
+
+.wp-block-table tbody tr:nth-child(even) {
+	background: rgba(23, 23, 23, 0.03);
+}
+
+/* Grupa z tłem */
+.wp-block-group.has-background {
+	padding: 24px;
+	color: rgba(23, 23, 23, 1);
+}
+
+/* Kod */
+pre,
+code {
+	font-family: "JetBrains Mono", monospace;
+}
+
+:not(pre) > code {
+	padding: 2px 6px;
+	background: rgba(23, 23, 23, 0.06);
+	font-size: 0.9em;
+}
+
+pre {
+	overflow-x: auto;
+	padding: 24px;
+	background: rgba(23, 23, 23, 1);
+	color: #defae1;
+	font-size: var(--fs-body-sm);
+	line-height: 1.6;
+}
+
+pre code {
+	background: transparent;
+	color: inherit;
+}
