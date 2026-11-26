@@ -548,11 +548,19 @@ function doginvoice_landing_layouts() {
 						'name'          => 'file',
 						'type'          => 'file',
 						'instructions'  => 'Plik MP4 w proporcjach 16:9, najlepiej do 10 MB. Film odtwarza się sam, bez dźwięku i w pętli, gdy pojawi się na ekranie.',
-						'required'      => 1,
 						'return_format' => 'array',
 						'library'       => 'all',
 						'mime_types'    => 'mp4',
 						'wrapper'       => array( 'width' => '50' ),
+					),
+					array(
+						'key'          => 'field_dilp_video_url',
+						'label'        => 'Adres filmu (zamiast pliku)',
+						'name'         => 'url',
+						'type'         => 'url',
+						'instructions' => 'Na stronie produkcyjnej wpisz tu adres filmu z media.doginvoice.com (Cloudflare R2). Film wgrany do biblioteki mediów nie odtwarza się na iPhonie, bo serwer strony nie obsługuje żądań zakresowych (por. inc/box.php). Gdy pole jest wypełnione, plik obok jest pomijany.',
+						'placeholder'  => 'https://media.doginvoice.com/landing/nazwa-filmu.mp4',
+						'wrapper'      => array( 'width' => '50' ),
 					),
 					array(
 						'key'           => 'field_dilp_video_poster',
@@ -562,7 +570,6 @@ function doginvoice_landing_layouts() {
 						'instructions'  => 'Obraz widoczny, zanim film się wczyta. Najlepiej kadr z filmu w proporcjach 16:9.',
 						'return_format' => 'array',
 						'preview_size'  => 'medium',
-						'wrapper'       => array( 'width' => '50' ),
 					),
 				)
 			),

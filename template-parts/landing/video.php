@@ -12,7 +12,15 @@ $lp_file    = $lp_section['file'] ?? null;
 $lp_poster  = $lp_section['poster'] ?? null;
 $lp_title   = trim( (string) ( $lp_section['title'] ?? '' ) );
 
-if ( empty( $lp_file['url'] ) ) {
+// Adres z Cloudflare R2 ma pierwszeństwo przed plikiem z biblioteki mediów:
+// serwer strony nie obsługuje żądań zakresowych (Range), więc Safari na iPhonie
+// nie odtwarza filmów z /wp-content/uploads/ (por. doginvoice_box_media_url()).
+$lp_src = trim( (string) ( $lp_section['url'] ?? '' ) );
+if ( '' === $lp_src ) {
+	$lp_src = (string) ( $lp_file['url'] ?? '' );
+}
+
+if ( '' === $lp_src ) {
 	return;
 }
 
@@ -38,7 +46,7 @@ $lp_poster_url = ! empty( $lp_poster['ID'] ) ? wp_get_attachment_image_url( $lp_
           <?php if ( $lp_title ) : ?>
             aria-label="<?php echo esc_attr( $lp_title ); ?>"
           <?php endif; ?>>
-          <source src="<?php echo esc_url( $lp_file['url'] ); ?>" type="video/mp4" />
+          <source src="<?php echo esc_url( $lp_src ); ?>" type="video/mp4" />
         </video>
       </div>
     </section>
