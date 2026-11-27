@@ -44,12 +44,17 @@ while ( have_posts() ) :
 		<?php if ( $cover_id ) : ?>
 			<figure class="blog-post-cover" data-aos="fade-up">
 				<?php
+				// Okładka ma pełną szerokość .blog-post (max 1472 px minus padding
+				// z src/scss/_blog.scss), nie $content_width 640 px. Rozmiar „full”
+				// i własne „sizes” pozwalają przeglądarce wybrać plik do 1344 px
+				// (2688 px na ekranach retina; WordPress przycina wgrane obrazy do 2560 px).
 				echo wp_get_attachment_image(
 					$cover_id,
-					'large',
+					'full',
 					false,
 					array(
-						'alt' => get_post_meta( $cover_id, '_wp_attachment_image_alt', true ) ?: get_the_title(),
+						'alt'   => get_post_meta( $cover_id, '_wp_attachment_image_alt', true ) ?: get_the_title(),
+						'sizes' => '(min-width: 1472px) 1344px, (min-width: 1024px) calc(100vw - 128px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)',
 					)
 				);
 				?>
