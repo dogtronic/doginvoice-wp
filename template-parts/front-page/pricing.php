@@ -207,6 +207,44 @@
         'url'               => home_url( '/' ),
         'offers'            => $schema_offers,
       );
+
+      // Opinie z sekcji „Opinie” na tej samej stronie (testimonials.php).
+      // Tylko wpisy z oceną 1–5 i treścią, tak jak są widoczne na stronie.
+      $schema_reviews = array();
+      foreach ( (array) get_field( 'testimonials_items' ) as $schema_item ) {
+        $schema_rating = isset( $schema_item['rating'] ) ? (int) $schema_item['rating'] : 0;
+        $schema_body   = isset( $schema_item['body'] ) ? trim( preg_replace( '/\s+/', ' ', (string) $schema_item['body'] ) ) : '';
+        $schema_name   = isset( $schema_item['name'] ) ? trim( (string) $schema_item['name'] ) : '';
+        if ( $schema_rating < 1 || $schema_rating > 5 || '' === $schema_body || '' === $schema_name ) {
+          continue;
+        }
+        $schema_reviews[] = array(
+          '@type'        => 'Review',
+          'author'       => array(
+            '@type' => 'Person',
+            'name'  => $schema_name,
+          ),
+          'reviewBody'   => $schema_body,
+          'reviewRating' => array(
+            '@type'       => 'Rating',
+            'ratingValue' => $schema_rating,
+            'bestRating'  => 5,
+            'worstRating' => 1,
+          ),
+        );
+      }
+
+      if ( $schema_reviews ) {
+        $schema_sum = array_sum( wp_list_pluck( wp_list_pluck( $schema_reviews, 'reviewRating' ), 'ratingValue' ) );
+        $software_schema['aggregateRating'] = array(
+          '@type'       => 'AggregateRating',
+          'ratingValue' => round( $schema_sum / count( $schema_reviews ), 1 ),
+          'reviewCount' => count( $schema_reviews ),
+          'bestRating'  => 5,
+          'worstRating' => 1,
+        );
+        $software_schema['review'] = $schema_reviews;
+      }
       ?>
       <script type="application/ld+json"><?php echo wp_json_encode( $software_schema, JSON_UNESCAPED_UNICODE ); ?></script>
       <?php

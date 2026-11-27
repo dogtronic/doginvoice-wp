@@ -123,10 +123,15 @@ function doginvoice_box_offer() {
 	return array(
 		'price'        => 249,           // cena w przedsprzedaży, zł
 		'price_normal' => 349,           // cena po przedsprzedaży, zł
+		'presale_start' => '15.11.2026', // pierwszy dzień ceny przedsprzedażowej
 		'presale_end'  => '27.12.2026',  // ostatni dzień ceny przedsprzedażowej
 		'shipping'     => '28.12.2026',
 		'plan_price'   => '75 zł netto', // Professional, miesięcznie, po darmowym miesiącu
 		'return_days'  => 30,
+		// Dla danych produktu (page-doginvoice-box.php): wysyłka i zwrot
+		// bezpłatne, dostawa 1–2 dni robocze, zwrot paczką.
+		'shipping_cost' => 0,
+		'delivery_days' => array( 1, 2 ),
 	);
 }
 

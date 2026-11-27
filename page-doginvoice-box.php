@@ -63,14 +63,44 @@ $box_product = array(
     'url'                     => get_permalink(),
     'price'                   => (string) $box_offer['price'],
     'priceCurrency'           => 'PLN',
+    'validFrom'               => $box_date( $box_offer['presale_start'] ),
     'priceValidUntil'         => $box_date( $box_offer['presale_end'] ),
     'availability'            => 'https://schema.org/PreOrder',
     'availabilityStarts'      => $box_date( $box_offer['shipping'] ),
+    'shippingDetails'         => array(
+      '@type'               => 'OfferShippingDetails',
+      'shippingRate'        => array(
+        '@type'    => 'MonetaryAmount',
+        'value'    => $box_offer['shipping_cost'],
+        'currency' => 'PLN',
+      ),
+      'shippingDestination' => array(
+        '@type'          => 'DefinedRegion',
+        'addressCountry' => 'PL',
+      ),
+      'deliveryTime'        => array(
+        '@type'        => 'ShippingDeliveryTime',
+        'handlingTime' => array(
+          '@type'    => 'QuantitativeValue',
+          'minValue' => 0,
+          'maxValue' => 1,
+          'unitCode' => 'DAY',
+        ),
+        'transitTime'  => array(
+          '@type'    => 'QuantitativeValue',
+          'minValue' => $box_offer['delivery_days'][0],
+          'maxValue' => $box_offer['delivery_days'][1],
+          'unitCode' => 'DAY',
+        ),
+      ),
+    ),
     'hasMerchantReturnPolicy' => array(
       '@type'                => 'MerchantReturnPolicy',
       'applicableCountry'    => 'PL',
       'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
       'merchantReturnDays'   => $box_offer['return_days'],
+      'returnMethod'         => 'https://schema.org/ReturnByMail',
+      'returnFees'           => 'https://schema.org/FreeReturn',
     ),
   ),
 );
