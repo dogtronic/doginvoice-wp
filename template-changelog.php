@@ -18,7 +18,6 @@ while ( have_posts() ) :
 	$page_lead  = get_field( 'page_lead' );
 	$page_title = doginvoice_page_heading();
 	$paged      = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
-	$type_names = doginvoice_changelog_types();
 
 	$entries = new WP_Query(
 		array(
@@ -56,7 +55,6 @@ while ( have_posts() ) :
 					$entries->the_post();
 
 					$version = get_field( 'changelog_version' );
-					$types   = array_filter( (array) get_field( 'changelog_type' ) );
 					$anchor  = 'zmiana-' . get_post_field( 'post_name' );
 					?>
 					<li id="<?php echo esc_attr( $anchor ); ?>" class="changelog-entry" data-aos="fade-up">
@@ -70,22 +68,6 @@ while ( have_posts() ) :
 						</div>
 
 						<article class="changelog-entry-card">
-							<?php if ( $types ) : ?>
-								<ul class="changelog-entry-types" aria-label="Typ zmian">
-									<?php foreach ( $types as $type ) : ?>
-										<?php if ( isset( $type_names[ $type ] ) ) : ?>
-											<li class="changelog-tag changelog-tag--<?php echo esc_attr( $type ); ?> typography--body-sm">
-												<?php echo esc_html( $type_names[ $type ] ); ?>
-											</li>
-										<?php endif; ?>
-									<?php endforeach; ?>
-								</ul>
-							<?php endif; ?>
-
-							<h2 class="changelog-entry-title typography--h4">
-								<a href="#<?php echo esc_attr( $anchor ); ?>"><?php the_title(); ?></a>
-							</h2>
-
 							<div class="changelog-entry-content">
 								<?php the_content(); ?>
 							</div>
